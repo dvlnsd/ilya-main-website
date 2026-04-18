@@ -172,13 +172,99 @@
         </a>
     </section>
 
-    <section style="text-align: center; background: #000;">
-        <div class="social-icons">
-            <a href="https://www.instagram.com/chaika_ilya/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://t.me/ilya_chaika_surf" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="https://www.youtube.com/@chaika_ilya/videos" target="_blank"><i class="fab fa-youtube"></i></a>
+   <div class="social-mega-buttons">
+    <a href="https://t.me/ilya_chaika_surf" target="_blank" class="mega-btn">
+        <div class="mega-btn-content">
+            <i class="fab fa-telegram-plane"></i>
+            <span>Telegram</span>
+            <small>Inside the Big Wave life</small>
         </div>
-    </section>
+    </a>
+
+    <a href="https://www.youtube.com/@chaika_ilya/videos" target="_blank" class="mega-btn">
+        <div class="mega-btn-content">
+            <i class="fab fa-youtube"></i>
+            <span>YouTube</span>
+            <small>Expert Tutorials & Vlogs</small>
+        </div>
+    </a>
+
+    <a href="https://www.instagram.com/chaika_ilya/" target="_blank" class="mega-btn">
+        <div class="mega-btn-content">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+            <small>Daily Ocean Aesthetic</small>
+        </div>
+    </a>
+</div>
+
+<style>
+    /* Стили для мега-кнопок */
+    .social-mega-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-top: 50px;
+    }
+
+    .mega-btn {
+        text-decoration: none;
+        color: var(--white);
+        border: 1px solid rgba(197, 160, 89, 0.3); /* Приглушенное золото */
+        padding: 40px 20px;
+        transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .mega-btn-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .mega-btn i {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        color: var(--gold);
+        transition: 0.4s;
+    }
+
+    .mega-btn span {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        font-weight: 200;
+    }
+
+    .mega-btn small {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        opacity: 0.5;
+    }
+
+    /* Эффект при наведении — дорогое свечение */
+    .mega-btn:hover {
+        border-color: var(--gold);
+        background: rgba(197, 160, 89, 0.1);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .mega-btn:hover i {
+        transform: scale(1.2);
+        color: var(--white);
+    }
+
+    @media (max-width: 768px) {
+        .mega-btn { padding: 30px 15px; }
+        .mega-btn span { font-size: 1.2rem; }
+    }
+</style>
 
     <footer>
         <p>&copy; 2026 ILYA CHAIKA. EXCLUSIVE SURF EXPERIENCE.</p>
