@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilya Chaika | Elite Surf Services</title>
+    <title>Ilya Chaika | Professional Athlete & Surf Coach</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --gold: #c5a059; --black: #0a0a0a; --white: #ffffff; --gray: #1a1a1a; }
+        :root { --gold: #c5a059; --black: #0a0a0a; --white: #ffffff; --gray: #141414; }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--black); color: var(--white); line-height: 1.6; }
+        
+        /* Фикс для мгновенного скролла вверх */
+        html { scroll-behavior: smooth; background: var(--black); }
+        
+        body { 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            color: var(--white); 
+            line-height: 1.6; 
+            opacity: 0; 
+            transition: opacity 0.8s ease-in; 
+            background: var(--black);
+        }
 
-        /* Фикс открытия с начала страницы */
-        body { animation: fadeIn 1s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* HERO */
+        /* HERO SECTION */
         .hero {
             position: relative;
             height: 100vh;
@@ -23,6 +30,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            background: #000;
         }
         .hero-video {
             position: absolute;
@@ -30,44 +38,52 @@
             min-width: 100%; min-height: 100%;
             width: auto; height: auto;
             transform: translate(-50%, -50%);
-            z-index: -1;
+            z-index: 1;
             filter: brightness(0.4);
             object-fit: cover;
         }
-        .hero-content { text-align: center; z-index: 1; }
-        .hero-content h1 { font-size: clamp(2.5rem, 7vw, 5rem); text-transform: uppercase; letter-spacing: 12px; font-weight: 200; margin-bottom: 10px; }
-        .hero-content p { font-size: 1rem; text-transform: uppercase; letter-spacing: 6px; color: var(--gold); }
+        .hero-content { text-align: center; z-index: 2; position: relative; }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); text-transform: uppercase; letter-spacing: 15px; font-weight: 200; margin-bottom: 15px; }
+        .hero-content p { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 7px; color: var(--gold); }
 
-        /* SECTIONS */
-        section { padding: 120px 10%; position: relative; }
-        .section-title { font-size: 2rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 60px; font-weight: 300; text-align: center; }
+        /* GRID LOGIC */
+        section { padding: 120px 10%; position: relative; background: var(--black); }
+        .section-title { font-size: 2.2rem; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 70px; font-weight: 300; text-align: center; color: var(--white); }
 
-        /* GRID */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
-        .card { background: var(--gray); position: relative; transition: 0.4s; border: 1px solid rgba(255,255,255,0.05); }
-        .card img { width: 100%; height: 500px; object-fit: cover; display: block; filter: grayscale(0.2); transition: 0.5s; }
-        .card:hover img { filter: grayscale(0); transform: scale(1.02); }
-        .card-info { padding: 30px; }
-        .card-info h3 { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-size: 1.1rem; }
-        .card-info p { font-size: 0.9rem; opacity: 0.8; font-weight: 300; }
+        
+        /* CARDS */
+        .card { background: var(--gray); overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; }
+        .card:hover { border-color: var(--gold); }
+        .card img { width: 100%; height: 500px; object-fit: cover; filter: grayscale(0.2); transition: 0.6s; }
+        .card:hover img { filter: grayscale(0); transform: scale(1.03); }
+        
+        .card-info { padding: 35px; }
+        .card-info h3 { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-size: 1.2rem; }
+        .card-info p { font-size: 0.95rem; font-weight: 200; opacity: 0.8; }
 
-        /* SOCIALS */
-        .social-bar { padding: 80px 0; text-align: center; background: #000; }
-        .social-icons { display: flex; justify-content: center; gap: 50px; margin-top: 30px; }
-        .social-icons a { color: var(--white); font-size: 2rem; transition: 0.3s; }
+        /* SOCIAL BAR */
+        .social-bar { padding: 100px 0; text-align: center; background: #050505; border-top: 1px solid var(--gray); }
+        .social-icons { display: flex; justify-content: center; gap: 50px; margin-top: 40px; }
+        .social-icons a { color: var(--white); font-size: 2.2rem; transition: 0.3s; }
         .social-icons a:hover { color: var(--gold); transform: translateY(-5px); }
 
-        .btn { margin-top: 40px; display: inline-block; padding: 15px 35px; border: 1px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; transition: 0.4s; }
+        .btn { margin-top: 30px; display: inline-block; padding: 15px 35px; border: 1px solid var(--white); color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; transition: 0.4s; }
         .btn:hover { background: var(--white); color: var(--black); }
 
-        footer { padding: 40px; text-align: center; font-size: 0.7rem; letter-spacing: 1px; opacity: 0.4; }
+        footer { padding: 60px; text-align: center; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.3; text-transform: uppercase; }
+
+        @media (max-width: 768px) {
+            section { padding: 80px 5%; }
+            .hero-content h1 { letter-spacing: 8px; }
+        }
     </style>
 </head>
-<body>
+<body id="top">
 
     <header class="hero">
         <video autoplay muted loop playsinline class="hero-video">
-            <source src="images/226433135_An_O_aOlEYM9jYSXbt4n_bjPiByaGvY4wONKejUBGNWPNm_pGbiY_ (1).mp4" type="video/mp4">
+            <source src="images/video1.mp4" type="video/mp4">
         </video>
         <div class="hero-content">
             <h1>Ilya Chaika</h1>
@@ -75,34 +91,37 @@
         </div>
     </header>
 
-    <section id="about">
+    <section id="athlete">
+        <h2 class="section-title">The Athlete</h2>
         <div class="grid" style="align-items: center;">
             <div class="card">
-                <img src="images/0U4A9016.jpg" alt="Ilya Chaika">
+                <img src="images/ilyamain.jpg" alt="Ilya Chaika Athlete">
             </div>
-            <div class="text-block">
-                <h2 style="text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px;">The Vision</h2>
-                <p style="font-weight: 200; font-size: 1.2rem;">Илья Чайка — атлет, работающий на грани возможного. От репортажей в федеральных СМИ до покорения гигантских волн. Весь опыт трансформирован в уникальную систему подготовки и сопровождения.</p>
-                <a href="https://t.me/ilya_chaika_surf" class="btn">Join Telegram</a>
+            <div class="text-content">
+                <h3 style="color: var(--gold); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px;">Mastering the Ocean</h3>
+                <p style="font-weight: 200; font-size: 1.2rem; line-height: 1.8;">
+                    Профессиональный атлет, специализирующийся на Big Wave серфинге. Многолетний опыт работы в медиа и глубокое понимание стихии позволяют Илье создавать уникальный контент и предлагать экспертный уровень подготовки для серферов любого уровня.
+                </p>
+                <a href="https://t.me/ilya_chaika_surf" class="btn">Telegram Channel</a>
             </div>
         </div>
     </section>
 
-    <section style="background: #0f0f0f;">
+    <section style="background: #0a0a0a;">
         <h2 class="section-title">Services</h2>
         <div class="grid">
             <div class="card">
-                <img src="images/ilya1.JPG" alt="Coaching">
+                <img src="images/ilyaulu.jpg" alt="Coaching">
                 <div class="card-info">
-                    <h3>Personal Coaching</h3>
-                    <p>Индивидуальные сессии на Бали. Разбор техники, работа с психологией страха и прогресс в океане.</p>
+                    <h3>Elite Coaching</h3>
+                    <p>Персональные тренировки на Бали. Анализ техники, работа с дыханием и подготовка к большим волнам.</p>
                 </div>
             </div>
             <div class="card">
-                <img src="images/photo_2026-02-24 8.56.35 PM.jpeg" alt="Guiding">
+                <img src="images/ilyafoil.jpg" alt="Guiding">
                 <div class="card-info">
                     <h3>Surf Guiding</h3>
-                    <p>Эксклюзивное сопровождение на лучшие споты острова в зависимости от прогноза.</p>
+                    <p>Эксклюзивное сопровождение на лучшие споты Индонезии. Глубокий анализ прогноза и выбор идеальных условий.</p>
                 </div>
             </div>
         </div>
@@ -112,17 +131,17 @@
         <h2 class="section-title">Expeditions 2026</h2>
         <div class="grid">
             <div class="card">
-                <img src="images/IMG_8899.JPG" alt="Mentawai">
+                <img src="images/mentawaiilya.jpg" alt="Mentawai">
                 <div class="card-info">
-                    <h3>August / Mentawai</h3>
-                    <p>Главный трип года. Северная Суматра, лучшие волны и профессиональный разбор каждого проезда.</p>
+                    <h3>Mentawai Islands</h3>
+                    <p>Август 2026. Главная экспедиция сезона. Групповой серф-тур в самую мекку мирового серфинга.</p>
                 </div>
             </div>
             <div class="card">
-                <img src="images/IMG_2202.jpg" alt="Special Projects">
+                <img src="images/reynekeilya.jpg" alt="Expedition">
                 <div class="card-info">
-                    <h3>Private Expeditions</h3>
-                    <p>Разработка и реализация индивидуальных серф-маршрутов любой сложности.</p>
+                    <h3>Remote Locations</h3>
+                    <p>Организация индивидуальных путешествий в самые дикие и нетронутые уголки планеты.</p>
                 </div>
             </div>
         </div>
@@ -140,6 +159,21 @@
     <footer>
         <p>&copy; 2026 ILYA CHAIKA. DESIGNED FOR THE BOLD.</p>
     </footer>
+
+    <script>
+        // Сразу скрываем скролл, чтобы не дергалось
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+
+        window.onload = function() {
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+                document.body.style.opacity = "1";
+            }, 100);
+        };
+    </script>
 
 </body>
 </html>
