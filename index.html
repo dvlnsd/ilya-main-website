@@ -1,1 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilya Chaika | Professional Big Wave Athlete & Surf Coaching</title>
+    <meta name="description" content="Official website of Ilya Chaika. Big wave surfing, premium surf expeditions, and professional coaching in Bali.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #c5a059;
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --gray: #1c1c1c;
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--black); color: var(--white); line-height: 1.6; overflow-x: hidden; }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            filter: brightness(0.5); /* Затемнение для читаемости текста */
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            margin-bottom: 10px;
+            font-weight: 200;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--gold);
+            margin-bottom: 30px;
+        }
+
+        /* BUTTONS */
+        .btn {
+            padding: 15px 40px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            transition: 0.4s;
+            border: 1px solid var(--white);
+            color: var(--white);
+            display: inline-block;
+        }
+
+        .btn:hover { background: var(--white); color: var(--black); }
+
+        /* SECTION STYLING */
+        section { padding: 100px 10%; }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 300;
+        }
+
+        /* GRID FOR EXPEDITIONS & SERVICES */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--gray);
+            overflow: hidden;
+            transition: 0.5s;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            filter: grayscale(0.4);
+            transition: 0.5s;
+        }
+
+        .card:hover img { filter: grayscale(0); transform: scale(1.05); }
+
+        .card-content { padding: 25px; }
+        .card-content h3 { text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; color: var(--gold); }
+
+        /* SOCIALS BLOCK */
+        .social-hub { text-align: center; background: #0f0f0f; }
+        .social-icons { display: flex; justify-content: center; gap: 40px; font-size: 2rem; }
+        .social-icons a { color: var(--white); transition: 0.3s; }
+        .social-icons a:hover { color: var(--gold); }
+
+        /* FOOTER */
+        footer { padding: 50px 10%; text-align: center; font-size: 0.8rem; color: #666; border-top: 1px solid var(--gray); }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3rem; }
+            section { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="images/video1.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Ilya Chaika</h1>
+            <p>Conquering the Unconquerable</p>
+            <a href="#expeditions" class="btn">Explore Expeditions</a>
+        </div>
+    </header>
+
+    <section id="athlete">
+        <h2 class="section-title">The Athlete</h2>
+        <div class="grid">
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <p style="font-size: 1.2rem; font-weight: 200; text-align: justify;">
+                    Илья Чайка — атлет, чья жизнь посвящена стихии. Специализируясь на Big Wave серфинге, он сочетает в себе хладнокровие стратега и мощь профессионального атлета. Его подход — это не просто спорт, это философия преодоления границ возможного.
+                </p>
+            </div>
+            <div class="card">
+                <img src="images/ilyamain.jpg" alt="Ilya Chaika Pro Athlete">
+            </div>
+        </div>
+    </section>
+
+    <section id="services" style="background: var(--gray);">
+        <h2 class="section-title">Professional Services</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="images/ilyaulu.jpg" alt="Individual Coaching">
+                <div class="card-content">
+                    <h3>Individual Coaching</h3>
+                    <p>Персональное наставничество на Бали для тех, кто готов к качественному прыжку в технике.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/ilyafoil.jpg" alt="Surf Guiding">
+                <div class="card-content">
+                    <h3>Surf Guiding</h3>
+                    <p>Эксклюзивный доступ к лучшим спотам острова с учетом прогноза и вашего уровня.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="expeditions">
+        <h2 class="section-title">Expeditions 2026</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="images/mentawaiilya.jpg" alt="Mentawai Expedition">
+                <div class="card-content">
+                    <h3>Mentawai Islands</h3>
+                    <p>Август 2026. Экспедиция в сердце Индонезии. Групповой трип для опытных серферов.</p>
+                    <br>
+                    <a href="#" class="btn" style="padding: 10px 20px; font-size: 0.7rem;">Details Soon</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/reynekeilya.jpg" alt="Special Trip">
+                <div class="card-content">
+                    <h3>Special Locations</h3>
+                    <p>Разработка индивидуальных серф-маршрутов в самые отдаленные точки мира.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="journal" style="background: #050505;">
+        <h2 class="section-title">Journal</h2>
+        <div class="grid">
+            <div style="border-left: 1px solid var(--gold); padding-left: 20px;">
+                <h4 style="color: var(--gold); text-transform: uppercase;">Как готовиться к Big Wave</h4>
+                <p style="font-size: 0.9rem; opacity: 0.7;">Coming soon...</p>
+            </div>
+            <div style="border-left: 1px solid var(--gold); padding-left: 20px;">
+                <h4 style="color: var(--gold); text-transform: uppercase;">Психология страха в океане</h4>
+                <p style="font-size: 0.9rem; opacity: 0.7;">Coming soon...</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-hub">
+        <h2 class="section-title">Connect</h2>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/chaika_ilya/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@chaika_ilya/videos" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://t.me/ilya_chaika_surf" target="_blank"><i class="fab fa-telegram"></i></a>
+        </div>
+        <div style="margin-top: 50px; opacity: 0.5;">
+            <p>Follow @chaika_ilya for daily updates from the line-up</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 ILYA CHAIKA. DESIGNED FOR EXCELLENCE.</p>
+    </footer>
+
+</body>
+</html>
