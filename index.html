@@ -149,21 +149,129 @@
     @media (max-width: 768px) { .scroll-card { min-width: 85vw; } }
 </style>
 
-<div class="horizontal-scroll">
-    <a href="mentawai-surf-trip.html" class="card scroll-card">
-        <div class="card-img"><img src="images/mentawaiilya.jpg"></div>
-        <div class="card-body"><h3>Mentawai</h3></div>
-    </a>
-    <a href="mexico-surf-trip.html" class="card scroll-card">
-        <div class="card-img"><img src="images/ilyamain.jpg"></div>
-        <div class="card-body"><h3>Mexico</h3></div>
-    </a>
-    <a href="vladivostok-surf-trip.html" class="card scroll-card">
-        <div class="card-img"><img src="images/vladivostokwave.jpg"></div>
-        <div class="card-body"><h3>Vladivostok</h3></div>
-    </a>
-    </div>
+<style>
+    /* ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ ВАРИАНТА 3 */
+    #expeditions { 
+        padding-right: 0; /* Чтобы скролл уходил в край экрана */
+        overflow: hidden; 
+    }
 
+    .horizontal-container {
+        display: flex;
+        overflow-x: auto;
+        gap: 30px;
+        padding: 20px 8% 60px 0; /* Отступ справа для красоты */
+        scroll-snap-type: x mandatory;
+        scrollbar-width: thin;
+        scrollbar-color: var(--water-blue) transparent;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Кастомный скроллбар для Chrome/Safari */
+    .horizontal-container::-webkit-scrollbar { height: 3px; }
+    .horizontal-container::-webkit-scrollbar-track { background: transparent; }
+    .horizontal-container::-webkit-scrollbar-thumb { background: var(--water-blue); border-radius: 10px; }
+
+    .scroll-card {
+        min-width: 500px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        cursor: pointer;
+        position: relative;
+    }
+
+    /* Добавляем индикатор "Нажми, чтобы узнать больше" */
+    .scroll-card::after {
+        content: "Explore Expedition →";
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--water-blue);
+        opacity: 0;
+        transition: 0.4s;
+        z-index: 5;
+    }
+
+    .scroll-card:hover::after { opacity: 1; transform: translateX(10px); }
+
+    @media (max-width: 768px) {
+        .scroll-card { min-width: 85vw; }
+        .scroll-card::after { opacity: 0.6; } /* На мобилках всегда чуть видно */
+    }
+</style>
+
+<section id="expeditions">
+    <h2 class="section-title" style="text-align: left; margin-left: 0;">Surf <span>Expeditions</span> 2026</h2>
+    <p style="opacity: 0.4; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; margin-top: -80px; margin-bottom: 40px;">← Scroll to explore missions →</p>
+
+    <div class="horizontal-container">
+        <a href="mentawai-surf-trip.html" class="card scroll-card">
+            <div class="card-img"><img src="images/mentawaiilya.jpg" alt="Mentawai"></div>
+            <div class="card-body">
+                <span class="tag">August 2026</span>
+                <h3>Mentawai Islands</h3>
+                <p>Главный трип сезона. 12 дней прогресса на лучшей лодке в архипелаге.</p>
+            </div>
+        </a>
+
+        <a href="mexico-surf-trip.html" class="card scroll-card">
+            <div class="card-img"><img src="images/ilyamain.jpg" alt="Mexico"></div>
+            <div class="card-body">
+                <span class="tag">Autumn 2026</span>
+                <h3>Mexico Big Waves</h3>
+                <p>Пуэрто-Эскондидо. Опыт на самых мощных волнах планеты под присмотром атлета.</p>
+            </div>
+        </a>
+
+        <a href="vladivostok-surf-trip.html" class="card scroll-card">
+            <div class="card-img"><img src="images/vladivostokwave.jpg" alt="Vladivostok"></div>
+            <div class="card-body">
+                <span class="tag">September 2026</span>
+                <h3>Vladivostok</h3>
+                <p>Русский серфинг. Дикая природа Приморья и пустые лайнапы Японского моря.</p>
+            </div>
+        </a>
+
+        <a href="south-africa-surf-trip.html" class="card scroll-card">
+            <div class="card-img"><img src="images/ilyagun.jpg" alt="RSA"></div>
+            <div class="card-body">
+                <span class="tag">Winter 2026</span>
+                <h3>South Africa</h3>
+                <p>Экспедиция на край света. Большие волны, холодный океан и сафари.</p>
+            </div>
+        </a>
+
+        <a href="sumba-surf-trip.html" class="card scroll-card">
+            <div class="card-img"><img src="images/ilyawindvl.jpg" alt="Sumba"></div>
+            <div class="card-body">
+                <span class="tag">All Season</span>
+                <h3>Sumba Island</h3>
+                <p>Нетронутая Индонезия. Идеальные волны для тех, кто ищет уединение.</p>
+            </div>
+        </a>
+
+        <a href="sumbawa-surf-trip.html" class="card scroll-card">
+            <div class="card-img"><img src="images/ilyatube.jpg" alt="Sumbawa"></div>
+            <div class="card-body">
+                <span class="tag">Training Camp</span>
+                <h3>Sumbawa</h3>
+                <p>Интенсивный прогресс и катание в трубах на культовых спотах Лейки Пик.</p>
+            </div>
+        </a>
+
+        <a href="g-land-surf-trip.html" class="card scroll-card">
+            <div class="card-img"><img src="images/ilyabw.jpg" alt="G-Land"></div>
+            <div class="card-body">
+                <span class="tag">The Jungle Left</span>
+                <h3>G-Land Java</h3>
+                <p>Легендарная бухта Граджаган. Серфинг мирового уровня в сердце джунглей.</p>
+            </div>
+        </a>
+    </div>
+</section>
     <section id="services" style="background: #080808;">
         <h2 class="section-title">Professional <span>Services</span></h2>
         <div class="grid">
