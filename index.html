@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilya Chaika | Professional Athlete & Big Wave Coach</title>
+    <title>Ilya Chaika | Professional Big Wave Athlete & Surf Coach</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { 
@@ -17,7 +17,7 @@
         html { scroll-behavior: smooth; background: var(--black); }
         body { font-family: 'Helvetica Neue', Arial, sans-serif; color: var(--white); line-height: 1.6; opacity: 0; transition: opacity 0.8s; background: var(--black); }
 
-        /* NAVIGATION */
+        /* NAV */
         nav { position: fixed; top: 0; width: 100%; padding: 30px 8%; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); }
         .logo { font-size: 1.2rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 200; color: var(--white); text-decoration: none; }
         .nav-links a { color: #fff; text-decoration: none; margin-left: 30px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; transition: 0.3s; }
@@ -26,7 +26,7 @@
         /* HERO */
         .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
         .hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); z-index: 1; filter: brightness(0.3); object-fit: cover; }
-        .hero-content { z-index: 2; text-align: center; padding: 0 20px; }
+        .hero-content { z-index: 2; text-align: center; }
         .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); text-transform: uppercase; letter-spacing: 15px; font-weight: 200; margin-bottom: 15px; }
         .hero-content p { font-size: 1rem; text-transform: uppercase; letter-spacing: 8px; color: var(--water-blue); }
 
@@ -40,36 +40,29 @@
         /* SECTIONS */
         section { padding: 140px 10%; position: relative; }
         .section-title { font-size: 2rem; text-transform: uppercase; letter-spacing: 8px; margin-bottom: 100px; text-align: center; font-weight: 200; }
-        .section-title span { color: var(--water-blue); font-weight: 200; }
+        .section-title span { color: var(--water-blue); }
 
-        /* GRID SYSTEM */
+        /* GRID */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 50px; }
         .card { background: var(--gray); border: 1px solid rgba(255,255,255,0.03); transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1); text-decoration: none; color: inherit; display: block; overflow: hidden; }
         .card:hover { border-color: var(--water-blue); transform: translateY(-10px); }
-        .card-img { height: 500px; overflow: hidden; position: relative; }
-        .card-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.4); transition: 1s; }
+        .card-img { height: 500px; overflow: hidden; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.5); transition: 1s; }
         .card:hover .card-img img { filter: grayscale(0); transform: scale(1.05); }
         .card-body { padding: 40px; }
         .card-body .tag { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 15px; }
-        .card-body h3 { text-transform: uppercase; letter-spacing: 4px; font-size: 1.2rem; margin-bottom: 15px; color: var(--white); transition: 0.3s; }
-        .card:hover .card-body h3 { color: var(--water-blue); }
+        .card-body h3 { text-transform: uppercase; letter-spacing: 4px; font-size: 1.2rem; margin-bottom: 15px; }
         .card-body p { font-size: 0.9rem; opacity: 0.5; font-weight: 200; line-height: 1.8; }
 
-        /* SOCIAL MEGA BUTTONS */
+        /* MEGA BUTTONS */
         .social-mega-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 60px; }
         .mega-btn { text-decoration: none; color: var(--water-blue); border: 1px solid rgba(160, 233, 255, 0.15); padding: 60px 20px; transition: 0.5s; display: flex; flex-direction: column; align-items: center; background: rgba(255, 255, 255, 0.01); }
-        .mega-btn:hover { border-color: var(--water-blue); background: rgba(160, 233, 255, 0.08); transform: translateY(-5px); box-shadow: 0 15px 40px rgba(160, 233, 255, 0.1); }
-        .mega-btn i { font-size: 2.5rem; margin-bottom: 20px; transition: 0.4s; }
+        .mega-btn:hover { border-color: var(--water-blue); background: rgba(160, 233, 255, 0.08); transform: translateY(-5px); }
+        .mega-btn i { font-size: 2.5rem; margin-bottom: 20px; }
         .mega-btn span { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 200; }
-        .mega-btn small { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; margin-top: 15px; color: #fff; }
 
         footer { padding: 80px 10%; text-align: center; opacity: 0.2; font-size: 0.7rem; letter-spacing: 4px; border-top: 1px solid #111; }
-
-        @media (max-width: 768px) { 
-            section { padding: 100px 5%; } 
-            .grid { grid-template-columns: 1fr; } 
-            .card-img { height: 400px; }
-        }
+        @media (max-width: 768px) { section { padding: 100px 5%; } .grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -90,7 +83,7 @@
         </video>
         <div class="hero-content">
             <h1>Ilya Chaika</h1>
-            <p>Mastering the Big Waves</p>
+            <p>Conquering the Unconquerable</p>
         </div>
     </header>
 
@@ -108,60 +101,32 @@
         <h2 class="section-title">Surf <span>Trips</span> 2026</h2>
         <div class="grid">
             <a href="mentawai-surf-trip.html" class="card">
-                <div class="card-img"><img src="images/mentawaiilya.jpg" alt="Mentawai"></div>
-                <div class="card-body">
-                    <span class="tag">Indonesia</span>
-                    <h3>Mentawai Islands</h3>
-                    <p>Август 2026. Механические волны и жизнь на комфортабельной лодке. Главный трип сезона.</p>
-                </div>
+                <div class="card-img"><img src="images/mentawaiilya.jpg"></div>
+                <div class="card-body"><span class="tag">Indonesia</span><h3>Mentawai</h3><p>Август 2026. Главный трип сезона на легендарной лодке.</p></div>
             </a>
             <a href="mexico-surf-trip.html" class="card">
-                <div class="card-img"><img src="images/ilyamain.jpg" alt="Mexico"></div>
-                <div class="card-body">
-                    <span class="tag">North America</span>
-                    <h3>Mexico Big Waves</h3>
-                    <p>Пуэрто-Эскондидо. Опыт выживания и катания на самых мощных волнах планеты.</p>
-                </div>
-            </a>
-            <a href="sumba-surf-trip.html" class="card">
-                <div class="card-img"><img src="images/ilyawindvl.jpg" alt="Sumba"></div>
-                <div class="card-body">
-                    <span class="tag">Indonesia</span>
-                    <h3>Sumba Island</h3>
-                    <p>Дикая Индонезия и пустые лайнапы. Путешествие для тех, кто ищет уединение.</p>
-                </div>
+                <div class="card-img"><img src="images/ilyamain.jpg"></div>
+                <div class="card-body"><span class="tag">Mexico</span><h3>Mexico</h3><p>Puerto Escondido. Опыт на самых мощных волнах планеты.</p></div>
             </a>
             <a href="vladivostok-surf-trip.html" class="card">
-                <div class="card-img"><img src="images/vladivostokwave.jpg" alt="Vladivostok"></div>
-                <div class="card-body">
-                    <span class="tag">Russia</span>
-                    <h3>Vladivostok</h3>
-                    <p>Русский серфинг. Аутентичные локации Приморья, холодная вода и уникальный дух.</p>
-                </div>
-            </a>
-            <a href="sumbawa-surf-trip.html" class="card">
-                <div class="card-img"><img src="images/ilyatube.jpg" alt="Sumbawa"></div>
-                <div class="card-body">
-                    <span class="tag">Indonesia</span>
-                    <h3>Sumbawa</h3>
-                    <p>Тренировочный лагерь на культовых спотах. Максимальный прогресс за 10 дней.</p>
-                </div>
-            </a>
-            <a href="g-land-surf-trip.html" class="card">
-                <div class="card-img"><img src="images/ilyabw.jpg" alt="G-Land"></div>
-                <div class="card-body">
-                    <span class="tag">Java</span>
-                    <h3>G-Land</h3>
-                    <p>Легендарная бухта Граджаган. Серфинг в джунглях на одной из самых длинных левых волн мира.</p>
-                </div>
+                <div class="card-img"><img src="images/vladivostokwave.jpg"></div>
+                <div class="card-body"><span class="tag">Russia</span><h3>Vladivostok</h3><p>Уникальный опыт серфинга в Приморье.</p></div>
             </a>
             <a href="south-africa-surf-trip.html" class="card">
-                <div class="card-img"><img src="images/ilyagun.jpg" alt="RSA"></div>
-                <div class="card-body">
-                    <span class="tag">South Africa</span>
-                    <h3>South Africa</h3>
-                    <p>Экспедиция на край света. Большие волны, мощная природа и настоящая дикая Африка.</p>
-                </div>
+                <div class="card-img"><img src="images/ilyagun.jpg"></div>
+                <div class="card-body"><span class="tag">RSA</span><h3>South Africa</h3><p>Большие волны и дикая природа Африки.</p></div>
+            </a>
+            <a href="sumba-surf-trip.html" class="card">
+                <div class="card-img"><img src="images/ilyawindvl.jpg"></div>
+                <div class="card-body"><span class="tag">Indonesia</span><h3>Sumba</h3><p>Пустые лайнапы и первозданная природа.</p></div>
+            </a>
+            <a href="sumbawa-surf-trip.html" class="card">
+                <div class="card-img"><img src="images/ilyatube.jpg"></div>
+                <div class="card-body"><span class="tag">Indonesia</span><h3>Sumbawa</h3><p>Интенсивный прогресс на культовых спотах.</p></div>
+            </a>
+            <a href="g-land-surf-trip.html" class="card">
+                <div class="card-img"><img src="images/ilyabw.jpg"></div>
+                <div class="card-body"><span class="tag">Java</span><h3>G-Land</h3><p>Легендарная бухта в сердце джунглей Явы.</p></div>
             </a>
         </div>
     </section>
@@ -170,19 +135,49 @@
         <h2 class="section-title">Professional <span>Services</span></h2>
         <div class="grid">
             <a href="surf-coaching-bali.html" class="card">
-                <div class="card-img"><img src="images/ilyaulu.jpg" alt="Coaching"></div>
-                <div class="card-body">
-                    <span class="tag">Bali / Global</span>
-                    <h3>Private Coaching</h3>
-                    <p>Индивидуальная работа над техникой, видео-разбор и ментальная подготовка атлета.</p>
-                </div>
+                <div class="card-img"><img src="images/ilyaulu.jpg"></div>
+                <div class="card-body"><span class="tag">Bali</span><h3>Private Coaching</h3><p>Индивидуальная работа над техникой и ментальной подготовкой.</p></div>
             </a>
             <a href="surf-guiding-bali.html" class="card">
-                <div class="card-img"><img src="images/ilyafoil.jpg" alt="Guiding"></div>
+                <div class="card-img"><img src="images/ilyafoil.jpg"></div>
+                <div class="card-body"><span class="tag">Bali</span><h3>Premium Guiding</h3><p>Секретные споты Бали и абсолютная безопасность.</p></div>
+            </a>
+        </div>
+    </section>
+
+    <section id="journal">
+        <h2 class="section-title">Latest <span>Journal</span></h2>
+        <div class="grid">
+            <a href="surf-journal.html" class="card">
+                <div class="card-img" style="height: 300px;"><img src="images/ilyastungun.jpg"></div>
                 <div class="card-body">
-                    <span class="tag">Bali</span>
-                    <h3>Premium Guiding</h3>
-                    <p>Секретные споты без толпы. Профессиональное сопровождение и безопасность на воде.</p>
+                    <span class="tag">Expertise</span>
+                    <h3>Психология Больших Волн</h3>
+                    <p>Как контролировать панику, когда стихия берет верх. Читать далее →</p>
+                </div>
+            </a>
+            <a href="surf-journal.html" class="card">
+                <div class="card-img" style="height: 300px;"><img src="images/vladivostokwave.jpg"></div>
+                <div class="card-body">
+                    <span class="tag">Lifestyle</span>
+                    <h3>Гид по спотам Приморья</h3>
+                    <p>Где искать лучшие волны в России. Читать далее →</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="shop" style="background: #080808; text-align: center;">
+        <h2 class="section-title">Limited <span>Shop</span></h2>
+        <div style="max-width: 500px; margin: 0 auto;">
+            <a href="surf-shop.html" class="card">
+                <div class="card-img" style="height: 400px; background: #050505;">
+                    <img src="images/ilyamain.jpg" style="object-fit: contain; padding: 40px;">
+                </div>
+                <div class="card-body">
+                    <span class="tag">Official Apparel</span>
+                    <h3>Ilya Chaika Signature Tee</h3>
+                    <p>Доступно для заказа. Перейти в магазин →</p>
                 </div>
             </a>
         </div>
@@ -194,30 +189,22 @@
             <a href="https://t.me/ilya_chaika_surf" target="_blank" class="mega-btn">
                 <i class="fab fa-telegram-plane"></i>
                 <span>Telegram</span>
-                <small>Direct access & Booking</small>
             </a>
             <a href="https://www.youtube.com/@chaika_ilya/videos" target="_blank" class="mega-btn">
                 <i class="fab fa-youtube"></i>
                 <span>YouTube</span>
-                <small>Expert tutorials</small>
             </a>
             <a href="https://www.instagram.com/chaika_ilya/" target="_blank" class="mega-btn">
                 <i class="fab fa-instagram"></i>
                 <span>Instagram</span>
-                <small>Ocean Aesthetic</small>
             </a>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 ILYA CHAIKA. DESIGNED FOR PERFORMANCE.</p>
-    </footer>
+    <footer><p>&copy; 2026 ILYA CHAIKA. DESIGNED FOR PERFORMANCE.</p></footer>
 
     <script>
-        window.onload = function() {
-            window.scrollTo(0,0);
-            document.body.style.opacity = "1";
-        };
+        window.onload = function() { window.scrollTo(0,0); document.body.style.opacity = "1"; };
     </script>
 </body>
 </html>
