@@ -97,39 +97,60 @@
         </div>
     </div>
 
-    <section id="expeditions">
-        <h2 class="section-title">Surf <span>Trips</span> 2026</h2>
-        <div class="grid">
-            <a href="mentawai-surf-trip.html" class="card">
-                <div class="card-img"><img src="images/mentawaiilya.jpg"></div>
-                <div class="card-body"><span class="tag">Indonesia</span><h3>Mentawai</h3><p>Август 2026. Главный трип сезона на легендарной лодке.</p></div>
-            </a>
-            <a href="mexico-surf-trip.html" class="card">
-                <div class="card-img"><img src="images/ilyamain.jpg"></div>
-                <div class="card-body"><span class="tag">Mexico</span><h3>Mexico</h3><p>Puerto Escondido. Опыт на самых мощных волнах планеты.</p></div>
-            </a>
-            <a href="vladivostok-surf-trip.html" class="card">
-                <div class="card-img"><img src="images/vladivostokwave.jpg"></div>
-                <div class="card-body"><span class="tag">Russia</span><h3>Vladivostok</h3><p>Уникальный опыт серфинга в Приморье.</p></div>
-            </a>
-            <a href="south-africa-surf-trip.html" class="card">
-                <div class="card-img"><img src="images/ilyagun.jpg"></div>
-                <div class="card-body"><span class="tag">RSA</span><h3>South Africa</h3><p>Большие волны и дикая природа Африки.</p></div>
-            </a>
-            <a href="sumba-surf-trip.html" class="card">
-                <div class="card-img"><img src="images/ilyawindvl.jpg"></div>
-                <div class="card-body"><span class="tag">Indonesia</span><h3>Sumba</h3><p>Пустые лайнапы и первозданная природа.</p></div>
-            </a>
-            <a href="sumbawa-surf-trip.html" class="card">
-                <div class="card-img"><img src="images/ilyatube.jpg"></div>
-                <div class="card-body"><span class="tag">Indonesia</span><h3>Sumbawa</h3><p>Интенсивный прогресс на культовых спотах.</p></div>
-            </a>
-            <a href="g-land-surf-trip.html" class="card">
-                <div class="card-img"><img src="images/ilyabw.jpg"></div>
-                <div class="card-body"><span class="tag">Java</span><h3>G-Land</h3><p>Легендарная бухта в сердце джунглей Явы.</p></div>
-            </a>
+    <style>
+    /* Добавь это в блок <style> */
+    .grid-feature { 
+        display: grid; 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 40px; 
+    }
+    .card.main-feature { 
+        grid-column: 1 / -1; 
+        margin-bottom: 20px;
+    }
+    .card.main-feature .card-img { height: 65vh; }
+    
+    @media (max-width: 768px) {
+        .grid-feature { grid-template-columns: 1fr; }
+        .card.main-feature .card-img { height: 400px; }
+    }
+</style>
+
+<div class="grid-feature">
+    <a href="mentawai-surf-trip.html" class="card main-feature">
+        <div class="card-img"><img src="images/mentawaiilya.jpg"></div>
+        <div class="card-body">
+            <span class="tag">Flagship Expedition // 2026</span>
+            <h3 style="font-size: 2rem;">Mentawai Islands</h3>
+            <p>Главное событие года. 12 дней на закрытой лодке в эпицентре лучших волн планеты.</p>
         </div>
-    </section>
+    </a>
+    
+    <a href="mexico-surf-trip.html" class="card">
+        <div class="card-img"><img src="images/ilyamain.jpg"></div>
+        <div class="card-body"><span class="tag">Mexico</span><h3>Mexico</h3></div>
+    </a>
+    <a href="vladivostok-surf-trip.html" class="card">
+        <div class="card-img"><img src="images/vladivostokwave.jpg"></div>
+        <div class="card-body"><span class="tag">Russia</span><h3>Vladivostok</h3></div>
+    </a>
+    <a href="south-africa-surf-trip.html" class="card">
+        <div class="card-img"><img src="images/ilyagun.jpg"></div>
+        <div class="card-body"><span class="tag">RSA</span><h3>South Africa</h3></div>
+    </a>
+    <a href="sumba-surf-trip.html" class="card">
+        <div class="card-img"><img src="images/ilyawindvl.jpg"></div>
+        <div class="card-body"><span class="tag">Sumba</span><h3>Sumba</h3></div>
+    </a>
+    <a href="sumbawa-surf-trip.html" class="card">
+        <div class="card-img"><img src="images/ilyatube.jpg"></div>
+        <div class="card-body"><span class="tag">Sumbawa</span><h3>Sumbawa</h3></div>
+    </a>
+    <a href="g-land-surf-trip.html" class="card">
+        <div class="card-img"><img src="images/ilyabw.jpg"></div>
+        <div class="card-body"><span class="tag">Java</span><h3>G-Land</h3></div>
+    </a>
+</div>
 
     <section id="services" style="background: #080808;">
         <h2 class="section-title">Professional <span>Services</span></h2>
