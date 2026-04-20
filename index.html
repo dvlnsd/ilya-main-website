@@ -130,22 +130,37 @@
     @media (max-width: 768px) { .grid-mosaic { display: flex; flex-direction: column; } }
 </style>
 
-<div class="grid-mosaic">
-    <a href="mentawai-surf-trip.html" class="card mosaic-item wide">
+<style>
+    .horizontal-scroll {
+        display: flex;
+        overflow-x: auto;
+        gap: 30px;
+        padding-bottom: 40px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+    .horizontal-scroll::-webkit-scrollbar { height: 2px; }
+    .horizontal-scroll::-webkit-scrollbar-thumb { background: var(--water-blue); }
+    
+    .scroll-card {
+        min-width: 450px;
+        scroll-snap-align: center;
+    }
+    @media (max-width: 768px) { .scroll-card { min-width: 85vw; } }
+</style>
+
+<div class="horizontal-scroll">
+    <a href="mentawai-surf-trip.html" class="card scroll-card">
         <div class="card-img"><img src="images/mentawaiilya.jpg"></div>
         <div class="card-body"><h3>Mentawai</h3></div>
     </a>
-    <a href="mexico-surf-trip.html" class="card mosaic-item">
+    <a href="mexico-surf-trip.html" class="card scroll-card">
         <div class="card-img"><img src="images/ilyamain.jpg"></div>
         <div class="card-body"><h3>Mexico</h3></div>
     </a>
-    <a href="vladivostok-surf-trip.html" class="card mosaic-item">
+    <a href="vladivostok-surf-trip.html" class="card scroll-card">
         <div class="card-img"><img src="images/vladivostokwave.jpg"></div>
         <div class="card-body"><h3>Vladivostok</h3></div>
-    </a>
-    <a href="south-africa-surf-trip.html" class="card mosaic-item wide">
-        <div class="card-img"><img src="images/ilyagun.jpg"></div>
-        <div class="card-body"><h3>South Africa</h3></div>
     </a>
     </div>
 
