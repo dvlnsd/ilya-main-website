@@ -115,40 +115,160 @@
         </div>
     </div>
 
-    <section id="expeditions">
-        <h2 class="section-title" style="text-align: left;">Surf <span>Expeditions</span></h2>
-        <p style="opacity: 0.3; text-transform: uppercase; letter-spacing: 3px; font-size: 0.6rem; margin-bottom: 40px;">Slide to explore →</p>
-        <div class="horizontal-wrapper">
-            <a href="mentawai-surf-trip.html" class="trip-card">
-                <div class="card-img"><img src="images/mentawaiilya.jpg"></div>
-                <div class="card-body"><span class="tag">August // Indonesia</span><h3>Mentawai</h3><p>Главный трип сезона на легендарной лодке.</p></div>
-            </a>
-            <a href="mexico-surf-trip.html" class="trip-card">
-                <div class="card-img"><img src="images/ilyamain.jpg"></div>
-                <div class="card-body"><span class="tag">Autumn // Mexico</span><h3>Mexico</h3><p>Опыт на самых мощных волнах планеты.</p></div>
-            </a>
-            <a href="vladivostok-surf-trip.html" class="trip-card">
-                <div class="card-img"><img src="images/vladivostokwave.jpg"></div>
-                <div class="card-body"><span class="tag">September // Russia</span><h3>Vladivostok</h3><p>Дикая природа и пустые лайнапы Приморья.</p></div>
-            </a>
-            <a href="south-africa-surf-trip.html" class="trip-card">
-                <div class="card-img"><img src="images/ilyagun.jpg"></div>
-                <div class="card-body"><span class="tag">Winter // RSA</span><h3>South Africa</h3><p>Большие волны и дикое сафари Африки.</p></div>
-            </a>
-            <a href="sumba-surf-trip.html" class="trip-card">
-                <div class="card-img"><img src="images/ilyawindvl.jpg"></div>
-                <div class="card-body"><span class="tag">All Season // Sumba</span><h3>Sumba</h3><p>Идеальные волны для ценителей уединения.</p></div>
-            </a>
-            <a href="sumbawa-surf-trip.html" class="trip-card">
-                <div class="card-img"><img src="images/ilyatube.jpg"></div>
-                <div class="card-body"><span class="tag">Camp // Indonesia</span><h3>Sumbawa</h3><p>Интенсивный прогресс в трубах.</p></div>
-            </a>
-            <a href="g-land-surf-trip.html" class="trip-card">
-                <div class="card-img"><img src="images/ilyabw.jpg"></div>
-                <div class="card-body"><span class="tag">Java // Jungle</span><h3>G-Land</h3><p>Легендарная бухта в сердце джунглей.</p></div>
-            </a>
-        </div>
-    </section>
+    <style>
+    /* ОБНОВЛЕННЫЙ ЛАКОНИЧНЫЙ СТИЛЬ ТРИПОВ */
+    #expeditions { 
+        padding: 100px 10%; 
+        background: var(--black);
+    }
+
+    .trips-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 в ряд для компактности */
+        gap: 30px;
+    }
+
+    /* Флагманская карточка (Ментаваи) — занимает 2 колонки из 3 */
+    .trip-card.featured {
+        grid-column: span 2;
+        display: flex;
+        height: 450px;
+    }
+    
+    .trip-card.featured .card-img { width: 60%; height: 100%; }
+    .trip-card.featured .card-body { width: 40%; display: flex; flex-direction: column; justify-content: center; }
+
+    /* Обычные карточки */
+    .trip-card {
+        background: var(--gray);
+        border: 1px solid rgba(255,255,255,0.03);
+        text-decoration: none;
+        color: inherit;
+        transition: 0.4s ease;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .trip-card .card-img {
+        height: 250px; /* Компактная высота */
+        overflow: hidden;
+    }
+
+    .trip-card .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(0.6);
+        transition: 0.6s;
+    }
+
+    .trip-card:hover { border-color: var(--water-blue); }
+    .trip-card:hover .card-img img { filter: grayscale(0); transform: scale(1.03); }
+
+    .trip-card .card-body { padding: 25px; }
+    .trip-card .tag { color: var(--gold); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; }
+    .trip-card h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 300; margin-bottom: 10px; }
+    .trip-card p { font-size: 0.8rem; opacity: 0.4; font-weight: 200; line-height: 1.5; }
+
+    /* Интуитивный CTA */
+    .trip-card .cta-link {
+        margin-top: 15px;
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--water-blue);
+        display: inline-block;
+        opacity: 0.7;
+    }
+
+    @media (max-width: 1024px) {
+        .trips-grid { grid-template-columns: repeat(2, 1fr); }
+        .trip-card.featured { grid-column: span 2; }
+    }
+
+    @media (max-width: 768px) {
+        .trips-grid { grid-template-columns: 1fr; }
+        .trip-card.featured { grid-column: span 1; flex-direction: column; height: auto; }
+        .trip-card.featured .card-img, .trip-card.featured .card-body { width: 100%; }
+        .trip-card.featured .card-img { height: 300px; }
+    }
+</style>
+
+<section id="expeditions">
+    <h2 class="section-title" style="text-align: left; margin-bottom: 50px;">Surf <span>Expeditions</span></h2>
+    
+    <div class="trips-grid">
+        <a href="mentawai-surf-trip.html" class="trip-card featured">
+            <div class="card-img"><img src="images/mentawaiilya.jpg" alt="Mentawai"></div>
+            <div class="card-body">
+                <span class="tag">August 2026 // Indonesia</span>
+                <h3>Mentawai Islands</h3>
+                <p>Главный трип сезона на легендарной лодке. Эпицентр лучших волн планеты.</p>
+                <span class="cta-link">Details →</span>
+            </div>
+        </a>
+
+        <a href="mexico-surf-trip.html" class="trip-card">
+            <div class="card-img"><img src="images/ilyamain.jpg" alt="Mexico"></div>
+            <div class="card-body">
+                <span class="tag">Mexico</span>
+                <h3>Mexico</h3>
+                <p>Мощные волны Пуэрто-Эскондидо.</p>
+                <span class="cta-link">Details →</span>
+            </div>
+        </a>
+
+        <a href="vladivostok-surf-trip.html" class="trip-card">
+            <div class="card-img"><img src="images/vladivostokwave.jpg" alt="Vladivostok"></div>
+            <div class="card-body">
+                <span class="tag">Russia</span>
+                <h3>Vladivostok</h3>
+                <p>Дикое Приморье и Японское море.</p>
+                <span class="cta-link">Details →</span>
+            </div>
+        </a>
+
+        <a href="south-africa-surf-trip.html" class="trip-card">
+            <div class="card-img"><img src="images/ilyagun.jpg" alt="RSA"></div>
+            <div class="card-body">
+                <span class="tag">RSA</span>
+                <h3>South Africa</h3>
+                <p>Большие волны и дикое сафари.</p>
+                <span class="cta-link">Details →</span>
+            </div>
+        </a>
+
+        <a href="sumba-surf-trip.html" class="trip-card">
+            <div class="card-img"><img src="images/ilyawindvl.jpg" alt="Sumba"></div>
+            <div class="card-body">
+                <span class="tag">Sumba</span>
+                <h3>Sumba Island</h3>
+                <p>Идеальные волны для уединения.</p>
+                <span class="cta-link">Details →</span>
+            </div>
+        </a>
+
+        <a href="sumbawa-surf-trip.html" class="trip-card">
+            <div class="card-img"><img src="images/ilyatube.jpg" alt="Sumbawa"></div>
+            <div class="card-body">
+                <span class="tag">Indonesia</span>
+                <h3>Sumbawa</h3>
+                <p>Прогресс на культовых спотах.</p>
+                <span class="cta-link">Details →</span>
+            </div>
+        </a>
+
+        <a href="g-land-surf-trip.html" class="trip-card">
+            <div class="card-img"><img src="images/ilyabw.jpg" alt="G-Land"></div>
+            <div class="card-body">
+                <span class="tag">Java</span>
+                <h3>G-Land</h3>
+                <p>Серфинг в сердце джунглей.</p>
+                <span class="cta-link">Details →</span>
+            </div>
+        </a>
+    </div>
+</section>
 
     <section id="services" style="background: #080808;">
         <h2 class="section-title">Professional <span>Services</span></h2>
