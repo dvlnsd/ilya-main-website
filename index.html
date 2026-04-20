@@ -17,7 +17,7 @@
         html { scroll-behavior: smooth; background: var(--black); }
         body { font-family: 'Helvetica Neue', Arial, sans-serif; color: var(--white); line-height: 1.6; opacity: 0; transition: opacity 0.8s; background: var(--black); }
 
-        /* NAV */
+        /* NAVIGATION */
         nav { position: fixed; top: 0; width: 100%; padding: 30px 8%; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); }
         .logo { font-size: 1.2rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 200; color: var(--white); text-decoration: none; }
         .nav-links a { color: #fff; text-decoration: none; margin-left: 30px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; transition: 0.3s; }
@@ -25,7 +25,7 @@
 
         /* HERO */
         .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-        .hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); z-index: 1; filter: brightness(0.3); object-fit: cover; }
+        .hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); z-index: 1; filter: brightness(0.35); object-fit: cover; }
         .hero-content { z-index: 2; text-align: center; }
         .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); text-transform: uppercase; letter-spacing: 15px; font-weight: 200; margin-bottom: 15px; }
         .hero-content p { font-size: 1rem; text-transform: uppercase; letter-spacing: 8px; color: var(--water-blue); }
@@ -37,22 +37,34 @@
         .media-flex a { color: var(--white); text-decoration: none; font-size: 0.9rem; letter-spacing: 3px; font-weight: bold; opacity: 0.5; transition: 0.4s; }
         .media-flex a:hover { opacity: 1; color: var(--water-blue); }
 
-        /* SECTIONS */
-        section { padding: 140px 10%; position: relative; }
-        .section-title { font-size: 2rem; text-transform: uppercase; letter-spacing: 8px; margin-bottom: 100px; text-align: center; font-weight: 200; }
+        /* SECTIONS GENERAL */
+        section { padding: 120px 10%; position: relative; }
+        .section-title { font-size: 2rem; text-transform: uppercase; letter-spacing: 8px; margin-bottom: 80px; text-align: center; font-weight: 200; }
         .section-title span { color: var(--water-blue); }
 
-        /* GRID */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 50px; }
-        .card { background: var(--gray); border: 1px solid rgba(255,255,255,0.03); transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1); text-decoration: none; color: inherit; display: block; overflow: hidden; }
+        /* EXPEDITIONS HORIZONTAL LAYOUT */
+        #expeditions { padding: 120px 0 120px 8%; overflow: hidden; background: var(--black); }
+        .horizontal-wrapper { display: flex; overflow-x: auto; gap: 30px; padding: 20px 8% 50px 0; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        .horizontal-wrapper::-webkit-scrollbar { display: none; }
+
+        .trip-card { min-width: 400px; scroll-snap-align: start; flex-shrink: 0; background: var(--gray); border: 1px solid rgba(255,255,255,0.03); text-decoration: none; color: inherit; transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
+        .trip-card:hover { border-color: var(--water-blue); transform: translateY(-8px); }
+        .trip-card .card-img { height: 380px; overflow: hidden; }
+        .trip-card .card-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.5); transition: 1s; }
+        .trip-card:hover .card-img img { filter: grayscale(0); transform: scale(1.05); }
+        .trip-card .card-body { padding: 35px; }
+        .trip-card .tag { color: var(--gold); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 12px; }
+        .trip-card h3 { text-transform: uppercase; letter-spacing: 4px; font-size: 1.1rem; margin-bottom: 15px; font-weight: 300; }
+        .trip-card p { font-size: 0.85rem; opacity: 0.5; font-weight: 200; line-height: 1.7; }
+
+        /* GRID FOR SERVICES, JOURNAL, SHOP */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; }
+        .card { background: var(--gray); border: 1px solid rgba(255,255,255,0.03); transition: 0.5s; text-decoration: none; color: inherit; display: block; overflow: hidden; }
         .card:hover { border-color: var(--water-blue); transform: translateY(-10px); }
-        .card-img { height: 500px; overflow: hidden; }
-        .card-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.5); transition: 1s; }
-        .card:hover .card-img img { filter: grayscale(0); transform: scale(1.05); }
-        .card-body { padding: 40px; }
-        .card-body .tag { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 15px; }
-        .card-body h3 { text-transform: uppercase; letter-spacing: 4px; font-size: 1.2rem; margin-bottom: 15px; }
-        .card-body p { font-size: 0.9rem; opacity: 0.5; font-weight: 200; line-height: 1.8; }
+        .card-img-std { height: 450px; overflow: hidden; }
+        .card-img-std img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.4); transition: 1s; }
+        .card:hover .card-img-std img { filter: grayscale(0); transform: scale(1.05); }
+        .card-body-std { padding: 40px; }
 
         /* MEGA BUTTONS */
         .social-mega-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 60px; }
@@ -62,7 +74,13 @@
         .mega-btn span { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 6px; font-weight: 200; }
 
         footer { padding: 80px 10%; text-align: center; opacity: 0.2; font-size: 0.7rem; letter-spacing: 4px; border-top: 1px solid #111; }
-        @media (max-width: 768px) { section { padding: 100px 5%; } .grid { grid-template-columns: 1fr; } }
+        
+        @media (max-width: 768px) { 
+            .trip-card { min-width: 80vw; } 
+            section { padding: 80px 5%; }
+            #expeditions { padding-left: 5%; }
+            .grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -88,7 +106,7 @@
     </header>
 
     <div class="media-bar">
-        <span class="media-label">Expert Featured In</span>
+        <span class="media-label">As seen in</span>
         <div class="media-flex">
             <a href="https://www.forbes.ru/forbeslife/543538-serfing-novyj-netvorking-kak-sport-korolej-stal-popularnym-u-predprinimatelej" target="_blank">FORBES</a>
             <a href="https://www.championat.com/lifestyle/article-6084332-chto-takoe-sapsyorfing-otvechaet-professionalnyj-sportsmen.html" target="_blank">CHAMPIONAT</a>
@@ -97,248 +115,75 @@
         </div>
     </div>
 
-    <style>
-    /* Добавь это в блок <style> */
-    .grid-feature { 
-        display: grid; 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 40px; 
-    }
-    .card.main-feature { 
-        grid-column: 1 / -1; 
-        margin-bottom: 20px;
-    }
-    .card.main-feature .card-img { height: 65vh; }
-    
-    @media (max-width: 768px) {
-        .grid-feature { grid-template-columns: 1fr; }
-        .card.main-feature .card-img { height: 400px; }
-    }
-</style>
-    
-<style>
-    .grid-mosaic {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        grid-auto-rows: 300px;
-        gap: 20px;
-    }
-    .mosaic-item { grid-column: span 2; grid-row: span 2; } /* Стандарт */
-    .mosaic-item.wide { grid-column: span 4; } /* Широкая */
-    .mosaic-item.tall { grid-row: span 3; } /* Высокая */
-    
-    @media (max-width: 768px) { .grid-mosaic { display: flex; flex-direction: column; } }
-</style>
+    <section id="expeditions">
+        <h2 class="section-title" style="text-align: left;">Surf <span>Expeditions</span></h2>
+        <p style="opacity: 0.3; text-transform: uppercase; letter-spacing: 3px; font-size: 0.6rem; margin-bottom: 40px;">Slide to explore →</p>
+        <div class="horizontal-wrapper">
+            <a href="mentawai-surf-trip.html" class="trip-card">
+                <div class="card-img"><img src="images/mentawaiilya.jpg"></div>
+                <div class="card-body"><span class="tag">August // Indonesia</span><h3>Mentawai</h3><p>Главный трип сезона на легендарной лодке.</p></div>
+            </a>
+            <a href="mexico-surf-trip.html" class="trip-card">
+                <div class="card-img"><img src="images/ilyamain.jpg"></div>
+                <div class="card-body"><span class="tag">Autumn // Mexico</span><h3>Mexico</h3><p>Опыт на самых мощных волнах планеты.</p></div>
+            </a>
+            <a href="vladivostok-surf-trip.html" class="trip-card">
+                <div class="card-img"><img src="images/vladivostokwave.jpg"></div>
+                <div class="card-body"><span class="tag">September // Russia</span><h3>Vladivostok</h3><p>Дикая природа и пустые лайнапы Приморья.</p></div>
+            </a>
+            <a href="south-africa-surf-trip.html" class="trip-card">
+                <div class="card-img"><img src="images/ilyagun.jpg"></div>
+                <div class="card-body"><span class="tag">Winter // RSA</span><h3>South Africa</h3><p>Большие волны и дикое сафари Африки.</p></div>
+            </a>
+            <a href="sumba-surf-trip.html" class="trip-card">
+                <div class="card-img"><img src="images/ilyawindvl.jpg"></div>
+                <div class="card-body"><span class="tag">All Season // Sumba</span><h3>Sumba</h3><p>Идеальные волны для ценителей уединения.</p></div>
+            </a>
+            <a href="sumbawa-surf-trip.html" class="trip-card">
+                <div class="card-img"><img src="images/ilyatube.jpg"></div>
+                <div class="card-body"><span class="tag">Camp // Indonesia</span><h3>Sumbawa</h3><p>Интенсивный прогресс в трубах.</p></div>
+            </a>
+            <a href="g-land-surf-trip.html" class="trip-card">
+                <div class="card-img"><img src="images/ilyabw.jpg"></div>
+                <div class="card-body"><span class="tag">Java // Jungle</span><h3>G-Land</h3><p>Легендарная бухта в сердце джунглей.</p></div>
+            </a>
+        </div>
+    </section>
 
-<style>
-    .horizontal-scroll {
-        display: flex;
-        overflow-x: auto;
-        gap: 30px;
-        padding-bottom: 40px;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-    }
-    .horizontal-scroll::-webkit-scrollbar { height: 2px; }
-    .horizontal-scroll::-webkit-scrollbar-thumb { background: var(--water-blue); }
-    
-    .scroll-card {
-        min-width: 450px;
-        scroll-snap-align: center;
-    }
-    @media (max-width: 768px) { .scroll-card { min-width: 85vw; } }
-</style>
-
-<style>
-    /* ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ ВАРИАНТА 3 */
-    #expeditions { 
-        padding-right: 0; /* Чтобы скролл уходил в край экрана */
-        overflow: hidden; 
-    }
-
-    .horizontal-container {
-        display: flex;
-        overflow-x: auto;
-        gap: 30px;
-        padding: 20px 8% 60px 0; /* Отступ справа для красоты */
-        scroll-snap-type: x mandatory;
-        scrollbar-width: thin;
-        scrollbar-color: var(--water-blue) transparent;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* Кастомный скроллбар для Chrome/Safari */
-    .horizontal-container::-webkit-scrollbar { height: 3px; }
-    .horizontal-container::-webkit-scrollbar-track { background: transparent; }
-    .horizontal-container::-webkit-scrollbar-thumb { background: var(--water-blue); border-radius: 10px; }
-
-    .scroll-card {
-        min-width: 500px;
-        scroll-snap-align: start;
-        flex-shrink: 0;
-        cursor: pointer;
-        position: relative;
-    }
-
-    /* Добавляем индикатор "Нажми, чтобы узнать больше" */
-    .scroll-card::after {
-        content: "Explore Expedition →";
-        position: absolute;
-        bottom: 40px;
-        right: 40px;
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: var(--water-blue);
-        opacity: 0;
-        transition: 0.4s;
-        z-index: 5;
-    }
-
-    .scroll-card:hover::after { opacity: 1; transform: translateX(10px); }
-
-    @media (max-width: 768px) {
-        .scroll-card { min-width: 85vw; }
-        .scroll-card::after { opacity: 0.6; } /* На мобилках всегда чуть видно */
-    }
-</style>
-
-<section id="expeditions">
-    <h2 class="section-title" style="text-align: left; margin-left: 0;">Surf <span>Expeditions</span> 2026</h2>
-    <p style="opacity: 0.4; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; margin-top: -80px; margin-bottom: 40px;">← Scroll to explore missions →</p>
-
-    <div class="horizontal-container">
-        <a href="mentawai-surf-trip.html" class="card scroll-card">
-            <div class="card-img"><img src="images/mentawaiilya.jpg" alt="Mentawai"></div>
-            <div class="card-body">
-                <span class="tag">August 2026</span>
-                <h3>Mentawai Islands</h3>
-                <p>Главный трип сезона. 12 дней прогресса на лучшей лодке в архипелаге.</p>
-            </div>
-        </a>
-
-        <a href="mexico-surf-trip.html" class="card scroll-card">
-            <div class="card-img"><img src="images/ilyamain.jpg" alt="Mexico"></div>
-            <div class="card-body">
-                <span class="tag">Autumn 2026</span>
-                <h3>Mexico Big Waves</h3>
-                <p>Пуэрто-Эскондидо. Опыт на самых мощных волнах планеты под присмотром атлета.</p>
-            </div>
-        </a>
-
-        <a href="vladivostok-surf-trip.html" class="card scroll-card">
-            <div class="card-img"><img src="images/vladivostokwave.jpg" alt="Vladivostok"></div>
-            <div class="card-body">
-                <span class="tag">September 2026</span>
-                <h3>Vladivostok</h3>
-                <p>Русский серфинг. Дикая природа Приморья и пустые лайнапы Японского моря.</p>
-            </div>
-        </a>
-
-        <a href="south-africa-surf-trip.html" class="card scroll-card">
-            <div class="card-img"><img src="images/ilyagun.jpg" alt="RSA"></div>
-            <div class="card-body">
-                <span class="tag">Winter 2026</span>
-                <h3>South Africa</h3>
-                <p>Экспедиция на край света. Большие волны, холодный океан и сафари.</p>
-            </div>
-        </a>
-
-        <a href="sumba-surf-trip.html" class="card scroll-card">
-            <div class="card-img"><img src="images/ilyawindvl.jpg" alt="Sumba"></div>
-            <div class="card-body">
-                <span class="tag">All Season</span>
-                <h3>Sumba Island</h3>
-                <p>Нетронутая Индонезия. Идеальные волны для тех, кто ищет уединение.</p>
-            </div>
-        </a>
-
-        <a href="sumbawa-surf-trip.html" class="card scroll-card">
-            <div class="card-img"><img src="images/ilyatube.jpg" alt="Sumbawa"></div>
-            <div class="card-body">
-                <span class="tag">Training Camp</span>
-                <h3>Sumbawa</h3>
-                <p>Интенсивный прогресс и катание в трубах на культовых спотах Лейки Пик.</p>
-            </div>
-        </a>
-
-        <a href="g-land-surf-trip.html" class="card scroll-card">
-            <div class="card-img"><img src="images/ilyabw.jpg" alt="G-Land"></div>
-            <div class="card-body">
-                <span class="tag">The Jungle Left</span>
-                <h3>G-Land Java</h3>
-                <p>Легендарная бухта Граджаган. Серфинг мирового уровня в сердце джунглей.</p>
-            </div>
-        </a>
-    </div>
-</section>
     <section id="services" style="background: #080808;">
         <h2 class="section-title">Professional <span>Services</span></h2>
         <div class="grid">
             <a href="surf-coaching-bali.html" class="card">
-                <div class="card-img"><img src="images/ilyaulu.jpg"></div>
-                <div class="card-body"><span class="tag">Bali</span><h3>Private Coaching</h3><p>Индивидуальная работа над техникой и ментальной подготовкой.</p></div>
+                <div class="card-img-std"><img src="images/ilyaulu.jpg"></div>
+                <div class="card-body-std"><span class="tag">Bali</span><h3>Private Coaching</h3><p>Работа над техникой и психологией атлета.</p></div>
             </a>
             <a href="surf-guiding-bali.html" class="card">
-                <div class="card-img"><img src="images/ilyafoil.jpg"></div>
-                <div class="card-body"><span class="tag">Bali</span><h3>Premium Guiding</h3><p>Секретные споты Бали и абсолютная безопасность.</p></div>
+                <div class="card-img-std"><img src="images/ilyafoil.jpg"></div>
+                <div class="card-body-std"><span class="tag">Bali</span><h3>Premium Guiding</h3><p>Секретные споты Бали без толпы.</p></div>
             </a>
         </div>
     </section>
 
-    <section id="journal">
-        <h2 class="section-title">Latest <span>Journal</span></h2>
+    <section id="brand">
+        <h2 class="section-title">Expertise <span>&</span> Gear</h2>
         <div class="grid">
             <a href="surf-journal.html" class="card">
-                <div class="card-img" style="height: 300px;"><img src="images/ilyastungun.jpg"></div>
-                <div class="card-body">
-                    <span class="tag">Expertise</span>
-                    <h3>Психология Больших Волн</h3>
-                    <p>Как контролировать панику, когда стихия берет верх. Читать далее →</p>
-                </div>
+                <div class="card-img-std" style="height: 300px;"><img src="images/ilyastungun.jpg"></div>
+                <div class="card-body-std"><h3>Journal</h3><p>Психология и техника Больших Волн. Читать статьи →</p></div>
             </a>
-            <a href="surf-journal.html" class="card">
-                <div class="card-img" style="height: 300px;"><img src="images/vladivostokwave.jpg"></div>
-                <div class="card-body">
-                    <span class="tag">Lifestyle</span>
-                    <h3>Гид по спотам Приморья</h3>
-                    <p>Где искать лучшие волны в России. Читать далее →</p>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <section id="shop" style="background: #080808; text-align: center;">
-        <h2 class="section-title">Limited <span>Shop</span></h2>
-        <div style="max-width: 500px; margin: 0 auto;">
             <a href="surf-shop.html" class="card">
-                <div class="card-img" style="height: 400px; background: #050505;">
-                    <img src="images/ilyamain.jpg" style="object-fit: contain; padding: 40px;">
-                </div>
-                <div class="card-body">
-                    <span class="tag">Official Apparel</span>
-                    <h3>Ilya Chaika Signature Tee</h3>
-                    <p>Доступно для заказа. Перейти в магазин →</p>
-                </div>
+                <div class="card-img-std" style="height: 300px; background: #050505;"><img src="images/ilyamain.jpg" style="object-fit: contain; padding: 20px;"></div>
+                <div class="card-body-std"><h3>Shop</h3><p>Официальный мерч и оборудование. Перейти в магазин →</p></div>
             </a>
         </div>
     </section>
 
     <section id="social">
-        <h2 class="section-title">Connect <span>with</span> Ilya</h2>
+        <h2 class="section-title">Follow <span>the</span> Mission</h2>
         <div class="social-mega-buttons">
-            <a href="https://t.me/ilya_chaika_surf" target="_blank" class="mega-btn">
-                <i class="fab fa-telegram-plane"></i>
-                <span>Telegram</span>
-            </a>
-            <a href="https://www.youtube.com/@chaika_ilya/videos" target="_blank" class="mega-btn">
-                <i class="fab fa-youtube"></i>
-                <span>YouTube</span>
-            </a>
-            <a href="https://www.instagram.com/chaika_ilya/" target="_blank" class="mega-btn">
-                <i class="fab fa-instagram"></i>
-                <span>Instagram</span>
-            </a>
+            <a href="https://t.me/ilya_chaika_surf" target="_blank" class="mega-btn"><i class="fab fa-telegram-plane"></i><span>Telegram</span></a>
+            <a href="https://www.youtube.com/@chaika_ilya/videos" target="_blank" class="mega-btn"><i class="fab fa-youtube"></i><span>YouTube</span></a>
+            <a href="https://www.instagram.com/chaika_ilya/" target="_blank" class="mega-btn"><i class="fab fa-instagram"></i><span>Instagram</span></a>
         </div>
     </section>
 
