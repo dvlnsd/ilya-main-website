@@ -189,85 +189,48 @@
         }
     </style>
 
-    <style>
-        .media-link {
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 200;
-            letter-spacing: 5px;
-            opacity: 0.3;
-            transition: 0.000000000001s linear; /* Мгновенная реакция */
+    /* ОБНОВЛЕННЫЕ СТИЛИ РАСПИСАНИЯ */
+        .schedule-table { width: 100%; border-collapse: collapse; margin-top: 50px; }
+        .schedule-row { 
+            border-bottom: 1px solid #1a1a1a; 
+            display: grid; 
+            grid-template-columns: 1.5fr 1fr 2fr 1fr 1.2fr; 
+            align-items: center; 
+            padding: 40px 0; 
+            transition: 0.2s;
         }
-        .media-link:hover {
-            opacity: 1;
+        .schedule-row:hover { background: rgba(160, 233, 255, 0.02); }
+        
+        .trip-name { 
+            font-size: 1.1rem; 
+            color: var(--accent); 
+            letter-spacing: 2px; 
+            font-weight: 300; 
+            text-transform: uppercase;
         }
-        @media (max-width: 768px) {
-            .media-flex {
-                flex-direction: column;
-                gap: 30px;
-            }
-            .media-link {
-                font-size: 0.75rem;
-                letter-spacing: 3px;
-            }
+        .schedule-cell { font-size: 0.85rem; font-weight: 200; color: #fff; }
+        .cell-label { 
+            font-size: 0.55rem; 
+            text-transform: uppercase; 
+            opacity: 0.3; 
+            letter-spacing: 3px; 
+            margin-bottom: 10px; 
+            display: block; 
         }
-    </style>
+        .price-cell { font-family: Arial, sans-serif; font-weight: 300; letter-spacing: 1px; }
 
-    <section id="expeditions">
-        <h2 class="section-title">СЕРФ ТРИПЫ <span class="blue-text">2026</span></h2>
-        <div class="schedule-table">
-            <div class="schedule-row">
-                <div class="schedule-cell"><span class="cell-label">Направление</span>G-Land (Ява)</div>
-                <div class="schedule-cell"><span class="cell-label">Когда</span>Май</div>
-                <div class="schedule-cell"><span class="cell-label">Уровень</span>Бегинеры и продолжающие</div>
-                <div class="schedule-cell"><span class="cell-label">Стоимость</span>$3000</div>
-                <a href="g-land-surf-trip.html" class="schedule-link">Подробнее</a>
-            </div>
-            <div class="schedule-row">
-                <div class="schedule-cell"><span class="cell-label">Направление</span>Ментаваи</div>
-                <div class="schedule-cell"><span class="cell-label">Когда</span>Июнь</div>
-                <div class="schedule-cell"><span class="cell-label">Уровень</span>Уверенный продвинутый</div>
-                <div class="schedule-cell"><span class="cell-label">Стоимость</span>$3000</div>
-                <a href="mentawai-surf-trip.html" class="schedule-link">Подробнее</a>
-            </div>
-            <div class="schedule-row">
-                <div class="schedule-cell"><span class="cell-label">Направление</span>Сумбава</div>
-                <div class="schedule-cell"><span class="cell-label">Когда</span>Июль</div>
-                <div class="schedule-cell"><span class="cell-label">Уровень</span>Продолжающие</div>
-                <div class="schedule-cell"><span class="cell-label">Стоимость</span>$3000</div>
-                <a href="sumbawa-surf-trip.html" class="schedule-link">Подробнее</a>
-            </div>
-            <div class="schedule-row">
-                <div class="schedule-cell"><span class="cell-label">Направление</span>Сумба</div>
-                <div class="schedule-cell"><span class="cell-label">Когда</span>Август</div>
-                <div class="schedule-cell"><span class="cell-label">Уровень</span>Уверенные</div>
-                <div class="schedule-cell"><span class="cell-label">Стоимость</span>$3000</div>
-                <a href="sumba-surf-trip.html" class="schedule-link">Подробнее</a>
-            </div>
-            <div class="schedule-row">
-                <div class="schedule-cell"><span class="cell-label">Направление</span>Владивосток</div>
-                <div class="schedule-cell"><span class="cell-label">Когда</span>Сентябрь</div>
-                <div class="schedule-cell"><span class="cell-label">Уровень</span>Новички и продолжающие</div>
-                <div class="schedule-cell"><span class="cell-label">Стоимость</span>$3000</div>
-                <a href="vladivostok-surf-trip.html" class="schedule-link">Подробнее</a>
-            </div>
-            <div class="schedule-row">
-                <div class="schedule-cell"><span class="cell-label">Направление</span>Мексика</div>
-                <div class="schedule-cell"><span class="cell-label">Когда</span>Октябрь</div>
-                <div class="schedule-cell"><span class="cell-label">Уровень</span>Уверенные</div>
-                <div class="schedule-cell"><span class="cell-label">Стоимость</span>$3000</div>
-                <a href="mexico-surf-trip.html" class="schedule-link">Подробнее</a>
-            </div>
-            <div class="schedule-row">
-                <div class="schedule-cell"><span class="cell-label">Направление</span>ЮАР</div>
-                <div class="schedule-cell"><span class="cell-label">Когда</span>Ноябрь</div>
-                <div class="schedule-cell"><span class="cell-label">Уровень</span>Уверенные</div>
-                <div class="schedule-cell"><span class="cell-label">Стоимость</span>$3000</div>
-                <a href="south-africa-surf-trip.html" class="schedule-link">Подробнее</a>
-            </div>
-        </div>
-    </section>
+        .schedule-link { 
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 0.65rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            padding: 12px 0; 
+            text-align: center; 
+            transition: 0.0000001s; 
+        }
+        .schedule-link:hover { border-color: var(--accent); color: var(--accent); }
 
     <section style="background: #080808;">
         <div class="grid-2">
