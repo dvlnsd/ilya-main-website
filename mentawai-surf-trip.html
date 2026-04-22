@@ -1,1 +1,130 @@
-Mentawai
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentawai | Острова Идеальных Волн</title>
+    <style>
+        :root { --accent: #a0e9ff; --bg: #0a0a0a; --white: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--white); line-height: 1.7; overflow-x: hidden; }
+
+        .top-nav { 
+            position: fixed; top: 0; width: 100%; padding: 30px 8%; 
+            display: flex; justify-content: space-between; align-items: center; 
+            z-index: 1000; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .back-link { 
+            color: var(--white); text-decoration: none; font-size: 0.65rem; 
+            text-transform: uppercase; letter-spacing: 3px; opacity: 0.5; transition: 0.3s; 
+            display: flex; align-items: center;
+        }
+        .back-link:hover { opacity: 1; color: var(--accent); }
+        .back-link::before { content: '←'; margin-right: 10px; }
+
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; }
+        .hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; filter: brightness(0.4); }
+        .hero-content { z-index: 2; text-align: center; }
+        .hero-content h1 { font-size: clamp(3rem, 12vw, 8rem); letter-spacing: 30px; font-weight: 200; text-transform: uppercase; margin-bottom: 20px; }
+        .hero-content p { font-size: 0.8rem; letter-spacing: 10px; text-transform: uppercase; color: var(--accent); }
+
+        section { padding: 150px 10%; position: relative; }
+        .content-wrap { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: center; }
+        .content-wrap.reverse { grid-template-columns: 0.8fr 1.2fr; }
+        
+        .text-content h2 { font-size: 2rem; letter-spacing: 12px; font-weight: 200; text-transform: uppercase; margin-bottom: 40px; }
+        .text-content p { font-size: 1rem; opacity: 0.8; font-weight: 300; margin-bottom: 30px; }
+        .text-content .highlight { color: var(--accent); }
+
+        .img-block { overflow: hidden; background: #111; position: relative; }
+        .img-block img { width: 100%; height: auto; display: block; filter: grayscale(1); transition: 0.01s linear; }
+        .img-block:hover img { filter: grayscale(0); }
+
+        .quote { text-align: center; padding: 100px 15%; font-size: 1.4rem; font-weight: 200; letter-spacing: 2px; font-style: italic; opacity: 0.9; }
+
+        .final-cta { text-align: center; padding: 150px 10%; border-top: 1px solid #111; }
+        .cta-btn { 
+            display: inline-block; padding: 30px 80px; border: 1px solid var(--accent); 
+            color: var(--accent); text-decoration: none; font-size: 0.9rem; 
+            text-transform: uppercase; letter-spacing: 6px; transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .cta-btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 50px rgba(160, 233, 255, 0.15); }
+
+        footer { padding: 50px 10%; text-align: center; opacity: 0.2; font-size: 0.55rem; letter-spacing: 2px; }
+
+        @media (max-width: 1024px) {
+            .content-wrap, .content-wrap.reverse { grid-template-columns: 1fr; gap: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link">на главную</a>
+        <div style="width: 20px;"></div>
+    </div>
+
+    <header class="hero">
+        <img src="images/mentawaiilya.jpg" class="hero-img" alt="Mentawai">
+        <div class="hero-content">
+            <h1>MENTAWAI</h1>
+            <p>Вершина серф-эстетики</p>
+        </div>
+    </header>
+
+    <div class="quote">
+        «Ментаваи — это место, где реальность превосходит ожидания. Здесь океан создает геометрию, которую невозможно забыть».
+    </div>
+
+    <section>
+        <div class="content-wrap">
+            <div class="text-content">
+                <h2>МЕККА ДЛЯ <span class="highlight">ЦЕНИТЕЛЕЙ</span></h2>
+                <p>За этими волнами топ-серферы летят через полмира. Ментавайские острова — это архипелаг, где концентрация мировых спотов зашкаливает. Здесь не просто серфинг, здесь искусство владения доской на самых фотогеничных стенках планеты.</p>
+                <p>Этот трип создан строго для <span class="highlight">уверенных и продвинутых</span> атлетов. Мы уходим далеко от туристических маршрутов, чтобы найти пустые лайнапы и те самые условия, которые ты видел только в фильмах.</p>
+            </div>
+            <div class="img-block">
+                <img src="images/ilyastungun.jpg" alt="Mentawai Surf">
+            </div>
+        </div>
+    </section>
+
+    <section style="background: #080808;">
+        <div class="content-wrap reverse">
+            <div class="img-block">
+                <img src="images/ilyagun.jpg" alt="Big Board Strategy">
+            </div>
+            <div class="text-content">
+                <h2>ДВА ПУТИ <span class="highlight">КОМФОРТА</span></h2>
+                <p>Мы подготовили две уникальные опции проживания, чтобы каждый нашел свой ритм. </p>
+                <p>Для искателей приключений — <span class="highlight">яхта</span>. Жизнь на воде, пробуждение прямо на споте и постоянный поиск лучших условий в режиме экспедиции. Для тех, кому важен High-End сервис — <span class="highlight">роскошные резорты</span> с потрясающей кухней, спа и быстрыми серф-чартерами до волн.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="content-wrap">
+            <div class="text-content">
+                <h2>ЭКСПЕРТИЗА <span class="highlight">АТЛЕТА</span></h2>
+                <p>В Ментаваях важно не просто быть, важно знать, какой спот «включится» при текущем прогнозе. Под контролем Ильи Чайки вы всегда будете на лучшей волне дня.</p>
+                <p>Мы используем профессиональную технику подготовки, разбор проездов и стратегии выхода на пик. Это твой шанс вывести свой серфинг на уровень, о котором ты только мечтал.</p>
+            </div>
+            <div class="img-block">
+                <img src="images/ilyasuprus.jpg" alt="Ilya Mentawai">
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <p style="font-size: 0.75rem; letter-spacing: 5px; opacity: 0.5; margin-bottom: 40px; text-transform: uppercase;">Только для тех, кто готов к идеальным волнам.</p>
+        <a href="https://t.me/Chaika_Ilya" class="cta-btn" target="_blank">ЗАБРОНИРОВАТЬ ТРИП НА МЕНТАВАИ</a>
+    </section>
+
+    <footer>
+        <p>ILYA CHAIKA // 2026 // MENTAWAI ELITE SURFING</p>
+        <p style="margin-top: 10px;">* Meta (Instagram/Facebook) — запрещенная в РФ экстремистская организация.</p>
+    </footer>
+
+</body>
+</html>
