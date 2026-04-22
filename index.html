@@ -3,43 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilya Chaika | Professional Big Wave Athlete</title>
+    <title>Ilya Chaika | Professional Big Wave Athlete & Surf Coach</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { 
-            --gold: #c5a059; --water-blue: #a0e9ff; --black: #0a0a0a; --white: #ffffff; --gray: #111111; --mid-gray: #1a1a1a;
+            --gold: #c5a059; --water-blue: #a0e9ff; --black: #0a0a0a; --white: #ffffff; --gray: #111111; 
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--black); color: var(--white); line-height: 1.6; overflow-x: hidden; }
         
-        /* NAVIGATION - CENTERED */
+        /* NAVIGATION */
         nav { position: fixed; top: 0; width: 100%; padding: 40px 8%; display: flex; justify-content: center; align-items: center; z-index: 100; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
         .nav-links { display: flex; gap: 40px; }
         .nav-links a { color: #fff; text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.6; transition: 0.3s; font-weight: 300; }
         .nav-links a:hover { opacity: 1; color: var(--water-blue); }
 
-        /* NAUTILUS TRIGGER - RIGHT */
-        .nautilus-trigger { position: fixed; top: 35px; right: 8%; z-index: 101; background: none; border: none; cursor: pointer; transition: 0.5s; opacity: 0.3; }
-        .nautilus-trigger:hover { opacity: 1; transform: scale(1.1) rotate(5deg); }
-        .nautilus-trigger img { width: 40px; height: 40px; }
+        /* NAUTILUS TRIGGER (Right Corner) */
+        .nautilus-trigger { position: fixed; top: 35px; right: 8%; z-index: 101; background: none; border: none; cursor: pointer; transition: 0.5s; opacity: 0.4; }
+        .nautilus-trigger:hover { opacity: 1; transform: scale(1.1) rotate(10deg); }
+        .nautilus-trigger img { width: 45px; height: 45px; object-fit: contain; filter: brightness(1.2); }
 
         /* SIDE PANEL */
-        .side-panel { position: fixed; top: 0; right: -100%; width: 450px; height: 100vh; background: #0c0c0c; z-index: 200; padding: 80px 50px; display: flex; flex-direction: column; transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
+        .side-panel { position: fixed; top: 0; right: -100%; width: 450px; height: 100vh; background: #0c0c0c; z-index: 200; padding: 80px 50px; display: flex; flex-direction: column; transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1); border-left: 1px solid #1a1a1a; }
         .side-panel.open { right: 0; }
         .side-panel-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.8); z-index: 199; opacity: 0; visibility: hidden; transition: 0.3s; }
         .side-panel-overlay.open { opacity: 1; visibility: visible; }
         .close-btn { background: none; border: none; color: #fff; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; cursor: pointer; opacity: 0.4; margin-bottom: 50px; text-align: left; }
-        
+
         /* FORM */
+        .panel-contact h3 { font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 5px; font-weight: 300; }
+        .panel-contact p { font-size: 0.8rem; opacity: 0.5; margin-bottom: 40px; font-weight: 200; }
         .form-group { margin-bottom: 30px; }
-        .form-input { width: 100%; padding: 15px 0; background: none; border: none; border-bottom: 1px solid #222; color: var(--white); font-size: 0.9rem; font-family: inherit; transition: 0.3s; }
+        .form-input { width: 100%; padding: 15px 0; background: none; border: none; border-bottom: 1px solid #222; color: var(--white); font-size: 0.9rem; font-family: inherit; }
         .form-input:focus { outline: none; border-bottom-color: var(--water-blue); }
         .form-submit-btn { background: none; border: 1px solid var(--water-blue); color: var(--water-blue); padding: 15px 30px; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; cursor: pointer; transition: 0.3s; width: 100%; }
         .form-submit-btn:hover { background: var(--water-blue); color: var(--black); }
 
         /* HERO */
         .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-        .hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); z-index: 1; filter: brightness(0.35); object-fit: cover; }
+        .hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); z-index: 1; filter: brightness(0.3); object-fit: cover; }
         .hero-content { z-index: 2; text-align: center; }
         .hero-content h1 { font-size: clamp(2.5rem, 8vw, 6rem); text-transform: uppercase; letter-spacing: 20px; font-weight: 200; margin-bottom: 20px; }
         .hero-content p { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 10px; color: var(--water-blue); }
@@ -51,21 +53,18 @@
         .media-flex a { color: var(--white); text-decoration: none; font-size: 1rem; letter-spacing: 3px; opacity: 0.5; transition: 0.4s; font-weight: 200; }
         .media-flex a:hover { opacity: 1; color: var(--water-blue); }
 
-        /* SECTIONS GENERAL */
+        /* SCHEDULE TABLE */
         section { padding: 120px 10%; }
         .section-title { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 10px; margin-bottom: 80px; text-align: center; font-weight: 200; }
-        .section-title span { color: var(--water-blue); }
-
-        /* SCHEDULE TABLE */
         .schedule-table { width: 100%; border-collapse: collapse; }
         .schedule-row { border-bottom: 1px solid #1a1a1a; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; align-items: center; padding: 25px 0; transition: 0.3s; }
-        .schedule-row:hover { background: rgba(255,255,255,0.02); padding-left: 10px; }
+        .schedule-row:hover { background: rgba(255,255,255,0.02); }
         .schedule-cell { font-size: 0.85rem; font-weight: 200; }
         .cell-label { font-size: 0.55rem; text-transform: uppercase; opacity: 0.3; letter-spacing: 2px; margin-bottom: 5px; display: block; }
         .schedule-link { color: var(--water-blue); text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; border: 1px solid rgba(160, 233, 255, 0.2); padding: 10px 20px; transition: 0.3s; text-align: center; }
         .schedule-link:hover { background: var(--water-blue); color: var(--black); }
 
-        /* WORK WITH ILYA - HEADERS TOP */
+        /* WORK WITH ILYA */
         .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .work-item { display: flex; flex-direction: column; text-decoration: none; color: inherit; }
         .work-header { padding-bottom: 30px; text-align: center; }
@@ -76,39 +75,41 @@
         .work-item:hover .work-img { border-color: var(--water-blue); transform: translateY(-10px); }
         .work-item:hover .work-img img { filter: grayscale(0); transform: scale(1.05); }
 
-        /* SHOP SLIDER (MINIMAL) */
+        /* SHOP SLIDER */
         .shop-slider { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 20px; scrollbar-width: none; }
         .shop-slider::-webkit-scrollbar { display: none; }
         .shop-item { min-width: 300px; background: var(--gray); padding: 30px; text-align: center; text-decoration: none; color: inherit; border: 1px solid transparent; transition: 0.3s; }
         .shop-item:hover { border-color: var(--water-blue); }
-        .shop-item img { height: 200px; object-fit: contain; margin-bottom: 20px; opacity: 0.8; }
+        .shop-item img { height: 220px; object-fit: contain; margin-bottom: 20px; opacity: 0.8; transition: 0.3s; }
         .shop-item h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 300; }
 
-        /* JOURNAL GRID (4 ARTICLES) */
-        .journal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        /* JOURNAL GRID */
+        .journal-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); gap: 30px; }
         .journal-item { background: var(--gray); text-decoration: none; color: inherit; display: flex; flex-direction: column; }
         .journal-thumb { height: 250px; overflow: hidden; }
         .journal-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.5s; }
         .journal-item:hover .journal-thumb img { opacity: 1; }
         .journal-info { padding: 30px; }
-        .journal-info h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .journal-info h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* SOCIAL CONNECT */
+        /* SOCIAL */
         .social-connect { text-align: center; padding: 100px 10%; border-top: 1px solid #111; }
         .social-links { display: flex; justify-content: center; gap: 50px; margin-top: 40px; }
         .social-links a { color: var(--white); text-decoration: none; font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; opacity: 0.4; transition: 0.3s; }
         .social-links a:hover { opacity: 1; color: var(--water-blue); }
 
         /* FOOTER */
-        footer { padding: 60px 10%; text-align: center; border-top: 1px solid #111; }
-        .footer-brand { font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 200; margin-bottom: 20px; }
-        .footer-legal { font-size: 0.55rem; opacity: 0.2; letter-spacing: 1px; max-width: 600px; margin: 0 auto; line-height: 1.8; }
+        footer { padding: 80px 10% 40px; text-align: center; border-top: 1px solid #111; }
+        .footer-seo-name { font-size: 0.9rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 300; margin-bottom: 10px; }
+        .footer-seo-desc { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.4; margin-bottom: 40px; font-weight: 200; }
+        .footer-legal { font-size: 0.55rem; opacity: 0.2; letter-spacing: 1px; max-width: 600px; margin: 0 auto; line-height: 1.8; border-top: 1px solid #111; padding-top: 30px; }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .schedule-row { grid-template-columns: 1fr; text-align: center; gap: 15px; }
             .work-grid, .journal-grid { grid-template-columns: 1fr; }
             .side-panel { width: 100%; }
+            .nautilus-trigger { top: 25px; right: 5%; }
         }
     </style>
 </head>
@@ -118,12 +119,13 @@
     <div class="side-panel" id="sidePanel">
         <button class="close-btn" id="closePanel">CLOSE X</button>
         <div class="panel-contact">
-            <h3 style="font-size: 1rem; letter-spacing: 5px; margin-bottom: 40px; font-weight: 200; color: var(--water-blue);">ОТПРАВИТЬ ЗАПРОС</h3>
+            <h3>Хотите что-то спросить?</h3>
+            <p>Оставьте сообщение здесь</p>
             <form action="https://formspree.io/f/YOUR_ID" method="POST">
                 <div class="form-group"><input type="text" name="name" class="form-input" placeholder="Имя" required></div>
                 <div class="form-group"><input type="email" name="email" class="form-input" placeholder="Email" required></div>
-                <div class="form-group"><textarea name="message" class="form-input" placeholder="Сообщение" rows="5" required></textarea></div>
-                <button type="submit" class="form-submit-btn">ОТПРАВИТЬ →</button>
+                <div class="form-group"><textarea name="message" class="form-input" placeholder="Ваше сообщение" rows="5" required></textarea></div>
+                <button type="submit" class="form-submit-btn">ОТПРАВИТЬ ЗАПРОС →</button>
             </form>
         </div>
     </div>
@@ -137,8 +139,8 @@
         </div>
     </nav>
 
-    <button class="nautilus-trigger" id="waveTrigger">
-        <img src="images/icons/nautilus-icon.svg" alt="Nautilus">
+    <button class="nautilus-trigger" id="waveTrigger" title="Написать Илье">
+        <img src="images/icons/nautilus-icon.png" alt="Nautilus">
     </button>
 
     <header class="hero">
@@ -165,7 +167,7 @@
         <h2 class="section-title">Расписание Трипов <span>2026</span></h2>
         <div class="schedule-table">
             <div class="schedule-row">
-                <div class="schedule-cell"><span class="cell-label">Направление</span>Mentawai Islands</div>
+                <div class="schedule-cell"><span class="cell-label">Направление</span>Mentawai Islands Expedition</div>
                 <div class="schedule-cell"><span class="cell-label">Даты</span>10 — 22 Августа</div>
                 <div class="schedule-cell"><span class="cell-label">Уровень</span>Advanced</div>
                 <div class="schedule-cell"><span class="cell-label">Стоимость</span>$3000</div>
@@ -174,23 +176,23 @@
             <div class="schedule-row">
                 <div class="schedule-cell"><span class="cell-label">Направление</span>G-Land Java Strike</div>
                 <div class="schedule-cell"><span class="cell-label">Даты</span>05 — 15 Июля</div>
-                <div class="schedule-cell"><span class="cell-label">Уровень</span>Advanced</div>
+                <div class="schedule-cell"><span class="cell-label">Уровень</span>Advanced / Pro</div>
                 <div class="schedule-cell"><span class="cell-label">Стоимость</span>$3000</div>
                 <a href="g-land-surf-trip.html" class="schedule-link">Подробнее</a>
             </div>
             <div class="schedule-row">
-                <div class="schedule-cell"><span class="cell-label">Направление</span>Mexico Big Wave</div>
+                <div class="schedule-cell"><span class="cell-label">Направление</span>Mexico Big Wave Camp</div>
                 <div class="schedule-cell"><span class="cell-label">Даты</span>05 — 17 Октября</div>
-                <div class="schedule-cell"><span class="cell-label">Уровень</span>Pro</div>
+                <div class="schedule-cell"><span class="cell-label">Уровень</span>Intermediate / Pro</div>
                 <div class="schedule-cell"><span class="cell-label">Стоимость</span>$3000</div>
                 <a href="mexico-surf-trip.html" class="schedule-link">Подробнее</a>
             </div>
             <div class="schedule-row">
-                <div class="schedule-cell"><span class="cell-label">Направление</span>Vladivostok Expedition</div>
-                <div class="schedule-cell"><span class="cell-label">Даты</span>12 — 20 Сентября</div>
-                <div class="schedule-cell"><span class="cell-label">Уровень</span>Intermediate</div>
+                <div class="schedule-cell"><span class="cell-label">Направление</span>Sumba Island Mission</div>
+                <div class="schedule-cell"><span class="cell-label">Даты</span>18 — 28 Июня</div>
+                <div class="schedule-cell"><span class="cell-label">Уровень</span>Advanced</div>
                 <div class="schedule-cell"><span class="cell-label">Стоимость</span>$3000</div>
-                <a href="vladivostok-surf-trip.html" class="schedule-link">Подробнее</a>
+                <a href="sumba-surf-trip.html" class="schedule-link">Подробнее</a>
             </div>
         </div>
     </section>
@@ -207,7 +209,7 @@
             <a href="surf-guiding-bali.html" class="work-item">
                 <div class="work-header">
                     <h3>Surf Guiding</h3>
-                    <p>Катайтесь на лучших спотах острова в идеальных для вас условиях.</p>
+                    <p>Катайтесь на лучших спотах острова в идеальных для вас условиях без толпы.</p>
                 </div>
                 <div class="work-img"><img src="images/ilyafoil.jpg" alt="Guiding"></div>
             </a>
@@ -220,6 +222,7 @@
             <a href="surf-shop.html" class="shop-item"><img src="images/ilyamain.jpg" alt="Tee"><h4>Signature Tee</h4></a>
             <a href="surf-shop.html" class="shop-item"><img src="images/ilyatube.jpg" alt="Lycra"><h4>Pro Lycra</h4></a>
             <a href="surf-shop.html" class="shop-item"><img src="images/ilyagun.jpg" alt="Board"><h4>Gun Board</h4></a>
+            <a href="surf-shop.html" class="shop-item"><img src="images/ilyastungun.jpg" alt="Wax"><h4>Elite Wax</h4></a>
         </div>
     </section>
 
@@ -227,20 +230,20 @@
         <h2 class="section-title">Journal <span>Notes</span></h2>
         <div class="journal-grid">
             <a href="surf-journal.html" class="journal-item">
-                <div class="journal-thumb"><img src="images/ilyastungun.jpg"></div>
-                <div class="journal-info"><h4>Психология страха</h4></div>
+                <div class="journal-thumb"><img src="images/ilyastungun.jpg" alt="Psychology"></div>
+                <div class="journal-info"><h4>Психология страха на больших волнах</h4></div>
             </a>
             <a href="surf-journal.html" class="journal-item">
-                <div class="journal-thumb"><img src="images/vladivostokwave.jpg"></div>
-                <div class="journal-info"><h4>Гид по Японскому морю</h4></div>
+                <div class="journal-thumb"><img src="images/vladivostokwave.jpg" alt="Vladivostok"></div>
+                <div class="journal-info"><h4>Гид по спотам Японского моря</h4></div>
             </a>
             <a href="surf-journal.html" class="journal-item">
-                <div class="journal-thumb"><img src="images/ilyamain.jpg"></div>
-                <div class="journal-info"><h4>Экипировка для Big Wave</h4></div>
+                <div class="journal-thumb"><img src="images/ilyamain.jpg" alt="Equipment"></div>
+                <div class="journal-info"><h4>Экипировка для экстремального серфинга</h4></div>
             </a>
             <a href="surf-journal.html" class="journal-item">
-                <div class="journal-thumb"><img src="images/ilyaulu.jpg"></div>
-                <div class="journal-info"><h4>Жизнь на Бали</h4></div>
+                <div class="journal-thumb"><img src="images/ilyaulu.jpg" alt="Life"></div>
+                <div class="journal-info"><h4>Океан как философия жизни</h4></div>
             </a>
         </div>
     </section>
@@ -255,7 +258,8 @@
     </section>
 
     <footer>
-        <div class="footer-brand">Ilya Chaika // 2026</div>
+        <div class="footer-seo-name">Ilya Chaika</div>
+        <div class="footer-seo-desc">Professional Big Wave Athlete & Surf Coach // 2026</div>
         <div class="footer-legal">
             * Instagram принадлежит компании Meta, признанной экстремистской организацией и запрещенной на территории Российской Федерации.
         </div>
