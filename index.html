@@ -19,7 +19,7 @@
         nav { 
             position: fixed; top: 0; width: 100%; padding: 25px 8%; 
             display: flex; justify-content: center; align-items: center; 
-            z-index: 100; background: rgba(10, 10, 10, 0.6); 
+            z-index: 1000; background: rgba(10, 10, 10, 0.6); 
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
@@ -28,7 +28,7 @@
         .nav-links a:hover { opacity: 1; color: var(--accent); }
 
         .contact-trigger { 
-            position: fixed; top: 22px; right: 8%; z-index: 101; 
+            position: fixed; top: 22px; right: 8%; z-index: 1001; 
             background: none; border: 1px solid var(--accent); 
             cursor: pointer; color: var(--accent); 
             padding: 10px 22px; font-size: 0.7rem; 
@@ -49,40 +49,39 @@
         .media-item { color: #ffffff !important; text-decoration: none; font-size: 1rem; font-weight: 200; letter-spacing: 6px; text-transform: uppercase; transition: 0s; }
         .media-item:hover { color: var(--accent); }
 
-        /* РАСПИСАНИЕ С ПРЕВЬЮ */
-        .schedule-section { position: relative; padding: 120px 10%; z-index: 10; }
-        .section-title { font-size: 1.6rem; text-transform: uppercase; letter-spacing: 12px; margin-bottom: 80px; text-align: center; font-weight: 200; }
+        /* РАСПИСАНИЕ С МГНОВЕННЫМ ФОНОМ */
+        .schedule-section { position: relative; padding: 120px 10%; background: #0a0a0a; z-index: 10; }
         
         #trip-preview {
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 50vw; height: 30vw; z-index: 999; pointer-events: none; opacity: 0; 
-            transition: 0s; border: 1px solid rgba(160, 233, 255, 0.2); overflow: hidden; background: #000;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 5; pointer-events: none; opacity: 0; 
+            transition: 0s; /* МАКСИМАЛЬНАЯ СКОРОСТЬ */
         }
-        #preview-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
+        #preview-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.3) blur(2px); }
 
-        .schedule-table { width: 100%; border-collapse: collapse; position: relative; z-index: 1000; }
+        .schedule-table { width: 100%; border-collapse: collapse; position: relative; z-index: 10; }
         .sch-row { 
-            border-bottom: 1px solid #1a1a1a; display: grid; grid-template-columns: 1.5fr 1fr 2fr 1fr 1.2fr; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); display: grid; grid-template-columns: 1.5fr 1fr 2fr 1fr 1.2fr; 
             align-items: center; padding: 40px 0; transition: 0.1s; background: transparent; 
         }
-        .sch-row:hover { background: rgba(0, 0, 0, 0.7); border-bottom-color: var(--accent); }
+        .sch-row:hover { border-bottom-color: var(--accent); background: rgba(160, 233, 255, 0.02); }
 
-        .trip-link-main { font-size: 1.1rem; color: var(--accent); letter-spacing: 2px; font-weight: 300; text-transform: uppercase; text-decoration: none; display: block; position: relative; z-index: 1001; }
+        .trip-link-main { font-size: 1.1rem; color: var(--accent); letter-spacing: 2px; font-weight: 300; text-transform: uppercase; text-decoration: none; display: block; }
         .sch-cell { font-size: 0.85rem; font-weight: 200; color: #fff; }
         .cell-label { font-size: 0.55rem; text-transform: uppercase; opacity: 0.3; letter-spacing: 3px; margin-bottom: 10px; display: block; }
         .price-txt { font-family: Arial, sans-serif; font-weight: 300; color: #fff; }
 
         .btn-more { 
             color: #fff; text-decoration: none; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; 
-            border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 0; text-align: center; transition: 0s; position: relative; z-index: 1001;
+            border: 1px solid rgba(255, 255, 255, 0.2); padding: 12px 0; text-align: center; transition: 0s; 
         }
         .btn-more:hover { border-color: var(--accent); color: var(--accent); }
 
-        /* КАРТОЧКИ (ОБУЧЕНИЕ И ЖУРНАЛ) */
+        /* ОБУЧЕНИЕ И ЖУРНАЛ */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
         .card { text-decoration: none; color: inherit; display: flex; flex-direction: column; }
         .img-wrap { width: 100%; aspect-ratio: 1/1; overflow: hidden; background: #111; }
-        .img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.000001s; }
+        .img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0s; }
         .card:hover .img-wrap img { filter: grayscale(0); }
 
         /* МАГАЗИН ПРЕВЬЮ */
@@ -95,7 +94,7 @@
         .side-panel-overlay.open { opacity: 1; visibility: visible; }
 
         /* FOOTER */
-        footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid #111; }
+        footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid #111; position: relative; z-index: 20; background: #0a0a0a; }
         .social-links { display: flex; justify-content: center; gap: 40px; margin-bottom: 60px; }
         .social-links a { color: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 3px; opacity: 0.4; }
         .legal { font-size: 0.5rem; opacity: 0.15; margin-top: 60px; }
@@ -149,7 +148,7 @@
         <div id="trip-preview"><img src="" id="preview-img" alt=""></div>
         <div class="schedule-table">
             
-            <div class="sch-row" onmouseenter="showT('images/ilyastungun.jpg')" onmouseleave="hideT()">
+            <div class="sch-row" onmouseenter="st('images/ilyastungun.jpg')" onmouseleave="ht()">
                 <div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="g-land-surf-trip.html" class="trip-link-main">G-Land (Ява)</a></div>
                 <div class="sch-cell"><span class="cell-label">КОГДА</span><span>Май</span></div>
                 <div class="sch-cell"><span class="cell-label">УРОВЕНЬ</span><span>Бегинеры и продолжающие</span></div>
@@ -157,7 +156,7 @@
                 <a href="g-land-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a>
             </div>
 
-            <div class="sch-row" onmouseenter="showT('images/mentawaiilya.jpg')" onmouseleave="hideT()">
+            <div class="sch-row" onmouseenter="st('images/mentawaiilya.jpg')" onmouseleave="ht()">
                 <div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="mentawai-surf-trip.html" class="trip-link-main">Ментаваи</a></div>
                 <div class="sch-cell"><span class="cell-label">КОГДА</span><span>Июнь</span></div>
                 <div class="sch-cell"><span class="cell-label">УРОВЕНЬ</span><span>Уверенный продвинутый</span></div>
@@ -165,7 +164,7 @@
                 <a href="mentawai-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a>
             </div>
 
-            <div class="sch-row" onmouseenter="showT('images/sup1.jpg')" onmouseleave="hideT()">
+            <div class="sch-row" onmouseenter="st('images/sup1.jpg')" onmouseleave="ht()">
                 <div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="sumbawa-surf-trip.html" class="trip-link-main">Сумбава</a></div>
                 <div class="sch-cell"><span class="cell-label">КОГДА</span><span>Июль</span></div>
                 <div class="sch-cell"><span class="cell-label">УРОВЕНЬ</span><span>Продолжающие</span></div>
@@ -173,7 +172,7 @@
                 <a href="sumbawa-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a>
             </div>
 
-            <div class="sch-row" onmouseenter="showT('images/ilyaulusup.jpg')" onmouseleave="hideT()">
+            <div class="sch-row" onmouseenter="st('images/ilyaulusup.jpg')" onmouseleave="ht()">
                 <div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="sumba-surf-trip.html" class="trip-link-main">Сумба</a></div>
                 <div class="sch-cell"><span class="cell-label">КОГДА</span><span>Август</span></div>
                 <div class="sch-cell"><span class="cell-label">УРОВЕНЬ</span><span>Уверенные</span></div>
@@ -181,7 +180,7 @@
                 <a href="sumba-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a>
             </div>
 
-            <div class="sch-row" onmouseenter="showT('images/vladivostokwave.jpg')" onmouseleave="hideT()">
+            <div class="sch-row" onmouseenter="st('images/vladivostokwave.jpg')" onmouseleave="ht()">
                 <div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="vladivostok-surf-trip.html" class="trip-link-main">Владивосток</a></div>
                 <div class="sch-cell"><span class="cell-label">КОГДА</span><span>Сентябрь</span></div>
                 <div class="sch-cell"><span class="cell-label">УРОВЕНЬ</span><span>Новички и продолжающие</span></div>
@@ -189,7 +188,7 @@
                 <a href="vladivostok-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a>
             </div>
 
-            <div class="sch-row" onmouseenter="showT('images/ilyamain.jpg')" onmouseleave="hideT()">
+            <div class="sch-row" onmouseenter="st('images/ilyamain.jpg')" onmouseleave="ht()">
                 <div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="mexico-surf-trip.html" class="trip-link-main">Мексика</a></div>
                 <div class="sch-cell"><span class="cell-label">КОГДА</span><span>Октябрь</span></div>
                 <div class="sch-cell"><span class="cell-label">УРОВЕНЬ</span><span>Уверенные</span></div>
@@ -197,7 +196,7 @@
                 <a href="mexico-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a>
             </div>
 
-            <div class="sch-row" onmouseenter="showT('images/ilyaulu.jpg')" onmouseleave="hideT()">
+            <div class="sch-row" onmouseenter="st('images/ilyaulu.jpg')" onmouseleave="ht()">
                 <div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="south-africa-surf-trip.html" class="trip-link-main">ЮАР</a></div>
                 <div class="sch-cell"><span class="cell-label">КОГДА</span><span>Ноябрь</span></div>
                 <div class="sch-cell"><span class="cell-label">УРОВЕНЬ</span><span>Уверенные</span></div>
@@ -276,10 +275,16 @@
     </footer>
 
     <script>
-        const pC = document.getElementById('trip-preview');
-        const pI = document.getElementById('preview-img');
-        function showT(s) { pI.src = s; pC.style.opacity = '1'; }
-        function hideT() { pC.style.opacity = '0'; }
+        const pc = document.getElementById('trip-preview');
+        const pi = document.getElementById('preview-img');
+        
+        function st(s) { 
+            pi.src = s; 
+            pc.style.opacity = '1'; 
+        }
+        function ht() { 
+            pc.style.opacity = '0'; 
+        }
 
         function togglePanel() {
             document.getElementById('panel').classList.toggle('open');
