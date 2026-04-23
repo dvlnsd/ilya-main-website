@@ -147,157 +147,79 @@
         </div>
     </section>
 
-   <style>
-    .schedule-section { position: relative; padding: 120px 10%; }
-    
-    /* Контейнер для всплывающего превью */
-    .trip-preview-overlay {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 40vw;
-        height: 25vw;
-        z-index: 5;
-        pointer-events: none;
-        opacity: 0;
-        transition: 0.000001s; /* Мгновенно */
-        overflow: hidden;
-    }
-    .trip-preview-overlay img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: brightness(0.6) grayscale(0.2);
-    }
-
-    .schedule-table { width: 100%; border-collapse: collapse; position: relative; z-index: 10; }
-    
-    /* Делаем всю строку кликабельной через ссылку внутри */
-    .schedule-row { 
-        border-bottom: 1px solid #1a1a1a; 
-        display: grid; 
-        grid-template-columns: 1.5fr 1fr 2fr 1fr 1.2fr; 
-        align-items: center; 
-        padding: 45px 0; 
-        transition: 0.2s;
-        cursor: pointer;
-    }
-
-    /* Подсветка строки и вызов картинки */
-    .schedule-row:hover { background: rgba(160, 233, 255, 0.03); }
-    .schedule-row:hover ~ .trip-preview-overlay { opacity: 1; }
-
-    .trip-name-link { 
-        font-size: 1.1rem; 
-        color: var(--accent); 
-        letter-spacing: 2px; 
-        font-weight: 300; 
-        text-transform: uppercase;
-        text-decoration: none;
-        transition: 0.2s;
-    }
-    .trip-name-link:hover { letter-spacing: 4px; }
-
-    .schedule-cell { font-size: 0.85rem; font-weight: 200; color: #fff; pointer-events: none; }
-    .cell-label { font-size: 0.55rem; text-transform: uppercase; opacity: 0.3; letter-spacing: 3px; margin-bottom: 10px; display: block; }
-    
-    .price-cell { font-family: Arial, sans-serif; font-weight: 300; color: var(--accent); }
-
-    .schedule-link { 
-        color: #fff; 
-        text-decoration: none; 
-        font-size: 0.65rem; 
-        text-transform: uppercase; 
-        letter-spacing: 3px; 
-        border: 1px solid rgba(255, 255, 255, 0.1); 
-        padding: 12px 0; 
-        text-align: center; 
-        transition: 0.000001s; 
-    }
-    .schedule-row:hover .schedule-link { border-color: var(--accent); color: var(--accent); }
-</style>
-
-<section class="schedule-section" id="expeditions">
-    <h2 class="section-title">СЕРФ ТРИПЫ <span class="blue-text">2026</span></h2>
-    
-    <div class="trip-preview-overlay" id="trip-preview">
-        <img src="" id="preview-img" alt="Surf Preview">
-    </div>
-
-    <div class="schedule-table">
+    <section id="expeditions" style="padding: 120px 10%;">
+        <h2 class="section-title" style="font-size: 1.6rem; text-transform: uppercase; letter-spacing: 12px; margin-bottom: 80px; text-align: center; font-weight: 200;">СЕРФ ТРИПЫ <span style="color: var(--accent);">2026</span></h2>
         
-        <div class="schedule-row" onmouseover="showPreview('images/ilyastungun.jpg')" onmouseout="hidePreview()">
-            <div class="schedule-cell">
-                <span class="cell-label">НАПРАВЛЕНИЕ</span>
-                <a href="g-land-surf-trip.html" class="trip-name-link">G-Land (Ява)</a>
+        <div class="schedule-table">
+            <div class="schedule-row">
+                <div class="schedule-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><span class="trip-name">G-Land (Ява)</span></div>
+                <div class="schedule-cell"><span class="cell-label">КОГДА</span><span>Май</span></div>
+                <div class="schedule-cell"><span class="cell-label">УРОВЕНЬ</span><span>Бегинеры и продолжающие</span></div>
+                <div class="schedule-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-cell">$3000</span></div>
+                <a href="g-land-surf-trip.html" class="schedule-link">ПОДРОБНЕЕ</a>
             </div>
-            <div class="schedule-cell"><span class="cell-label">КОГДА</span><span>Май</span></div>
-            <div class="schedule-cell"><span class="cell-label">УРОВЕНЬ</span><span>Бегинеры и продолжающие</span></div>
-            <div class="schedule-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-cell">$3000</span></div>
-            <a href="g-land-surf-trip.html" class="schedule-link">ПОДРОБНЕЕ</a>
-        </div>
 
-        <div class="schedule-row" onmouseover="showPreview('images/mentawaiilya.jpg')" onmouseout="hidePreview()">
-            <div class="schedule-cell">
-                <span class="cell-label">НАПРАВЛЕНИЕ</span>
-                <a href="mentawai-surf-trip.html" class="trip-name-link">Ментаваи</a>
+            <div class="schedule-row">
+                <div class="schedule-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><span class="trip-name">Ментаваи</span></div>
+                <div class="schedule-cell"><span class="cell-label">КОГДА</span><span>Июнь</span></div>
+                <div class="schedule-cell"><span class="cell-label">УРОВЕНЬ</span><span>Уверенный продвинутый</span></div>
+                <div class="schedule-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-cell">$3000</span></div>
+                <a href="mentawai-surf-trip.html" class="schedule-link">ПОДРОБНЕЕ</a>
             </div>
-            <div class="schedule-cell"><span class="cell-label">КОГДА</span><span>Июнь</span></div>
-            <div class="schedule-cell"><span class="cell-label">УРОВЕНЬ</span><span>Уверенный продвинутый</span></div>
-            <div class="schedule-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-cell">$3000</span></div>
-            <a href="mentawai-surf-trip.html" class="schedule-link">ПОДРОБНЕЕ</a>
-        </div>
 
-        <div class="schedule-row" onmouseover="showPreview('images/vladivostokwave.jpg')" onmouseout="hidePreview()">
-            <div class="schedule-cell">
-                <span class="cell-label">НАПРАВЛЕНИЕ</span>
-                <a href="vladivostok-surf-trip.html" class="trip-name-link">Владивосток</a>
+            <div class="schedule-row">
+                <div class="schedule-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><span class="trip-name">Сумбава</span></div>
+                <div class="schedule-cell"><span class="cell-label">КОГДА</span><span>Июль</span></div>
+                <div class="schedule-cell"><span class="cell-label">УРОВЕНЬ</span><span>Продолжающие</span></div>
+                <div class="schedule-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-cell">$3000</span></div>
+                <a href="sumbawa-surf-trip.html" class="schedule-link">ПОДРОБНЕЕ</a>
             </div>
-            <div class="schedule-cell"><span class="cell-label">КОГДА</span><span>Сентябрь</span></div>
-            <div class="schedule-cell"><span class="cell-label">УРОВЕНЬ</span><span>Новички и продолжающие</span></div>
-            <div class="schedule-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-cell">$3000</span></div>
-            <a href="vladivostok-surf-trip.html" class="schedule-link">ПОДРОБНЕЕ</a>
-        </div>
 
-        <div class="schedule-row" onmouseover="showPreview('images/ilyamain.jpg')" onmouseout="hidePreview()">
-            <div class="schedule-cell">
-                <span class="cell-label">НАПРАВЛЕНИЕ</span>
-                <a href="mexico-surf-trip.html" class="trip-name-link">Мексика</a>
+            <div class="schedule-row">
+                <div class="schedule-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><span class="trip-name">Сумба</span></div>
+                <div class="schedule-cell"><span class="cell-label">КОГДА</span><span>Август</span></div>
+                <div class="schedule-cell"><span class="cell-label">УРОВЕНЬ</span><span>Уверенные</span></div>
+                <div class="schedule-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-cell">$3000</span></div>
+                <a href="sumba-surf-trip.html" class="schedule-link">ПОДРОБНЕЕ</a>
             </div>
-            <div class="schedule-cell"><span class="cell-label">КОГДА</span><span>Октябрь</span></div>
-            <div class="schedule-cell"><span class="cell-label">УРОВЕНЬ</span><span>Уверенные</span></div>
-            <div class="schedule-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-cell">$3000</span></div>
-            <a href="mexico-surf-trip.html" class="schedule-link">ПОДРОБНЕЕ</a>
-        </div>
 
-        <div class="schedule-row" onmouseover="showPreview('images/ilyaulu.jpg')" onmouseout="hidePreview()">
-            <div class="schedule-cell">
-                <span class="cell-label">НАПРАВЛЕНИЕ</span>
-                <a href="south-africa-surf-trip.html" class="trip-name-link">ЮАР</a>
+            <div class="schedule-row">
+                <div class="schedule-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><span class="trip-name">Владивосток</span></div>
+                <div class="schedule-cell"><span class="cell-label">КОГДА</span><span>Сентябрь</span></div>
+                <div class="schedule-cell"><span class="cell-label">УРОВЕНЬ</span><span>Новички и продолжающие</span></div>
+                <div class="schedule-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-cell">$3000</span></div>
+                <a href="vladivostok-surf-trip.html" class="schedule-link">ПОДРОБНЕЕ</a>
             </div>
-            <div class="schedule-cell"><span class="cell-label">КОГДА</span><span>Ноябрь</span></div>
-            <div class="schedule-cell"><span class="cell-label">УРОВЕНЬ</span><span>Уверенные</span></div>
-            <div class="schedule-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-cell">$3000</span></div>
-            <a href="south-africa-surf-trip.html" class="schedule-link">ПОДРОБНЕЕ</a>
+
+            <div class="schedule-row">
+                <div class="schedule-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><span class="trip-name">Мексика</span></div>
+                <div class="schedule-cell"><span class="cell-label">КОГДА</span><span>Октябрь</span></div>
+                <div class="schedule-cell"><span class="cell-label">УРОВЕНЬ</span><span>Уверенные</span></div>
+                <div class="schedule-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-cell">$3000</span></div>
+                <a href="mexico-surf-trip.html" class="schedule-link">ПОДРОБНЕЕ</a>
+            </div>
+
+            <div class="schedule-row">
+                <div class="schedule-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><span class="trip-name">ЮАР</span></div>
+                <div class="schedule-cell"><span class="cell-label">КОГДА</span><span>Ноябрь</span></div>
+                <div class="schedule-cell"><span class="cell-label">УРОВЕНЬ</span><span>Уверенные</span></div>
+                <div class="schedule-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-cell">$3000</span></div>
+                <a href="south-africa-surf-trip.html" class="schedule-link">ПОДРОБНЕЕ</a>
+            </div>
         </div>
+    </section>
 
-    </div>
-</section>
-
-<script>
-    const previewContainer = document.getElementById('trip-preview');
-    const previewImg = document.getElementById('preview-img');
-
-    function showPreview(imgSrc) {
-        previewImg.src = imgSrc;
-        previewContainer.style.opacity = '1';
-    }
-
-    function hidePreview() {
-        previewContainer.style.opacity = '0';
-    }
-</script>
+    <style>
+        /* Стили для таблицы (вставь это тоже) */
+        .schedule-table { width: 100%; border-collapse: collapse; }
+        .schedule-row { border-bottom: 1px solid #1a1a1a; display: grid; grid-template-columns: 1.5fr 1fr 2fr 1fr 1.2fr; align-items: center; padding: 45px 0; transition: 0.2s; }
+        .schedule-row:hover { background: rgba(160, 233, 255, 0.02); }
+        .trip-name { font-size: 1.1rem; color: var(--accent); letter-spacing: 2px; font-weight: 300; text-transform: uppercase; }
+        .schedule-cell { font-size: 0.85rem; font-weight: 200; color: #fff; }
+        .cell-label { font-size: 0.55rem; text-transform: uppercase; opacity: 0.3; letter-spacing: 3px; margin-bottom: 10px; display: block; }
+        .price-cell { font-family: Arial, sans-serif; font-weight: 300; letter-spacing: 1px; }
+        .schedule-link { color: #fff; text-decoration: none; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 0; text-align: center; transition: 0.0000001s; }
+        .schedule-link:hover { border-color: var(--accent); color: var(--accent); }
         
         /* Стили для прессы */
         .media-item { color: #ffffff !important; text-decoration: none; font-size: 1rem; font-weight: 200; letter-spacing: 6px; text-transform: uppercase; transition: 0.000000000001s; }
