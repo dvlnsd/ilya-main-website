@@ -55,7 +55,7 @@
         #trip-preview {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: 5; pointer-events: none; opacity: 0; 
-            transition: 0s; /* МАКСИМАЛЬНАЯ СКОРОСТЬ */
+            transition: 0s; 
         }
         #preview-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.3) blur(2px); }
 
@@ -77,15 +77,14 @@
         }
         .btn-more:hover { border-color: var(--accent); color: var(--accent); }
 
-        /* ОБУЧЕНИЕ И ЖУРНАЛ */
+        /* ГРИДЫ */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
         .card { text-decoration: none; color: inherit; display: flex; flex-direction: column; }
         .img-wrap { width: 100%; aspect-ratio: 1/1; overflow: hidden; background: #111; }
         .img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0s; }
         .card:hover .img-wrap img { filter: grayscale(0); }
 
-        /* МАГАЗИН ПРЕВЬЮ */
-        .shop-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .shop-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
 
         /* ПАНЕЛЬ СВЯЗИ */
         .side-panel { position: fixed; top: 0; right: -100%; width: 450px; height: 100vh; background: #0c0c0c; z-index: 2000; padding: 80px 50px; transition: 0.5s; border-left: 1px solid #1a1a1a; }
@@ -96,8 +95,21 @@
         /* FOOTER */
         footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid #111; position: relative; z-index: 20; background: #0a0a0a; }
         .social-links { display: flex; justify-content: center; gap: 40px; margin-bottom: 60px; }
-        .social-links a { color: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 3px; opacity: 0.4; }
+        .social-links a { color: var(--accent); text-decoration: none; font-size: 0.8rem; letter-spacing: 3px; opacity: 0.8; transition: 0.3s; }
+        .social-links a:hover { opacity: 1; }
         .legal { font-size: 0.5rem; opacity: 0.15; margin-top: 60px; }
+
+        /* АДАПТИВНОСТЬ (MOBILE) */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .media-row { justify-content: center; gap: 30px; }
+            .sch-row { grid-template-columns: 1fr; gap: 15px; padding: 30px 0; text-align: center; }
+            .sch-cell { margin-bottom: 10px; }
+            .grid-2 { grid-template-columns: 1fr; gap: 40px; }
+            .shop-preview { grid-template-columns: 1fr; }
+            .side-panel { width: 100%; }
+            .section-title { font-size: 1.2rem; letter-spacing: 6px; }
+        }
     </style>
 </head>
 <body>
@@ -144,10 +156,9 @@
     </section>
 
     <section class="schedule-section" id="expeditions">
-        <h2 class="section-title">СЕРФ ТРИПЫ <span style="color:var(--accent);">2026</span></h2>
+        <h2 class="section-title" style="font-size: 1.6rem; text-transform: uppercase; letter-spacing: 12px; margin-bottom: 80px; text-align: center; font-weight: 200;">СЕРФ ТРИПЫ <span style="color:var(--accent);">2026</span></h2>
         <div id="trip-preview"><img src="" id="preview-img" alt=""></div>
         <div class="schedule-table">
-            
             <div class="sch-row" onmouseenter="st('images/ilyastungun.jpg')" onmouseleave="ht()">
                 <div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="g-land-surf-trip.html" class="trip-link-main">G-Land (Ява)</a></div>
                 <div class="sch-cell"><span class="cell-label">КОГДА</span><span>Май</span></div>
@@ -155,7 +166,6 @@
                 <div class="sch-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-txt">$3000</span></div>
                 <a href="g-land-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a>
             </div>
-
             <div class="sch-row" onmouseenter="st('images/mentawaiilya.jpg')" onmouseleave="ht()">
                 <div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="mentawai-surf-trip.html" class="trip-link-main">Ментаваи</a></div>
                 <div class="sch-cell"><span class="cell-label">КОГДА</span><span>Июнь</span></div>
@@ -163,7 +173,6 @@
                 <div class="sch-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-txt">$3000</span></div>
                 <a href="mentawai-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a>
             </div>
-
             <div class="sch-row" onmouseenter="st('images/sup1.jpg')" onmouseleave="ht()">
                 <div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="sumbawa-surf-trip.html" class="trip-link-main">Сумбава</a></div>
                 <div class="sch-cell"><span class="cell-label">КОГДА</span><span>Июль</span></div>
@@ -171,7 +180,6 @@
                 <div class="sch-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-txt">$3000</span></div>
                 <a href="sumbawa-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a>
             </div>
-
             <div class="sch-row" onmouseenter="st('images/ilyaulusup.jpg')" onmouseleave="ht()">
                 <div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="sumba-surf-trip.html" class="trip-link-main">Сумба</a></div>
                 <div class="sch-cell"><span class="cell-label">КОГДА</span><span>Август</span></div>
@@ -179,7 +187,6 @@
                 <div class="sch-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-txt">$3000</span></div>
                 <a href="sumba-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a>
             </div>
-
             <div class="sch-row" onmouseenter="st('images/vladivostokwave.jpg')" onmouseleave="ht()">
                 <div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="vladivostok-surf-trip.html" class="trip-link-main">Владивосток</a></div>
                 <div class="sch-cell"><span class="cell-label">КОГДА</span><span>Сентябрь</span></div>
@@ -187,7 +194,6 @@
                 <div class="sch-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-txt">$3000</span></div>
                 <a href="vladivostok-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a>
             </div>
-
             <div class="sch-row" onmouseenter="st('images/ilyamain.jpg')" onmouseleave="ht()">
                 <div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="mexico-surf-trip.html" class="trip-link-main">Мексика</a></div>
                 <div class="sch-cell"><span class="cell-label">КОГДА</span><span>Октябрь</span></div>
@@ -195,7 +201,6 @@
                 <div class="sch-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-txt">$3000</span></div>
                 <a href="mexico-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a>
             </div>
-
             <div class="sch-row" onmouseenter="st('images/ilyaulu.jpg')" onmouseleave="ht()">
                 <div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="south-africa-surf-trip.html" class="trip-link-main">ЮАР</a></div>
                 <div class="sch-cell"><span class="cell-label">КОГДА</span><span>Ноябрь</span></div>
@@ -207,8 +212,7 @@
     </section>
 
     <section id="work" style="background: #080808; padding: 120px 15%;">
-        <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 100px; max-width: 1200px; margin: 0 auto;">
-            
+        <div class="grid-2" style="max-width: 1200px; margin: 0 auto;">
             <a href="surf-coaching-bali.html" class="card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; max-width: 450px; margin: 0 auto; text-align: center;">
                 <div style="margin-bottom: 40px;">
                     <h3 style="text-transform: uppercase; letter-spacing: 5px; font-weight: 300; font-size: 1.1rem;">PRIVATE <span style="color: var(--accent);">COACHING</span></h3>
@@ -218,7 +222,6 @@
                     <img src="images/ilyaulu.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0s;">
                 </div>
             </a>
-            
             <a href="surf-guiding-bali.html" class="card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; max-width: 450px; margin: 0 auto; text-align: center;">
                 <div style="margin-bottom: 40px;">
                     <h3 style="text-transform: uppercase; letter-spacing: 5px; font-weight: 300; font-size: 1.1rem;">SURF <span style="color: var(--accent);">GUIDING</span></h3>
@@ -228,74 +231,92 @@
                     <img src="images/ilyafoil.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0s;">
                 </div>
             </a>
-
         </div>
     </section>
 
     <section id="shop" style="padding: 120px 10%;">
         <h2 class="section-title" style="font-size: 1.6rem; text-transform: uppercase; letter-spacing: 12px; margin-bottom: 100px; text-align: center; font-weight: 200;">МАГАЗИН</h2>
-        <div class="shop-preview" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1200px; margin: 0 auto;">
-            
+        <div class="shop-preview" style="max-width: 1200px; margin: 0 auto;">
             <a href="surf-shop.html" class="card" style="text-decoration: none; color: inherit; text-align: center;">
                 <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; background: #050505; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid rgba(255,255,255,0.03);">
                     <img src="images/tshirt.jpg" style="width: 75%; height: auto; object-fit: contain; filter: grayscale(1); transition: 0s;">
                 </div>
                 <h4 style="margin-top: 25px; font-size: 0.7rem; letter-spacing: 3px; font-weight: 300;">SIGNATURE TEE <span style="color: var(--accent);">— 4 500 ₽</span></h4>
             </a>
-            
             <a href="surf-shop.html" class="card" style="text-decoration: none; color: inherit; text-align: center;">
                 <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; background: #050505; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid rgba(255,255,255,0.03);">
                     <img src="images/lycra.jpg" style="width: 75%; height: auto; object-fit: contain; filter: grayscale(1); transition: 0s;">
                 </div>
                 <h4 style="margin-top: 25px; font-size: 0.7rem; letter-spacing: 3px; font-weight: 300;">PRO LYCRA BLACK <span style="color: var(--accent);">— 6 200 ₽</span></h4>
             </a>
-            
             <a href="surf-shop.html" class="card" style="text-decoration: none; color: inherit; text-align: center;">
                 <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; background: #050505; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid rgba(255,255,255,0.03);">
                     <img src="images/glo.jpg" style="width: 75%; height: auto; object-fit: contain; filter: grayscale(1); transition: 0s;">
                 </div>
                 <h4 style="margin-top: 25px; font-size: 0.7rem; letter-spacing: 3px; font-weight: 300;">GUN BOARD 9'6 <span style="color: var(--accent);">— 120 000 ₽</span></h4>
             </a>
-
         </div>
     </section>
 
     <section id="journal" style="background: #050505; padding: 120px 15%;">
         <h2 class="section-title" style="font-size: 1.6rem; text-transform: uppercase; letter-spacing: 12px; margin-bottom: 100px; text-align: center; font-weight: 200;">СЕРФ ЖУРНАЛ</h2>
-        <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 100px; max-width: 1200px; margin: 0 auto;">
-            
+        <div class="grid-2" style="max-width: 1200px; margin: 0 auto;">
             <a href="article-fear.html" class="card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; max-width: 450px; margin: 0 auto; text-align: center;">
                 <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
                     <img src="images/ilyastungun.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0s;">
                 </div>
                 <h4 style="margin-top: 30px; letter-spacing: 2.5px; font-weight: 300; font-size: 0.9rem; line-height: 1.4;">Психология страха на больших волнах</h4>
             </a>
-            
             <a href="article-japan.html" class="card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; max-width: 450px; margin: 0 auto; text-align: center;">
                 <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
                     <img src="images/vladivostokwave.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0s;">
                 </div>
                 <h4 style="margin-top: 30px; letter-spacing: 2.5px; font-weight: 300; font-size: 0.9rem; line-height: 1.4;">Гид по спотам Японского моря</h4>
             </a>
-
+            <a href="article-gear.html" class="card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; max-width: 450px; margin: 0 auto; text-align: center; margin-top: 40px;">
+                <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                    <img src="images/ilyamain.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0s;">
+                </div>
+                <h4 style="margin-top: 30px; letter-spacing: 2.5px; font-weight: 300; font-size: 0.9rem; line-height: 1.4;">Экипировка для экстремального серфинга</h4>
+            </a>
+            <a href="article-philosophy.html" class="card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; max-width: 450px; margin: 0 auto; text-align: center; margin-top: 40px;">
+                <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                    <img src="images/ilyaulu.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0s;">
+                </div>
+                <h4 style="margin-top: 30px; letter-spacing: 2.5px; font-weight: 300; font-size: 0.9rem; line-height: 1.4;">Океан как философия жизни</h4>
+            </a>
         </div>
     </section>
 
-    <footer style="padding: 100px 10% 50px; text-align: center; border-top: 1px solid #111; position: relative; z-index: 20; background: #0a0a0a;">
+    <footer>
         <h4 style="font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; opacity: 0.3; margin-bottom: 30px;">социальные сети</h4>
-        <div class="social-links" style="display: flex; justify-content: center; gap: 40px; margin-bottom: 80px;">
-            <a href="https://t.me/ilya_chaika_surf" style="color: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 3px; opacity: 0.4; transition: 0.3s;">TELEGRAM</a>
-            <a href="https://instagram.com/chaika_ilya" style="color: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 3px; opacity: 0.4; transition: 0.3s;">INSTAGRAM</a>
-            <a href="https://youtube.com/@chaika_ilya" style="color: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 3px; opacity: 0.4; transition: 0.3s;">YOUTUBE</a>
+        <div class="social-links">
+            <a href="https://t.me/ilya_chaika_surf">TELEGRAM</a>
+            <a href="https://instagram.com/chaika_ilya">INSTAGRAM</a>
+            <a href="https://youtube.com/@chaika_ilya">YOUTUBE</a>
         </div>
-        <div style="font-size: 0.9rem; letter-spacing: 6px; text-transform: uppercase; color: var(--accent);">ILYA CHAIKA // BIG WAVE ATHLETE</div>
+        <div style="font-size: 0.9rem; letter-spacing: 6px; text-transform: uppercase; color: #fff; opacity: 0.8;">ILYA CHAIKA // BIG WAVE ATHLETE</div>
         <div style="font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; opacity: 0.4; margin-top: 10px;">PROFESSIONAL SURF COACHING & SURF TRIPS // 2026</div>
-        <p style="font-size: 0.5rem; opacity: 0.15; letter-spacing: 1px; max-width: 600px; margin: 60px auto 0; line-height: 2;">
-            * Instagram принадлежит компании Meta, признанной экстремистской организацией и запрещенной на территории Российской Федерации.
-        </p>
+        <p class="legal">* Instagram принадлежит компании Meta, признанной экстремистской организацией и запрещенной на территории Российской Федерации.</p>
     </footer>
 
     <script>
+        const pc = document.getElementById('trip-preview');
+        const pi = document.getElementById('preview-img');
+        
+        function st(s) { 
+            pi.src = s; 
+            pc.style.opacity = '1'; 
+        }
+        function ht() { 
+            pc.style.opacity = '0'; 
+        }
+
+        function togglePanel() {
+            document.getElementById('panel').classList.toggle('open');
+            document.getElementById('overlay').classList.toggle('open');
+        }
+
         document.querySelectorAll('.card').forEach(card => {
             const img = card.querySelector('img');
             if (img) {
@@ -304,3 +325,5 @@
             }
         });
     </script>
+</body>
+</html>
