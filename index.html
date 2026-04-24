@@ -13,7 +13,7 @@
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--white); line-height: 1.6; overflow-x: hidden; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--white); line-height: 1.6; overflow-x: hidden; }
 
         /* NAV & MOBILE BURGER */
         nav { 
@@ -56,10 +56,10 @@
         /* ПРЕССА */
         .media-section { background: #000; padding: 100px 10%; border-bottom: 1px solid #111; position: relative; z-index: 20; }
         .media-row { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 40px; }
-        .media-item { color: #ffffff !important; text-decoration: none; font-size: 1rem; font-weight: 200; letter-spacing: 6px; text-transform: uppercase; transition: 0s; }
+        .media-item { color: #ffffff !important; text-decoration: none; font-size: 1rem; font-weight: 200; letter-spacing: 6px; text-transform: uppercase; transition: 0.3s; }
         .media-item:hover { color: var(--accent); }
 
-        /* РАСПИСАНИЕ: REVEAL */
+        /* РАСПИСАНИЕ: REVEAL (Desktop) */
         .schedule-section { position: relative; padding: 120px 10%; background: #0a0a0a; z-index: 10; }
         .sch-row { 
             position: relative; border-bottom: 1px solid rgba(255,255,255,0.1); 
@@ -71,25 +71,31 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
             z-index: -1; background-size: cover; background-position: center; 
             opacity: 0; transform: scale(1.1); transition: 0.4s ease; 
-            filter: brightness(0.2) grayscale(0.4); 
+            filter: brightness(0.25) grayscale(0.3); 
         }
         .sch-row:hover .row-bg { opacity: 1; transform: scale(1); }
         .sch-row:hover { padding: 65px 0; border-bottom-color: var(--accent); }
 
-        .trip-link-main { font-size: 1.1rem; color: var(--accent); letter-spacing: 2px; font-weight: 300; text-transform: uppercase; text-decoration: none; display: block; }
+        .trip-link-main { font-size: 1.1rem; color: var(--accent); letter-spacing: 2px; font-weight: 400; text-transform: uppercase; text-decoration: none; display: block; transition: 0.3s; }
         .sch-row:hover .trip-link-main { color: #fff; letter-spacing: 4px; }
-        .sch-cell { font-size: 0.85rem; font-weight: 200; color: #fff; }
+        .sch-cell { font-size: 0.85rem; font-weight: 300; color: #fff; }
         .cell-label { font-size: 0.55rem; text-transform: uppercase; opacity: 0.3; letter-spacing: 3px; margin-bottom: 10px; display: block; }
-        .price-txt { font-family: Arial, sans-serif; font-weight: 300; color: #fff; }
-        .btn-more { color: #fff; text-decoration: none; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; border: 1px solid rgba(255, 255, 255, 0.2); padding: 12px 0; text-align: center; transition: 0s; }
-        .btn-more:hover { border-color: var(--accent); color: var(--accent); }
+        .price-txt { font-weight: 400; color: #fff; }
+        .btn-more { color: #fff; text-decoration: none; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; border: 1px solid rgba(255, 255, 255, 0.2); padding: 12px 0; text-align: center; transition: 0.3s; }
+        .btn-more:hover { border-color: var(--accent); color: var(--accent); background: rgba(160, 233, 255, 0.05); }
 
-        /* ГРИДЫ ОБУЧЕНИЯ, МАГАЗИНА, ЖУРНАЛА */
+        /* ГРИДЫ */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; }
-        .card { text-decoration: none; color: inherit; display: flex; flex-direction: column; text-align: center; }
+        .card { text-decoration: none; color: inherit; display: flex; flex-direction: column; }
         .img-wrap { width: 100%; aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.05); }
-        .img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.4s ease; }
+        .img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.5s ease; }
         .card:hover .img-wrap img { filter: grayscale(0); }
+
+        /* ЖУРНАЛ С ОПИСАНИЕМ */
+        .journal-info { margin-top: 25px; }
+        .journal-info h4 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; font-weight: 400; transition: 0.3s; }
+        .card:hover .journal-info h4 { color: var(--accent); }
+        .journal-info p { font-size: 0.8rem; opacity: 0.5; font-weight: 300; line-height: 1.5; }
 
         /* ПАНЕЛЬ СВЯЗИ */
         .side-panel { position: fixed; top: 0; right: -100%; width: 450px; height: 100vh; background: #0c0c0c; z-index: 2000; padding: 80px 50px; transition: 0.5s; border-left: 1px solid #1a1a1a; }
@@ -108,13 +114,14 @@
             .nav-links { display: none; }
             .burger { display: flex; }
             .contact-trigger { top: 18px; right: 5%; padding: 8px 15px; font-size: 0.6rem; }
-            .media-row { justify-content: center; gap: 20px; }
-            .media-item { font-size: 0.75rem; letter-spacing: 3px; }
+            
+            /* Расписание: Cinematic Cards */
             .sch-row { display: flex; flex-direction: column; padding: 0 0 40px 0; background: #0d0d0d; margin-bottom: 30px; border: 1px solid #1a1a1a; }
-            .row-bg { position: relative; opacity: 0.4; height: 220px; transform: scale(1); z-index: 1; margin-bottom: 20px; }
-            .sch-cell { padding: 0 20px; margin-bottom: 10px; }
+            .row-bg { position: relative; opacity: 0.5; height: 220px; transform: scale(1); z-index: 1; margin-bottom: 20px; visibility: visible; }
+            .sch-cell { padding: 0 25px; margin-bottom: 12px; text-align: center; }
             .trip-link-main { font-size: 1.4rem; letter-spacing: 3px; }
-            .btn-more { width: calc(100% - 40px); margin: 20px; border-color: var(--accent); color: var(--accent); }
+            .btn-more { width: calc(100% - 50px); margin: 20px 25px; border-color: var(--accent); color: var(--accent); }
+            
             .grid-2 { grid-template-columns: 1fr; gap: 60px; }
             section { padding: 80px 8% !important; }
             .side-panel { width: 100%; }
@@ -133,13 +140,13 @@
 
     <div class="side-panel-overlay" id="overlay" onclick="togglePanel()"></div>
     <div class="side-panel" id="panel">
-        <button onclick="togglePanel()" style="background:none; border:none; color:#fff; cursor:pointer; margin-bottom:60px; opacity:0.4; letter-spacing:2px;">ЗАКРЫТЬ X</button>
-        <h2 style="font-weight:200; letter-spacing:5px; color:var(--accent); margin-bottom:10px;">НАПИСАТЬ ИЛЬЕ</h2>
+        <button onclick="togglePanel()" style="background:none; border:none; color:#fff; cursor:pointer; margin-bottom:60px; opacity:0.4; letter-spacing:2px; font-size: 0.7rem;">ЗАКРЫТЬ X</button>
+        <h2 style="font-weight:200; letter-spacing:5px; color:var(--accent); margin-bottom:10px; text-transform: uppercase;">Написать Илье</h2>
         <form action="mailto:chaikailya@gmail.com" method="post" enctype="text/plain">
-            <input type="text" placeholder="ИМЯ" style="width:100%; background:none; border:none; border-bottom:1px solid #333; color:#fff; padding:15px 0; margin-bottom:30px; outline:none;">
-            <input type="email" placeholder="EMAIL" style="width:100%; background:none; border:none; border-bottom:1px solid #333; color:#fff; padding:15px 0; margin-bottom:30px; outline:none;">
-            <textarea placeholder="ВАШ ЗАПРОС" rows="4" style="width:100%; background:none; border:none; border-bottom:1px solid #333; color:#fff; padding:15px 0; margin-bottom:40px; outline:none; font-family:inherit;"></textarea>
-            <button type="submit" style="width:100%; background:none; border:1px solid var(--accent); color:var(--accent); padding:20px; cursor:pointer; text-transform:uppercase; letter-spacing:3px;">ОТПРАВИТЬ</button>
+            <input type="text" placeholder="ИМЯ" style="width:100%; background:none; border:none; border-bottom:1px solid #333; color:#fff; padding:15px 0; margin-bottom:30px; outline:none; font-size: 0.8rem; letter-spacing: 2px;">
+            <input type="email" placeholder="EMAIL" style="width:100%; background:none; border:none; border-bottom:1px solid #333; color:#fff; padding:15px 0; margin-bottom:30px; outline:none; font-size: 0.8rem; letter-spacing: 2px;">
+            <textarea placeholder="ВАШ ЗАПРОС" rows="4" style="width:100%; background:none; border:none; border-bottom:1px solid #333; color:#fff; padding:15px 0; margin-bottom:40px; outline:none; font-family:inherit; font-size: 0.8rem; letter-spacing: 1px;"></textarea>
+            <button type="submit" style="width:100%; background:none; border:1px solid var(--accent); color:var(--accent); padding:20px; cursor:pointer; text-transform:uppercase; letter-spacing:3px; font-size: 0.7rem;">ОТПРАВИТЬ</button>
         </form>
     </div>
 
@@ -175,38 +182,89 @@
         <h2 style="font-size: 1.6rem; text-transform: uppercase; letter-spacing: 12px; margin-bottom: 80px; text-align: center; font-weight: 200;">СЕРФ ТРИПЫ <span style="color:var(--accent);">2026</span></h2>
         <div class="schedule-table">
             <div class="sch-row"><div class="row-bg" style="background-image: url('images/ilyastungun.jpg');"></div><div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="g-land-surf-trip.html" class="trip-link-main">G-Land (Ява)</a></div><div class="sch-cell"><span class="cell-label">КОГДА</span><span>Май</span></div><div class="sch-cell"><span class="cell-label">УРОВЕНЬ</span><span>Бегинеры и продолжающие</span></div><div class="sch-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-txt">$3000</span></div><a href="g-land-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a></div>
+            
             <div class="sch-row"><div class="row-bg" style="background-image: url('images/mentawaiilya.jpg');"></div><div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="mentawai-surf-trip.html" class="trip-link-main">Ментаваи</a></div><div class="sch-cell"><span class="cell-label">КОГДА</span><span>Июнь</span></div><div class="sch-cell"><span class="cell-label">УРОВЕНЬ</span><span>Уверенный продвинутый</span></div><div class="sch-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-txt">$3000</span></div><a href="mentawai-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a></div>
+            
             <div class="sch-row"><div class="row-bg" style="background-image: url('images/sup1.jpg');"></div><div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="sumbawa-surf-trip.html" class="trip-link-main">Сумбава</a></div><div class="sch-cell"><span class="cell-label">КОГДА</span><span>Июль</span></div><div class="sch-cell"><span class="cell-label">УРОВЕНЬ</span><span>Продолжающие</span></div><div class="sch-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-txt">$3000</span></div><a href="sumbawa-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a></div>
+            
             <div class="sch-row"><div class="row-bg" style="background-image: url('images/ilyaulusup.jpg');"></div><div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="sumba-surf-trip.html" class="trip-link-main">Сумба</a></div><div class="sch-cell"><span class="cell-label">КОГДА</span><span>Август</span></div><div class="sch-cell"><span class="cell-label">УРОВЕНЬ</span><span>Уверенные</span></div><div class="sch-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-txt">$3000</span></div><a href="sumba-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a></div>
+            
             <div class="sch-row"><div class="row-bg" style="background-image: url('images/vladivostokwave.jpg');"></div><div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="vladivostok-surf-trip.html" class="trip-link-main">Владивосток</a></div><div class="sch-cell"><span class="cell-label">КОГДА</span><span>Сентябрь</span></div><div class="sch-cell"><span class="cell-label">УРОВЕНЬ</span><span>Новички и продолжающие</span></div><div class="sch-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-txt">$3000</span></div><a href="vladivostok-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a></div>
+            
             <div class="sch-row"><div class="row-bg" style="background-image: url('images/ilyamain.jpg');"></div><div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="mexico-surf-trip.html" class="trip-link-main">Мексика</a></div><div class="sch-cell"><span class="cell-label">КОГДА</span><span>Октябрь</span></div><div class="sch-cell"><span class="cell-label">УРОВЕНЬ</span><span>Уверенные</span></div><div class="sch-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-txt">$3000</span></div><a href="mexico-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a></div>
+            
             <div class="sch-row"><div class="row-bg" style="background-image: url('images/ilyaulu.jpg');"></div><div class="sch-cell"><span class="cell-label">НАПРАВЛЕНИЕ</span><a href="south-africa-surf-trip.html" class="trip-link-main">ЮАР</a></div><div class="sch-cell"><span class="cell-label">КОГДА</span><span>Ноябрь</span></div><div class="sch-cell"><span class="cell-label">УРОВЕНЬ</span><span>Уверенные</span></div><div class="sch-cell"><span class="cell-label">СТОИМОСТЬ</span><span class="price-txt">$3000</span></div><a href="south-africa-surf-trip.html" class="btn-more">ПОДРОБНЕЕ</a></div>
         </div>
     </section>
 
     <section id="work" style="background: #080808; padding: 120px 15%;">
         <div class="grid-2">
-            <a href="surf-coaching-bali.html" class="card"><div style="margin-bottom:30px;"><h3>PRIVATE <span style="color:var(--accent);">COACHING</span></h3><p style="font-size:0.7rem; opacity:0.5;">индивидуальное обучение</p></div><div class="img-wrap"><img src="images/ilyaulu.jpg"></div></a>
-            <a href="surf-guiding-bali.html" class="card"><div style="margin-bottom:30px;"><h3>SURF <span style="color:var(--accent);">GUIDING</span></h3><p style="font-size:0.7rem; opacity:0.5;">сопровождение на споты</p></div><div class="img-wrap"><img src="images/ilyafoil.jpg"></div></a>
+            <a href="surf-coaching-bali.html" class="card">
+                <div style="margin-bottom:30px; text-align: center;">
+                    <h3 style="font-weight: 400; letter-spacing: 5px;">PRIVATE <span style="color:var(--accent);">COACHING</span></h3>
+                    <p style="font-size:0.7rem; opacity:0.5; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px;">индивидуальное обучение</p>
+                </div>
+                <div class="img-wrap"><img src="images/ilyaulu.jpg"></div>
+            </a>
+            <a href="surf-guiding-bali.html" class="card">
+                <div style="margin-bottom:30px; text-align: center;">
+                    <h3 style="font-weight: 400; letter-spacing: 5px;">SURF <span style="color:var(--accent);">GUIDING</span></h3>
+                    <p style="font-size:0.7rem; opacity:0.5; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px;">сопровождение на споты</p>
+                </div>
+                <div class="img-wrap"><img src="images/ilyafoil.jpg"></div>
+            </a>
         </div>
     </section>
 
     <section id="shop" style="padding: 120px 10%;">
         <h2 style="text-align:center; text-transform:uppercase; letter-spacing:10px; margin-bottom:80px; font-weight:200;">МАГАЗИН</h2>
         <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:40px; max-width:1200px; margin:0 auto;" class="grid-mobile">
-            <a href="surf-shop.html" class="card"><div class="img-wrap" style="background:#050505; display:flex; align-items:center; justify-content:center;"><img src="images/tshirt.jpg" style="width:75%; object-fit:contain;"></div><h4 style="margin-top:20px; font-size:0.7rem; letter-spacing:2px;">TEE <span style="color:var(--accent);">— 4 500 ₽</span></h4></a>
-            <a href="surf-shop.html" class="card"><div class="img-wrap" style="background:#050505; display:flex; align-items:center; justify-content:center;"><img src="images/lycra.jpg" style="width:75%; object-fit:contain;"></div><h4 style="margin-top:20px; font-size:0.7rem; letter-spacing:2px;">LYCRA <span style="color:var(--accent);">— 6 200 ₽</span></h4></a>
-            <a href="surf-shop.html" class="card"><div class="img-wrap" style="background:#050505; display:flex; align-items:center; justify-content:center;"><img src="images/glo.jpg" style="width:75%; object-fit:contain;"></div><h4 style="margin-top:20px; font-size:0.7rem; letter-spacing:2px;">GUN BOARD <span style="color:var(--accent);">— 120 000 ₽</span></h4></a>
+            <a href="surf-shop.html" class="card">
+                <div class="img-wrap" style="background:#050505; display:flex; align-items:center; justify-content:center;"><img src="images/tshirt.jpg" style="width:75%; object-fit:contain;"></div>
+                <h4 style="margin-top:20px; font-size:0.7rem; letter-spacing:2px; text-align: center;">TEE <span style="color:var(--accent);">— 4 500 ₽</span></h4>
+            </a>
+            <a href="surf-shop.html" class="card">
+                <div class="img-wrap" style="background:#050505; display:flex; align-items:center; justify-content:center;"><img src="images/lycra.jpg" style="width:75%; object-fit:contain;"></div>
+                <h4 style="margin-top:20px; font-size:0.7rem; letter-spacing:2px; text-align: center;">LYCRA <span style="color:var(--accent);">— 6 200 ₽</span></h4>
+            </a>
+            <a href="surf-shop.html" class="card">
+                <div class="img-wrap" style="background:#050505; display:flex; align-items:center; justify-content:center;"><img src="images/glo.jpg" style="width:75%; object-fit:contain;"></div>
+                <h4 style="margin-top:20px; font-size:0.7rem; letter-spacing:2px; text-align: center;">GUN BOARD <span style="color:var(--accent);">— 120 000 ₽</span></h4>
+            </a>
         </div>
     </section>
 
     <section id="journal" style="background:#050505; padding:120px 15%;">
         <h2 style="text-align:center; text-transform:uppercase; letter-spacing:10px; margin-bottom:80px; font-weight:200;">СЕРФ ЖУРНАЛ</h2>
         <div class="grid-2">
-            <a href="article-fear.html" class="card"><div class="img-wrap"><img src="images/ilyastungun.jpg"></div><h4 style="margin-top:20px;">Психология страха</h4></a>
-            <a href="article-japan.html" class="card"><div class="img-wrap"><img src="images/vladivostokwave.jpg"></div><h4 style="margin-top:20px;">Японское море</h4></a>
-            <a href="article-gear.html" class="card"><div class="img-wrap"><img src="images/ilyamain.jpg"></div><h4 style="margin-top:20px;">Экипировка</h4></a>
-            <a href="article-ocean.html" class="card"><div class="img-wrap"><img src="images/ilyaulu.jpg"></div><h4 style="margin-top:20px;">Философия океана</h4></a>
+            <a href="article-fear.html" class="card">
+                <div class="img-wrap"><img src="images/ilyastungun.jpg"></div>
+                <div class="journal-info">
+                    <h4>Психология страха</h4>
+                    <p>Как работать с инстинктами на больших волнах и превращать панику в рабочий инструмент.</p>
+                </div>
+            </a>
+            <a href="article-japan.html" class="card">
+                <div class="img-wrap"><img src="images/vladivostokwave.jpg"></div>
+                <div class="journal-info">
+                    <h4>Японское море</h4>
+                    <p>Гид по диким спотам Дальнего Востока: когда ехать и чего ожидать от холодной воды.</p>
+                </div>
+            </a>
+            <a href="article-gear.html" class="card">
+                <div class="img-wrap"><img src="images/ilyamain.jpg"></div>
+                <div class="journal-info">
+                    <h4>Экипировка</h4>
+                    <p>Разбор матчасти: от выбора правильного лишa до специфики досок для тау-серфинга.</p>
+                </div>
+            </a>
+            <a href="article-ocean.html" class="card">
+                <div class="img-wrap"><img src="images/ilyaulu.jpg"></div>
+                <div class="journal-info">
+                    <h4>Философия океана</h4>
+                    <p>Почему серфинг на больших волнах — это не спорт, а путь к самопознанию.</p>
+                </div>
+            </a>
         </div>
     </section>
 
@@ -216,22 +274,31 @@
             <a href="https://instagram.com/chaika_ilya">INSTAGRAM</a>
             <a href="https://youtube.com/@chaika_ilya">YOUTUBE</a>
         </div>
-        <div style="font-size:0.9rem; letter-spacing:6px; text-transform:uppercase;">ILYA CHAIKA // BIG WAVE ATHLETE</div>
+        <div style="font-size:0.9rem; letter-spacing:6px; text-transform:uppercase; font-weight: 300;">ILYA CHAIKA // BIG WAVE ATHLETE</div>
         <div style="font-size:0.6rem; letter-spacing:3px; text-transform:uppercase; opacity:0.4; margin-top:10px;">PROFESSIONAL SURF COACHING & SURF TRIPS // 2026</div>
-        <p class="legal">* Instagram принадлежит компании Meta, признанной экстремистской организацией и запрещенной на территории РФ.</p>
+        <p style="font-size: 0.5rem; opacity: 0.2; margin-top: 40px; text-transform: uppercase; letter-spacing: 1px;">* Instagram принадлежит компании Meta, признанной экстремистской организацией и запрещенной на территории РФ.</p>
     </footer>
 
     <script>
         function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
         function togglePanel() { document.getElementById('panel').classList.toggle('open'); document.getElementById('overlay').classList.toggle('open'); }
         
+        // Плавное проявление при скролле для мобилок
         const obs = new IntersectionObserver((entries) => {
             entries.forEach(e => {
-                if (e.isIntersecting) e.target.classList.add('in-view');
-                else e.target.classList.remove('in-view');
+                if (e.isIntersecting) {
+                    e.target.style.opacity = '1';
+                    e.target.style.transform = 'translateY(0)';
+                }
             });
-        }, { threshold: 0.5 });
-        document.querySelectorAll('.card').forEach(c => obs.observe(c));
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.card').forEach(c => {
+            c.style.opacity = '0';
+            c.style.transform = 'translateY(20px)';
+            c.style.transition = '0.6s ease';
+            obs.observe(c);
+        });
     </script>
 </body>
 </html>
