@@ -77,11 +77,11 @@
         }
         .btn-more:hover { border-color: var(--accent); color: var(--accent); }
 
-        /* ГРИДЫ */
+        /* КАРТОЧКИ: ОБУЧЕНИЕ, МАГАЗИН, ЖУРНАЛ */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
         .card { text-decoration: none; color: inherit; display: flex; flex-direction: column; }
         .img-wrap { width: 100%; aspect-ratio: 1/1; overflow: hidden; background: #111; }
-        .img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0s; }
+        .img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.4s ease; } /* Плавность для мобильного скролла */
         .card:hover .img-wrap img { filter: grayscale(0); }
 
         .shop-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
@@ -99,16 +99,40 @@
         .social-links a:hover { opacity: 1; }
         .legal { font-size: 0.5rem; opacity: 0.15; margin-top: 60px; }
 
-        /* АДАПТИВНОСТЬ (MOBILE) */
+        /* ========================================== */
+        /* ТОПОВАЯ МОБИЛЬНАЯ ВЕРСИЯ (CUTTING EDGE UX) */
+        /* ========================================== */
         @media (max-width: 900px) {
             .nav-links { display: none; }
-            .media-row { justify-content: center; gap: 30px; }
-            .sch-row { grid-template-columns: 1fr; gap: 15px; padding: 30px 0; text-align: center; }
-            .sch-cell { margin-bottom: 10px; }
-            .grid-2 { grid-template-columns: 1fr; gap: 40px; }
-            .shop-preview { grid-template-columns: 1fr; }
-            .side-panel { width: 100%; }
-            .section-title { font-size: 1.2rem; letter-spacing: 6px; }
+            nav { padding: 15px 5%; }
+            .contact-trigger { top: 12px; right: 5%; padding: 8px 15px; font-size: 0.6rem; }
+            
+            /* Расписание: превращаем в карточки */
+            .sch-row { 
+                grid-template-columns: 1fr; 
+                gap: 5px; 
+                padding: 40px 20px; 
+                text-align: center; 
+                border: 1px solid rgba(255,255,255,0.05);
+                margin-bottom: 20px;
+                background: rgba(255,255,255,0.02);
+            }
+            .sch-cell { margin-bottom: 5px; }
+            .trip-link-main { font-size: 1.4rem; letter-spacing: 4px; }
+            .price-txt { font-size: 1.1rem; color: var(--accent); margin: 10px 0; display: block; }
+            .btn-more { margin-top: 15px; width: 100%; padding: 18px 0; border-color: var(--accent); color: var(--accent); }
+
+            /* Сетки контента */
+            .grid-2, .shop-preview { grid-template-columns: 1fr; gap: 60px; }
+            section { padding: 80px 8% !important; }
+            .section-title { font-size: 1.1rem; letter-spacing: 8px; margin-bottom: 60px; }
+            
+            /* Карточки в мобиле: активное состояние по скроллу (класс .in-view) */
+            .card.in-view img { filter: grayscale(0) !important; }
+            
+            .side-panel { width: 100%; padding: 60px 30px; }
+            .media-row { justify-content: center; gap: 20px; }
+            .media-item { font-size: 0.75rem; letter-spacing: 3px; }
         }
     </style>
 </head>
@@ -156,7 +180,7 @@
     </section>
 
     <section class="schedule-section" id="expeditions">
-        <h2 class="section-title" style="font-size: 1.6rem; text-transform: uppercase; letter-spacing: 12px; margin-bottom: 80px; text-align: center; font-weight: 200;">СЕРФ ТРИПЫ <span style="color:var(--accent);">2026</span></h2>
+        <h2 class="section-title">СЕРФ ТРИПЫ <span style="color:var(--accent);">2026</span></h2>
         <div id="trip-preview"><img src="" id="preview-img" alt=""></div>
         <div class="schedule-table">
             <div class="sch-row" onmouseenter="st('images/ilyastungun.jpg')" onmouseleave="ht()">
@@ -219,7 +243,7 @@
                     <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 10px; letter-spacing: 1px;">профессиональное обучение серфингу, индивидуальная работа</p>
                 </div>
                 <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
-                    <img src="images/ilyaulu.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0s;">
+                    <img src="images/ilyaulu.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.4s;">
                 </div>
             </a>
             <a href="surf-guiding-bali.html" class="card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; max-width: 450px; margin: 0 auto; text-align: center;">
@@ -228,7 +252,7 @@
                     <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 10px; letter-spacing: 1px;">Сопровождение на лучшие споты под контролем эксперта.</p>
                 </div>
                 <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
-                    <img src="images/ilyafoil.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0s;">
+                    <img src="images/ilyafoil.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.4s;">
                 </div>
             </a>
         </div>
@@ -239,19 +263,19 @@
         <div class="shop-preview" style="max-width: 1200px; margin: 0 auto;">
             <a href="surf-shop.html" class="card" style="text-decoration: none; color: inherit; text-align: center;">
                 <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; background: #050505; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid rgba(255,255,255,0.03);">
-                    <img src="images/tshirt.jpg" style="width: 75%; height: auto; object-fit: contain; filter: grayscale(1); transition: 0s;">
+                    <img src="images/tshirt.jpg" style="width: 75%; height: auto; object-fit: contain; filter: grayscale(1); transition: 0.4s;">
                 </div>
                 <h4 style="margin-top: 25px; font-size: 0.7rem; letter-spacing: 3px; font-weight: 300;">SIGNATURE TEE <span style="color: var(--accent);">— 4 500 ₽</span></h4>
             </a>
             <a href="surf-shop.html" class="card" style="text-decoration: none; color: inherit; text-align: center;">
                 <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; background: #050505; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid rgba(255,255,255,0.03);">
-                    <img src="images/lycra.jpg" style="width: 75%; height: auto; object-fit: contain; filter: grayscale(1); transition: 0s;">
+                    <img src="images/lycra.jpg" style="width: 75%; height: auto; object-fit: contain; filter: grayscale(1); transition: 0.4s;">
                 </div>
                 <h4 style="margin-top: 25px; font-size: 0.7rem; letter-spacing: 3px; font-weight: 300;">PRO LYCRA BLACK <span style="color: var(--accent);">— 6 200 ₽</span></h4>
             </a>
             <a href="surf-shop.html" class="card" style="text-decoration: none; color: inherit; text-align: center;">
                 <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; background: #050505; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid rgba(255,255,255,0.03);">
-                    <img src="images/glo.jpg" style="width: 75%; height: auto; object-fit: contain; filter: grayscale(1); transition: 0s;">
+                    <img src="images/glo.jpg" style="width: 75%; height: auto; object-fit: contain; filter: grayscale(1); transition: 0.4s;">
                 </div>
                 <h4 style="margin-top: 25px; font-size: 0.7rem; letter-spacing: 3px; font-weight: 300;">GUN BOARD 9'6 <span style="color: var(--accent);">— 120 000 ₽</span></h4>
             </a>
@@ -263,25 +287,25 @@
         <div class="grid-2" style="max-width: 1200px; margin: 0 auto;">
             <a href="article-fear.html" class="card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; max-width: 450px; margin: 0 auto; text-align: center;">
                 <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
-                    <img src="images/ilyastungun.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0s;">
+                    <img src="images/ilyastungun.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.4s;">
                 </div>
                 <h4 style="margin-top: 30px; letter-spacing: 2.5px; font-weight: 300; font-size: 0.9rem; line-height: 1.4;">Психология страха на больших волнах</h4>
             </a>
             <a href="article-japan.html" class="card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; max-width: 450px; margin: 0 auto; text-align: center;">
                 <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
-                    <img src="images/vladivostokwave.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0s;">
+                    <img src="images/vladivostokwave.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.4s;">
                 </div>
                 <h4 style="margin-top: 30px; letter-spacing: 2.5px; font-weight: 300; font-size: 0.9rem; line-height: 1.4;">Гид по спотам Японского моря</h4>
             </a>
             <a href="article-gear.html" class="card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; max-width: 450px; margin: 0 auto; text-align: center; margin-top: 40px;">
                 <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
-                    <img src="images/ilyamain.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0s;">
+                    <img src="images/ilyamain.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.4s;">
                 </div>
                 <h4 style="margin-top: 30px; letter-spacing: 2.5px; font-weight: 300; font-size: 0.9rem; line-height: 1.4;">Экипировка для экстремального серфинга</h4>
             </a>
             <a href="article-philosophy.html" class="card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; max-width: 450px; margin: 0 auto; text-align: center; margin-top: 40px;">
                 <div class="img-wrap" style="width: 100%; aspect-ratio: 1/1; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
-                    <img src="images/ilyaulu.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0s;">
+                    <img src="images/ilyaulu.jpg" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.4s;">
                 </div>
                 <h4 style="margin-top: 30px; letter-spacing: 2.5px; font-weight: 300; font-size: 0.9rem; line-height: 1.4;">Океан как философия жизни</h4>
             </a>
@@ -317,6 +341,29 @@
             document.getElementById('overlay').classList.toggle('open');
         }
 
+        /* МОБИЛЬНЫЙ ИНТЕРАКТИВ ПО СКРОЛЛУ */
+        const observerOptions = { threshold: 0.55 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    if (window.innerWidth <= 900 && entry.target.classList.contains('sch-row')) {
+                        const bgSrc = entry.target.getAttribute('onmouseenter').match(/'([^']+)'/)[1];
+                        st(bgSrc);
+                    }
+                } else {
+                    entry.target.classList.remove('in-view');
+                    if (window.innerWidth <= 900 && entry.target.classList.contains('sch-row')) {
+                        ht();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .sch-row').forEach(el => observer.observe(el));
+
+        /* ДЕСКТОПНЫЙ ХОВЕР */
         document.querySelectorAll('.card').forEach(card => {
             const img = card.querySelector('img');
             if (img) {
