@@ -53,13 +53,13 @@
         .hero-content { z-index: 3; text-align: center; }
         .hero-content h1 { font-size: clamp(2.5rem, 8vw, 6rem); text-transform: uppercase; letter-spacing: 20px; font-weight: 200; margin-bottom: 15px; }
 
-        /* ПРЕССА С ЛОГОТИПАМИ */
-        .media-section { background: #000; padding: 100px 10%; border-bottom: 1px solid #111; position: relative; z-index: 20; }
-        .media-grid { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; gap: 60px; }
-        .media-item { display: block; flex: 1; max-width: 180px; transition: 0s; filter: brightness(10) grayscale(1); opacity: 0.5; }
-        /* Магический фильтр перекраски в голубой при наведении */
-        .media-item:hover { opacity: 1; filter: invert(85%) sepia(12%) saturate(1257%) hue-rotate(165deg) brightness(108%) contrast(101%); }
-        .media-item img { width: 100%; height: auto; }
+      /* ПРЕССА С ЛОГОТИПАМИ */
+.media-section { background: #000; padding: 100px 10%; border-bottom: 1px solid #111; position: relative; z-index: 20; }
+.media-grid { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; gap: 60px; }
+.media-item { display: block; flex: 1; max-width: 160px; transition: 0.2s ease; opacity: 0.4; filter: none; }
+/* Магический фильтр перекраски в голубой при наведении */
+.media-item:hover { opacity: 1; filter: invert(85%) sepia(12%) saturate(1257%) hue-rotate(165deg) brightness(108%) contrast(101%); }
+.media-item img { width: 100%; height: auto; display: block; }
 
         /* РАСПИСАНИЕ REVEAL */
         .schedule-section { position: relative; padding: 120px 10%; background: #0a0a0a; z-index: 10; }
