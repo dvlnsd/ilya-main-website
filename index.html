@@ -3,115 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilya Chaika | Big Wave Athlete</title>
+    <title>Илья Чайка | Big Wave Athlete</title>
     <style>
         :root { --accent: #a0e9ff; --bg: #0a0a0a; --white: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--white); line-height: 1.5; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        
+        /* Убираем стандартные цвета ссылок навсегда */
+        a { color: inherit; text-decoration: none; }
+        a:visited { color: inherit; }
 
         /* NAVIGATION DESKTOP */
-        nav { position: fixed; top: 0; width: 100%; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(15, 15, 15, 0.75); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(255,255,255,0.03); }
-        .nav-links { display: flex; gap: 35px; position: absolute; left: 50%; transform: translateX(-50%); }
-        .nav-links a { color: #fff; text-decoration: none; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; transition: 0.2s; }
+        nav { position: fixed; top: 0; width: 100%; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-links { display: flex; gap: 40px; position: absolute; left: 50%; transform: translateX(-50%); }
+        .nav-links a { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.5; transition: 0.1s; }
         .nav-links a:hover { opacity: 1; color: var(--accent); }
-        .btn-contact { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 9px 22px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.1s; font-weight: 500; }
+        .btn-contact { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 10px 22px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.1s; font-weight: 500; }
         .btn-contact:hover { background: var(--accent); color: #000; }
 
-        /* SIDE PANEL - LUXURY REDESIGN */
-        .side-panel { 
-            position: fixed; top: 0; right: -100%; width: 450px; height: 100vh; 
-            background: #0d0d0d; z-index: 2000; padding: 80px 50px; 
-            transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1); 
-            border-left: 1px solid rgba(255,255,255,0.05); 
-            display: flex; flex-direction: column;
-        }
+        /* SIDE PANEL */
+        .side-panel { position: fixed; top: 0; right: -100%; width: 450px; height: 100vh; background: #0d0d0d; z-index: 2000; padding: 80px 50px; transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1); border-left: 1px solid rgba(255,255,255,0.05); }
         .side-panel.active { right: 0; }
         .side-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1999; display: none; backdrop-filter: blur(10px); }
         .side-overlay.active { display: block; }
-
-        .panel-close { 
-            cursor: pointer; color: var(--accent); font-size: 0.6rem; 
-            letter-spacing: 3px; text-transform: uppercase; margin-bottom: 60px; 
-            opacity: 0.6; transition: 0.2s;
-        }
-        .panel-close:hover { opacity: 1; letter-spacing: 4px; }
-
-        .form-title { font-weight: 200; letter-spacing: 6px; color: var(--white); font-size: 1.8rem; text-transform: uppercase; margin-bottom: 15px; line-height: 1.2; }
-        .form-subtitle { font-size: 0.6rem; opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 50px; line-height: 1.6; max-width: 300px; }
-
-        .contact-form { display: flex; flex-direction: column; gap: 10px; }
-        .form-group { position: relative; margin-bottom: 30px; }
-        .form-input { 
-            width: 100%; background: none; border: none; 
-            border-bottom: 1px solid rgba(255,255,255,0.1); 
-            color: #fff; padding: 15px 0; outline: none; 
-            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
-            transition: 0.3s ease;
-        }
-        .form-input:focus { border-bottom-color: var(--accent); }
-        .form-input::placeholder { color: rgba(255,255,255,0.2); }
-        
-        textarea.form-input { resize: none; min-height: 100px; text-transform: none; letter-spacing: 1px; }
-
-        .btn-send { 
-            width: 100%; background: var(--accent); color: #000; border: none; 
-            padding: 22px; cursor: pointer; text-transform: uppercase; 
-            letter-spacing: 4px; font-weight: 700; font-size: 0.7rem; 
-            margin-top: 20px; transition: 0.3s;
-        }
-        .btn-send:hover { background: #fff; letter-spacing: 5px; }
+        .panel-close { cursor: pointer; color: var(--accent); font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 60px; display: block; }
 
         /* HERO */
         .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: #000; }
-        .hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); z-index: 1; filter: brightness(0.4) contrast(1.1); object-fit: cover; }
+        .hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); z-index: 1; filter: brightness(0.4); object-fit: cover; }
         .hero-content { z-index: 3; text-align: center; }
-        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 6rem); text-transform: uppercase; letter-spacing: 25px; font-weight: 200; margin-bottom: 10px; color: var(--white); text-shadow: 0 0 30px rgba(160, 233, 255, 0.15); }
-        .hero-content p { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 10px; color: var(--accent); opacity: 0.8; }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 6rem); text-transform: uppercase; letter-spacing: 25px; font-weight: 200; margin-bottom: 15px; }
 
-        /* PRESS */
-        .media-section { background: #000; padding: 70px 10%; border-bottom: 1px solid #111; }
-        .media-grid { display: flex; justify-content: space-around; align-items: center; max-width: 1100px; margin: 0 auto; gap: 60px; }
-        .media-item { display: block; max-width: 150px; opacity: 0.4; transition: 0.1s; }
+        /* MEDIA GRID */
+        .media-section { background: #000; padding: 80px 10%; border-bottom: 1px solid #111; }
+        .media-grid { display: flex; justify-content: space-around; align-items: center; max-width: 1200px; margin: 0 auto; gap: 50px; }
+        .media-item { display: block; flex: 1; max-width: 150px; opacity: 0.4; transition: 0.1s; }
         .media-item:hover { opacity: 1; filter: invert(85%) sepia(12%) saturate(1257%) hue-rotate(165deg) brightness(108%) contrast(101%); }
         .media-item img { width: 100%; height: 45px; object-fit: contain; }
 
-        /* SCHEDULE */
+        /* SCHEDULE - FULL WIDTH BACKGROUND REVEAL */
         .schedule-section { padding: 100px 10%; background: #0a0a0a; }
-        .sch-row { position: relative; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; padding: 40px 30px; transition: 0.1s; overflow: hidden; text-decoration: none; color: inherit; }
+        .sch-row { position: relative; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; padding: 40px 30px; transition: 0.1s; overflow: hidden; }
         .row-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-size: cover; background-position: center; opacity: 0; transition: 0.2s ease; filter: brightness(0.3); }
         .sch-row:hover .row-bg { opacity: 1; }
+        .sch-row:hover { border-bottom-color: var(--accent); }
         .sch-col-month { width: 15%; }
         .sch-col-loc { width: 45%; }
         .sch-col-price { width: 20%; text-align: right; padding-right: 40px; }
         .sch-col-btn { width: 20%; text-align: right; }
         .cell-label { font-size: 0.5rem; text-transform: uppercase; opacity: 0.2; letter-spacing: 2px; margin-bottom: 8px; display: block; }
-        .trip-title { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; color: var(--white); transition: 0.1s; }
+        .trip-title { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.1s; }
         .sch-row:hover .trip-title { color: var(--accent); }
-        .btn-plan { color: var(--white); text-decoration: none; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.2); padding: 12px 25px; transition: 0.1s; }
+        .btn-plan { border: 1px solid rgba(255,255,255,0.2); padding: 12px 25px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.1s; }
         .sch-row:hover .btn-plan { border-color: var(--accent); color: var(--accent); }
 
-        /* SHOP & JOURNAL GRIDS */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1100px; margin: 0 auto; }
-        .shop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1100px; margin: 0 auto; }
-        .journal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        /* GRIDS (SHOP/JOURNAL) */
         .img-box { width: 100%; aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid #1a1a1a; margin-bottom: 20px; }
         .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) brightness(0.6); transition: 0.1s; }
-        .card:hover img, .shop-card:hover img, .journal-card:hover img { filter: grayscale(0) brightness(1); }
+        .card:hover img { filter: grayscale(0) brightness(1); }
 
-        /* MOBILE UI */
+        /* MOBILE BURGER */
         .burger { display: none; position: fixed; top: 20px; left: 8%; z-index: 1010; cursor: pointer; flex-direction: column; gap: 6px; }
         .burger span { width: 25px; height: 1px; background: #fff; }
-        .sticky-booking { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--accent); color: #000; text-align: center; padding: 22px; text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; z-index: 1005; }
+        .mobile-menu { position: fixed; top: 0; left: -100%; width: 100%; height: 100vh; background: #000; z-index: 1009; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 30px; transition: 0.5s; }
+        .mobile-menu.active { left: 0; }
+        .mobile-menu a { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 200; }
+
+        /* STICKY CTA MOBILE */
+        .sticky-booking { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--accent); color: #000; text-align: center; padding: 22px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; z-index: 1005; }
 
         @media (max-width: 900px) {
             nav { display: none; }
             .burger { display: flex; }
             .sticky-booking { display: block; }
-            .sch-row { flex-direction: column; align-items: flex-start; padding: 0 0 30px 0; background: #0d0d0d; margin-bottom: 20px; }
-            .sch-col-month, .sch-col-loc, .sch-col-price, .sch-col-btn { width: 100%; padding: 0 25px; margin-bottom: 10px; text-align: left; }
-            .row-bg { position: relative; opacity: 1; height: 200px; }
-            .journal-grid, .shop-grid, .grid-2 { grid-template-columns: 1fr; }
-            .side-panel { width: 100%; padding: 60px 30px; }
+            .media-grid { grid-template-columns: 1fr 1fr; display: grid; gap: 20px; }
+            .sch-row { flex-direction: column; align-items: flex-start; padding: 0 0 30px 0; background: #0d0d0d; margin-bottom: 20px; border: 1px solid #1a1a1a; }
+            .row-bg { position: relative; opacity: 1; height: 220px; }
+            .sch-col-month, .sch-col-loc, .sch-col-price, .sch-col-btn { width: 100%; padding: 0 25px; margin-top: 15px; text-align: left; }
+            .btn-plan { display: block; text-align: center; width: calc(100% - 50px); margin: 10px auto; }
+            .grid-services, .shop-grid, .journal-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+            .side-panel { width: 100%; }
             footer { padding-bottom: 120px !important; }
         }
     </style>
@@ -142,20 +113,13 @@
     <div class="side-overlay" id="sideOverlay" onclick="toggleSidePanel()"></div>
     <div class="side-panel" id="sidePanel">
         <span onclick="toggleSidePanel()" class="panel-close">[ закрыть ]</span>
-        <h2 class="form-title">Написать<br>сообщение</h2>
-        <p class="form-subtitle">Здесь вы можете задать вопросы по серф трипам, обучению и коллаборациям</p>
-        
-        <form action="mailto:chaikailya@gmail.com" method="post" enctype="text/plain" class="contact-form">
-            <div class="form-group">
-                <input type="text" name="Name" class="form-input" placeholder="Ваше имя" required>
-            </div>
-            <div class="form-group">
-                <input type="email" name="Email" class="form-input" placeholder="Email адрес" required>
-            </div>
-            <div class="form-group">
-                <textarea name="Message" class="form-input" placeholder="Ваш запрос..." required></textarea>
-            </div>
-            <button type="submit" class="btn-send">Отправить запрос</button>
+        <h2 style="font-weight:200; letter-spacing:5px; color:var(--white); font-size:1.8rem; text-transform:uppercase;">Написать<br>сообщение</h2>
+        <p style="font-size:0.6rem; opacity:0.4; text-transform:uppercase; letter-spacing:2px; margin: 15px 0 50px;">здесь вы можете задать вопросы по серф трипам, обучению и коллаборациям</p>
+        <form action="mailto:chaikailya@gmail.com" method="post" enctype="text/plain" style="display:flex; flex-direction:column; gap:20px;">
+            <input type="text" placeholder="ВАШЕ ИМЯ" required style="width:100%; background:none; border:none; border-bottom:1px solid rgba(255,255,255,0.1); color:#fff; padding:15px 0; outline:none; font-size:0.75rem; letter-spacing:2px;">
+            <input type="email" placeholder="EMAIL" required style="width:100%; background:none; border:none; border-bottom:1px solid rgba(255,255,255,0.1); color:#fff; padding:15px 0; outline:none; font-size:0.75rem; letter-spacing:2px;">
+            <textarea placeholder="ВАШ ЗАПРОС..." rows="4" style="width:100%; background:none; border:none; border-bottom:1px solid rgba(255,255,255,0.1); color:#fff; padding:15px 0; outline:none; font-size:0.75rem; resize:none;"></textarea>
+            <button type="submit" style="width:100%; background:var(--accent); color:#000; border:none; padding:22px; cursor:pointer; text-transform:uppercase; letter-spacing:4px; font-weight:700; font-size:0.7rem; margin-top:20px;">ОТПРАВИТЬ ЗАПРОС</button>
         </form>
     </div>
 
@@ -163,26 +127,27 @@
         <video autoplay muted loop playsinline class="hero-video"><source src="images/video1.mp4" type="video/mp4"></video>
         <div class="hero-content">
             <h1>ILYA CHAIKA</h1>
-            <p>BIG WAVE ATHLETE // ELITE SURF EXPEDITIONS</p>
+            <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:10px; color:var(--accent);">BIG WAVE ATHLETE // ELITE SURF EXPEDITIONS</p>
         </div>
     </header>
 
     <section class="media-section">
         <div class="media-grid">
-            <a href="https://forbes.ru" target="_blank" class="media-item"><img src="images/pressforbes.svg"></a>
-            <a href="https://championat.com" target="_blank" class="media-item"><img src="images/presschampionat.svg"></a>
-            <a href="https://vokrugsveta.ru" target="_blank" class="media-item"><img src="images/pressvokrugsveta.svg"></a>
-            <a href="https://mentoday.ru" target="_blank" class="media-item"><img src="images/pressmentoday.svg"></a>
+            <a href="https://www.forbes.ru/forbeslife/543538-serfing-novyj-netvorking-kak-sport-korolej-stal-popularnym-u-predprinimatelej" target="_blank" class="media-item"><img src="images/pressforbes.svg"></a>
+            <a href="https://www.championat.com/lifestyle/article-6084332-chto-takoe-sapsyorfing-otvechaet-professionalnyj-sportsmen.html" target="_blank" class="media-item"><img src="images/presschampionat.svg"></a>
+            <a href="https://www.vokrugsveta.ru/history/vysotoi-s-devyatietazhku-6-samykh-bolshikh-voln-v-mire-na-kotorykh-katayutsya-serfery-id6355397/" target="_blank" class="media-item"><img src="images/pressvokrugsveta.svg"></a>
+            <a href="https://www.mentoday.ru/entertainment/sport/kak-stat-serferom-esli-ty-iz-rossii/" target="_blank" class="media-item"><img src="images/pressmentoday.svg"></a>
         </div>
     </section>
 
     <section class="schedule-section">
         <h2 style="text-align:center; text-transform:uppercase; letter-spacing:15px; margin-bottom:80px; font-weight:200;">ЭКСПЕДИЦИИ <span style="color:var(--accent);">2026</span></h2>
+        
         <div class="schedule-container">
             <a href="g-land-surf-trip.html" class="sch-row">
                 <div class="row-bg" style="background-image: url('images/ilyastungun.jpg');"></div>
                 <div class="sch-col-month"><span class="cell-label">МЕСЯЦ</span><span style="font-weight:700;">МАЙ</span></div>
-                <div class="sch-col-loc"><span class="cell-label">ЛОКАЦИЯ</span><span class="trip-title">G-LAND (JAVA)</span></div>
+                <div class="sch-col-loc"><span class="cell-label">ЛОКАЦИЯ</span><span class="trip-title">G-LAND (ЯВА)</span></div>
                 <div class="sch-col-price"><span style="font-size:0.9rem; opacity:0.4;">3000 USD</span></div>
                 <div class="sch-col-btn"><span class="btn-plan">ПЛАН ТРИПА</span></div>
             </a>
@@ -231,54 +196,34 @@
         </div>
     </section>
 
-    <section style="padding: 100px 10%; background:#000; border-top:1px solid #111;">
+    <section style="padding: 100px 10%; background:#000;">
         <h2 style="text-align:center; text-transform:uppercase; letter-spacing:10px; margin-bottom:60px; font-weight:200;">МАГАЗИН</h2>
-        <div class="shop-grid">
-            <div class="shop-card">
-                <div class="img-box"><img src="images/tshirt.jpg"></div>
-                <h4 style="text-align:center; font-size:0.6rem; letter-spacing:2px;">TEE — 4500 ₽</h4>
-            </div>
-            <div class="shop-card">
-                <div class="img-box"><img src="images/lycra.jpg"></div>
-                <h4>LYCRA — 6200 ₽</h4>
-            </div>
-            <div class="shop-card">
-                <div class="img-box"><img src="images/glo.jpg"></div>
-                <h4>BOARD — 120 000 ₽</h4>
-            </div>
+        <div class="shop-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:40px; max-width:1100px; margin:0 auto;">
+            <a href="surf-shop.html" class="card"><div class="img-box"><img src="images/tshirt.jpg"></div><h4 style="text-align:center; font-size:0.6rem; letter-spacing:2px;">TEE — 4500 ₽</h4></a>
+            <a href="surf-shop.html" class="card"><div class="img-box"><img src="images/lycra.jpg"></div><h4 style="text-align:center; font-size:0.6rem; letter-spacing:2px;">LYCRA — 6200 ₽</h4></a>
+            <a href="surf-shop.html" class="card"><div class="img-box"><img src="images/glo.jpg"></div><h4 style="text-align:center; font-size:0.6rem; letter-spacing:2px;">BOARD — 120 000 ₽</h4></a>
         </div>
     </section>
 
     <section style="padding: 100px 10%; background:#050505;">
         <h2 style="text-align:center; text-transform:uppercase; letter-spacing:10px; margin-bottom:60px; font-weight:200;">СЕРФ-ЖУРНАЛ</h2>
-        <div class="journal-grid">
-            <a href="article-indonesia.html" class="journal-card" style="text-decoration:none; color:inherit;">
-                <div class="img-box"><img src="images/ilyastungun.jpg"></div>
-                <h4>ИНДОНЕЗИЯ</h4>
-            </a>
-            <a href="article-training.html" class="journal-card" style="text-decoration:none; color:inherit;">
-                <div class="img-box"><img src="images/ilyafoil.jpg"></div>
-                <h4>ПОДГОТОВКА</h4>
-            </a>
-            <a href="article-gear.html" class="journal-card" style="text-decoration:none; color:inherit;">
-                <div class="img-box"><img src="images/ilyamain.jpg"></div>
-                <h4>ЭКИПИРОВКА</h4>
-            </a>
-            <a href="article-ocean.html" class="journal-card" style="text-decoration:none; color:inherit;">
-                <div class="img-box"><img src="images/ilyaulu.jpg"></div>
-                <h4>ФИЛОСОФИЯ</h4>
-            </a>
+        <div class="journal-grid" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:20px; max-width:1200px; margin:0 auto;">
+            <a href="article-indonesia.html" class="card"><div class="img-box"><img src="images/ilyastungun.jpg"></div><h4 style="text-align:center; font-size:0.6rem; letter-spacing:2px;">ИНДОНЕЗИЯ</h4></a>
+            <a href="article-training.html" class="card"><div class="img-box"><img src="images/ilyafoil.jpg"></div><h4 style="text-align:center; font-size:0.6rem; letter-spacing:2px;">ПОДГОТОВКА</h4></a>
+            <a href="article-gear.html" class="card"><div class="img-box"><img src="images/ilyamain.jpg"></div><h4 style="text-align:center; font-size:0.6rem; letter-spacing:2px;">ЭКИПИРОВКА</h4></a>
+            <a href="article-ocean.html" class="card"><div class="img-box"><img src="images/ilyaulu.jpg"></div><h4 style="text-align:center; font-size:0.6rem; letter-spacing:2px;">ФИЛОСОФИЯ</h4></a>
         </div>
     </section>
 
     <footer style="padding: 80px 10% 120px; text-align: center; border-top: 1px solid #111;">
-        <h2 style="font-size:1.3rem; letter-spacing:10px; font-weight:200; text-transform:uppercase;">ILYA CHAIKA</h2>
-        <div style="display:flex; justify-content:center; gap:40px; margin:40px 0;">
-            <a href="https://t.me/Chaika_Ilya" style="color:var(--accent); text-decoration:none; font-size:0.7rem; letter-spacing:2px;">TELEGRAM</a>
-            <a href="https://instagram.com/chaika_ilya" target="_blank" style="color:var(--accent); text-decoration:none; font-size:0.7rem; letter-spacing:2px;">INSTAGRAM</a>
-            <a href="https://youtube.com/@chaika_ilya" target="_blank" style="color:var(--accent); text-decoration:none; font-size:0.7rem; letter-spacing:2px;">YOUTUBE</a>
+        <h2 style="font-size:1.6rem; letter-spacing:12px; font-weight:200; text-transform:uppercase; margin-bottom:10px;">ИЛЬЯ ЧАЙКА</h2>
+        <p style="font-size:0.65rem; letter-spacing:4px; opacity:0.4; text-transform:uppercase; margin-bottom:40px;">серфер l серф-коуч l организатор серф-трипов</p>
+        <div style="display:flex; justify-content:center; gap:40px; margin-bottom:50px;">
+            <a href="https://t.me/Chaika_Ilya" style="color:var(--accent); text-transform:uppercase; font-size:0.75rem; letter-spacing:2px;">Telegram</a>
+            <a href="https://instagram.com/chaika_ilya" target="_blank" style="color:var(--accent); text-transform:uppercase; font-size:0.75rem; letter-spacing:2px;">Instagram</a>
+            <a href="https://youtube.com/@chaika_ilya" target="_blank" style="color:var(--accent); text-transform:uppercase; font-size:0.75rem; letter-spacing:2px;">YouTube</a>
         </div>
-        <p style="font-size:0.45rem; opacity:0.2; text-transform:uppercase; letter-spacing:1px; max-width:600px; margin:0 auto; line-height:2;">* Instagram принадлежит компании Meta, запрещенной в РФ.</p>
+        <p style="font-size:0.45rem; opacity:0.2; text-transform:uppercase; letter-spacing:1px; max-width:600px; margin:0 auto; line-height:2;">* Instagram принадлежит компании Meta, признанной экстремистской организацией и запрещенной на территории РФ.</p>
     </footer>
 
     <script>
