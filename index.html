@@ -31,16 +31,16 @@
         .hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); z-index: 1; filter: brightness(0.4); object-fit: cover; }
         .hero-content { z-index: 3; text-align: center; }
         .hero-content h1 { font-size: clamp(2.5rem, 8vw, 6rem); text-transform: uppercase; letter-spacing: 25px; font-weight: 200; margin-bottom: 15px; }
-        .hero-content p { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 8px; color: var(--accent); opacity: 0.9; }
+        .hero-content p { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 10px; color: var(--accent); opacity: 0.9; }
 
-        /* MEDIA */
+        /* PRESS */
         .media-section { background: #000; padding: 60px 10%; border-bottom: 1px solid #111; }
         .media-grid { display: flex; justify-content: space-around; align-items: center; max-width: 1100px; margin: 0 auto; gap: 40px; }
         .media-item { display: block; max-width: 140px; opacity: 0.4; transition: 0.1s; }
         .media-item:hover { opacity: 1; filter: invert(85%) sepia(12%) saturate(1257%) hue-rotate(165deg) brightness(108%) contrast(101%); }
         .media-item img { width: 100%; height: 40px; object-fit: contain; }
 
-        /* SURF TRIPS - THE REVEAL EFFECT */
+        /* SURF TRIPS - REVEAL EFFECT */
         .schedule-section { padding: 100px 8%; background: #0a0a0a; position: relative; }
         .sch-row { position: relative; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; padding: 40px 30px; transition: 0.1s; overflow: hidden; z-index: 1; }
         .row-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-size: cover; background-position: center; opacity: 0; transition: 0.3s ease; filter: brightness(0.35); pointer-events: none; }
@@ -53,30 +53,33 @@
         .btn-plan { border: 1px solid rgba(255,255,255,0.2); padding: 10px 20px; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.2s; display: inline-block; }
 
         /* GRIDS */
+        .grid-services { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1100px; margin: 0 auto; }
+        .shop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1100px; margin: 0 auto; }
+        .journal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
         .img-box { width: 100%; aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid #1a1a1a; margin-bottom: 20px; }
         .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) brightness(0.6); transition: 0.1s; }
         .card:hover img { filter: grayscale(0) brightness(1); }
 
-        /* MOBILE MENU & UI */
+        /* MOBILE UI */
         .burger { display: none; position: fixed; top: 20px; left: 8%; z-index: 1010; cursor: pointer; flex-direction: column; gap: 6px; }
         .burger span { width: 25px; height: 1px; background: #fff; }
         .mobile-menu { position: fixed; top: 0; left: -100%; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(15px); z-index: 1009; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 30px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); }
         .mobile-menu.active { left: 0; }
         .mobile-menu a { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 200; }
         .menu-back { position: absolute; top: 20px; left: 8%; color: var(--accent); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; }
-
         .sticky-booking { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: #1a1a1a; color: var(--accent); text-align: center; padding: 22px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; z-index: 1005; border-top: 1px solid rgba(160, 233, 255, 0.1); }
 
         @media (max-width: 900px) {
             nav { display: none; } .burger { display: flex; } .sticky-booking { display: block; }
-            .sch-row { flex-direction: column; align-items: center; padding: 40px 20px; text-align: center; background: #0d0d0d; margin-bottom: 15px; }
+            .sch-row { flex-direction: column; align-items: center; padding: 40px 20px; text-align: center; background: #0d0d0d; margin-bottom: 15px; border: 1px solid #1a1a1a; }
             .row-bg { position: relative; opacity: 1; height: 200px; width: calc(100% + 40px); margin: -40px 0 20px 0; }
             .col-dir, .col-date, .col-lvl, .col-price, .col-btn { width: 100%; text-align: center; margin-bottom: 10px; }
-            .grid-services { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 0 15px; }
-            .shop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 10px; }
-            .journal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 0 5px; }
+            .grid-services { grid-template-columns: 1fr 1fr; gap: 15px; padding: 0 15px; }
+            .shop-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 10px; }
+            .journal-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 0 5px; }
             .card h3 { font-size: 0.65rem !important; } .card p { display: none; }
             .side-panel { width: 100%; }
+            footer { padding-bottom: 120px !important; }
         }
     </style>
 </head>
@@ -147,7 +150,7 @@
         </div>
     </section>
 
-    <section style="background: #080808; padding: 100px 10%;">
+    <section style="background: #080808; padding: 120px 10%;">
         <div class="grid-services"><a href="surf-coaching-bali.html" class="card"><div class="img-box"><img src="images/ilyaulu.jpg"></div><h3 style="text-align:center; font-weight:300; letter-spacing:4px; font-size:1.1rem;">PRIVATE COACHING</h3></a><a href="surf-guiding-bali.html" class="card"><div class="img-box"><img src="images/ilyafoil.jpg"></div><h3 style="text-align:center; font-weight:300; letter-spacing:4px; font-size:1.1rem;">SURF GUIDING</h3></a></div>
     </section>
 
