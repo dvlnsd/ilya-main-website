@@ -10,20 +10,19 @@
         body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--white); line-height: 1.5; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
         
         a { color: inherit; text-decoration: none; }
-        a:visited { color: inherit; }
 
         /* NAVIGATION DESKTOP */
-        nav { position: fixed; top: 0; width: 100%; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        nav { position: fixed; top: 0; width: 100%; padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
         .nav-links { display: flex; gap: 40px; position: absolute; left: 50%; transform: translateX(-50%); }
         .nav-links a { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.5; transition: 0.1s; }
         .nav-links a:hover { opacity: 1; color: var(--accent); }
         .btn-contact { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 10px 22px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.1s; font-weight: 500; }
         .btn-contact:hover { background: var(--accent); color: #000; }
 
-        /* SIDE PANEL */
-        .side-panel { position: fixed; top: 0; right: -100%; width: 450px; height: 100vh; background: #0d0d0d; z-index: 2000; padding: 80px 50px; transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1); border-left: 1px solid rgba(255,255,255,0.05); }
+        /* SIDE PANEL - НЕ СКРЫВАЕТ СТРАНИЦУ ПОЛНОСТЬЮ */
+        .side-panel { position: fixed; top: 0; right: -100%; width: 450px; height: 100vh; background: rgba(13, 13, 13, 0.95); backdrop-filter: blur(15px); z-index: 2000; padding: 80px 50px; transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1); border-left: 1px solid rgba(255,255,255,0.05); }
         .side-panel.active { right: 0; }
-        .side-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1999; display: none; backdrop-filter: blur(10px); }
+        .side-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 1999; display: none; }
         .side-overlay.active { display: block; }
         .panel-close { cursor: pointer; color: var(--accent); font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 60px; display: block; }
 
@@ -31,20 +30,20 @@
         .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: #000; }
         .hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); z-index: 1; filter: brightness(0.4); object-fit: cover; }
         .hero-content { z-index: 3; text-align: center; }
-        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 6rem); text-transform: uppercase; letter-spacing: 25px; font-weight: 200; margin-bottom: 10px; }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 6rem); text-transform: uppercase; letter-spacing: 25px; font-weight: 200; margin-bottom: 15px; }
         .hero-content p { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 8px; color: var(--accent); opacity: 0.9; }
 
-        /* MEDIA GRID */
+        /* MEDIA */
         .media-section { background: #000; padding: 60px 10%; border-bottom: 1px solid #111; }
         .media-grid { display: flex; justify-content: space-around; align-items: center; max-width: 1100px; margin: 0 auto; gap: 40px; }
         .media-item { display: block; max-width: 140px; opacity: 0.4; transition: 0.1s; }
         .media-item:hover { opacity: 1; filter: invert(85%) sepia(12%) saturate(1257%) hue-rotate(165deg) brightness(108%) contrast(101%); }
         .media-item img { width: 100%; height: 40px; object-fit: contain; }
 
-        /* SURF TRIPS TABLE */
+        /* SURF TRIPS - WITH IMAGE REVEAL */
         .schedule-section { padding: 100px 8%; background: #0a0a0a; }
-        .sch-row { position: relative; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; padding: 35px 30px; transition: 0.2s; overflow: hidden; }
-        .row-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-size: cover; background-position: center; opacity: 0; transition: 0.2s ease; filter: brightness(0.3); }
+        .sch-row { position: relative; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; padding: 40px 30px; transition: 0.1s; overflow: hidden; }
+        .row-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-size: cover; background-position: center; opacity: 0; transition: 0.2s ease; filter: brightness(0.35); }
         .sch-row:hover .row-bg { opacity: 1; }
         .sch-row:hover { border-bottom-color: var(--accent); }
         
@@ -54,29 +53,33 @@
         .col-price { width: 15%; text-align: right; }
         .col-btn { width: 15%; text-align: right; }
 
-        .trip-title { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 300; }
+        .trip-title { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 300; transition: 0.2s; }
+        .sch-row:hover .trip-title { color: var(--accent); }
         .trip-sub { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; }
         .btn-plan { border: 1px solid rgba(255,255,255,0.2); padding: 10px 20px; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.2s; display: inline-block; }
         .sch-row:hover .btn-plan { border-color: var(--accent); color: var(--accent); background: rgba(160, 233, 255, 0.05); }
 
-        /* GRIDS (SERVICES/SHOP/JOURNAL) */
+        /* GRIDS */
         .img-box { width: 100%; aspect-ratio: 1/1; overflow: hidden; background: #111; border: 1px solid #1a1a1a; margin-bottom: 20px; }
         .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) brightness(0.6); transition: 0.1s; }
         .card:hover img { filter: grayscale(0) brightness(1); }
 
-        /* MOBILE UI */
+        /* MOBILE MENU - ПРОЗРАЧНОЕ */
         .burger { display: none; position: fixed; top: 20px; left: 8%; z-index: 1010; cursor: pointer; flex-direction: column; gap: 6px; }
         .burger span { width: 25px; height: 1px; background: #fff; }
-        .mobile-menu { position: fixed; top: 0; left: -100%; width: 100%; height: 100vh; background: #000; z-index: 1009; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 30px; transition: 0.5s; }
+        .mobile-menu { position: fixed; top: 0; left: -100%; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(15px); z-index: 1009; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 30px; transition: 0.5s; }
         .mobile-menu.active { left: 0; }
-        .sticky-booking { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--accent); color: #000; text-align: center; padding: 22px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; z-index: 1005; }
+        .mobile-menu a { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 5px; font-weight: 200; }
+
+        /* STICKY CTA MOBILE - ЭЛЕГАНТНЫЙ ТЕМНЫЙ */
+        .sticky-booking { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: #1a1a1a; color: var(--accent); text-align: center; padding: 22px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 4px; font-weight: 700; z-index: 1005; border-top: 1px solid rgba(160, 233, 255, 0.1); }
 
         @media (max-width: 900px) {
             nav { display: none; }
             .burger { display: flex; }
             .sticky-booking { display: block; }
             .sch-row { flex-direction: column; align-items: flex-start; padding: 0 0 30px 0; background: #0d0d0d; margin-bottom: 25px; border: 1px solid #1a1a1a; }
-            .row-bg { position: relative; opacity: 1; height: 220px; }
+            .row-bg { position: relative; opacity: 1; height: 220px; filter: grayscale(0) brightness(0.7); }
             .col-dir, .col-date, .col-lvl, .col-price, .col-btn { width: 100%; padding: 0 25px; text-align: left; margin-top: 10px; }
             .btn-plan { width: calc(100% - 50px); text-align: center; margin: 15px 25px 0; }
             .side-panel { width: 100%; }
@@ -94,7 +97,7 @@
         <a href="surf-shop.html" onclick="toggleMenu()">магазин</a>
     </div>
 
-    <a href="https://t.me/Chaika_Ilya" target="_blank" class="sticky-booking">ЗАБРОНИРОВАТЬ ТРИП</a>
+    <a href="https://t.me/Chaika_Ilya" target="_blank" class="sticky-booking">ЗАБРОНИРОВАТЬ ЭКСПЕДИЦИЮ</a>
 
     <nav>
         <div style="width: 150px;"></div>
@@ -111,9 +114,9 @@
     <div class="side-panel" id="sidePanel">
         <span onclick="toggleSidePanel()" class="panel-close">[ закрыть ]</span>
         <h2 style="font-weight:200; letter-spacing:5px; text-transform:uppercase; font-size:1.8rem; color:#fff;">Написать<br>сообщение</h2>
-        <p style="font-size:0.65rem; opacity:0.5; text-transform:uppercase; letter-spacing:2px; margin: 15px 0 50px;">здесь вы можете задать вопросы по серф трипам, обучению и коллаборациям</p>
+        <p style="font-size:0.6rem; opacity:0.4; text-transform:uppercase; letter-spacing:2px; margin: 15px 0 50px;">здесь вы можете задать вопросы по серф трипам, обучению и коллаборациям</p>
         <form action="mailto:chaikailya@gmail.com" method="post" enctype="text/plain" style="display:flex; flex-direction:column; gap:20px;">
-            <input type="text" placeholder="ИМЯ" required style="width:100%; background:none; border:none; border-bottom:1px solid rgba(255,255,255,0.1); color:#fff; padding:15px 0; outline:none; font-size:0.75rem; letter-spacing:2px;">
+            <input type="text" placeholder="ВАШЕ ИМЯ" required style="width:100%; background:none; border:none; border-bottom:1px solid rgba(255,255,255,0.1); color:#fff; padding:15px 0; outline:none; font-size:0.75rem; letter-spacing:2px;">
             <input type="email" placeholder="EMAIL" required style="width:100%; background:none; border:none; border-bottom:1px solid rgba(255,255,255,0.1); color:#fff; padding:15px 0; outline:none; font-size:0.75rem; letter-spacing:2px;">
             <textarea placeholder="ВАШ ЗАПРОС..." rows="4" style="width:100%; background:none; border:none; border-bottom:1px solid rgba(255,255,255,0.1); color:#fff; padding:15px 0; outline:none; font-size:0.75rem; resize:none;"></textarea>
             <button type="submit" style="width:100%; background:var(--accent); color:#000; border:none; padding:22px; cursor:pointer; text-transform:uppercase; letter-spacing:4px; font-weight:700; font-size:0.7rem;">ОТПРАВИТЬ ЗАПРОС</button>
