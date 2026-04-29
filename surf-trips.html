@@ -3,126 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Экспедиции | Ilya Chaika // 2026</title>
+    <title>Направления | Ilya Chaika</title>
     <style>
         :root { 
-            --accent-blue: #a0e9ff; 
-            --accent-magenta: #ff00ff; /* Цвет досок Ильи */
-            --bg: #000000; /* Абсолютный черный для Noir */
+            --blue: #a0e9ff; 
+            --magenta: #ff77ff; /* Светлая холодная маджента */
+            --bg: #0a0a0a; 
             --white: #ffffff; 
-            --ease-apple: cubic-bezier(0.2, 1, 0.3, 1);
-            --transition-fast: 0.000000000001s; /* Ultra-Fast */
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
         }
         
-        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: 'SF Pro Display', -apple-system, sans-serif; /* Apple typography */
-            background: var(--bg); 
-            color: var(--white); 
-            line-height: 1.6; 
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            background: var(--bg); color: var(--white); 
+            line-height: 1.7; -webkit-font-smoothing: antialiased; 
         }
 
-        /* --- UI ELEMENTS --- */
+        /* NAVIGATION */
         nav { 
-            position: fixed; top: 0; width: 100%; padding: 30px 8%; 
-            display: flex; justify-content: space-between; align-items: center; 
-            z-index: 1000; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 0.5px solid rgba(255,255,255,0.03);
+            position: fixed; top: 0; width: 100%; padding: 25px 8%; 
+            display: flex; justify-content: center; align-items: center; 
+            z-index: 1000; background: rgba(10, 10, 10, 0.7); 
+            backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .logo-link { text-decoration: none; color: var(--white); font-size: 0.8rem; letter-spacing: 5px; font-weight: 300; }
-        .logo-link span { color: var(--accent-blue); }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { color: var(--white); text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; transition: 0.3s; }
-        .nav-links a:hover { opacity: 1; color: var(--accent-blue); }
-        .nav-links a.active { opacity: 1; color: var(--accent-blue); font-weight: 400; }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.6; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--blue); }
 
-        /* MAGENTA CTA BUTTON (HIGH CONVERSION) */
-        .cta-btn-telegram { 
-            display: inline-block; padding: 20px 45px; 
-            background: none; border: 1px solid var(--accent-magenta);
-            color: var(--accent-magenta); text-decoration: none;
-            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 300;
-            transition: all 0.4s var(--ease-apple);
+        /* SECTIONS */
+        section { padding: 120px 10%; position: relative; }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: 1s var(--ease) forwards; }
+        .visible { opacity: 1; transform: translateY(0); }
+
+        /* TEXT STYLES */
+        .intro-text { font-size: 1.4rem; font-weight: 200; max-width: 900px; margin-bottom: 60px; }
+        .intro-text span { color: var(--blue); }
+        .body-text { font-size: 1.1rem; opacity: 0.8; font-weight: 300; max-width: 800px; margin-bottom: 40px; }
+
+        /* MAGAZINE GRID LAYOUT */
+        .mag-block { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
+        .mag-img { width: 100%; aspect-ratio: 4/5; overflow: hidden; background: #111; }
+        .mag-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.01s linear; }
+        .mag-img:hover img { filter: contrast(1.1); }
+
+        /* JOURNEY CARDS (MAP) */
+        .map-title { font-size: 1.5rem; letter-spacing: 12px; text-transform: uppercase; font-weight: 200; margin-bottom: 80px; text-align: center; }
+        .trip-list { display: flex; flex-direction: column; gap: 20px; }
+        .trip-item { 
+            display: grid; grid-template-columns: 350px 1fr; gap: 60px; 
+            padding: 40px; border: 1px solid rgba(255,255,255,0.05);
+            text-decoration: none; color: inherit; transition: 0.3s var(--ease);
         }
-        .cta-btn-telegram:hover { 
-            background: var(--accent-magenta); color: #000; 
-            box-shadow: 0 0 30px rgba(255, 0, 255, 0.2); 
-            transform: translateY(-2px);
+        .trip-item:hover { border-color: var(--magenta); background: rgba(255,119,255,0.02); }
+        .trip-item img { width: 100%; height: 250px; object-fit: cover; }
+        .trip-info h3 { font-size: 1.8rem; letter-spacing: 4px; font-weight: 200; margin-bottom: 20px; color: var(--blue); }
+        .trip-info p { font-size: 0.95rem; opacity: 0.7; font-weight: 300; }
+
+        /* REVIEWS SECTION */
+        .reviews-section { background: #070707; padding: 100px 10%; }
+        .review-card { border-left: 2px solid var(--magenta); padding-left: 40px; margin-bottom: 80px; max-width: 800px; }
+        .review-text { font-style: italic; font-size: 1.2rem; font-weight: 200; margin-bottom: 20px; }
+        .review-author { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--blue); }
+
+        /* CTA BUTTONS */
+        .cta-container { text-align: center; padding: 100px 0; }
+        .btn-magenta { 
+            display: inline-block; padding: 25px 60px; border: 1px solid var(--magenta); 
+            color: var(--magenta); text-decoration: none; font-size: 0.8rem; 
+            text-transform: uppercase; letter-spacing: 4px; transition: 0.3s;
         }
+        .btn-magenta:hover { background: var(--magenta); color: #000; box-shadow: 0 0 40px rgba(255,119,255,0.2); }
 
-        /* --- LAYOUT UTILS --- */
-        .air-container { padding: 150px 10%; max-width: 1400px; margin: 0 auto; }
-        .fade-block { opacity: 0; transform: translateY(40px); transition: 1.2s var(--ease-apple); transition-property: opacity, transform; }
-        .fade-block.in-view { opacity: 1; transform: translateY(0); }
-
-        /* --- HERO --- */
-        .hero-air { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; }
-        .hero-title-air { 
-            font-size: clamp(2.5rem, 12vw, 8rem); font-weight: 200; text-transform: uppercase; 
-            letter-spacing: 35px; text-align: center; color: rgba(255,255,255,0.02);
-            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.1) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero-img-air { position: absolute; bottom: 10%; right: 10%; width: 30%; aspect-ratio: 16/9; overflow: hidden; z-index: -1; }
-        .hero-img-air img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
-
-        /* --- PHILOSOPHY --- */
-        .philosophy-air { padding: 150px 10%; }
-        .philosophy-text-air { 
-            font-size: 1.5rem; font-weight: 200; line-height: 1.8; opacity: 0.9;
-            margin-bottom: 100px; max-width: 1000px;
-        }
-        .philosophy-text-air.small { font-size: 1.1rem; opacity: 0.6; }
-        .blue-highlight { color: var(--accent-blue); opacity: 1; }
-
-        /* --- JOURNEYS MAP (THE SPINE) --- */
-        .journeys-air { border-top: 0.5px solid rgba(255,255,255,0.05); }
-        .journeys-header { font-size: 0.9rem; letter-spacing: 10px; text-transform: uppercase; font-weight: 200; padding: 80px 10% 40px; color: rgba(255,255,255,0.2); }
-        
-        .trip-spine-item {
-            display: grid; grid-template-columns: 0.7fr 1.3fr 0.3fr;
-            padding: 80px 10%; border-bottom: 0.5px solid rgba(255,255,255,0.05);
-            transition: all 0.3s ease; text-decoration: none; color: inherit;
-        }
-        .trip-spine-item:hover { background: rgba(160, 233, 255, 0.01); }
-
-        .trip-name-spine { 
-            font-size: 1.6rem; letter-spacing: 5px; font-weight: 200; text-transform: uppercase; 
-            color: var(--white); transition: color 0.3s ease;
-        }
-        .trip-spine-item:hover .trip-name-spine { color: var(--accent-magenta); }
-
-        .trip-desc-spine { font-size: 0.9rem; font-weight: 300; opacity: 0.5; line-height: 1.7; padding-right: 50px; }
-        .trip-spine-item:hover .trip-desc-spine { opacity: 0.9; }
-
-        .trip-img-reveal { width: 100%; aspect-ratio: 1/1; overflow: hidden; opacity: 0; transition: var(--transition-fast); filter: grayscale(1); }
-        .trip-spine-item:hover .trip-img-reveal { opacity: 1; filter: grayscale(0); }
-        .trip-img-reveal img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* --- FINAL CTA --- */
-        .final-cta-air { padding: 150px 10%; text-align: center; }
-        .cta-text-large { font-size: 2.2rem; font-weight: 200; letter-spacing: 8px; text-transform: uppercase; margin-bottom: 80px; }
-        .cta-btn-group { display: flex; flex-direction: column; gap: 30px; align-items: center; }
-
-        footer { padding: 50px 10%; text-align: center; border-top: 1px solid #111; font-size: 0.6rem; opacity: 0.2; letter-spacing: 2px; }
-
-        /* --- MEDIA QUERIES --- */
-        @media (max-width: 1024px) {
-            .hero-title-air { letter-spacing: 15px; }
-            .hero-img-air { width: 60%; right: 5%; bottom: 5%; }
-            .philosophy-text-air { font-size: 1.2rem; }
-            .trip-spine-item { grid-template-columns: 1fr; gap: 30px; }
-            .trip-img-reveal { opacity: 1; aspect-ratio: 16/9; filter: grayscale(0); order: -1; }
+        @media (max-width: 900px) {
+            .mag-block, .trip-item { grid-template-columns: 1fr; gap: 30px; }
+            .trip-item img { height: 200px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo-link">ILYA <span>CHAIKA</span></a>
         <div class="nav-links">
+            <a href="index.html">главная</a>
             <a href="surf-trips.html" class="active">направления</a>
             <a href="surf-coaching-bali.html">обучение</a>
             <a href="surf-journal.html">серф-журнал</a>
@@ -130,105 +93,125 @@
         </div>
     </nav>
 
-    <header class="hero-air">
-        <h1 class="hero-title-air fade-block">СЕРФ<br>ТРИПЫ</h1>
-        <div class="hero-img-air fade-block">
-            <img src="images/ilyamain.jpg" alt="Ilya Hero">
+    <section style="padding-top: 200px;">
+        <div class="fade-in">
+            <p class="intro-text">Серфинг — это жизнь в поиске. В поиске отличных волн, новых спотов и идеальных условий. <span>Это приключение</span>, и вы можете в нем участвовать.</p>
         </div>
-    </header>
 
-    <section class="philosophy-air fade-block">
-        <p class="philosophy-text-air">
-            Серфинг — это жизнь в поиске отличных волн, новых спотов и идеальных условий. Это настоящее приключение, и вы можете в нем участвовать. 
-        </p>
-        <p class="philosophy-text-air small">
-            Приехать в популярное место и кататься там, конкурируя на споте с десятками людей за одну волну сета — это по-своему прикольно. Но если у вас не так много свободного времени или вы уже четко поняли, чего хотите от серфинга — <span class="blue-highlight">прогрессировать, делать новые маневры</span>, пробовать разные доски и просто больше кайфовать, — значит, вы готовы к серф-трипу. 
-        </p>
-    </section>
-
-    <section class="philosophy-air fade-block" style="background: #050505;">
-        <p class="philosophy-text-air">
-            С Ильей вы можете отправиться в по-настоящему увлекательные направления — <span class="blue-highlight">почувствуйте себя исследователями</span>, как серферы 70-х: пройдите по их тропинкам и прикоснитесь к наследию. 
-        </p>
-        <p class="philosophy-text-air small">
-            В серф-трипы Илья берет только тех, в ком уверен. Новички, которые уже проявили себя на индивидуальных занятиях, получают возможность присоединиться и еще больше прокачать свой уровень. Здесь нет случайных людей — важно, чтобы все совпали по духу и по уровню.
-        </p>
-        <div class="fade-block" style="text-align: center; margin-top: 80px;">
-            <a href="https://t.me/Chaika_Ilya" class="cta-btn-telegram" target="_blank">ХОЧУ В ГРУППОВОЙ ТРИП</a>
+        <div class="mag-block fade-in">
+            <div class="mag-img"><img src="images/ilyamain.jpg" alt="Ilya Search"></div>
+            <div class="mag-info">
+                <p class="body-text">Приехать в популярное место и кататься там, конкурируя с десятками людей за лучшую волну сета — это тоже прикольно. Но если вы уже поняли, чего хотите от серфинга — прогрессировать, делать маневры и больше кайфовать — <span style="color:var(--magenta)">значит, вы готовы для серф-трипа</span>.</p>
+                <p class="body-text">Это этап для ценителей. Когда дух серфинга уже пришел к вам, вы просто чувствуете, что время пришло.</p>
+            </div>
         </div>
     </section>
 
-    <section class="journeys-air fade-block">
-        <h2 class="journeys-header">Карта серф-путешествий // 2026</h2>
-
-        <a href="g-land-surf-trip.html" class="trip-spine-item">
-            <span class="trip-name-spine">G-LAND (Ява)</span>
-            <p class="trip-desc-spine">Джунгли национального заповедника на берегу океана. Наслаждаться идеальными волнами, пока мимо вас на завтрак пролетает павлин или пробегает олененок. Настоящий контакт с дикостью.</p>
-            <div class="trip-img-reveal"><img src="images/mainilya1.jpg" alt="Gland"></div>
-        </a>
-
-        <a href="sumbawa-surf-trip.html" class="trip-spine-item">
-            <span class="trip-name-spine">СУМБАВА</span>
-            <p class="trip-desc-spine">Остров, воскресший из пепла вулкана. Дикая, бешеная природа. Место, где можно полностью слиться с тишиной, закатами и безупречными волнами, вдали от цивилизации.</p>
-            <div class="trip-img-reveal"><img src="images/ilyastungun.jpg" alt="Sumbawa"></div>
-        </a>
-
-        <a href="sumba-surf-trip.html" class="trip-spine-item">
-            <span class="trip-name-spine">СУМБА</span>
-            <p class="trip-desc-spine">Первозданная красота и поразительный контраст: абсолютная дикость природы и отели-оазисы. Сочетание серфинга с комфортом, которое вызывает честное «вау».</p>
-            <div class="trip-img-reveal"><img src="images/ilyaulusup.jpg" alt="Sumba"></div>
-        </a>
-
-        <a href="mentawai-surf-trip.html" class="trip-spine-item">
-            <span class="trip-name-spine">МЕНТАВАИ</span>
-            <p class="trip-desc-spine">Для тех, кто уже всё понял в этой жизни. Серф-путешествия для продвинутых на яхте или в люксовых резортах. То, за чем топ-серферы летят полмира.</p>
-            <div class="trip-img-reveal"><img src="images/mentawaiilya.jpg" alt="Mentawai"></div>
-        </a>
-
-        <a href="vladivostok-surf-trip.html" class="trip-spine-item">
-            <span class="trip-name-spine">ВЛАДИВОСТОК</span>
-            <p class="trip-desc-spine">Родина Ильи. Лазурные бухты, морские котики, рыбалка на дикую красную рыбу и легендарные гребешки. Вы увидите серфовую часть России и проникнитесь атмосферой первых искателей волн.</p>
-            <div class="trip-img-reveal"><img src="images/vladivostokwave.jpg" alt="Vladivostok"></div>
-        </a>
-
-        <a href="mexico-surf-trip.html" class="trip-spine-item">
-            <span class="trip-name-spine">МЕКСИКА</span>
-            <p class="trip-desc-spine">Деревушка Саюлита — легендарное место для лонгборда. Идеально для начинающих и тех, кто любит спокойное катание, расслабленный вайб и эстетику плавных линий.</p>
-            <div class="trip-img-reveal"><img src="images/sup1.jpg" alt="Mexico"></div>
-        </a>
-
-        <a href="south-africa-surf-trip.html" class="trip-spine-item">
-            <span class="trip-name-spine">ЮАР</span>
-            <p class="trip-desc-spine">Дикое побережье и мощь двух океанов. Огромные бухты, киты и серфинг мирового класса. Направление про силу природы и масштаб.</p>
-            <div class="trip-img-reveal"><img src="images/ilyagun.jpg" alt="South Africa"></div>
-        </a>
-
-    </section>
-
-    <section class="final-cta-air fade-block">
-        <h2 class="cta-text-large">ТРИП ДЛЯ ВАШЕЙ<br><span style="color:var(--accent-magenta)">КОМПАНИИ</span>?</h2>
-        <div class="cta-btn-group">
-            <a href="https://t.me/Chaika_Ilya" class="cta-btn-telegram" target="_blank">ОБСУДИТЬ ИНДИВИДУАЛЬНЫЙ ТРИП</a>
+    <section style="background: #050505;">
+        <div class="mag-block fade-in" style="grid-template-columns: 0.8fr 1.2fr;">
+            <div class="mag-info">
+                <p class="body-text">С Ильей вы можете поехать в разные увлекательные направления — почувствуйте себя исследователем, как серферы 70-х. Пройдите по их тропинкам и прикоснитесь к наследию.</p>
+                <p class="body-text">Врываться на идеальные волны под руководством вотермена, который вырос на острове в тихом океане — это возможность оценить то, что дает нам природа, на 100%.</p>
+            </div>
+            <div class="mag-img"><img src="images/ilyagun.jpg" alt="Waterman Journey"></div>
         </div>
     </section>
 
-    <footer>
-        ILYA CHAIKA // SURF JOURNEYS 2026 // * Meta признана экстремистской организацией в РФ.
+    <section class="reviews-section fade-in">
+        <h2 class="map-title" style="text-align: left; margin-bottom: 60px;">ОТЗЫВЫ</h2>
+        <div class="review-card">
+            <p class="review-text">«В трипах с Ильей нет случайных людей. Атмосфера всегда аутентичная и очень "своя". Это не просто серфинг, это неделя жизни в совершенно другом измерении». — Артём М.</p>
+            <span class="review-author">G-Land Trip Participant</span>
+        </div>
+        <div class="review-card">
+            <p class="review-text">«Илья видит океан иначе. Он ставит тебя именно там, где родится волна. Ты просто едешь и понимаешь, что прогресс случился сам собой». — Елена В.</p>
+            <span class="review-author">Mentawai Expedition</span>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="map-title fade-in">Карта серф-путешествий</h2>
+        <div class="trip-list">
+            
+            <a href="g-land-surf-trip.html" class="trip-item fade-in">
+                <img src="images/mainilya1.jpg" alt="G-Land">
+                <div class="trip-info">
+                    <h3>G-LAND (Ява)</h3>
+                    <p>Пожить в джунглях в национальном заповеднике на берегу океана. Наслаждаться идеальными волнами, а прогуливаясь до завтрака, увидеть пролетающего павлина или бегущего олененка.</p>
+                </div>
+            </a>
+
+            <a href="sumbawa-surf-trip.html" class="trip-item fade-in">
+                <img src="images/ilyastungun.jpg" alt="Sumbawa">
+                <div class="trip-info">
+                    <h3>СУМБАВА</h3>
+                    <p>Остров, который был полностью уничтожен извержением вулкана, а теперь воскрес из пепла. Природа там дикая и бешеная. Вы сможете полностью слиться с ней, наслаждаясь тишиной и идеальными волнами.</p>
+                </div>
+            </a>
+
+            <a href="sumba-surf-trip.html" class="trip-item fade-in">
+                <img src="images/ilyaulusup.jpg" alt="Sumba">
+                <div class="trip-info">
+                    <h3>СУМБА</h3>
+                    <p>Первозданная красота и дикость. Здесь ничего нет, кроме природы и отелей-оазисов. Поразительный контраст серфинга с безупречным комфортом.</p>
+                </div>
+            </a>
+
+            <a href="mentawai-surf-trip.html" class="trip-item fade-in">
+                <img src="images/mentawaiilya.jpg" alt="Mentawai">
+                <div class="trip-info">
+                    <h3>МЕНТАВАИ</h3>
+                    <p>Для тех, кто уже понял всё в этой жизни. Серф-трип для продвинутых на яхте или для уверенных в роскошном резорте. Квинтэссенция мирового серфинга.</p>
+                </div>
+            </a>
+
+            <a href="vladivostok-surf-trip.html" class="trip-item fade-in">
+                <img src="images/vladivostokwave.jpg" alt="Vladivostok">
+                <div class="trip-info">
+                    <h3>ВЛАДИВОСТОК</h3>
+                    <p>Столица Дальнего Востока глазами Ильи. Лазурные бухты, морские котики, рыбалка на дикую красную рыбу и легендарные гребешки. Атмосфера первых искателей волн.</p>
+                </div>
+            </a>
+
+            <a href="mexico-surf-trip.html" class="trip-item fade-in">
+                <img src="images/ilyasuprus.jpg" alt="Mexico">
+                <div class="trip-info">
+                    <h3>МЕКСИКА</h3>
+                    <p>Деревушка Саюлита — рай для лонгборда. Подходит для тех, кто любит спокойное катание, расслабленный вайб и эстетику плавных линий.</p>
+                </div>
+            </a>
+
+            <a href="south-africa-surf-trip.html" class="trip-item fade-in">
+                <img src="images/ilyawindvl.jpg" alt="South Africa">
+                <div class="trip-info">
+                    <h3>ЮАР</h3>
+                    <p>Дикое побережье, мощь двух океанов и масштаб, который запоминается навсегда. Путешествие для тех, кто хочет увидеть силу планеты.</p>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <section class="cta-container fade-in">
+        <p style="font-size: 0.8rem; letter-spacing: 4px; margin-bottom: 40px; opacity: 0.6;">В ТРИПАХ НЕТ СЛУЧАЙНЫХ ЛЮДЕЙ — ТОЛЬКО СВОИ ПО ДУХУ</p>
+        <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+            <a href="https://t.me/Chaika_Ilya" class="btn-magenta">Поехать в групповой трип</a>
+            <a href="https://t.me/Chaika_Ilya" class="btn-magenta">Организовать индивидуальный трип</a>
+        </div>
+    </section>
+
+    <footer style="padding: 50px; text-align: center; opacity: 0.3; font-size: 0.6rem; letter-spacing: 2px;">
+        ILYA CHAIKA // SURF JOURNEYS 2026 // * Meta признана экстремистской в РФ.
     </footer>
 
     <script>
-        // Smooth Intersection Observer for Apple-like reveal
-        const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('in-view');
-                    observer.unobserve(entry.target); // Reveal only once
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.fade-block').forEach(el => observer.observe(el));
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
