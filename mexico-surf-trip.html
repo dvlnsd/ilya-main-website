@@ -5,156 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мексика — Илья Чайка</title>
     <style>
-        :root {
-            --bg: #0a0a0a;
-            --text: #ffffff;
-            --accent: #00aaff;
-            --gray: #666;
-        }
-
+        :root { --bg: #0a0a0a; --text: #ffffff; --accent: #00aaff; --gray: #666; }
         * { box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            margin: 0;
-            line-height: 1.6;
-            font-weight: 200;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* ЗАКРЕПЛЕННОЕ МЕНЮ (КАК НА ГЛАВНОЙ) */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 25px 50px;
-            z-index: 1000;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; margin: 0; font-weight: 200; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        
+        nav { position: fixed; top: 0; width: 100%; display: flex; justify-content: center; align-items: center; padding: 25px 50px; z-index: 1000; background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); }
         .nav-links { display: flex; gap: 35px; }
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 10px;
-            letter-spacing: 3px;
-            opacity: 0.6;
-            transition: 0.3s;
-        }
-        .nav-links a:hover { opacity: 1; }
+        .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 10px; letter-spacing: 3px; opacity: 0.6; transition: 0.3s; }
+        .nav-contact { position: absolute; right: 50px; border: 1px solid var(--accent); padding: 10px 22px; color: white; text-decoration: none; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; }
 
-        .nav-contact {
-            position: absolute;
-            right: 50px;
-            border: 1px solid var(--accent);
-            padding: 10px 22px;
-            color: white;
-            text-decoration: none;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/mexicosurf.jpg') center/cover; text-align: center; padding: 20px; }
+        h1 { font-size: clamp(3rem, 12vw, 9rem); font-weight: 100; letter-spacing: -5px; text-transform: uppercase; margin: 0; line-height: 0.8; }
+        .hero-tag { font-size: 11px; letter-spacing: 6px; text-transform: uppercase; margin-top: 20px; color: var(--accent); }
 
-        /* КОНТЕЙНЕР С ВОЗДУХОМ */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 180px 40px 100px;
-        }
-
-        header { margin-bottom: 120px; }
-        .label {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            color: var(--gray);
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        h1 {
-            font-size: clamp(3rem, 8vw, 7rem);
-            font-weight: 100;
-            line-height: 1;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-        }
-
-        /* СЕТКА В СТИЛЕ МЕНТАВАЕВ */
-        .section {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 40px;
-            margin-bottom: 160px;
-            align-items: start;
-        }
-
+        .container { max-width: 1200px; margin: 0 auto; padding: 100px 40px; }
+        .section { display: grid; grid-template-columns: repeat(12, 1fr); gap: 60px; margin-bottom: 160px; align-items: start; }
         .text-col { grid-column: 1 / span 5; }
-        .img-col-right { grid-column: 7 / span 6; }
-        .img-col-left { grid-column: 1 / span 7; }
-        .text-col-right { grid-column: 9 / span 4; }
-
-        h2 {
-            font-size: 2.2rem;
-            font-weight: 300;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-            line-height: 1.2;
-        }
-
-        p {
-            font-size: 1.1rem;
-            color: #888;
-            margin-bottom: 30px;
-        }
-
-        .img-wrap { width: 100%; overflow: hidden; }
-        img { width: 100%; height: auto; display: block; filter: contrast(1.05); }
-
-        /* КНОПКА (КОНТУРНАЯ) */
-        .btn-outline {
-            display: inline-block;
-            padding: 20px 45px;
-            border: 1px solid var(--accent);
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 3px;
-            transition: 0.4s;
-        }
+        .img-col { grid-column: 7 / span 6; }
+        
+        h2 { font-size: 2.2rem; font-weight: 300; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
+        p { font-size: 1.1rem; color: #888; margin-bottom: 25px; line-height: 1.6; }
+        
+        .btn-outline { display: inline-block; padding: 20px 45px; border: 1px solid var(--accent); color: white; text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 3px; transition: 0.4s; }
         .btn-outline:hover { background: var(--accent); color: #000; }
 
-        /* FAQ БЛОК */
-        .faq-section {
-            border-top: 1px solid #1a1a1a;
-            padding-top: 100px;
-        }
+        .faq-item { margin-bottom: 50px; border-top: 1px solid #1a1a1a; padding-top: 30px; }
+        .faq-q { font-size: 1.2rem; font-weight: 300; margin-bottom: 15px; text-transform: uppercase; }
+        .faq-a { color: var(--gray); font-size: 1rem; }
 
-        .faq-item {
-            margin-bottom: 60px;
-            max-width: 700px;
-        }
-
-        .faq-q { font-size: 1.3rem; font-weight: 300; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
-        .faq-a { font-size: 1rem; color: var(--gray); font-weight: 300; }
-
-        /* МОБИЛКА */
         @media (max-width: 900px) {
             .section { display: flex; flex-direction: column; gap: 40px; }
-            .container { padding: 120px 20px 60px; }
-            h1 { font-size: 4rem; }
             .nav-links { display: none; }
+            .nav-contact { position: relative; right: auto; }
+            nav { justify-content: space-between; padding: 20px; }
+            .container { padding: 60px 20px; }
+            h1 { letter-spacing: -2px; }
         }
     </style>
 </head>
@@ -170,83 +55,46 @@
     <a href="https://t.me/ilya_chayka" class="nav-contact">Связаться</a>
 </nav>
 
-<div class="container">
-    <header>
-        <span class="label">Expedition / Mexico</span>
-        <h1>Магия длинных волн</h1>
-    </header>
+<section class="hero">
+    <h1>MEXICO</h1>
+    <div class="hero-tag">Серф-трип / 2026</div>
+</section>
 
-    <!-- БЛОК 1 -->
+<div class="container">
     <section class="section">
         <div class="text-col">
-            <h2>Локация</h2>
-            <p>Мы едем в скрытую жемчужину тихоокеанского побережья, которую профессионалы называют «машиной для лонгборда». Океан здесь рождает одну из самых длинных левых волн в мире: мягкую, предсказуемую и бесконечную.</p>
-            <p>Это идеальный полигон для тех, кто хочет отточить стиль и наслаждаться чистым скольжением без лишней суеты.</p>
+            <h2>Условия</h2>
+            <p>Мы едем в скрытую жемчужину тихоокеанского побережья, которую профессионалы называют «машиной для лонгборда». Здесь Океан рождает одну из самых длинных левых волн в мире: мягкую, предсказуемую и бесконечную.</p>
+            <p>Это идеальный полигон для тех, кто хочет отточить стиль. Низкий порог входа позволяет расслабиться и ловить волны одну за другой, наслаждаясь чистым скольжением.</p>
             <a href="https://t.me/ilya_chayka" class="btn-outline">Подать заявку на трип</a>
         </div>
-        <div class="img-col-right">
-            <div class="img-wrap"><img src="images/lasaladitalineup.jpg" alt="Waves"></div>
-            <p style="font-size: 10px; letter-spacing: 2px; margin-top: 15px; text-transform: uppercase;">The Machine / Lineup</p>
+        <div class="img-col">
+            <img src="images/lasaladitalineup.jpg" style="width:100%; filter: contrast(1.1);">
         </div>
     </section>
 
-    <!-- БЛОК 2 (ИНВЕРСИЯ) -->
-    <section class="section">
-        <div class="img-col-left">
-            <div class="img-wrap"><img src="images/noseride.jpg" alt="Noseride"></div>
-        </div>
-        <div class="text-col-right">
-            <h2>Атмосфера</h2>
+    <section class="section" style="direction: rtl;">
+        <div class="text-col" style="direction: ltr;">
+            <h2>Легенда места</h2>
             <p>Жизнь в ритме slow-living. Маленькая серф-деревня, где нет толп, а всё внимание сосредоточено на качестве проездов и закатной эстетике.</p>
-            <div class="img-wrap" style="margin-top: 40px;"><img src="images/saladitasunset.jpg" alt="Sunset"></div>
+            <p>Кульминация трипа — Оахака. Мы окажемся там в День Мертвых, чтобы встретить этот праздник там, где традиция достигает своего апогея.</p>
+        </div>
+        <div class="img-col">
+            <img src="images/eldiadelosmuertos.jpg" style="width:100%;">
         </div>
     </section>
 
-    <!-- БЛОК 3 (ДОПОЛНИТЕЛЬНЫЕ МЕДИА) -->
-    <section class="section">
-        <div class="text-col">
-            <h2>Серфинг</h2>
-            <p>Здесь волна позволяет делать всё: от классических ноузрайдов до длинных плавных поворотов. Идеально для тех, кто уже ловит волну и хочет добавить в своё катание больше грации.</p>
-            <div class="img-wrap"><img src="images/mexicosurf.jpg" alt="Surf Action"></div>
-        </div>
-        <div class="img-col-right">
-            <div class="img-wrap" style="height: 600px;"><img src="images/lasaladitabay.jpg" alt="Bay View" style="height: 100%; object-fit: cover;"></div>
-        </div>
-    </section>
-
-    <!-- БЛОК 4: КУЛЬМИНАЦИЯ -->
-    <section class="section" style="margin-bottom: 200px;">
-        <div class="img-col-left">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <img src="images/eldiadelosmuertos.jpg" alt="Day of Dead 1">
-                <img src="images/eldiadelosmuertos2.jpg" alt="Day of Dead 2">
-            </div>
-            <img src="images/oaxacawaves.jpg" alt="Oaxaca" style="margin-top: 20px;">
-        </div>
-        <div class="text-col-right">
-            <h2>Оахака</h2>
-            <p>Важно оказаться здесь именно в День мертвых. Это не туристический карнавал, а глубокая традиция. Мы проникнемся мексиканской мистикой перед вылетом домой.</p>
-            <a href="https://t.me/ilya_chayka" class="btn-outline">Обсудить трип</a>
-        </div>
-    </section>
-
-    <!-- FAQ -->
     <section class="faq-section">
-        <span class="label">Вопросы и ответы</span>
+        <h2 style="text-align: center; margin-bottom: 80px;">Вопросы</h2>
         <div class="faq-item">
             <div class="faq-q">Какой уровень подготовки нужен?</div>
-            <div class="faq-a">Мексика идеальна для прогрессирующих. Если вы уже умеете ехать вдоль стенки — это ваш спот. Волна мягкая и длинная, что дает время на раздумья и исправление ошибок.</div>
+            <div class="faq-a">Мексика идеальна для прогрессирующих. Если вы уже ловите волну и едете вдоль стенки — это ваш спот. Волна мягкая, что дает время на работу над техникой.</div>
         </div>
         <div class="faq-item">
-            <div class="faq-q">Почему мы едем в Оахаку?</div>
-            <div class="faq-a">Это культурное сердце страны. День мертвых там — это самый сильный визуальный и духовный опыт, который можно получить в Мексике. Это идеальный финал экспедиции.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q">Как забронировать место?</div>
-            <div class="faq-a">Напишите Илье в Telegram. Мы проводим небольшое интервью, чтобы убедиться в адекватности группы и совпадении уровней катания.</div>
+            <div class="faq-q">Что входит в программу?</div>
+            <div class="faq-a">Неделя серфинга на "машине для лонгборда" и несколько дней в Оахаке для погружения в магию Дня Мертвых. Проживание, трансферы и сопровождение Ильи включены.</div>
         </div>
     </section>
-
 </div>
 
 <footer style="padding: 100px 0; text-align: center; opacity: 0.2; font-size: 10px; letter-spacing: 5px;">
