@@ -3,86 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details | Ilya Chaika</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Мексика | Серф-трип с Ильей Чайкой</title>
     <style>
-        :root { --gold: #c5a059; --water-blue: #a0e9ff; --black: #0a0a0a; --white: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--black); color: var(--white); line-height: 1.6; }
-        
-        nav { padding: 30px 8%; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; color: var(--white); text-decoration: none; font-weight: 200; }
-        
-        .container { max-width: 1000px; margin: 0 auto; padding: 60px 8%; }
-        
-        /* HEADER СТРАНИЦЫ */
-        .page-header { text-align: center; margin-bottom: 60px; }
-        .page-header span { color: var(--water-blue); text-transform: uppercase; letter-spacing: 4px; font-size: 0.7rem; display: block; margin-bottom: 15px; }
-        .page-header h1 { font-size: clamp(2rem, 5vw, 3.5rem); text-transform: uppercase; letter-spacing: 10px; font-weight: 200; }
+        :root {
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --accent: #0077ff; /* Тот самый голубой акцент */
+            --gray: #888;
+        }
 
-        /* ГЛАВНОЕ ФОТО */
-        .main-visual { width: 100%; height: 60vh; object-fit: cover; margin-bottom: 60px; border: 1px solid rgba(160, 233, 255, 0.1); }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
 
-        /* КОНТЕНТ */
-        .content-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 80px; }
-        .description h2 { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 1.2rem; margin-bottom: 25px; font-weight: 300; }
-        .description p { opacity: 0.7; margin-bottom: 20px; font-weight: 200; font-size: 1.1rem; }
-        
-        .features-list { list-style: none; }
-        .features-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; letter-spacing: 1px; opacity: 0.9; }
-        .features-list li i { color: var(--water-blue); font-size: 0.8rem; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
 
-        /* КНОПКА ДЕЙСТВИЯ */
-        .cta-box { background: #080808; padding: 50px; text-align: center; border: 1px solid #1a1a1a; }
-        .btn-action { display: inline-block; padding: 20px 50px; border: 1px solid var(--water-blue); color: var(--water-blue); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; transition: 0.4s; }
-        .btn-action:hover { background: var(--water-blue); color: var(--black); }
+        /* Заголовок секции */
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
 
-        footer { padding: 80px 0; text-align: center; opacity: 0.3; font-size: 0.6rem; letter-spacing: 3px; }
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin: 0;
+            font-weight: 900;
+        }
 
-        @media (max-width: 768px) { .content-section { grid-template-columns: 1fr; gap: 40px; } }
+        .subtitle {
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+        }
+
+        /* Сетка в стиле журнала */
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px;
+            margin-bottom: 100px;
+            align-items: center;
+        }
+
+        .block-text {
+            grid-column: 1 / span 5;
+        }
+
+        .block-image-main {
+            grid-column: 7 / span 6;
+        }
+
+        .block-image-side {
+            grid-column: 1 / span 6;
+        }
+
+        .block-text-side {
+            grid-column: 8 / span 5;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(20%);
+            transition: filter 0.5s ease;
+        }
+
+        img:hover {
+            filter: grayscale(0%);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        /* Списки преимуществ */
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px 0;
+        }
+
+        .features li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .features li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Кнопка CTA */
+        .cta-button {
+            display: inline-block;
+            padding: 20px 40px;
+            background-color: var(--text);
+            color: var(--bg);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--text);
+            border-color: var(--text);
+        }
+
+        /* Секция Кульминация (День Мертвых) */
+        .culmination {
+            background-color: #111;
+            padding: 80px 40px;
+            text-align: center;
+            margin: 100px 0;
+        }
+
+        .culmination-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        /* Адаптив для мобилок */
+        @media (max-width: 992px) {
+            .editorial-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .block-text, .block-image-main, .block-image-side, .block-text-side {
+                width: 100%;
+            }
+
+            .block-text {
+                order: 2;
+            }
+            
+            .block-image-main {
+                order: 1;
+            }
+
+            .culmination-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 4rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html" class="logo">Chaika</a>
-        <a href="index.html" style="color: #fff; text-decoration: none; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5;">← На главную</a>
-    </nav>
+<div class="container">
+    <header>
+        <div class="subtitle">Направления / Октябрь-Ноябрь 2026</div>
+        <h1>Мексика</h1>
+    </header>
 
-    <div class="container">
-        <header class="page-header">
-            <span>Expedition // 2026</span>
-            <h1>Mexico Big Waves</h1>
-        </header>
+    <!-- Первый блок: Магия волн -->
+    <section class="editorial-grid">
+        <div class="block-text">
+            <h2>МАГИЯ ДЛИННЫХ ВОЛН</h2>
+            <p>Мы едем в скрытую жемчужину тихоокеанского побережья, которую профессионалы называют «машиной для лонгборда». Здесь Океан рождает одну из самых длинных левых волн в мире: мягкую, предсказуемую и бесконечную.</p>
+            <ul class="features">
+                <li>Идеальный полигон для отработки стиля</li>
+                <li>Низкий порог входа — максимум скольжения</li>
+                <li>Жизнь в ритме slow-living в маленькой деревне</li>
+            </ul>
+            <a href="https://t.me/your_ilya_username" class="cta-button">Узнать даты трипа</a>
+        </div>
+        <div class="block-image-main">
+            <img src="lasaladitalineup.jpg" alt="La Saladita Waves">
+        </div>
+    </section>
 
-        <img src="images/ilyamain.jpg" class="main-visual" alt="Expedition Visual">
+    <!-- Второй блок: Фоторяд -->
+    <section class="editorial-grid" style="align-items: flex-start;">
+        <div class="block-image-side">
+            <img src="noseride.jpg" alt="Noseride Style">
+            <p style="margin-top: 15px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Focus: Longboard Aesthetic</p>
+        </div>
+        <div class="block-text-side">
+            <img src="saladitasunset.jpg" alt="Saladita Sunset">
+            <p style="margin-top: 40px;">Здесь нет толп. Всё внимание сосредоточено на качестве проездов и закатной эстетике. Это место, где вы перестаете бороться и начинаете чувствовать.</p>
+        </div>
+    </section>
 
-        <div class="content-section">
-            <div class="description">
-                <h2>Опыт и стихия</h2>
-                <p>Мексика — это проверка на прочность. Мы отправляемся в Пуэрто-Эскондидо, чтобы встретиться с самыми мощными трубами планеты под контролем профессионала.</p>
-                <p>Этот трип разработан для тех, кто хочет перейти грань обычного серфинга и почувствовать настоящую энергию океана.</p>
-            </div>
-            
-            <div>
-                <h2>Что включено</h2>
-                <ul class="features-list">
-                    <li><i class="fas fa-check"></i> Видео-анализ каждой сессии</li>
-                    <li><i class="fas fa-check"></i> Теория выживания в больших волнах</li>
-                    <li><i class="fas fa-check"></i> Групповые разборы и лекции</li>
-                    <li><i class="fas fa-check"></i> Профессиональная съемка</li>
-                </ul>
-            </div>
+    <!-- Секция: День Мертвых -->
+    <section class="culmination">
+        <div class="subtitle">Кульминация трипа</div>
+        <h2 style="font-size: clamp(2rem, 5vw, 4rem);">ОАХАКА: АПОГЕЙ ТРАДИЦИИ</h2>
+        <p style="max-width: 700px; margin: 20px auto;">После недели в океане мы совершим резкий переход в сердце мексиканской мистики — Оахаку, чтобы встретить День мертвых там, где эта традиция достигает своего максимума.</p>
+        
+        <div class="culmination-grid">
+            <img src="eldiadelosmuertos.jpg" alt="Oaxaca Tradition">
+            <img src="eldiadelosmuertos2.jpg" alt="Altar Candles">
         </div>
 
-        <div class="cta-box">
-            <h2 style="margin-bottom: 20px; text-transform: uppercase; letter-spacing: 4px; font-weight: 200;">Готовы присоединиться?</h2>
-            <p style="opacity: 0.6; margin-bottom: 30px;">Количество мест в группе ограничено для максимального внимания каждому.</p>
-            <a href="https://t.me/ilya_chaika_surf" class="btn-action">Забронировать место</a>
-        </div>
+        <a href="https://t.me/your_ilya_username" class="cta-button" style="background: var(--accent); color: white;">Забронировать место</a>
+    </section>
 
-        <footer>© 2026 ILYA CHAIKA | EXCLUSIVE ACCESS</footer>
-    </div>
+    <!-- Футер страницы -->
+    <footer style="text-align: center; padding: 40px 0; border-top: 1px solid #222;">
+        <p style="font-size: 0.9rem;">Индивидуальные и групповые форматы. <br>Количество участников ограничено правилами локации.</p>
+        <a href="https://t.me/your_ilya_username" style="color: var(--accent); text-decoration: none; text-transform: uppercase; font-weight: bold; letter-spacing: 1px;">Связаться с Ильей в Telegram</a>
+    </footer>
+</div>
 
 </body>
 </html>
