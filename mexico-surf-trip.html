@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мексика | Илья Чайка</title>
+    <title>Мексика — Илья Чайка</title>
     <style>
         :root {
             --bg: #0a0a0a;
             --text: #ffffff;
             --accent: #00aaff; /* Твой фирменный голубой */
             --gray: #666;
-            --spacing: 120px;
         }
 
         * { box-sizing: border-box; }
@@ -18,203 +17,190 @@
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            /* Используем элегантный тонкий шрифт */
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             margin: 0;
-            line-height: 1.5;
+            line-height: 1.6;
+            font-weight: 200; /* Тонкое начертание для "дорогого" вида */
             -webkit-font-smoothing: antialiased;
         }
 
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 40px;
+        /* МИНИМАЛИСТИЧНОЕ МЕНЮ */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 50px;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(5px);
         }
 
-        /* Воздух сверху */
-        header {
-            padding: 100px 0 60px;
-            text-align: left;
+        nav a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 3px;
+            font-weight: 300;
         }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 160px 50px 100px;
+        }
+
+        header { margin-bottom: 120px; }
 
         .label {
-            font-size: 12px;
+            font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 5px;
             color: var(--gray);
             margin-bottom: 20px;
             display: block;
         }
 
         h1 {
-            font-size: clamp(3.5rem, 10vw, 8rem);
-            font-weight: 800;
+            font-size: clamp(3rem, 10vw, 9rem);
+            font-weight: 100; /* Очень тонкий и элегантный заголовок */
             line-height: 0.9;
             margin: 0;
-            letter-spacing: -3px;
             text-transform: uppercase;
+            letter-spacing: -2px;
         }
 
-        /* Основная сетка */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 40px;
-            margin-bottom: var(--spacing);
-            align-items: start;
+        /* СЕТКА С ВОЗДУХОМ */
+        .editorial-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 180px;
+            gap: 100px;
         }
 
-        .text-block {
-            grid-column: 1 / span 5;
-            padding-top: 40px;
-        }
+        .editorial-row:nth-child(even) { flex-direction: row-reverse; }
 
-        .main-image {
-            grid-column: 6 / span 7;
-        }
-
-        .side-image {
-            grid-column: 1 / span 7;
-        }
-
-        .side-text {
-            grid-column: 9 / span 4;
-        }
+        .text-content { flex: 0 0 40%; }
+        .image-content { flex: 0 0 55%; }
 
         h2 {
             font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 24px;
+            font-weight: 300;
             text-transform: uppercase;
-            letter-spacing: -1px;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
         }
 
         p {
             font-size: 1.1rem;
-            color: #bbb;
-            margin-bottom: 30px;
-            max-width: 480px;
+            color: #999;
+            font-weight: 300;
         }
 
         img {
             width: 100%;
             height: auto;
             display: block;
-            object-fit: cover;
+            /* Легкий нуар-фильтр */
+            filter: grayscale(10%) contrast(1.05);
         }
 
-        /* Кнопки */
-        .btn {
+        /* КНОПКА (АКЦЕНТ) */
+        .cta {
             display: inline-block;
-            padding: 18px 36px;
-            background-color: var(--accent);
+            margin-top: 40px;
+            padding: 20px 45px;
+            background: var(--accent);
             color: white;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: transform 0.2s ease, opacity 0.2s ease;
+            font-size: 12px;
+            letter-spacing: 2px;
+            font-weight: 500;
+            transition: 0.4s;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
+        .cta:hover {
+            background: white;
+            color: black;
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 1px solid #333;
-            color: white;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--accent);
-        }
-
-        /* Секция День Мертвых */
-        .culture-section {
-            padding: 100px 0;
+        /* КУЛЬМИНАЦИЯ */
+        .culture-block {
+            text-align: center;
+            padding: 120px 0;
             border-top: 1px solid #1a1a1a;
         }
 
-        .culture-grid {
+        .culture-images {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 60px;
+            gap: 30px;
+            margin-top: 80px;
         }
 
-        /* Мобильная адаптация */
+        /* АДАПТИВ */
         @media (max-width: 900px) {
-            .grid {
-                display: flex;
-                flex-direction: column;
-                gap: 30px;
-            }
-            .text-block, .main-image, .side-image, .side-text {
-                width: 100%;
-            }
-            header { padding: 60px 0 40px; }
+            .editorial-row { flex-direction: column !important; gap: 50px; }
+            .text-content, .image-content { flex: 0 0 100%; }
+            .container { padding: 120px 25px 50px; }
             h1 { font-size: 4rem; }
-            .container { padding: 0 20px; }
-            .culture-grid { grid-template-columns: 1fr; }
+            nav { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
+<nav>
+    <a href="index.html">Илья Чайка</a>
+    <a href="https://t.me/ilya_chayka">Обсудить трип</a>
+</nav>
+
 <div class="container">
     <header>
-        <span class="label">Направления / 2026</span>
-        <h1>Мексика</h1>
+        <span class="label">Expedition / Mexico</span>
+        <h1>Магия <br>длинных <br>волн</h1>
     </header>
 
-    <!-- Блок 1: Про волны -->
-    <section class="grid">
-        <div class="text-block">
-            <h2>Магия длинных волн</h2>
-            <p>Мы едем в скрытую жемчужину тихоокеанского побережья, которую профессионалы называют «машиной для лонгборда». Здесь Океан рождает одну из самых длинных левых волн в мире: мягкую, предсказуемую и бесконечную.</p>
-            <p style="font-size: 0.9rem; color: var(--gray);">Это идеальный полигон, чтобы отточить стиль. Низкий порог входа позволяет расслабиться и ловить волны одну за другой, наслаждаясь чистым скольжением.</p>
-            <a href="https://t.me/ilya_chayka" class="btn">Узнать даты трипа</a>
+    <section class="editorial-row">
+        <div class="text-content">
+            <h2>Локация</h2>
+            <p>Мы едем в скрытую жемчужину тихоокеанского побережья, которую профессионалы называют «машиной для лонгборда». Океан здесь рождает одну из самых длинных левых волн в мире: мягкую, предсказуемую и бесконечную.</p>
+            <a href="https://t.me/ilya_chayka" class="cta">Узнать даты</a>
         </div>
-        <div class="main-image">
-            <img src="lasaladitalineup.jpg" alt="La Saladita">
+        <div class="image-content">
+            <img src="images/lasaladitalineup.jpg" alt="Mexico Surf">
         </div>
     </section>
 
-    <!-- Блок 2: Про вайб -->
-    <section class="grid">
-        <div class="side-image">
-            <img src="noseride.jpg" alt="Surf Style">
-        </div>
-        <div class="side-text">
+    <section class="editorial-row">
+        <div class="text-content">
             <h2>Атмосфера</h2>
-            <p>Жизнь в ритме slow-living. Маленькая серф-деревня, где нет толп, а всё внимание — на качестве проездов и закатах. Идеальное место, чтобы просто выдохнуть и покататься в удовольствие.</p>
-            <img src="saladitasunset.jpg" alt="Sunset" style="margin-top: 20px;">
+            <p>Жизнь в ритме slow-living. Маленькая серф-деревня, где нет толп, а всё внимание сосредоточено на качестве проездов и закатной эстетике.</p>
+        </div>
+        <div class="image-content">
+            <img src="images/noseride.jpg" alt="Noseride">
         </div>
     </section>
 
-    <!-- Блок 3: Кульминация -->
-    <section class="culture-section">
-        <span class="label">Финал путешествия</span>
-        <h2>Оахака и День Мертвых</h2>
-        <p>После недели в океане мы сорвемся в Оахаку. Важно оказаться там именно в День Мертвых — это не туристический карнавал, а очень глубокая традиция. Посмотрим на алтари, шествия и проникнемся мексиканской мистикой перед вылетом домой.</p>
+    <section class="culture-block">
+        <span class="label">Кульминация</span>
+        <h2>Оахака / День Мертвых</h2>
+        <p style="max-width: 600px; margin: 0 auto;">После недели в океане мы сорвемся в Оахаку. Важно быть там именно в День Мертвых — это не туристический карнавал, а очень глубокая традиция с алтарями и ночными шествиями.</p>
         
-        <div class="culture-grid">
-            <img src="eldiadelosmuertos.jpg" alt="Oaxaca 1">
-            <img src="eldiadelosmuertos2.jpg" alt="Oaxaca 2">
+        <div class="culture-images">
+            <img src="images/eldiadelosmuertos.jpg" alt="Oaxaca">
+            <img src="images/eldiadelosmuertos2.jpg" alt="Tradition">
         </div>
 
-        <div style="text-align: center; margin-top: 60px;">
-            <a href="https://t.me/ilya_chayka" class="btn">Забронировать место</a>
-            <br><br>
-            <a href="https://t.me/ilya_chayka" class="btn btn-outline" style="font-size: 12px; padding: 12px 24px;">Написать Илье лично</a>
+        <div style="margin-top: 80px;">
+            <a href="https://t.me/ilya_chayka" class="cta">Подать заявку</a>
         </div>
     </section>
-
-    <footer style="padding: 100px 0 40px; text-align: center; border-top: 1px solid #1a1a1a;">
-        <span class="label">Waterman Way</span>
-    </footer>
 </div>
 
 </body>
