@@ -9,35 +9,34 @@
         * { box-sizing: border-box; }
         body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; margin: 0; font-weight: 200; -webkit-font-smoothing: antialiased; }
         
-        /* ЕДИНОЕ МЕНЮ (КАК НА ГЛАВНОЙ) */
+        /* Навигация */
         nav { position: fixed; top: 0; width: 100%; display: flex; justify-content: center; align-items: center; padding: 25px 50px; z-index: 1000; background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); }
         .nav-links { display: flex; gap: 35px; }
         .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 10px; letter-spacing: 3px; opacity: 0.6; }
         .nav-contact { position: absolute; right: 50px; border: 1px solid var(--accent); padding: 10px 22px; color: white; text-decoration: none; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* HERO БЛОК */
+        /* Hero */
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/mexicosurf.jpg') center/cover; text-align: center; }
         h1 { font-size: clamp(4rem, 12vw, 10rem); font-weight: 100; letter-spacing: -4px; text-transform: uppercase; margin: 0; line-height: 0.85; }
         .hero-sub { font-size: 11px; letter-spacing: 6px; text-transform: uppercase; margin-top: 30px; color: var(--accent); }
 
-        /* КОНТЕНТ */
         .container { max-width: 1200px; margin: 0 auto; padding: 120px 40px; }
-        .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 40px; margin-bottom: 180px; align-items: center; }
         
+        /* Сетка как в премиум-журнале */
+        .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 40px; margin-bottom: 180px; align-items: center; }
         .text-col { grid-column: 1 / span 5; }
         .img-col { grid-column: 7 / span 6; }
-        .img-col img { width: 100%; filter: contrast(1.05); }
+        .full-width-img { grid-column: 1 / span 12; margin: 60px 0; }
+        
+        h2 { font-size: 2.8rem; font-weight: 300; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 40px; line-height: 1.1; }
+        h3 { font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+        p { font-size: 1.15rem; color: #999; line-height: 1.7; margin-bottom: 30px; }
 
-        h2 { font-size: 2.5rem; font-weight: 300; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 30px; }
-        p { font-size: 1.15rem; color: #999; line-height: 1.6; margin-bottom: 20px; }
-
-        /* КНОПКА (КОНТУРНАЯ) */
-        .btn-outline { display: inline-block; margin-top: 40px; padding: 22px 50px; border: 1px solid var(--accent); color: white; text-decoration: none; text-transform: uppercase; font-size: 12px; letter-spacing: 3px; transition: 0.4s; }
+        .btn-outline { display: inline-block; padding: 22px 50px; border: 1px solid var(--accent); color: white; text-decoration: none; text-transform: uppercase; font-size: 12px; letter-spacing: 3px; transition: 0.4s; }
         .btn-outline:hover { background: var(--accent); color: #000; }
 
-        /* БЛОК РАСПОРЯДКА (СМЫСЛОВОЙ АКЦЕНТ) */
+        /* Детали трипа */
         .details-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 60px; margin-top: 100px; border-top: 1px solid #1a1a1a; padding-top: 80px; }
-        .detail-item h3 { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
         .detail-item p { font-size: 1rem; color: #777; }
 
         @media (max-width: 900px) { .grid, .details-grid { display: flex; flex-direction: column; } .nav-links { display: none; } }
@@ -62,50 +61,73 @@
 
 <div class="container">
     
-    <!-- СМЫСЛ 1: УСЛОВИЯ И КАТАЛКА -->
+    <!-- Блок 1: Океан и волна -->
     <section class="grid">
         <div class="text-col">
-            <h2>Для кого этот спот</h2>
-            <p>Мексика идеальна для тех, кто хочет отточить стиль. Мы едем на «машину для лонгборда» — одну из самых длинных левых волн в мире.</p>
-            <p>Она предсказуемая, мягкая и бесконечная. Это лучший полигон, чтобы перейти от борьбы со стихией к чистому скольжению и грации.</p>
+            <h3>Спот</h3>
+            <h2>Машина для лонгборда</h2>
+            <p>Мы нашли скрытую жемчужину тихоокеанского побережья. Это место, где Океан рождает одну из самых длинных левых волн на планете. Она мягкая, предсказуемая и кажется бесконечной.</p>
+            <p>Здесь вы перестаете бороться и начинаете чувствовать. Низкий порог входа позволяет расслабиться и ловить волны одну за другой, оттачивая грацию и чистоту скольжения.</p>
             <a href="https://t.me/ilya_chayka" class="btn-outline">Подать заявку на трип</a>
         </div>
         <div class="img-col">
-            <img src="images/lasaladitalineup.jpg" alt="Lineup">
+            <img src="images/lasaladitalineup.jpg" style="width:100%;">
         </div>
     </section>
 
-    <!-- СМЫСЛ 2: ЛЕГЕНДА И БЫТ -->
+    <!-- Блок 2: Большая панорама -->
+    <div class="full-width-img">
+        <img src="images/lasaladitabay.jpg" style="width:100%;">
+    </div>
+
+    <!-- Блок 3: Вайб и стиль -->
     <section class="grid" style="direction: rtl;">
         <div class="text-col" style="direction: ltr;">
-            <h2>Легенда места</h2>
-            <p>Жизнь в ритме slow-living. Маленькая деревня, где нет толп, а всё внимание — на качестве проездов и закатной эстетике.</p>
-            <p>Кульминация — Оахака. Мы встретим День Мертвых там, где эта традиция достигает своего апогея. Это не туристический карнавал, а глубокая мистика.</p>
+            <h3>Атмосфера</h3>
+            <h2>Slow-living & Style</h2>
+            <p>Наш дом на время трипа — аутентичные хижины премиального уровня прямо на берегу. Здесь нет толп, только звук прибоя и закаты, которые невозможно забыть.</p>
+            <p>Дни проходят в ритме Океана: рассветные сессии, разборы видео с Ильей, мексиканская кухня и полная приватность. Это время, чтобы выдохнуть и вернуться к себе.</p>
         </div>
         <div class="img-col">
-            <img src="images/eldiadelosmuertos.jpg" alt="Oaxaca">
+            <img src="images/noseride.jpg" style="width:100%;">
         </div>
     </section>
 
-    <!-- СМЫСЛ 3: РАСПРЕДЕЛЕНИЕ ДЕТАЛЕЙ (КАК ТЕБЕ НРАВИТСЯ) -->
+    <!-- Блок 4: Кульминация (День Мертвых) -->
+    <section class="grid">
+        <div class="text-col">
+            <h3>Мистика</h3>
+            <h2>Оахака. День Мертвых</h2>
+            <p>В финале мы совершим резкий переход в сердце Мексики. Оахака в эти дни превращается в нечто внеземное. Это не туристический аттракцион, а глубокая древняя традиция.</p>
+            <p>Тысячи свечей, алтари, утопающие в цветах, и ночные шествия. Мы увидим эту магию изнутри, там, где она достигает своего апогея.</p>
+        </div>
+        <div class="img-col">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <img src="images/eldiadelosmuertos.jpg" style="width:100%;">
+                <img src="images/eldiadelosmuertos2.jpg" style="width:100%;">
+            </div>
+            <img src="images/oaxacawaves.jpg" style="width:100%; margin-top: 20px;">
+        </div>
+    </section>
+
+    <!-- Технические детали -->
     <div class="details-grid">
         <div class="detail-item">
-            <h3>Распорядок</h3>
-            <p>Рассветные сессии на пустом лайнапе, дневные разборы видео с Ильей и вечерние катания под золотым мексиканским солнцем.</p>
-        </div>
-        <div class="detail-item">
-            <h3>Проживание</h3>
-            <p>Аутентичные хижины премиального уровня прямо на берегу. Звук Океана вместо будильника и полная приватность.</p>
+            <h3>Программа</h3>
+            <p>Неделя интенсивного серфинга на "машине для лонгборда" с ежедневным коучингом и видео-анализом. 3 дня глубокого погружения в культуру Оахаки.</p>
         </div>
         <div class="detail-item">
             <h3>Уровень</h3>
-            <p>Идеально для прогрессирующих. Если вы уже уверенно едете вдоль стенки — этот трип даст вам максимальный качественный скачок.</p>
+            <p>Идеально для прогрессирующих серферов. Если вы уже ловите волну и едете вдоль стенки — этот трип даст вам максимальный качественный скачок в стиле.</p>
+        </div>
+        <div class="detail-item">
+            <h3>Включено</h3>
+            <p>Проживание в лучших локациях, всё перемещение по стране, работа Ильи как наставника и проводника, съемка контента.</p>
         </div>
     </div>
 
 </div>
 
 <footer style="padding: 100px 0; text-align: center; opacity: 0.2; font-size: 10px; letter-spacing: 5px;">IC WATERMAN WAY / 2026</footer>
-
 </body>
 </html>
