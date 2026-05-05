@@ -4,71 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Private Coaching | Илья Чайка</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* СБРОС И БАЗА */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --bg: #0a0a0a;
             --text: #ffffff;
-            --accent: #5da9b6; /* Фирменный цвет со скрина */
-            --gray: #666;
+            --accent: #5da9b6; /* Фирменный цвет морской волны */
+            --gray: #888;
         }
 
         body { 
-            font-family: 'Inter', sans-serif; 
             background-color: var(--bg); 
             color: var(--text); 
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif; 
             font-weight: 200;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
-        
+
         /* МЕНЮ */
         nav {
             position: fixed; top: 0; width: 100%; display: flex; justify-content: center;
-            padding: 30px 50px; z-index: 1000; background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 30px 50px; z-index: 1000; background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .nav-links { display: flex; gap: 40px; }
-        .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 3px; opacity: 0.6; transition: 0.3s; }
+        .nav-links a { 
+            color: white; text-decoration: none; text-transform: uppercase; 
+            font-size: 10px; letter-spacing: 3px; opacity: 0.6; transition: 0.3s; 
+        }
         .nav-links a:hover { opacity: 1; }
 
-        /* ОБНОВЛЕННЫЙ HERO БЛОК */
+        /* ИСПРАВЛЕННЫЙ HERO БЛОК */
         .hero {
-            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('images/surf.jpg') center/cover;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('images/surf.jpg') center/cover no-repeat;
             text-align: center;
+            padding: 0 20px;
         }
-        h1 { font-size: clamp(3rem, 10vw, 8rem); font-weight: 100; text-transform: uppercase; letter-spacing: -2px; line-height: 0.85; margin: 0; }
-        .hero-tag { font-size: 12px; letter-spacing: 8px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 120px 40px; }
-        
-        /* ЦИТАТА */
-        .quote { 
-            font-size: 1.8rem; font-weight: 200; font-style: italic; text-align: center; 
-            max-width: 800px; margin: 0 auto 120px; color: var(--text);
-            border-left: 2px solid var(--accent); padding-left: 40px;
-            line-height: 1.4;
+        .hero-tag { 
+            font-size: clamp(10px, 2vw, 12px); 
+            letter-spacing: 10px; 
+            text-transform: uppercase; 
+            color: var(--accent); 
+            margin-bottom: 25px;
+            font-weight: 400;
         }
+
+        h1 { 
+            font-size: clamp(2.5rem, 12vw, 8rem); 
+            font-weight: 100; 
+            text-transform: uppercase; 
+            letter-spacing: -3px; 
+            line-height: 0.9; 
+            margin: 0;
+        }
+
+        /* КОНТЕНТ */
+        .container { max-width: 1200px; margin: 0 auto; padding: 160px 40px; }
+        
+        .quote-block {
+            max-width: 850px; margin: 0 auto 150px; text-align: center;
+            border-left: 1px solid var(--accent); padding-left: 50px;
+        }
+        .quote-block p { font-size: 1.8rem; font-style: italic; color: var(--text); line-height: 1.4; }
+
+        .intro-grid {
+            display: flex; gap: 80px; align-items: center; margin-bottom: 180px;
+        }
+        .intro-text { flex: 1; }
+        .intro-img { flex: 1; position: relative; }
+        .intro-img img { width: 100%; display: block; filter: contrast(1.05); }
 
         /* ПРЕИМУЩЕСТВА */
-        .grid-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 80px 100px; margin-top: 100px; }
-        h2 { font-size: 2.2rem; font-weight: 300; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; }
-        h3 { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 15px; font-weight: 500; }
-        p { font-size: 1.1rem; color: #999; line-height: 1.7; }
+        .features-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px 100px; margin-top: 100px;
+        }
+        .feature-item h3 { 
+            font-size: 12px; letter-spacing: 4px; text-transform: uppercase; 
+            color: var(--accent); margin-bottom: 20px; font-weight: 500; 
+        }
+        .feature-item p { font-size: 1.1rem; color: #999; }
 
         /* КНОПКА */
-        .btn-coaching {
-            display: inline-block; padding: 22px 55px; border: 1px solid var(--accent);
+        .cta-wrap { text-align: center; padding: 100px 0; }
+        .btn-private {
+            display: inline-block; padding: 22px 60px; border: 1px solid var(--accent);
             color: var(--accent); text-decoration: none; text-transform: uppercase;
-            font-size: 12px; letter-spacing: 4px; transition: 0.4s; margin-top: 80px;
+            font-size: 11px; letter-spacing: 5px; transition: 0.4s;
         }
-        .btn-coaching:hover { background: var(--accent); color: #000; }
+        .btn-private:hover { background: var(--accent); color: #000; }
 
         @media (max-width: 900px) {
-            .grid-features { grid-template-columns: 1fr; gap: 40px; }
+            .intro-grid, .features-grid { flex-direction: column; display: block; }
             .nav-links { display: none; }
-            .container { padding: 80px 20px; }
+            .intro-img { margin-top: 50px; }
+            .feature-item { margin-bottom: 50px; }
+            .quote-block { padding-left: 20px; text-align: left; }
+            .quote-block p { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -85,32 +125,29 @@
 
 <section class="hero">
     <div class="hero-tag">Professional Mentorship</div>
-    <h1>PRIVATE COACHING</h1>
+    <h1>Private Coaching</h1>
 </section>
 
 <div class="container">
     
-    <div class="quote">
-        «Лучший серфер — тот, кто получает от процесса самое большое удовольствие».
+    <div class="quote-block">
+        <p>«Лучший серфер — тот, кто получает от процесса самое большое удовольствие».</p>
     </div>
 
-    <section class="mb-32">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-            <div class="space-y-8">
-                <p class="text-xl text-white font-light">Если вы хотите по-настоящему погрузиться в мир серфинга и перенять опыт профессионала — это предложение для вас.</p>
-                <p class="text-gray-400">Илья Чайка — Waterman с 20-летним стажем. Он катается на спотах, доступных только серферам высокого уровня, и уже 15 лет обучает тому, чем занимается профессионально.</p>
-            </div>
-            <div class="relative">
-                <!-- Здесь оставляем фото Ильи для личного контакта в описании -->
-                <img src="images/ilya2.jpg" alt="Ilya Coaching" class="w-full object-cover shadow-2xl">
-                <div class="absolute inset-0 border border-accent opacity-10 -m-4 pointer-events-none"></div>
-            </div>
+    <section class="intro-grid">
+        <div class="intro-text">
+            <h2 style="font-size: 2.2rem; font-weight: 300; text-transform: uppercase; margin-bottom: 40px; letter-spacing: 1px;">Обучение у Waterman</h2>
+            <p style="font-size: 1.2rem; color: #fff; margin-bottom: 30px;">Если вы хотите по-настоящему погрузиться в мир серфинга и перенять опыт профессионала — это предложение для вас.</p>
+            <p>Илья Чайка — Waterman с 20-летним стажем. Он катается на спотах, доступных только серферам высокого уровня, и уже 15 лет обучает тому, чем занимается профессионально.</p>
+        </div>
+        <div class="intro-img">
+            <img src="images/ilya2.jpg" alt="Ilya Coach">
         </div>
     </section>
 
-    <h2 class="text-center mb-20">Студенты Ильи знают:</h2>
+    <h2 style="text-align: center; font-size: 2.5rem; text-transform: uppercase; font-weight: 200; margin-bottom: 80px;">Студенты Ильи знают:</h2>
 
-    <section class="grid-features">
+    <section class="features-grid">
         <div class="feature-item">
             <h3>Техника с первой тренировки</h3>
             <p>Обучаясь по методике Ильи, вы ставите правильную базу сразу. Это позволяет прогрессировать быстрее и получать настоящее удовольствие, не тратя время на исправление ошибок.</p>
@@ -137,13 +174,13 @@
         </div>
     </section>
 
-    <div class="text-center py-20">
-        <a href="https://t.me/Chaika_Ilya" class="btn-coaching">Начать обучение</a>
+    <div class="cta-wrap">
+        <a href="https://t.me/Chaika_Ilya" class="btn-private">Начать обучение</a>
     </div>
 
 </div>
 
-<footer style="padding: 100px 0; text-align: center; opacity: 0.2; font-size: 10px; letter-spacing: 5px; border-top: 1px solid #1a1a1a;">
+<footer style="padding: 100px 0; text-align: center; opacity: 0.2; font-size: 10px; letter-spacing: 5px; border-top: 1px solid rgba(255,255,255,0.05);">
     IC WATERMAN WAY / PRIVATE COACHING / 2026
 </footer>
 
