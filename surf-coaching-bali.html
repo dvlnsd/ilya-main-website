@@ -1,1 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Coaching | Илья Чайка</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --accent: #5da9b6; /* Наш фирменный цвет */
+            --gray: #666;
+        }
 
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-weight: 200;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* МЕНЮ */
+        nav {
+            position: fixed; top: 0; width: 100%; display: flex; justify-content: center;
+            padding: 30px 50px; z-index: 1000; background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 3px; opacity: 0.6; transition: 0.3s; }
+        .nav-links a:hover { opacity: 1; }
+
+        /* HERO */
+        .hero {
+            height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('images/ilya.jpg') center/cover;
+            text-align: center;
+        }
+        h1 { font-size: clamp(3rem, 10vw, 7rem); font-weight: 100; text-transform: uppercase; letter-spacing: -2px; line-height: 0.9; margin: 0; }
+        .hero-tag { font-size: 12px; letter-spacing: 8px; text-transform: uppercase; color: var(--accent); margin-top: 30px; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 120px 40px; }
+        
+        /* СЕТКА ПРЕИМУЩЕСТВ */
+        .grid-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 80px; margin-top: 100px; }
+        
+        h2 { font-size: 2.2rem; font-weight: 300; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; }
+        h3 { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 15px; font-weight: 500; }
+        p { font-size: 1.1rem; color: #999; line-height: 1.7; font-weight: 300; }
+
+        .quote { 
+            font-size: 1.8rem; font-weight: 200; italic; text-align: center; 
+            max-width: 800px; margin: 0 auto 100px; color: var(--text);
+            border-left: 1px solid var(--accent); padding-left: 40px;
+        }
+
+        .btn-coaching {
+            display: inline-block; padding: 22px 55px; border: 1px solid var(--accent);
+            color: var(--accent); text-decoration: none; text-transform: uppercase;
+            font-size: 12px; letter-spacing: 4px; transition: 0.4s; margin-top: 60px;
+        }
+        .btn-coaching:hover { background: var(--accent); color: #000; }
+
+        @media (max-width: 900px) {
+            .grid-features { grid-template-columns: 1fr; gap: 60px; }
+            .nav-links { display: none; }
+            .quote { font-size: 1.4rem; padding-left: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-links">
+        <a href="index.html">Направления</a>
+        <a href="#">Обучение</a>
+        <a href="#">Серф-журнал</a>
+        <a href="#">Магазин</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-tag">Professional Mentorship</div>
+    <h1>PRIVATE COACHING</h1>
+</section>
+
+<div class="container">
+    
+    <div class="quote">
+        «Лучший серфер — тот, кто получает от процесса самое большое удовольствие».
+    </div>
+
+    <section class="mb-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+            <div>
+                <p class="text-xl text-white mb-8">Если вы хотите по-настоящему погрузиться в мир серфинга и перенять опыт профессионала — это предложение для вас.</p>
+                <p>Илья Чайка — Waterman с 20-летним стажем. Он катается на спотах, доступных только серферам высокого уровня, и уже 15 лет обучает тому, чем занимается профессионально.</p>
+            </div>
+            <div class="relative">
+                <img src="images/ilya2.jpg" alt="Ilya Coach" class="w-full grayscale hover:grayscale-0 transition duration-700">
+                <div class="absolute -bottom-6 -right-6 w-full h-full border border-accent opacity-20 pointer-events-none"></div>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="text-center">Студенты Ильи знают:</h2>
+
+    <section class="grid-features">
+        <div class="feature-item">
+            <h3>Техника с первой тренировки</h3>
+            <p>Обучаясь по методике Ильи, вы ставите правильную базу сразу. Это позволяет прогрессировать быстрее и получать настоящее удовольствие, не тратя время на исправление закатанных ошибок.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Приоритет на ваши цели</h3>
+            <p>Процесс строится под ваш текущий уровень. Мы подбираем наиболее подходящие условия, чтобы каждая минута в воде работала на результат.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Репутация и личное участие</h3>
+            <p>Вам важно учиться у тренера, который дорожит своим именем и занимается с вами лично. Опыт наставника напрямую влияет на качество вашего обучения.</p>
+        </div>
+        <div class="feature-item">
+            <h3>География серфинга</h3>
+            <p>Вы учитесь не просто отрабатывать навыки на привычных спотах, а уверенно переносить их на разные условия под экспертным сопровождением.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Серфинг как часть жизни</h3>
+            <p>Цель — научиться самостоятельно читать прогнозы, выбирать условия и осознанно ездить в серф-путешествия по всему миру.</p>
+        </div>
+        <div class="feature-item">
+            <h3>Безопасность через опыт</h3>
+            <p>Вы тренируетесь с тем, кто глубоко понимает стихию и точно знает, в каких условиях вы будете чувствовать себя спокойно и защищенно.</p>
+        </div>
+    </section>
+
+    <div class="text-center">
+        <a href="https://t.me/Chaika_Ilya" class="btn-coaching">Начать обучение</a>
+    </div>
+
+</div>
+
+<footer style="padding: 100px 0; text-align: center; opacity: 0.2; font-size: 10px; letter-spacing: 5px;">
+    IC WATERMAN WAY / PRIVATE COACHING / 2026
+</footer>
+
+</body>
+</html>
