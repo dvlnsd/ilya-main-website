@@ -3,129 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G-Land Surf Expedition | Ilya Chaika</title>
+    <title>G-Land | Илья Чайка</title>
     <style>
-        :root { 
-            --accent: #a0e9ff; 
-            --bg: #0a0a0a; 
-            --white: #ffffff; 
-            --gray: #111111; 
-        }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--white); line-height: 1.6; overflow-x: hidden; }
-
-        /* NAV */
-        nav { 
-            position: absolute; top: 0; width: 100%; padding: 30px 8%; 
-            display: flex; justify-content: space-between; align-items: center; z-index: 100;
+        :root {
+            --bg: #05080a; 
+            --text: #ffffff;
+            --accent: #5da9b6; 
+            --gray: #666;
         }
-        .back-link { color: #fff; text-decoration: none; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.5; transition: 0.3s; }
-        .back-link:hover { opacity: 1; color: var(--accent); }
 
-        /* HERO */
-        .hero { height: 80vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('images/ilyastungun.jpg') center/cover no-repeat; filter: brightness(0.5); z-index: 1; }
-        .hero-content { z-index: 2; padding: 0 10%; }
-        .hero-content h1 { font-size: clamp(2.5rem, 7vw, 5rem); text-transform: uppercase; letter-spacing: 15px; font-weight: 200; margin-bottom: 20px; }
-        .hero-content p { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 8px; opacity: 0.7; }
-
-        /* INFO GRID */
-        .info-section { padding: 100px 15%; display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; background: #000; }
-        .specs { display: flex; flex-direction: column; gap: 30px; border-right: 1px solid rgba(255,255,255,0.05); }
-        .spec-item { display: flex; flex-direction: column; }
-        .spec-label { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.3; margin-bottom: 5px; }
-        .spec-value { font-size: 1.1rem; font-weight: 300; letter-spacing: 1px; }
-
-        .description { font-size: 1.1rem; font-weight: 200; line-height: 1.8; opacity: 0.8; }
-        .description b { color: var(--accent); font-weight: 400; }
-
-        /* GALLERY */
-        .gallery { padding: 0 8% 100px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .gal-img { width: 100%; aspect-ratio: 16/9; background: #111; overflow: hidden; }
-        .gal-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.5s; }
-        .gal-img:hover img { filter: grayscale(0); }
-
-        /* CTA BOX */
-        .cta-section { padding: 100px 8%; text-align: center; border-top: 1px solid #111; }
-        .price-big { font-size: 3rem; font-weight: 200; letter-spacing: 5px; margin-bottom: 40px; }
-        .btn-booking { 
-            display: inline-block; padding: 25px 60px; border: 1px solid var(--accent); 
-            color: var(--accent); text-decoration: none; text-transform: uppercase; 
-            letter-spacing: 5px; font-size: 0.8rem; transition: 0.3s;
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif; 
+            font-weight: 200;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
-        .btn-booking:hover { background: var(--accent); color: #000; }
 
-        /* MOBILE STYLES */
-        .sticky-tg { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: var(--accent); color: #000; text-align: center; padding: 20px; text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; z-index: 1005; }
+        /* КНОПКА НАЗАД */
+        .back-nav {
+            position: fixed; top: 40px; left: 50px; z-index: 1000;
+        }
+        .btn-back {
+            color: white; text-decoration: none; text-transform: uppercase; 
+            font-size: 10px; letter-spacing: 3px; opacity: 0.5; transition: 0.4s;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .btn-back:hover { opacity: 1; color: var(--accent); }
 
-        @media (max-width: 900px) {
-            .info-section { grid-template-columns: 1fr; padding: 60px 8%; gap: 40px; }
-            .specs { border-right: none; border-bottom: 1px solid #111; padding-bottom: 40px; }
-            .gallery { grid-template-columns: 1fr; }
-            .hero { height: 60vh; }
-            .sticky-tg { display: block; }
-            body { padding-bottom: 80px; }
+        /* HERO БЛОК */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(5,8,10,0.2), rgba(5,8,10,0.8)), url('images/nature.jpg') center/cover no-repeat;
+            text-align: center;
+        }
+        h1 { 
+            font-size: clamp(3rem, 15vw, 12rem); 
+            font-weight: 100; 
+            text-transform: uppercase; 
+            letter-spacing: -5px; 
+            line-height: 0.8; 
+            margin: 0;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
+
+        /* ИНФО-ПАНЕЛЬ (SIDEBAR STYLE) */
+        .trip-meta {
+            display: grid; grid-template-columns: repeat(12, 1fr); gap: 60px;
+            margin-top: -100px; position: relative; z-index: 10;
+        }
+        .sidebar {
+            grid-column: span 3;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .meta-item { margin-bottom: 30px; }
+        .meta-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: block; }
+        .meta-value { font-size: 1.1rem; font-weight: 300; color: #fff; }
+
+        /* КОНТЕНТНЫЕ БЛОКИ (ЧЕРЕДОВАНИЕ) */
+        .main-content { grid-column: 5 / span 8; }
+        .content-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 180px; }
+        .content-row.reverse { direction: rtl; }
+        .content-row.reverse .text-wrap { direction: ltr; }
+
+        h2 { font-size: 2.5rem; font-weight: 100; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; line-height: 1.2; }
+        p { font-size: 1.1rem; color: #999; margin-bottom: 25px; font-weight: 300; }
+        img { width: 100%; display: block; filter: contrast(1.05) saturate(0.9); }
+
+        /* ПРЕМИАЛЬНЫЙ ПРАЙС */
+        .price-section {
+            background: #080c0e; padding: 100px; margin-top: 100px; text-align: center;
+            border: 1px solid rgba(93, 169, 182, 0.1);
+        }
+        .price-tag { font-size: 6rem; font-weight: 100; color: var(--accent); margin: 20px 0; }
+        .include-list { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px; 
+            max-width: 800px; margin: 40px auto; text-align: left; 
+        }
+        .include-item { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: #777; display: flex; gap: 15px; }
+        .include-item::before { content: '—'; color: var(--accent); }
+
+        .btn-apply {
+            display: inline-block; padding: 25px 70px; border: 1px solid var(--accent);
+            color: var(--accent); text-decoration: none; text-transform: uppercase;
+            font-size: 12px; letter-spacing: 5px; transition: 0.5s; margin-top: 50px;
+        }
+        .btn-apply:hover { background: var(--accent); color: #000; }
+
+        @media (max-width: 1024px) {
+            .trip-meta { display: flex; flex-direction: column; }
+            .content-row { grid-template-columns: 1fr; gap: 40px; }
+            .include-list { grid-template-columns: 1fr; }
+            .price-tag { font-size: 4rem; }
         }
     </style>
 </head>
 <body>
 
-    <a href="https://t.me/Chaika_Ilya" target="_blank" class="sticky-tg">Забронировать в Telegram</a>
+<nav class="back-nav">
+    <a href="index.html" class="btn-back">← На главную</a>
+</nav>
 
-    <nav>
-        <a href="index.html" class="back-link">← назад к трипам</a>
-    </nav>
+<section class="hero">
+    <h1>G-LAND</h1>
+</section>
 
-    <header class="hero">
-        <div class="hero-img"></div>
-        <div class="hero-content">
-            <h1>G-LAND</h1>
-            <p>EAST JAVA // INDONESIA</p>
+<div class="container">
+    <div class="trip-meta">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="meta-item">
+                <span class="meta-label">Локация</span>
+                <span class="meta-value">Восточная Ява, заповедник Алас Пурво</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Волны</span>
+                <span class="meta-value">Длинные левые, мирового класса</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Уровень</span>
+                <span class="meta-value">Intermediate / Advanced</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Длительность</span>
+                <span class="meta-value">6 ночей / 7 дней</span>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            
+            <section class="content-row">
+                <div class="text-wrap">
+                    <h2>Легенда джунглей</h2>
+                    <p>G-Land — это не просто спот, это место силы. Обнаруженное в 70-х годах с борта самолета, оно стало мечтой каждого серфера. Мы будем жить в сердце национального парка, где джунгли встречаются с идеальными линиями Индийского океана.</p>
+                    <p>Здесь нет шума городов. Только звук прибоя, крики экзотических птиц и безупречная геометрия волн.</p>
+                </div>
+                <img src="images/surf.jpg" alt="Waves">
+            </section>
+
+            <section class="content-row reverse">
+                <div class="text-wrap">
+                    <h2>Атмосфера погружения</h2>
+                    <p>Наш лагерь — это сочетание дикой природы и премиального комфорта. Просторные бунгало со всеми удобствами позволяют полностью восстановиться после интенсивных сессий.</p>
+                    <p>Это трип про осознанность и прогресс. Две серф-сессии в день под присмотром Ильи и обязательный вечерний видеоразбор каждого проезда.</p>
+                </div>
+                <img src="images/star.jpg" alt="Camp Life">
+            </section>
+
+            <section class="content-row">
+                <div class="text-wrap">
+                    <h2>Серфинг высшей лиги</h2>
+                    <p>Волны G-Land славятся своей длиной и скоростью. Мы подбираем время сессий под приливы и ваш уровень, чтобы каждая минута в воде работала на ваш стиль.</p>
+                    <p>Илья Чайка лично ведет коучинг, передавая 20-летний опыт чтения Океана. Вы научитесь не просто кататься, а понимать механику волны мирового уровня.</p>
+                </div>
+                <img src="images/noseride.jpg" alt="Action">
+            </section>
+
+            <!-- PRICE BLOCK -->
+            <section class="price-section">
+                <span class="meta-label">Full Package Experience</span>
+                <div class="price-tag">$3,000</div>
+                
+                <div class="include-list">
+                    <span class="include-item">Проживание в заповеднике</span>
+                    <span class="include-item">Трехразовое питание (Chef level)</span>
+                    <span class="include-item">2 серф-сессии ежедневно</span>
+                    <span class="include-item">Профессиональная видеосъемка</span>
+                    <span class="include-item">Видеоразборы с Ильей Чайкой</span>
+                    <span class="include-item">Трансфер на скоростном катере</span>
+                    <span class="include-item">Доступ к закрытым спотам</span>
+                    <span class="include-item">Полная перезагрузка в джунглях</span>
+                </div>
+
+                <a href="https://t.me/Chaika_Ilya" class="btn-apply">Подать заявку на участие</a>
+                <p style="font-size: 10px; color: #444; margin-top: 30px; letter-spacing: 2px; text-transform: uppercase;">Группа строго ограничена. Только для своих.</p>
+            </section>
+
         </div>
-    </header>
+    </div>
+</div>
 
-    <section class="info-section">
-        <div class="specs">
-            <div class="spec-item">
-                <span class="spec-label">ТИП ВОЛНЫ</span>
-                <span class="spec-value">Left-hand Reef Break</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">СЕЗОН</span>
-                <span class="spec-value">Май — Октябрь</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">УРОВЕНЬ</span>
-                <span class="spec-value">Intermediate / Advanced</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">ЛОКАЦИЯ</span>
-                <span class="spec-value">Национальный парк Алас Пурво</span>
-            </div>
-        </div>
-        <div class="description">
-            G-Land — это не просто спот, это <b>серф-экспедиция в самое сердце джунглей</b>. Одна из самых длинных и стабильных левых волн планеты, окруженная нетронутой природой Восточной Явы.
-            <br><br>
-            В этом трипе под моим руководством мы будем работать над <b>техникой прохождения длинных секций</b> и чтением рифовых волн. Мы живем в закрытом лагере в джунглях, где ничто не отвлекает от океана. Это место, где серфинг возвращается к своим истокам: только ты, твоя доска и мощь Индийского океана.
-        </div>
-    </section>
-
-    <section class="gallery">
-        <div class="gal-img"><img src="images/ilyaulu.jpg" alt="Ilya at G-Land"></div>
-        <div class="gal-img"><img src="images/ilyafoil.jpg" alt="Wave at G-Land"></div>
-    </section>
-
-    <section class="cta-section">
-        <span style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 5px; opacity: 0.4; display: block; margin-bottom: 10px;">СТОИМОСТЬ ЭКСПЕДИЦИИ</span>
-        <div class="price-big">3000 USD</div>
-        <a href="https://t.me/Chaika_Ilya" target="_blank" class="btn-booking">начать приключение</a>
-        <p style="font-size: 0.7rem; opacity: 0.3; margin-top: 40px; text-transform: uppercase; letter-spacing: 2px;">Включено: трансфер, проживание в джунглях, 3-х разовое питание,<br>коучинг, видео-анализ и фото-сопровождение.</p>
-    </section>
-
-    <footer style="padding: 60px 10%; text-align: center; border-top: 1px solid #111;">
-        <div style="font-size: 0.7rem; letter-spacing: 3px; opacity: 0.2; text-transform: uppercase;">Ilya Chaika // 2026 // G-Land Expedition</div>
-    </footer>
+<footer style="padding: 100px 0; text-align: center; opacity: 0.15; font-size: 9px; letter-spacing: 6px;">
+    IC WATERMAN WAY / G-LAND EXPEDITION / 2026
+</footer>
 
 </body>
 </html>
