@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G-Land Expedition | IC Waterman</title>
+    <title>G-Land | Илья Чайка</title>
     <style>
+        /* БАЗОВЫЕ НАСТРОЙКИ (Deep Ocean Theme) */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --bg: #05080a; 
@@ -20,11 +21,12 @@
             font-weight: 200;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        /* КНОПКА НАЗАД */
+        /* НАВИГАЦИЯ */
         .back-nav {
-            position: absolute; top: 40px; left: 50px; z-index: 1000;
+            position: absolute; top: 40px; left: 40px; z-index: 1000;
         }
         .btn-back {
             color: white; text-decoration: none; text-transform: uppercase; 
@@ -32,7 +34,7 @@
         }
         .btn-back:hover { opacity: 1; color: var(--accent); }
 
-        /* HERO: ПОЛНОЕ ПОГРУЖЕНИЕ */
+        /* HERO БЛОК (БОЛЬШОЕ ФОТО) */
         .hero {
             height: 100vh;
             width: 100%;
@@ -40,202 +42,180 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(5,8,10,0.1), rgba(5,8,10,0.9)), url('images/surf.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(5,8,10,0.1), rgba(5,8,10,0.8)), url('images/glandview.jpg') center/cover no-repeat;
             text-align: center;
         }
         h1 { 
-            font-size: clamp(3rem, 15vw, 12rem); 
+            font-size: clamp(3.5rem, 15vw, 12rem); 
             font-weight: 100; 
             text-transform: uppercase; 
             letter-spacing: -5px; 
             line-height: 0.8; 
             margin: 0;
-            filter: drop-shadow(0 0 30px rgba(0,0,0,0.5));
         }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 60px; display: grid; grid-template-columns: repeat(12, 1fr); gap: 60px; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 60px 40px; }
 
-        /* ЛЕВЫЙ БЛОК: ОГРАНИЧЕН ПО ВЫСОТЕ КОНТЕНТА */
-        .sidebar-container {
-            grid-column: span 3;
-            position: relative;
+        /* ИНФО-БЛОК (СЛЕВА ПОД HERO) */
+        .trip-brief {
+            width: 300px;
+            margin-bottom: 120px;
+            border-left: 1px solid rgba(93, 169, 182, 0.3);
+            padding-left: 30px;
         }
-        .sidebar {
-            position: sticky;
-            top: 120px;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            /* Блок заканчивается здесь, не тянется вниз */
-            height: fit-content; 
-        }
-        .meta-item { margin-bottom: 25px; }
-        .meta-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; display: block; }
-        .meta-value { font-size: 1rem; font-weight: 300; color: #fff; }
+        .brief-item { margin-bottom: 25px; }
+        .brief-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 5px; }
+        .brief-val { font-size: 1.1rem; font-weight: 300; }
 
-        /* ПРАВЫЙ КОНТЕНТ */
-        .main-content { grid-column: 5 / span 8; padding-top: 120px; }
+        /* КОНТЕНТНЫЕ СЕКЦИИ (АСИММЕТРИЯ) */
+        .row { display: grid; grid-template-columns: repeat(12, 1fr); gap: 60px; margin-bottom: 200px; align-items: center; }
         
-        .content-row { display: flex; gap: 80px; align-items: center; margin-bottom: 200px; }
-        .content-row.reverse { flex-direction: row-reverse; }
+        .text-wrap { grid-column: span 5; }
+        .img-wrap { grid-column: span 7; position: relative; }
         
-        .text-wrap { flex: 1; }
-        .img-wrap { flex: 1.2; overflow: hidden; }
-        .img-wrap img, .img-wrap video { width: 100%; display: block; filter: contrast(1.05); transition: 0.6s; }
-        .img-wrap:hover img { transform: scale(1.03); }
+        /* Чередование сторон */
+        .row:nth-child(even) .text-wrap { grid-column: 8 / span 5; grid-row: 1; }
+        .row:nth-child(even) .img-wrap { grid-column: 1 / span 7; grid-row: 1; }
 
-        h2 { font-size: 2.8rem; font-weight: 100; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 35px; line-height: 1.1; color: var(--accent); }
-        p { font-size: 1.15rem; color: #ccc; margin-bottom: 25px; font-weight: 300; }
-        .highlight { color: #fff; font-weight: 400; }
+        h2 { font-size: 3rem; font-weight: 100; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; line-height: 1.1; color: var(--accent); }
+        p { font-size: 1.2rem; color: #a0a0a0; margin-bottom: 30px; }
+        .highlight { color: #fff; font-weight: 300; }
 
-        /* ПРЕМИАЛЬНЫЙ ПРАЙС-БЛОК */
-        .price-card {
-            background: linear-gradient(145deg, #080c0e, #05080a);
-            padding: 80px; margin-bottom: 150px;
-            border: 1px solid rgba(93, 169, 182, 0.2);
+        img, video { width: 100%; display: block; filter: contrast(1.05); }
+
+        /* КАРТОЧКА СТОИМОСТИ */
+        .checkout {
+            background: #080c0e;
+            padding: 100px 60px;
             text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 150px;
         }
-        .price-tag { font-size: 7rem; font-weight: 100; color: #fff; margin: 20px 0; letter-spacing: -3px; }
+        .price { font-size: 6rem; font-weight: 100; letter-spacing: -3px; margin: 30px 0; }
         
-        .amenities { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 25px; 
-            max-width: 900px; margin: 60px auto; text-align: left; 
+        .check-list { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 30px; max-width: 1000px; margin: 60px auto; text-align: left; 
         }
-        .amenity-item { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #888; display: flex; align-items: center; gap: 15px; }
-        .amenity-item::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+        .check-item { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--gray); display: flex; align-items: center; gap: 15px; }
+        .check-item::before { content: '•'; color: var(--accent); font-size: 20px; }
 
-        .btn-booking {
-            display: inline-block; padding: 25px 80px; background: transparent; border: 1px solid var(--accent);
+        .btn-main {
+            display: inline-block; padding: 25px 80px; border: 1px solid var(--accent);
             color: var(--accent); text-decoration: none; text-transform: uppercase;
-            font-size: 12px; letter-spacing: 6px; transition: 0.5s; font-weight: 400;
+            font-size: 12px; letter-spacing: 6px; transition: 0.5s;
         }
-        .btn-booking:hover { background: var(--accent); color: #000; box-shadow: 0 0 50px rgba(93, 169, 182, 0.3); }
+        .btn-main:hover { background: var(--accent); color: #000; }
 
-        @media (max-width: 1100px) {
-            .container { display: block; padding: 0 20px; }
-            .sidebar { position: relative; top: 0; margin-bottom: 60px; }
-            .content-row, .content-row.reverse { flex-direction: column; gap: 40px; margin-bottom: 120px; }
-            .price-tag { font-size: 4rem; }
-            .amenities { grid-template-columns: 1fr; }
+        /* АДАПТИВНОСТЬ (Айфон/Айпад) */
+        @media (max-width: 1024px) {
+            .row, .row:nth-child(even) { display: flex; flex-direction: column; gap: 40px; }
+            .text-wrap, .img-wrap { width: 100%; }
+            .hero h1 { font-size: 5rem; }
+            .price { font-size: 4rem; }
+            .container { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
 <nav class="back-nav">
-    <a href="index.html" class="btn-back">← Back to Explore</a>
+    <a href="index.html" class="btn-back">← назад к обзору</a>
 </nav>
 
 <section class="hero">
-    <span style="letter-spacing: 12px; text-transform: uppercase; font-size: 12px; margin-bottom: 20px; color: var(--accent);">Java Island Expedition</span>
     <h1>G-LAND</h1>
 </section>
 
 <div class="container">
-    <div class="sidebar-container">
-        <aside class="sidebar">
-            <div class="meta-item">
-                <span class="meta-label">Location</span>
-                <span class="meta-value">Бухта Граджаган, Ява</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Wave Type</span>
-                <span class="meta-value">World-Class Left Handers</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Surfing Level</span>
-                <span class="meta-value">Intermediate / Advanced</span>
-            </div>
-            <div class="meta-item">
-                <span class="meta-label">Stay</span>
-                <span class="meta-value">6 nights / 7 days</span>
-            </div>
-        </aside>
+    
+    <div class="trip-brief">
+        <div class="brief-item">
+            <span class="brief-label">Локация</span>
+            <span class="brief-val">Бухта Граджаган, Ява</span>
+        </div>
+        <div class="brief-item">
+            <span class="brief-label">Волны</span>
+            <span class="brief-val">Длинные левые мирового класса</span>
+        </div>
+        <div class="brief-item">
+            <span class="brief-label">Уровень</span>
+            <span class="brief-val">Intermediate / Advanced</span>
+        </div>
+        <div class="brief-item">
+            <span class="brief-label">Срок</span>
+            <span class="brief-val">6 ночей / 7 дней</span>
+        </div>
     </div>
 
-    <div class="main-content">
+    <section class="row">
+        <div class="text-wrap">
+            <h2>Мистическая бухта</h2>
+            <p>Добро пожаловать в легендарную <span class="highlight">Бухту Граджаган</span>. Это место окружено тайной с 1972 года, когда серферы-первопроходцы увидели эти идеальные линии с борта самолета.</p>
+            <p>Вы пройдете тот же путь, проникаясь духом чистого серфинга. Когда в джунглях наступает темнота, вы кожей чувствуете: это не просто точка на карте, это место живой силы Океана.</p>
+        </div>
+        <div class="img-wrap">
+            <img src="images/glandlight.jpg" alt="Mystic G-Land">
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="img-wrap">
+            <img src="images/glandmonkey.jpg" alt="Wildlife">
+        </div>
+        <div class="text-wrap">
+            <h2>Жизнь в заповеднике</h2>
+            <p>Серф-кемпы расположены прямо в <span class="highlight">Национальном заповеднике</span>. Здесь цивилизация заканчивается у порога вашего бунгало. </p>
+            <p>На пляже гуляют дикие олени, пролетают павлины и пробегают луваки. А вашими соседями станут <span class="highlight">яванские мартышки</span> — они здесь настоящие хозяева диких мест.</p>
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="text-wrap">
+            <h2>Трехразовое серферское питание</h2>
+            <p>Наш шеф — местная легенда. Он делает за раз по 7 банана панкейков, и это база, с которой начинается утро. </p>
+            <p>В меню всегда что-то новое: и местная индонезийская кухня, и привычная европейская. Но будьте уверены — это всегда вкусно и именно то, что нужно после долгой сессии.</p>
+        </div>
+        <div class="img-wrap">
+            <img src="images/glandvibe.jpg" alt="G-Land Food and Vibe">
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="img-wrap">
+            <video autoplay muted loop poster="images/glandily.jpg">
+                <source src="images/gland.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="text-wrap">
+            <h2>Разбор полетов</h2>
+            <p>Две сессии в день и обязательный <span class="highlight">видеоразбор от Ильи</span> вечером. Мы не просто катаемся, а детально смотрим каждый проезд.</p>
+            <p>Это полная перезагрузка под звездным небом. И хотя вы в диких джунглях, здесь есть интернет, чтобы оставаться на связи с миром, если захочется.</p>
+        </div>
+    </section>
+
+    <section class="checkout">
+        <span class="brief-label">Стоимость трипа</span>
+        <div class="price">$3,000</div>
         
-        <section class="content-row">
-            <div class="text-wrap">
-                <h2>Мистическая Бухта</h2>
-                <p>Добро пожаловать в легендарную <span class="highlight">Бухту Граджаган</span>. Это место окружено ореолом тайны с 1972 года, когда серферы-первопроходцы обнаружили эти идеальные линии с борта самолета.</p>
-                <p>Вы пройдете тот же путь, что и легенды 70-х, проникаясь духом чистого серфинга. Когда в джунглях наступает темнота, вы кожей чувствуете: это не просто точка на карте, это место живой силы Океана.</p>
-            </div>
-            <div class="img-wrap">
-                <img src="images/nature.jpg" alt="Mystic Bay">
-            </div>
-        </section>
+        <div class="check-list">
+            <div class="check-item">6 ночей в заповеднике</div>
+            <div class="check-item">Трехразовое питание</div>
+            <div class="check-item">2 серф-сессии в день</div>
+            <div class="check-item">Видеоразборы с Ильей</div>
+            <div class="check-item">Профессиональная съемка</div>
+            <div class="check-item">Скоростной катер на Яву</div>
+            <div class="check-item">Интернет в джунглях</div>
+            <div class="check-item">Полная перезагрузка</div>
+        </div>
 
-        <section class="content-row reverse">
-            <div class="text-wrap">
-                <h2>Жизнь в Заповеднике</h2>
-                <p>Наш кэмп расположен <span class="highlight">прямо в Национальном Заповеднике Алас Пурво</span>. Это единственный в мире опыт, где цивилизация заканчивается у порога вашего бунгало.</p>
-                <p>Здесь на пляже гуляют дикие олени, над головой пролетают павлины, а по территории пробегают скрытные луваки. Вашими соседями станут <span class="highlight">яванские мартышки</span> — настоящие хозяева этих диких мест.</p>
-            </div>
-            <div class="img-wrap">
-                <img src="images/monkey.jpg" alt="Wildlife Neighbors">
-            </div>
-        </section>
+        <a href="https://t.me/Chaika_Ilya" class="btn-main">Подать заявку Илье</a>
+    </section>
 
-        <section class="content-row">
-            <div class="text-wrap">
-                <h2>Deep Coaching</h2>
-                <p>Две интенсивные серф-сессии в день на легендарных левых волнах Индийского океана. Это формат для тех, кто готов к серьезному прогрессу под руководством Ильи Чайки.</p>
-                <p>Каждый ваш проезд фиксируется на камеру. Вечерние <span class="highlight">видеоразборы</span> в атмосфере джунглей под звездным небом — это ключ к пониманию механики волны и исправлению ошибок в реальном времени.</p>
-            </div>
-            <div class="img-wrap">
-                <img src="images/noseride.jpg" alt="Surfing Action">
-            </div>
-        </section>
-
-        <section class="content-row reverse">
-            <div class="text-wrap">
-                <h2>Цифровой детокс</h2>
-                <p>Полная перезагрузка от шума и городской суеты. Только вы, Океан и первозданная природа. При этом мы позаботились о вашем комфорте: в кэмпе есть стабильный интернет, чтобы вы могли оставаться на связи с миром, если это необходимо.</p>
-            </div>
-            <div class="img-wrap">
-                <video autoplay muted loop poster="images/ilya2.jpg">
-                    <source src="video/gland-preview.mp4" type="video/mp4">
-                </video>
-            </div>
-        </section>
-
-        <section class="content-row">
-            <div class="text-wrap">
-                <h2>Кухня Легенд</h2>
-                <p>Питание в G-Land — это отдельное удовольствие. Наш шеф-повар, настоящая легенда этих мест, готовит трехразовое сбалансированное меню для атлетов.</p>
-                <p>Начинайте свой день с тех самых <span class="highlight">банановых панкейков</span>, которые стали визитной карточкой кэмпа, и заряжайтесь энергией Океана на весь день.</p>
-            </div>
-            <div class="img-wrap">
-                <img src="images/star.jpg" alt="Gourmet Breakfast">
-            </div>
-        </section>
-
-        <section class="price-card">
-            <span class="meta-label">All-Inclusive Expert Trip</span>
-            <div class="price-tag">$3,000</div>
-            
-            <div class="amenities">
-                <span class="amenity-item">6 ночей в бунгало в сердце заповедника</span>
-                <span class="amenity-item">Трехразовое премиальное питание</span>
-                <span class="amenity-item">Легендарные завтраки от шефа</span>
-                <span class="amenity-item">2 серф-сессии ежедневно</span>
-                <span class="amenity-item">Индивидуальные видеоразборы с Ильей</span>
-                <span class="amenity-item">Профессиональный видео-пакет ваших волн</span>
-                <span class="amenity-item">Трансфер на скоростном катере</span>
-                <span class="amenity-item">Высокоскоростной Starlink в джунглях</span>
-            </div>
-
-            <a href="https://t.me/Chaika_Ilya" class="btn-booking">Подать заявку на участие</a>
-            <p style="font-size: 10px; color: #444; margin-top: 40px; letter-spacing: 3px; text-transform: uppercase;">Группа строго ограничена для сохранения камерности опыта.</p>
-        </section>
-
-    </div>
 </div>
 
-<footer style="padding: 100px 0; text-align: center; opacity: 0.1; font-size: 9px; letter-spacing: 6px;">
-    IC WATERMAN WAY / G-LAND EXPEDITION / EST. 2026
+<footer style="padding: 100px 0; text-align: center; opacity: 0.1; font-size: 9px; letter-spacing: 5px;">
+    IC WATERMAN WAY / G-LAND / 2026
 </footer>
 
 </body>
