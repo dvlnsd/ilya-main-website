@@ -22,26 +22,17 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* НАВИГАЦИЯ */
-        .back-nav {
-            position: absolute; top: 30px; left: 30px; z-index: 1000;
-        }
-        .btn-back {
-            color: white; text-decoration: none; text-transform: uppercase; 
-            font-size: 10px; letter-spacing: 3px; opacity: 0.5;
-        }
-
         /* HERO */
         .hero {
             height: 80vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(5,8,10,0.1), rgba(5,8,10,0.8)), url('images/glandview.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(5,8,10,0.2), rgba(5,8,10,0.8)), url('images/glandview.jpg') center/cover no-repeat;
         }
         h1 { font-size: clamp(4rem, 12vw, 10rem); font-weight: 100; text-transform: uppercase; letter-spacing: -3px; }
 
-        /* ИНФО-ЛИНИЯ ВО ВСЮ ШИРИНУ */
+        /* ИНФО-ЛИНИЯ */
         .info-line {
             width: 100%;
             padding: 40px 60px;
@@ -54,55 +45,52 @@
         .label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
         .val { font-size: 1rem; font-weight: 300; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 120px 40px; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 100px 40px; }
 
-        /* ШАХМАТНЫЙ ПОРЯДОК */
-        .row { 
+        /* ШАХМАТНЫЕ БЛОКИ */
+        .content-block { 
             display: flex; 
             align-items: center; 
-            gap: 80px; 
-            margin-bottom: 160px; 
+            gap: 100px; 
+            margin-bottom: 180px; 
         }
-        .row:nth-child(even) { flex-direction: row-reverse; }
 
-        .img-wrap { flex: 1; overflow: hidden; }
-        .img-wrap img, .img-wrap video { width: 100%; display: block; filter: contrast(1.05); }
+        /* Четные блоки: Текст слева, Картинка справа */
+        .content-block.reverse { 
+            flex-direction: row-reverse; 
+        }
+
+        .img-box { flex: 1.2; }
+        .img-box img, .img-box video { width: 100%; display: block; filter: contrast(1.05); }
         
-        .text-wrap { flex: 1; }
-        h2 { font-size: 2.5rem; font-weight: 100; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; color: var(--accent); line-height: 1.2; }
-        p { font-size: 1.1rem; color: #a0a0a0; margin-bottom: 25px; }
+        .text-box { flex: 1; }
+        h2 { font-size: 2.8rem; font-weight: 100; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; color: var(--accent); line-height: 1.1; }
+        p { font-size: 1.2rem; color: #a0a0a0; margin-bottom: 25px; }
 
-        /* ФИНАЛЬНЫЙ БЛОК */
+        /* ФИНАЛ */
         .checkout {
             text-align: center;
-            padding: 100px 40px;
+            padding: 120px 40px;
             border-top: 1px solid rgba(255,255,255,0.05);
-            margin-top: 100px;
         }
         .price { font-size: 5rem; font-weight: 100; margin-bottom: 40px; }
         .btn-main {
-            display: inline-block; padding: 22px 60px; border: 1px solid var(--accent);
+            display: inline-block; padding: 22px 65px; border: 1px solid var(--accent);
             color: var(--accent); text-decoration: none; text-transform: uppercase;
             font-size: 11px; letter-spacing: 5px; transition: 0.4s;
         }
         .btn-main:hover { background: var(--accent); color: #000; }
 
-        /* АДАПТИВНОСТЬ */
-        @media (max-width: 900px) {
-            .info-line { flex-direction: column; gap: 30px; padding: 40px 20px; }
-            .row, .row:nth-child(even) { flex-direction: column; gap: 40px; }
-            .container { padding: 80px 20px; }
-            h1 { font-size: 4rem; }
-            h2 { font-size: 2rem; }
-            .price { font-size: 3.5rem; }
+        /* АДАПТИВ (Планшеты и Телефоны) */
+        @media (max-width: 1024px) {
+            .info-line { flex-wrap: wrap; gap: 30px; padding: 40px 30px; }
+            .content-block, .content-block.reverse { flex-direction: column; gap: 40px; margin-bottom: 100px; }
+            .img-box, .text-box { width: 100%; }
+            h2 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
-
-<nav class="back-nav">
-    <a href="index.html" class="btn-back">← на главную</a>
-</nav>
 
 <section class="hero">
     <h1>G-LAND</h1>
@@ -129,42 +117,42 @@
 
 <div class="container">
     
-    <section class="row">
-        <div class="img-wrap">
+    <section class="content-block">
+        <div class="img-box">
             <img src="images/glandlight.jpg" alt="Mystic G-Land">
         </div>
-        <div class="text-wrap">
+        <div class="text-box">
             <h2>Мистическая бухта</h2>
             <p>Это место окружено тайной с 70-х годов. Вы пройдете тот же путь, что и первооткрыватели, проникаясь духом чистого серфинга. Когда в джунглях наступает темнота, вы кожей чувствуете: это место живой силы Океана.</p>
         </div>
     </section>
 
-    <section class="row">
-        <div class="text-wrap">
+    <section class="content-block reverse">
+        <div class="text-box">
             <h2>Жизнь в заповеднике</h2>
-            <p>Серф-кемпы расположены прямо в Национальном заповеднике. На пляже гуляют дикие олени, пролетают павлины, а по территории бегают луваки. Вашими соседями станут яванские мартышки — они здесь хозяева.</p>
+            <p>Серф-кемпы расположены прямо в Национальном заповеднике. На пляже гуляют дикие олени, пролетают павлины, а вашими соседями станут яванские мартышки — они здесь настоящие хозяева.</p>
         </div>
-        <div class="img-wrap">
+        <div class="img-box">
             <img src="images/glandmonkey.jpg" alt="Wildlife">
         </div>
     </section>
 
-    <section class="row">
-        <div class="img-wrap">
+    <section class="content-block">
+        <div class="img-box">
             <img src="images/glandvibe.jpg" alt="G-Land Food">
         </div>
-        <div class="text-wrap">
+        <div class="text-box">
             <h2>Серферское питание</h2>
-            <p>Наш шеф — легенда, он делает по 7 банана панкейков за раз. В меню всегда и местная, и привычная кухня. Будьте уверены — это всегда вкусно и именно то, что нужно после долгой сессии в воде.</p>
+            <p>Наш шеф делает по 7 банана панкейков за раз. В меню всегда и местная, и привычная кухня. Будьте уверены — это всегда вкусно и именно то, что нужно после долгой сессии в воде.</p>
         </div>
     </section>
 
-    <section class="row">
-        <div class="text-wrap">
+    <section class="content-block reverse">
+        <div class="text-box">
             <h2>Разбор полетов</h2>
             <p>Две сессии в день и обязательный видеоразбор от Ильи вечером. Мы детально смотрим каждый ваш проезд. Это полная перезагрузка под звездным небом Индонезии.</p>
         </div>
-        <div class="img-wrap">
+        <div class="img-box">
             <video autoplay muted loop poster="images/glandily.jpg">
                 <source src="images/gland.mp4" type="video/mp4">
             </video>
