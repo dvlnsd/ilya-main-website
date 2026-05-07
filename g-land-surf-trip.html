@@ -9,7 +9,7 @@
         :root {
             --bg: #05080a; 
             --text: #ffffff;
-            --accent: #5da9b6; 
+            --accent: #5da9b6; /* Фирменный сине-зеленый */
             --gray: #666;
         }
 
@@ -41,7 +41,7 @@
             background: linear-gradient(rgba(5,8,10,0.3), rgba(5,8,10,0.8)), url('images/glandview.jpg') center/cover no-repeat;
             text-align: center;
         }
-        h1 { font-size: clamp(4rem, 15vw, 12rem); font-weight: 100; text-transform: uppercase; letter-spacing: -3px; }
+        h1 { font-size: clamp(4rem, 15vw, 10rem); font-weight: 100; text-transform: uppercase; letter-spacing: -3px; }
 
         /* ИНФО-ЛИНИЯ */
         .info-line {
@@ -59,27 +59,23 @@
         .container { max-width: 1300px; margin: 0 auto; padding: 120px 40px; }
 
         /* ШАХМАТНЫЕ БЛОКИ */
-        .content-block { 
+        .chess-block { 
             display: flex; 
             align-items: center; 
             gap: 100px; 
             margin-bottom: 180px; 
         }
 
-        /* Четные блоки: Текст слева, Картинка справа */
-        .content-block.reverse { 
-            flex-direction: row-reverse; 
-        }
-
-        .img-box { flex: 1.2; }
+        /* Изображение чуть меньше */
+        .img-box { flex: 1; overflow: hidden; }
         .img-box img, .img-box video { width: 100%; display: block; filter: contrast(1.05); }
         
-        .text-box { flex: 1; }
+        .text-box { flex: 1.1; }
         h2 { font-size: 2.8rem; font-weight: 100; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; color: var(--accent); line-height: 1.1; }
         p { font-size: 1.2rem; color: #a0a0a0; margin-bottom: 25px; }
         .highlight { color: #fff; font-weight: 300; }
 
-        /* ФИНАЛЬНЫЙ БЛОК */
+        /* ФИНАЛ */
         .checkout {
             text-align: center;
             padding: 120px 40px;
@@ -99,21 +95,23 @@
         .amenity-item { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #888; display: flex; align-items: center; gap: 15px; }
         .amenity-item::before { content: '•'; color: var(--accent); font-size: 18px; }
 
-        .scarcity-tag {
-            color: var(--accent); font-size: 10px; letter-spacing: 5px; text-transform: uppercase; font-weight: 500; margin-bottom: 10px; display: block;
+        .scarcity {
+            color: var(--accent); font-size: 10px; letter-spacing: 5px; text-transform: uppercase; font-weight: 500; margin-bottom: 40px; display: block;
         }
 
         .btn-main {
-            display: inline-block; padding: 25px 80px; border: 1px solid var(--accent);
+            display: inline-block; padding: 22px 65px; border: 1px solid var(--accent);
             color: var(--accent); text-decoration: none; text-transform: uppercase;
-            font-size: 12px; letter-spacing: 6px; transition: 0.5s; margin-top: 40px;
+            font-size: 12px; letter-spacing: 5px; transition: 0.4s;
         }
         .btn-main:hover { background: var(--accent); color: #000; box-shadow: 0 0 40px rgba(93, 169, 182, 0.2); }
 
         /* АДАПТИВНОСТЬ */
         @media (max-width: 1024px) {
             .info-line { flex-wrap: wrap; gap: 30px; padding: 40px 30px; }
-            .content-block, .content-block.reverse { flex-direction: column; gap: 40px; margin-bottom: 100px; }
+            .chess-block { flex-direction: column; gap: 40px; margin-bottom: 100px; }
+            /* На мобильных картинка всегда сверху */
+            .chess-block:nth-child(even) { flex-direction: column; }
             .img-box, .text-box { width: 100%; }
             h1 { font-size: 5rem; }
             h2 { font-size: 2.2rem; }
@@ -152,18 +150,18 @@
 
 <div class="container">
     
-    <section class="content-block">
+    <section class="chess-block">
         <div class="img-box">
             <img src="images/glandlight.jpg" alt="Mystic G-Land">
         </div>
         <div class="text-box">
             <h2>Мистическая бухта</h2>
             <p>Это место окружено тайной с 72-го года, когда серферы-первопроходцы увидели эти идеальные линии с борта самолета. <span class="highlight">G-Land</span> — это не просто спот, это путешествие к истокам.</p>
-            <p>Вы пройдете тот же путь, проникаясь духом чистого серфинга. Когда в джунглях наступает темнота, вы кожей чувствуете: это не просто точка на карте, это место живой силы Океана.</p>
+            <p>Вы пройдете тот же путь, проникаясь духом чистого серфинга. Когда в джунглях наступает темнота, вы кожей чувствуете: это место живой силы Океана.</p>
         </div>
     </section>
 
-    <section class="content-block reverse">
+    <section class="chess-block">
         <div class="text-box">
             <h2>Жизнь в заповеднике</h2>
             <p>Серф-кемпы расположены прямо в <span class="highlight">Национальном заповеднике Алас Пурво</span>. Здесь цивилизация заканчивается у порога вашего бунгало.</p>
@@ -174,7 +172,7 @@
         </div>
     </section>
 
-    <section class="content-block">
+    <section class="chess-block">
         <div class="img-box">
             <img src="images/glandvibe.jpg" alt="Surfer Food">
         </div>
@@ -185,7 +183,7 @@
         </div>
     </section>
 
-    <section class="content-block reverse">
+    <section class="chess-block">
         <div class="text-box">
             <h2>Разбор полетов</h2>
             <p>Две интенсивные сессии в день и обязательный <span class="highlight">видеоразбор от Ильи</span> вечером. Мы детально смотрим каждый ваш проезд, чтобы исправить ошибки на месте.</p>
@@ -199,7 +197,7 @@
     </section>
 
     <section class="checkout">
-        <span class="label" style="margin-bottom: 10px; display: block;">Стоимость экспедиции</span>
+        <span class="label" style="margin-bottom: 10px; display: block;">Стоимость участия</span>
         <div class="price">$3,000</div>
         
         <div class="amenities-grid">
@@ -214,8 +212,7 @@
         </div>
 
         <div style="margin: 40px 0;">
-            <span class="scarcity-tag">Количество мест ограничено</span>
-            <p style="font-size: 12px; color: #555;">Группа строго до 8 человек. Только для своих.</p>
+            <span class="scarcity">Количество мест ограничено</span>
         </div>
 
         <a href="https://t.me/Chaika_Ilya" class="btn-main">Подать заявку Илье</a>
@@ -224,7 +221,7 @@
 </div>
 
 <footer style="padding: 100px 0; text-align: center; opacity: 0.1; font-size: 9px; letter-spacing: 5px;">
-    IC WATERMAN WAY / G-LAND EXPEDITION / 2026
+    IC WATERMAN WAY / 2026
 </footer>
 
 </body>
