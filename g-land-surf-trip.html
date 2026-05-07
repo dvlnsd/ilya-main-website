@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G-Land | Илья Чайка</title>
+    <title>G-Land | IC Waterman</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -16,21 +16,32 @@
         body { 
             background-color: var(--bg); 
             color: var(--text); 
-            font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
             font-weight: 200;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
+        /* НАВИГАЦИЯ */
+        .back-nav {
+            position: absolute; top: 30px; left: 30px; z-index: 1000;
+        }
+        .btn-back {
+            color: white; text-decoration: none; text-transform: uppercase; 
+            font-size: 10px; letter-spacing: 3px; opacity: 0.5; transition: 0.4s;
+        }
+        .btn-back:hover { opacity: 1; color: var(--accent); }
+
         /* HERO */
         .hero {
-            height: 80vh;
+            height: 85vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(5,8,10,0.2), rgba(5,8,10,0.8)), url('images/glandview.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(5,8,10,0.3), rgba(5,8,10,0.8)), url('images/glandview.jpg') center/cover no-repeat;
+            text-align: center;
         }
-        h1 { font-size: clamp(4rem, 12vw, 10rem); font-weight: 100; text-transform: uppercase; letter-spacing: -3px; }
+        h1 { font-size: clamp(4rem, 15vw, 12rem); font-weight: 100; text-transform: uppercase; letter-spacing: -3px; }
 
         /* ИНФО-ЛИНИЯ */
         .info-line {
@@ -45,7 +56,7 @@
         .label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
         .val { font-size: 1rem; font-weight: 300; }
 
-        .container { max-width: 1300px; margin: 0 auto; padding: 100px 40px; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 120px 40px; }
 
         /* ШАХМАТНЫЕ БЛОКИ */
         .content-block { 
@@ -66,31 +77,55 @@
         .text-box { flex: 1; }
         h2 { font-size: 2.8rem; font-weight: 100; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; color: var(--accent); line-height: 1.1; }
         p { font-size: 1.2rem; color: #a0a0a0; margin-bottom: 25px; }
+        .highlight { color: #fff; font-weight: 300; }
 
-        /* ФИНАЛ */
+        /* ФИНАЛЬНЫЙ БЛОК */
         .checkout {
             text-align: center;
             padding: 120px 40px;
             border-top: 1px solid rgba(255,255,255,0.05);
+            background: #080c0e;
         }
-        .price { font-size: 5rem; font-weight: 100; margin-bottom: 40px; }
-        .btn-main {
-            display: inline-block; padding: 22px 65px; border: 1px solid var(--accent);
-            color: var(--accent); text-decoration: none; text-transform: uppercase;
-            font-size: 11px; letter-spacing: 5px; transition: 0.4s;
+        .price { font-size: 6rem; font-weight: 100; margin-bottom: 20px; letter-spacing: -3px; }
+        
+        .amenities-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 25px; 
+            max-width: 900px; 
+            margin: 60px auto; 
+            text-align: left; 
         }
-        .btn-main:hover { background: var(--accent); color: #000; }
+        .amenity-item { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #888; display: flex; align-items: center; gap: 15px; }
+        .amenity-item::before { content: '•'; color: var(--accent); font-size: 18px; }
 
-        /* АДАПТИВ (Планшеты и Телефоны) */
+        .scarcity-tag {
+            color: var(--accent); font-size: 10px; letter-spacing: 5px; text-transform: uppercase; font-weight: 500; margin-bottom: 10px; display: block;
+        }
+
+        .btn-main {
+            display: inline-block; padding: 25px 80px; border: 1px solid var(--accent);
+            color: var(--accent); text-decoration: none; text-transform: uppercase;
+            font-size: 12px; letter-spacing: 6px; transition: 0.5s; margin-top: 40px;
+        }
+        .btn-main:hover { background: var(--accent); color: #000; box-shadow: 0 0 40px rgba(93, 169, 182, 0.2); }
+
+        /* АДАПТИВНОСТЬ */
         @media (max-width: 1024px) {
             .info-line { flex-wrap: wrap; gap: 30px; padding: 40px 30px; }
             .content-block, .content-block.reverse { flex-direction: column; gap: 40px; margin-bottom: 100px; }
             .img-box, .text-box { width: 100%; }
+            h1 { font-size: 5rem; }
             h2 { font-size: 2.2rem; }
+            .price { font-size: 4rem; }
         }
     </style>
 </head>
 <body>
+
+<nav class="back-nav">
+    <a href="index.html" class="btn-back">← на главную</a>
+</nav>
 
 <section class="hero">
     <h1>G-LAND</h1>
@@ -123,34 +158,38 @@
         </div>
         <div class="text-box">
             <h2>Мистическая бухта</h2>
-            <p>Это место окружено тайной с 70-х годов. Вы пройдете тот же путь, что и первооткрыватели, проникаясь духом чистого серфинга. Когда в джунглях наступает темнота, вы кожей чувствуете: это место живой силы Океана.</p>
+            <p>Это место окружено тайной с 72-го года, когда серферы-первопроходцы увидели эти идеальные линии с борта самолета. <span class="highlight">G-Land</span> — это не просто спот, это путешествие к истокам.</p>
+            <p>Вы пройдете тот же путь, проникаясь духом чистого серфинга. Когда в джунглях наступает темнота, вы кожей чувствуете: это не просто точка на карте, это место живой силы Океана.</p>
         </div>
     </section>
 
     <section class="content-block reverse">
         <div class="text-box">
             <h2>Жизнь в заповеднике</h2>
-            <p>Серф-кемпы расположены прямо в Национальном заповеднике. На пляже гуляют дикие олени, пролетают павлины, а вашими соседями станут яванские мартышки — они здесь настоящие хозяева.</p>
+            <p>Серф-кемпы расположены прямо в <span class="highlight">Национальном заповеднике Алас Пурво</span>. Здесь цивилизация заканчивается у порога вашего бунгало.</p>
+            <p>На пляже гуляют дикие олени, пролетают павлины, а вашими соседями станут яванские мартышки — они здесь настоящие хозяева диких мест.</p>
         </div>
         <div class="img-box">
-            <img src="images/glandmonkey.jpg" alt="Wildlife">
+            <img src="images/glandmonkey.jpg" alt="Wildlife Neighbors">
         </div>
     </section>
 
     <section class="content-block">
         <div class="img-box">
-            <img src="images/glandvibe.jpg" alt="G-Land Food">
+            <img src="images/glandvibe.jpg" alt="Surfer Food">
         </div>
         <div class="text-box">
             <h2>Серферское питание</h2>
-            <p>Наш шеф делает по 7 банана панкейков за раз. В меню всегда и местная, и привычная кухня. Будьте уверены — это всегда вкусно и именно то, что нужно после долгой сессии в воде.</p>
+            <p>Наш шеф — легенда, он делает по 7 банана панкейков за раз. В меню всегда придумывают что-то новое: и местная индонезийская кухня, и привычная европейская.</p>
+            <p>Будьте уверены — это всегда вкусно и именно то, что нужно для восстановления сил после долгой сессии в воде.</p>
         </div>
     </section>
 
     <section class="content-block reverse">
         <div class="text-box">
             <h2>Разбор полетов</h2>
-            <p>Две сессии в день и обязательный видеоразбор от Ильи вечером. Мы детально смотрим каждый ваш проезд. Это полная перезагрузка под звездным небом Индонезии.</p>
+            <p>Две интенсивные сессии в день и обязательный <span class="highlight">видеоразбор от Ильи</span> вечером. Мы детально смотрим каждый ваш проезд, чтобы исправить ошибки на месте.</p>
+            <p>Это полная перезагрузка под звездным небом. И хотя вы в диких джунглях, здесь есть интернет, чтобы оставаться на связи с миром, если захочется.</p>
         </div>
         <div class="img-box">
             <video autoplay muted loop poster="images/glandily.jpg">
@@ -160,15 +199,32 @@
     </section>
 
     <section class="checkout">
-        <span class="label">Стоимость трипа</span>
+        <span class="label" style="margin-bottom: 10px; display: block;">Стоимость экспедиции</span>
         <div class="price">$3,000</div>
+        
+        <div class="amenities-grid">
+            <div class="amenity-item">6 ночей в сердце заповедника</div>
+            <div class="amenity-item">Трехразовое питание от шефа</div>
+            <div class="amenity-item">Легендарные банановые панкейки</div>
+            <div class="amenity-item">2 серф-сессии ежедневно</div>
+            <div class="amenity-item">Видеоразборы с Ильей Чайкой</div>
+            <div class="amenity-item">Профессиональная съемка прогресса</div>
+            <div class="amenity-item">Трансфер на скоростном катере</div>
+            <div class="amenity-item">Интернет (Starlink) в джунглях</div>
+        </div>
+
+        <div style="margin: 40px 0;">
+            <span class="scarcity-tag">Количество мест ограничено</span>
+            <p style="font-size: 12px; color: #555;">Группа строго до 8 человек. Только для своих.</p>
+        </div>
+
         <a href="https://t.me/Chaika_Ilya" class="btn-main">Подать заявку Илье</a>
     </section>
 
 </div>
 
 <footer style="padding: 100px 0; text-align: center; opacity: 0.1; font-size: 9px; letter-spacing: 5px;">
-    IC WATERMAN WAY / G-LAND / 2026
+    IC WATERMAN WAY / G-LAND EXPEDITION / 2026
 </footer>
 
 </body>
