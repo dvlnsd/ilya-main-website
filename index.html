@@ -4,81 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#080808">
-    <meta name="description" content="Илья Чайка — waterman и big wave athlete с 20-летним опытом. Серф-трипы, индивидуальное обучение и серф-гайдинг.">
-    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="description" content="Илья Чайка — waterman, big wave athlete, серф-коуч и организатор серф-трипов по Индонезии и другим направлениям.">
+    <meta name="keywords" content="Илья Чайка, серфинг Бали, серф-трипы, серф-трип Индонезия, обучение серфингу Бали, surf coaching Bali, big wave surfing">
     <meta name="author" content="Илья Чайка">
-
-    <title>Илья Чайка — Waterman и Big Wave Athlete</title>
     <link rel="canonical" href="https://chaikailya.com/">
-
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
-    <link rel="apple-touch-icon" href="/favicon-180.png" sizes="180x180">
-
-    <link rel="preload" href="images/video-poster.jpg" as="image" fetchpriority="high">
-
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ru_RU">
-    <meta property="og:site_name" content="Илья Чайка">
     <meta property="og:url" content="https://chaikailya.com/">
-    <meta property="og:title" content="Илья Чайка — Waterman и Big Wave Athlete">
+    <meta property="og:title" content="Илья Чайка | Big Wave Athlete">
     <meta property="og:description" content="Серф-трипы, индивидуальное обучение и серф-гайдинг с Ильёй Чайкой.">
-    <meta property="og:image" content="https://chaikailya.com/images/social-preview.jpg">
-    <meta property="og:image:secure_url" content="https://chaikailya.com/images/social-preview.jpg">
-    <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Илья Чайка на большой волне">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Илья Чайка — Waterman и Big Wave Athlete">
-    <meta name="twitter:description" content="Серф-трипы, индивидуальное обучение и серф-гайдинг с Ильёй Чайкой.">
-    <meta name="twitter:image" content="https://chaikailya.com/images/social-preview.jpg">
-    <meta name="twitter:image:alt" content="Илья Чайка на большой волне">
-
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@graph": [
-                {
-                    "@type": "WebSite",
-                    "@id": "https://chaikailya.com/#website",
-                    "url": "https://chaikailya.com/",
-                    "name": "Илья Чайка",
-                    "inLanguage": "ru-RU"
-                },
-                {
-                    "@type": "Person",
-                    "@id": "https://chaikailya.com/#ilya-chaika",
-                    "name": "Илья Чайка",
-                    "alternateName": "Ilya Chaika",
-                    "url": "https://chaikailya.com/",
-                    "image": "https://chaikailya.com/images/social-preview.jpg",
-                    "description": "Waterman и big wave athlete с 20-летним опытом, серф-коуч и организатор серф-трипов.",
-                    "jobTitle": "Waterman, Big Wave Athlete, Surf Coach",
-                    "knowsAbout": [
-                        "серфинг на больших волнах",
-                        "серф-трипы",
-                        "обучение серфингу",
-                        "серф-гайдинг",
-                        "SUP-серфинг",
-                        "фойл-серфинг",
-                        "виндсерфинг"
-                    ],
-                    "sameAs": [
-                        "https://t.me/Chaika_Ilya",
-                        "https://instagram.com/chaika_ilya",
-                        "https://youtube.com/@chaika_ilya"
-                    ]
-                }
-            ]
-        }
-    </script>
+    <title>Илья Чайка | Big Wave Athlete</title>
 
     <style>
         :root {
-            --accent: #a0e9ff;
+            /* Brand sea color — use this exact value on every page. */
+            --accent: #4f8f95;
+            --accent-rgb: 79, 143, 149;
+            --accent-soft: rgba(var(--accent-rgb), 0.14);
+            --accent-glow: rgba(var(--accent-rgb), 0.26);
             --bg: #080808;
             --surface: #0d0d0d;
             --surface-soft: #111;
@@ -151,7 +94,7 @@
             min-height: 48px;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(160, 233, 255, 0.72);
+            border: 1px solid rgba(var(--accent-rgb), 0.72);
             background: transparent;
             color: var(--accent);
             padding: 0 24px;
@@ -303,7 +246,7 @@
             display: none;
             overflow-y: auto;
             background:
-                radial-gradient(circle at 90% 10%, rgba(160, 233, 255, 0.09), transparent 34%),
+                radial-gradient(circle at 90% 10%, rgba(var(--accent-rgb), 0.09), transparent 34%),
                 rgba(5, 5, 5, 0.985);
             opacity: 0;
             padding: max(108px, calc(env(safe-area-inset-top) + 88px)) 24px max(48px, calc(env(safe-area-inset-bottom) + 32px));
@@ -542,45 +485,72 @@
 
         /* Press */
         .media-section {
-            padding: clamp(38px, 4vw, 58px) var(--page-padding);
+            padding: clamp(34px, 3.5vw, 48px) var(--page-padding);
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             background: #030303;
         }
 
         .media-grid {
             display: grid;
-            max-width: 1120px;
+            max-width: 980px;
             margin-inline: auto;
             grid-template-columns: repeat(4, minmax(100px, 1fr));
             align-items: center;
-            gap: clamp(28px, 5vw, 70px);
+            gap: clamp(32px, 5vw, 64px);
         }
 
         .media-item {
             display: grid;
-            min-height: 48px;
+            min-height: 42px;
             place-items: center;
-            opacity: 0.44;
-            transition: opacity 220ms ease, filter 220ms ease;
+            transition: transform 360ms var(--ease-out);
         }
 
         .media-item:hover,
         .media-item:focus-visible {
-            opacity: 1;
-            filter: invert(85%) sepia(12%) saturate(1257%) hue-rotate(165deg) brightness(108%) contrast(101%);
+            transform: translateY(-1px);
         }
 
         .media-item img {
-            width: 100%;
-            height: 40px;
+            width: auto;
+            max-width: 100%;
+            height: 27px;
             object-fit: contain;
+            opacity: 0.38;
+            filter: brightness(0) invert(1);
+            transition: opacity 260ms ease, filter 260ms ease;
+        }
+
+        .media-item:nth-child(1) img {
+            max-width: 118px;
+            height: 29px;
+        }
+
+        .media-item:nth-child(2) img {
+            max-width: 148px;
+        }
+
+        .media-item:nth-child(3) img {
+            max-width: 136px;
+            height: 30px;
+        }
+
+        .media-item:nth-child(4) img {
+            max-width: 142px;
+            height: 28px;
+        }
+
+        .media-item:hover img,
+        .media-item:focus-visible img {
+            opacity: 0.92;
+            filter: brightness(0) saturate(100%) invert(59%) sepia(14%) saturate(783%) hue-rotate(135deg) brightness(89%) contrast(88%) drop-shadow(0 0 10px var(--accent-glow));
         }
 
         /* About */
         .about-section {
             padding: clamp(72px, 6vw, 104px) var(--page-padding) clamp(56px, 4.5vw, 80px);
             background:
-                radial-gradient(circle at 8% 18%, rgba(160, 233, 255, 0.055), transparent 26%),
+                radial-gradient(circle at 8% 18%, rgba(var(--accent-rgb), 0.055), transparent 26%),
                 #080808;
         }
 
@@ -671,7 +641,7 @@
 
         .sch-row:hover,
         .sch-row:focus-visible {
-            border-bottom-color: rgba(160, 233, 255, 0.78);
+            border-bottom-color: rgba(var(--accent-rgb), 0.78);
         }
 
         .sch-row:hover .row-bg,
@@ -959,7 +929,26 @@
             }
 
             .media-item img {
-                height: 34px;
+                height: 25px;
+            }
+
+            .media-item:nth-child(1) img {
+                max-width: 104px;
+                height: 27px;
+            }
+
+            .media-item:nth-child(2) img {
+                max-width: 132px;
+            }
+
+            .media-item:nth-child(3) img {
+                max-width: 118px;
+                height: 28px;
+            }
+
+            .media-item:nth-child(4) img {
+                max-width: 126px;
+                height: 26px;
             }
 
             .about-section {
@@ -1110,7 +1099,7 @@
                 min-height: 56px;
                 align-items: center;
                 justify-content: center;
-                border: 1px solid rgba(160, 233, 255, 0.42);
+                border: 1px solid rgba(var(--accent-rgb), 0.42);
                 background: rgba(15, 15, 15, 0.9);
                 color: var(--accent);
                 font-size: 0.68rem;
@@ -1156,7 +1145,23 @@
             }
 
             .media-grid {
-                gap: 22px 28px;
+                gap: 24px 28px;
+            }
+
+            .media-item:nth-child(1) img {
+                max-width: 92px;
+            }
+
+            .media-item:nth-child(2) img {
+                max-width: 116px;
+            }
+
+            .media-item:nth-child(3) img {
+                max-width: 104px;
+            }
+
+            .media-item:nth-child(4) img {
+                max-width: 110px;
             }
 
             .about-section {
@@ -1290,7 +1295,7 @@
 
     <main>
         <header class="hero" id="top">
-            <video autoplay muted loop playsinline preload="metadata" poster="images/video-poster.jpg" class="hero-video" aria-hidden="true">
+            <video autoplay muted loop playsinline preload="metadata" class="hero-video" aria-hidden="true">
                 <source src="images/video1.mp4" type="video/mp4">
             </video>
             <div class="hero-content">
