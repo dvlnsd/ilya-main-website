@@ -471,35 +471,9 @@
             text-transform: uppercase;
         }
 
-        .hero-scroll {
-            position: absolute;
-            bottom: max(28px, env(safe-area-inset-bottom));
-            left: 50%;
-            z-index: 2;
-            width: 1px;
-            height: 44px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.24);
-            transform: translateX(-50%);
-        }
-
-        .hero-scroll::after {
-            position: absolute;
-            inset: 0;
-            background: var(--accent);
-            content: "";
-            transform: translateY(-100%);
-            animation: scroll-line 2.2s ease-in-out infinite;
-        }
-
-        @keyframes scroll-line {
-            0% { transform: translateY(-100%); }
-            55%, 100% { transform: translateY(100%); }
-        }
-
         /* Press */
         .media-section {
-            padding: clamp(44px, 5vw, 70px) var(--page-padding);
+            padding: clamp(38px, 4vw, 58px) var(--page-padding);
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             background: #030303;
         }
@@ -535,19 +509,19 @@
 
         /* About */
         .about-section {
-            padding: clamp(88px, 11vw, 176px) var(--page-padding);
+            padding: clamp(72px, 6vw, 104px) var(--page-padding) clamp(56px, 4.5vw, 80px);
             background:
                 radial-gradient(circle at 8% 18%, rgba(160, 233, 255, 0.055), transparent 26%),
                 #080808;
         }
 
         .about-copy {
-            max-width: 1160px;
+            max-width: 1040px;
             margin: 0 auto;
-            font-size: clamp(1.65rem, 3.25vw, 3.75rem);
+            font-size: clamp(1.45rem, 2.2vw, 2.75rem);
             font-weight: 250;
-            letter-spacing: -0.025em;
-            line-height: 1.22;
+            letter-spacing: -0.018em;
+            line-height: 1.34;
             text-wrap: balance;
         }
 
@@ -564,12 +538,12 @@
         /* Surf trips */
         .schedule-section {
             position: relative;
-            padding: clamp(88px, 9vw, 136px) var(--page-padding);
+            padding: clamp(56px, 5vw, 80px) var(--page-padding) clamp(80px, 7vw, 112px);
             background: #0a0a0a;
         }
 
         .section-title {
-            margin: 0 0 clamp(52px, 7vw, 88px);
+            margin: 0 0 clamp(44px, 5vw, 64px);
             font-size: clamp(1.45rem, 2.7vw, 2.55rem);
             font-weight: 250;
             letter-spacing: clamp(0.18em, 1.2vw, 0.42em);
@@ -704,7 +678,7 @@
 
         /* Coaching and guiding */
         .services-section {
-            padding: clamp(88px, 9vw, 128px) var(--page-padding);
+            padding: clamp(76px, 7vw, 108px) var(--page-padding);
             background: #070707;
         }
 
@@ -762,7 +736,7 @@
 
         /* Journal */
         .journal-section {
-            padding: clamp(88px, 9vw, 128px) var(--page-padding);
+            padding: clamp(76px, 7vw, 108px) var(--page-padding);
             background: #030303;
         }
 
@@ -920,13 +894,14 @@
             }
 
             .about-section {
-                padding-block: 96px;
+                padding-top: 72px;
+                padding-bottom: 56px;
             }
 
             .about-copy {
                 max-width: 680px;
-                font-size: clamp(1.55rem, 6.6vw, 2.8rem);
-                line-height: 1.28;
+                font-size: clamp(1.35rem, 4.8vw, 2.3rem);
+                line-height: 1.38;
                 text-wrap: pretty;
             }
 
@@ -936,11 +911,12 @@
             }
 
             .schedule-section {
-                padding-block: 92px;
+                padding-top: 62px;
+                padding-bottom: 80px;
             }
 
             .section-title {
-                margin-bottom: 48px;
+                margin-bottom: 42px;
                 font-size: clamp(1.4rem, 6vw, 2rem);
                 letter-spacing: 0.18em;
                 text-indent: 0.18em;
@@ -1115,17 +1091,22 @@
             }
 
             .about-section {
-                padding-block: 82px;
+                padding-top: 64px;
+                padding-bottom: 50px;
             }
 
             .about-copy {
-                font-size: clamp(1.45rem, 7.25vw, 2.15rem);
+                font-size: clamp(1.28rem, 5.7vw, 1.75rem);
             }
 
-            .schedule-section,
+            .schedule-section {
+                padding-top: 56px;
+                padding-bottom: 72px;
+            }
+
             .services-section,
             .journal-section {
-                padding-block: 80px;
+                padding-block: 72px;
             }
 
             .col-date,
@@ -1247,7 +1228,6 @@
                 <h1>Ilya Chaika</h1>
                 <p>Big Wave Athlete / Surf Trips</p>
             </div>
-            <div class="hero-scroll" aria-hidden="true"></div>
         </header>
 
         <section class="media-section" aria-label="Илья Чайка в СМИ">
