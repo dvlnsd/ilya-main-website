@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">C-shaped wave barrel with a frontal gull</title>
+  <rect width="512" height="512" fill="#000000"/>
+  <path
+    fill="#78DDEA"
+    d="M432 216C412 143 351 96 271 83C171 67 87 150 82 258C77 359 152 438 251 453C326 465 393 420 432 349C393 379 349 406 296 411C209 419 137 365 132 278C126 191 190 128 276 128C347 128 404 164 432 216Z"
+  />
+  <path
+    fill="#78DDEA"
+    d="M190 318C220 279 251 287 277 326C304 287 336 268 373 276C335 284 306 311 278 352C250 310 222 298 190 318Z"
+  />
+</svg>
