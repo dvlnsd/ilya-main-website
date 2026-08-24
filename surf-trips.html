@@ -2,220 +2,1470 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#080808">
+    <meta name="description" content="Серф-трипы с Ильёй Чайкой: Индонезия, Россия, Мексика и Южная Африка. Групповые и индивидуальные форматы.">
     <title>Серф-трипы | Ilya Chaika</title>
+
     <style>
-        :root { 
-            --blue: #a0e9ff; 
-            --bg: #0a0a0a; 
-            --white: #ffffff; 
-            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        :root {
+            --accent: #a0e9ff;
+            --bg: #080808;
+            --surface: #0d0d0d;
+            --surface-soft: #111;
+            --white: #fff;
+            --muted: rgba(255, 255, 255, 0.56);
+            --line: rgba(255, 255, 255, 0.1);
+            --page-padding: clamp(24px, 7vw, 112px);
+            --content-width: 1440px;
+            --text-width: 1180px;
+            --nav-height: 92px;
+            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
         }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
-            background: var(--bg); color: var(--white); 
-            line-height: 1.8; -webkit-font-smoothing: antialiased; 
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background: var(--bg);
+        }
+
+        body {
+            margin: 0;
+            min-width: 320px;
             overflow-x: hidden;
-            font-size: 20px; /* Увеличенный базовый шрифт */
+            background: var(--bg);
+            color: var(--white);
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
-        /* NAVIGATION */
-        nav { 
-            position: fixed; top: 0; width: 100%; padding: 25px 8%; 
-            display: flex; justify-content: center; align-items: center; 
-            z-index: 1000; background: rgba(10, 10, 10, 0.9); 
-            backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05);
+        body.menu-open,
+        body.panel-open {
+            overflow: hidden;
         }
-        .nav-links { display: flex; gap: 40px; }
-        .nav-links a { color: #fff; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; opacity: 0.6; transition: 0.3s; }
-        .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--blue); }
 
-        /* HERO SECTION */
-        .hero { padding: 160px 10% 60px; text-align: center; }
-        .hero h1 { 
-            font-size: clamp(3rem, 10vw, 7rem); 
-            letter-spacing: 18px; 
-            font-weight: 200; 
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+
+        .eyebrow-button {
+            display: inline-flex;
+            min-height: 48px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(160, 233, 255, 0.72);
+            background: transparent;
+            color: var(--accent);
+            padding: 0 24px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            line-height: 1;
+            text-transform: uppercase;
+            transition: color 220ms ease, background-color 220ms ease, border-color 220ms ease;
+        }
+
+        .eyebrow-button:hover,
+        .eyebrow-button:focus-visible {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #050505;
+        }
+
+        /* Desktop navigation — identical base design to index.html */
+        .desktop-nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 1000;
+            display: grid;
+            min-height: var(--nav-height);
+            grid-template-columns: minmax(150px, 1fr) auto minmax(150px, 1fr);
+            align-items: center;
+            padding: 14px var(--page-padding);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(8, 8, 8, 0.72);
+            -webkit-backdrop-filter: blur(20px) saturate(130%);
+            backdrop-filter: blur(20px) saturate(130%);
+        }
+
+        .nav-home {
+            display: inline-flex;
+            min-height: 40px;
+            align-items: center;
+            justify-self: start;
+            padding: 0 15px;
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            color: rgba(255, 255, 255, 0.43);
+            font-size: 0.61rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+        }
+
+        .nav-home:hover,
+        .nav-home:focus-visible {
+            border-color: rgba(255, 255, 255, 0.66);
+            color: var(--white);
+            box-shadow: 0 0 22px rgba(255, 255, 255, 0.16);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(28px, 4vw, 64px);
+        }
+
+        .nav-links a {
+            position: relative;
+            padding-block: 12px;
+            color: rgba(255, 255, 255, 0.54);
+            font-size: 0.67rem;
+            font-weight: 500;
+            letter-spacing: 0.28em;
+            white-space: nowrap;
+            text-transform: uppercase;
+            transition: color 220ms ease;
+        }
+
+        .nav-links a::after {
+            position: absolute;
+            right: 0.28em;
+            bottom: 5px;
+            left: 0;
+            height: 1px;
+            background: var(--accent);
+            content: "";
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 320ms var(--ease-out);
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--white);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a:focus-visible::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .btn-contact {
+            justify-self: end;
+            min-width: 174px;
+            cursor: pointer;
+        }
+
+        /* Mobile navigation — same system as index.html */
+        .mobile-nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 1010;
+            display: none;
+            min-height: 72px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(8, 8, 8, 0.68);
+            -webkit-backdrop-filter: blur(18px) saturate(125%);
+            backdrop-filter: blur(18px) saturate(125%);
+        }
+
+        .mobile-wordmark {
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 0.64rem;
+            font-weight: 500;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            transition: color 220ms ease, text-shadow 220ms ease;
+        }
+
+        .mobile-wordmark:hover,
+        .mobile-wordmark:focus-visible {
+            color: var(--white);
+            text-shadow: 0 0 14px rgba(255, 255, 255, 0.34);
+        }
+
+        .menu-toggle {
+            display: inline-flex;
+            min-width: 48px;
+            min-height: 48px;
+            align-items: center;
+            justify-content: flex-end;
+            border: 0;
+            background: transparent;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        .menu-toggle-lines {
+            display: grid;
+            width: 27px;
+            gap: 7px;
+        }
+
+        .menu-toggle-lines span {
+            display: block;
+            height: 1px;
+            background: currentColor;
+            transition: transform 300ms var(--ease-out);
+        }
+
+        .menu-toggle[aria-expanded="true"] .menu-toggle-lines span:first-child {
+            transform: translateY(4px) rotate(45deg);
+        }
+
+        .menu-toggle[aria-expanded="true"] .menu-toggle-lines span:last-child {
+            transform: translateY(-4px) rotate(-45deg);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 1009;
+            display: none;
+            overflow-y: auto;
+            padding: max(108px, calc(env(safe-area-inset-top) + 88px)) 24px max(48px, calc(env(safe-area-inset-bottom) + 32px));
+            background:
+                radial-gradient(circle at 90% 10%, rgba(160, 233, 255, 0.09), transparent 34%),
+                rgba(5, 5, 5, 0.985);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-18px);
+            transition: opacity 280ms ease, transform 420ms var(--ease-out);
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-inner {
+            display: flex;
+            min-height: calc(100svh - 160px);
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 48px;
+        }
+
+        .mobile-menu-links {
+            display: grid;
+        }
+
+        .mobile-menu-links a {
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            align-items: baseline;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--line);
+            font-size: clamp(1.45rem, 7vw, 2.3rem);
+            font-weight: 250;
+            letter-spacing: 0.05em;
+            line-height: 1.1;
             text-transform: uppercase;
         }
 
-        /* MAGAZINE CONTENT LAYOUT */
-        .article-container { padding: 0 10%; max-width: 1400px; margin: 0 auto; }
-        .journal-block { overflow: hidden; margin-bottom: 80px; }
-        
-        .journal-img { 
-            width: 45%; 
-            height: auto; 
-            margin: 15px;
-            border-radius: 2px;
+        .mobile-menu-links span {
+            color: var(--accent);
+            font-size: 0.56rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
         }
-        .img-left { float: left; margin-right: 50px; }
-        .img-right { float: right; margin-left: 50px; }
 
-        .journal-text { font-size: 1.25rem; font-weight: 200; opacity: 0.95; text-align: justify; }
-        .journal-text span { color: var(--blue); }
-
-        /* REVIEWS SECTION */
-        .reviews-box { margin: 120px 0; border-top: 1px solid rgba(160, 233, 255, 0.3); padding-top: 80px; }
-        .review-card { margin-bottom: 80px; max-width: 900px; }
-        .review-quote { font-style: italic; font-size: 1.5rem; font-weight: 200; margin-bottom: 20px; line-height: 1.6; }
-        .review-author { font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--blue); opacity: 0.8; }
-
-        /* TRIP LIST */
-        .map-section { margin-top: 120px; border-top: 1px solid #1a1a1a; padding-top: 100px; }
-        .map-title { font-size: 2.2rem; letter-spacing: 12px; text-transform: uppercase; font-weight: 200; margin-bottom: 80px; color: var(--white); }
-        
-        .trip-item { 
-            display: grid; grid-template-columns: 1.2fr 2fr 150px; 
-            padding: 60px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
-            text-decoration: none; color: inherit; transition: 0.3s var(--ease);
+        .mobile-menu-links .mobile-home-link {
+            color: rgba(255, 255, 255, 0.54);
         }
-        .trip-item:hover { border-bottom-color: var(--blue); background: rgba(160, 233, 255, 0.02); padding-left: 20px; }
-        
-        .trip-name { font-size: 1.6rem; letter-spacing: 5px; font-weight: 200; text-transform: uppercase; color: var(--blue); }
-        .trip-desc { font-size: 1rem; opacity: 0.7; font-weight: 300; line-height: 1.7; padding-right: 50px; }
-        
-        .trip-hover-img { width: 130px; height: 130px; object-fit: cover; opacity: 0; transition: 0.4s; border: 1px solid var(--blue); }
-        .trip-item:hover .trip-hover-img { opacity: 1; }
 
-        /* CTA SECTION */
-        .cta-box { padding: 140px 0; text-align: center; border-top: 1px solid #1a1a1a; }
-        .cta-box p { font-size: 1.3rem; font-weight: 200; letter-spacing: 3px; margin-bottom: 60px; }
-        .cta-flex { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
-        
-        .btn-action { 
-            padding: 25px 60px; border: 1px solid var(--blue); 
-            color: var(--blue); text-decoration: none; font-size: 0.85rem; 
-            text-transform: uppercase; letter-spacing: 4px; transition: 0.3s;
+        .mobile-menu-links .mobile-home-link span {
+            color: rgba(255, 255, 255, 0.4);
         }
-        .btn-action:hover { background: var(--blue); color: #000; box-shadow: 0 0 30px rgba(160, 233, 255, 0.3); }
 
-        footer { padding: 80px 0; text-align: center; opacity: 0.3; font-size: 0.7rem; letter-spacing: 3px; }
+        .mobile-menu-contact {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
 
-        @media (max-width: 1024px) {
-            .journal-img { width: 100%; float: none; margin: 30px 0; }
-            .trip-item { grid-template-columns: 1fr; gap: 20px; }
-            .trip-hover-img { display: none; }
-            .article-container { padding: 0 5%; }
+        .mobile-menu-contact strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Contact panel */
+        .side-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1999;
+            background: rgba(0, 0, 0, 0.62);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 300ms ease;
+        }
+
+        .side-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .side-panel {
+            position: fixed;
+            inset: 0 0 0 auto;
+            z-index: 2000;
+            width: min(480px, 100%);
+            overflow-y: auto;
+            padding: 72px 48px;
+            border-left: 1px solid var(--line);
+            background: rgba(13, 13, 13, 0.98);
+            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
+            transform: translateX(100%);
+            transition: transform 520ms var(--ease-out);
+        }
+
+        .side-panel.active {
+            transform: translateX(0);
+        }
+
+        .panel-close {
+            display: inline-flex;
+            min-height: 44px;
+            align-items: center;
+            margin-bottom: 48px;
+            border: 0;
+            background: transparent;
+            color: var(--accent);
+            cursor: pointer;
+            font-size: 0.62rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+
+        .panel-title {
+            margin: 0;
+            font-size: clamp(1.65rem, 4vw, 2rem);
+            font-weight: 250;
+            letter-spacing: 0.14em;
+            line-height: 1.24;
+            text-transform: uppercase;
+        }
+
+        .panel-copy {
+            margin: 16px 0 44px;
+            color: var(--muted);
+            font-size: 0.62rem;
+            letter-spacing: 0.16em;
+            line-height: 1.8;
+            text-transform: uppercase;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 18px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 16px 0;
+            border: 0;
+            border-bottom: 1px solid var(--line);
+            border-radius: 0;
+            outline: 0;
+            background: transparent;
+            color: var(--white);
+            font-size: 0.75rem;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-bottom-color: var(--accent);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+        }
+
+        .contact-form button {
+            min-height: 58px;
+            margin-top: 10px;
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: #050505;
+            cursor: pointer;
+            font-size: 0.67rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+
+        /* Page hero */
+        .page-hero {
+            position: relative;
+            display: flex;
+            min-height: 52vh;
+            min-height: 52svh;
+            align-items: flex-end;
+            overflow: hidden;
+            padding: calc(var(--nav-height) + 72px) var(--page-padding) 76px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            background:
+                linear-gradient(90deg, rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.34) 58%, rgba(0, 0, 0, 0.58)),
+                url("images/mainilya1.jpg") center 54% / cover no-repeat;
+        }
+
+        .page-hero-inner {
+            width: min(100%, var(--content-width));
+            margin-inline: auto;
+        }
+
+        .page-kicker {
+            margin: 0 0 18px;
+            color: var(--accent);
+            font-size: 0.61rem;
+            font-weight: 600;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+        }
+
+        .page-title {
+            max-width: 920px;
+            margin: 0;
+            font-size: clamp(2.7rem, 6.8vw, 6.5rem);
+            font-weight: 200;
+            letter-spacing: clamp(0.08em, 1.2vw, 0.2em);
+            line-height: 0.96;
+            text-transform: uppercase;
+        }
+
+        /* Editorial introduction */
+        .story-section {
+            padding: clamp(72px, 7vw, 108px) var(--page-padding) clamp(66px, 6vw, 96px);
+            background: var(--bg);
+        }
+
+        .story-container {
+            display: grid;
+            width: min(100%, var(--text-width));
+            margin-inline: auto;
+            gap: clamp(60px, 7vw, 104px);
+        }
+
+        .story-row {
+            display: grid;
+            grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+            align-items: center;
+            gap: clamp(40px, 6vw, 86px);
+        }
+
+        .story-row.reverse {
+            grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+        }
+
+        .story-row.reverse .story-image {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .story-row.reverse .story-copy {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .story-image {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4 / 5;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--surface-soft);
+        }
+
+        .story-image::after {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 64%, rgba(0, 0, 0, 0.24));
+            content: "";
+            pointer-events: none;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.76) brightness(0.82);
+            transition: filter 450ms ease, transform 900ms var(--ease-out);
+        }
+
+        .story-row:hover .story-image img {
+            filter: saturate(0.96) brightness(0.93);
+            transform: scale(1.025);
+        }
+
+        .story-copy {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.82);
+            font-size: clamp(1.02rem, 1.42vw, 1.28rem);
+            font-weight: 300;
+            letter-spacing: -0.012em;
+            line-height: 1.72;
+        }
+
+        .story-copy + .story-copy {
+            margin-top: 1.25em;
+        }
+
+        .story-copy span,
+        .story-copy strong {
+            color: var(--accent);
+            font-weight: 400;
+        }
+
+        .story-note {
+            position: relative;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: clamp(34px, 4vw, 54px) clamp(28px, 5vw, 72px);
+            border-top: 1px solid rgba(160, 233, 255, 0.42);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: linear-gradient(100deg, rgba(160, 233, 255, 0.045), transparent 52%);
+        }
+
+        .story-note .story-copy {
+            font-size: clamp(1rem, 1.3vw, 1.18rem);
+        }
+
+        /* Full schedule */
+        .schedule-section {
+            padding: clamp(72px, 7vw, 108px) var(--page-padding) clamp(80px, 7vw, 112px);
+            background: #0a0a0a;
+        }
+
+        .schedule-inner {
+            width: min(100%, var(--content-width));
+            margin-inline: auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 32px;
+            margin-bottom: clamp(42px, 5vw, 64px);
+        }
+
+        .section-kicker {
+            margin: 0 0 12px;
+            color: var(--accent);
+            font-size: 0.59rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            margin: 0;
+            font-size: clamp(1.65rem, 3.4vw, 3.2rem);
+            font-weight: 250;
+            letter-spacing: 0.12em;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .schedule-count {
+            color: rgba(255, 255, 255, 0.36);
+            font-size: 0.62rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+
+        .schedule-table {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .schedule-head,
+        .schedule-row {
+            display: grid;
+            grid-template-columns: minmax(270px, 1.55fr) minmax(126px, 0.7fr) minmax(120px, 0.58fr) minmax(230px, 1.25fr) minmax(128px, 0.68fr);
+            align-items: center;
+            gap: clamp(18px, 2.3vw, 38px);
+        }
+
+        .schedule-head {
+            min-height: 54px;
+            color: rgba(255, 255, 255, 0.34);
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+        }
+
+        .schedule-row {
+            position: relative;
+            min-height: 118px;
+            overflow: hidden;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--line);
+            transition: border-color 260ms ease, background-color 260ms ease;
+        }
+
+        .schedule-row:hover {
+            border-bottom-color: rgba(160, 233, 255, 0.74);
+            background: rgba(160, 233, 255, 0.022);
+        }
+
+        .destination-cell {
+            display: grid;
+            grid-template-columns: 92px minmax(0, 1fr);
+            align-items: center;
+            gap: 20px;
+        }
+
+        .destination-image {
+            width: 92px;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--surface-soft);
+        }
+
+        .destination-cell h3 {
+            margin: 0;
+            font-size: inherit;
+            font-weight: inherit;
+        }
+
+        .destination-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0.76) brightness(0.7);
+            transition: filter 320ms ease, transform 650ms var(--ease-out);
+        }
+
+        .schedule-row:hover .destination-image img {
+            filter: grayscale(0) brightness(0.94);
+            transform: scale(1.045);
+        }
+
+        .destination-link {
+            display: inline;
+            background-image: linear-gradient(var(--accent), var(--accent));
+            background-position: 0 100%;
+            background-repeat: no-repeat;
+            background-size: 0 1px;
+            color: rgba(255, 255, 255, 0.92);
+            font-size: clamp(0.86rem, 1.05vw, 1.02rem);
+            font-weight: 350;
+            letter-spacing: 0.08em;
+            line-height: 1.45;
+            text-transform: uppercase;
+            transition: color 220ms ease, background-size 350ms var(--ease-out);
+        }
+
+        .destination-link:hover,
+        .destination-link:focus-visible {
+            background-size: 100% 1px;
+            color: var(--accent);
+        }
+
+        .schedule-value {
+            color: rgba(255, 255, 255, 0.64);
+            font-size: 0.72rem;
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            line-height: 1.55;
+        }
+
+        .schedule-price {
+            color: rgba(255, 255, 255, 0.86);
+            white-space: nowrap;
+        }
+
+        .schedule-level {
+            color: var(--accent);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+        }
+
+        .mobile-label {
+            display: none;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: clamp(82px, 8vw, 124px) var(--page-padding);
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            background:
+                radial-gradient(circle at 50% 0%, rgba(160, 233, 255, 0.08), transparent 32%),
+                #060606;
+            text-align: center;
+        }
+
+        .cta-inner {
+            max-width: 900px;
+            margin-inline: auto;
+        }
+
+        .cta-text {
+            margin: 0 auto;
+            font-size: clamp(1.28rem, 2.4vw, 2.2rem);
+            font-weight: 250;
+            letter-spacing: -0.012em;
+            line-height: 1.42;
+            text-wrap: balance;
+        }
+
+        .cta-text + .cta-text {
+            margin-top: 12px;
+        }
+
+        .cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 42px;
+        }
+
+        .cta-actions .eyebrow-button {
+            min-width: 228px;
+        }
+
+        .email-button {
+            border-color: rgba(255, 255, 255, 0.28);
+            color: rgba(255, 255, 255, 0.76);
+        }
+
+        .email-button:hover,
+        .email-button:focus-visible {
+            border-color: var(--white);
+            background: var(--white);
+            color: #050505;
+            box-shadow: 0 0 28px rgba(255, 255, 255, 0.13);
+        }
+
+        /* Footer — same style as index.html */
+        .footer {
+            padding: clamp(70px, 7vw, 96px) var(--page-padding) 88px;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            text-align: center;
+        }
+
+        .footer-title {
+            margin: 0 0 12px;
+            font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+            font-weight: 250;
+            letter-spacing: 0.35em;
+            text-indent: 0.35em;
+            text-transform: uppercase;
+        }
+
+        .footer-copy {
+            margin: 0 0 40px;
+            color: rgba(255, 255, 255, 0.42);
+            font-size: 0.63rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .footer-socials {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 22px 40px;
+            margin: 40px 0;
+        }
+
+        .footer-socials a {
+            color: var(--accent);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+        }
+
+        .footer-note {
+            max-width: 600px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.24);
+            font-size: 0.48rem;
+            letter-spacing: 0.08em;
+            line-height: 2;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 1180px) {
+            :root {
+                --page-padding: clamp(24px, 5vw, 56px);
+            }
+
+            .desktop-nav {
+                grid-template-columns: minmax(126px, 0.75fr) auto minmax(144px, 0.75fr);
+            }
+
+            .nav-links {
+                gap: 24px;
+            }
+
+            .nav-links a {
+                letter-spacing: 0.18em;
+            }
+
+            .nav-home {
+                padding-inline: 11px;
+                letter-spacing: 0.14em;
+            }
+
+            .btn-contact {
+                min-width: 148px;
+            }
+
+            .schedule-head,
+            .schedule-row {
+                grid-template-columns: minmax(230px, 1.45fr) minmax(104px, 0.66fr) minmax(104px, 0.55fr) minmax(170px, 1.05fr) minmax(112px, 0.6fr);
+                gap: 18px;
+            }
+
+            .destination-cell {
+                grid-template-columns: 76px minmax(0, 1fr);
+                gap: 14px;
+            }
+
+            .destination-image {
+                width: 76px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            :root {
+                --page-padding: 20px;
+            }
+
+            .side-panel {
+                width: min(480px, 100%);
+            }
+
+            .page-hero {
+                min-height: 48vh;
+                min-height: 48svh;
+                padding: 116px 20px 52px;
+                background-position: 58% center;
+            }
+
+            .page-title {
+                max-width: 680px;
+                font-size: clamp(2.5rem, 10vw, 5.3rem);
+                letter-spacing: 0.09em;
+            }
+
+            .story-section {
+                padding: 70px 20px 64px;
+            }
+
+            .story-container {
+                max-width: 720px;
+                gap: 64px;
+            }
+
+            .story-row,
+            .story-row.reverse {
+                grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+                gap: 34px;
+            }
+
+            .story-row.reverse .story-image,
+            .story-row.reverse .story-copy {
+                grid-column: auto;
+                grid-row: auto;
+            }
+
+            .story-row.reverse .story-image {
+                order: 2;
+            }
+
+            .story-row.reverse .story-copy {
+                order: 1;
+            }
+
+            .story-copy {
+                font-size: clamp(0.98rem, 2.25vw, 1.12rem);
+                line-height: 1.66;
+            }
+
+            .schedule-section {
+                padding: 70px 20px 80px;
+            }
+
+            .schedule-head {
+                display: none;
+            }
+
+            .schedule-table {
+                display: grid;
+                border-top: 0;
+                gap: 16px;
+            }
+
+            .schedule-row {
+                display: grid;
+                min-height: 0;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0;
+                padding: 0;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                background: var(--surface);
+            }
+
+            .destination-cell {
+                grid-column: 1 / -1;
+                grid-template-columns: 124px minmax(0, 1fr);
+                gap: 20px;
+                padding: 18px;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .destination-image {
+                width: 124px;
+            }
+
+            .destination-link {
+                font-size: 0.92rem;
+            }
+
+            .schedule-value {
+                min-width: 0;
+                padding: 17px 18px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                font-size: 0.72rem;
+            }
+
+            .schedule-value:nth-child(even) {
+                border-right: 1px solid rgba(255, 255, 255, 0.06);
+            }
+
+            .schedule-level {
+                font-size: 0.64rem;
+            }
+
+            .mobile-label {
+                display: block;
+                margin-bottom: 7px;
+                color: rgba(255, 255, 255, 0.32);
+                font-size: 0.5rem;
+                font-weight: 600;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+            }
+
+            .section-header {
+                align-items: flex-start;
+            }
+
+            .schedule-count {
+                padding-top: 4px;
+                white-space: nowrap;
+            }
+
+            .cta-section {
+                padding: 76px 20px 82px;
+            }
+
+            .cta-text {
+                font-size: clamp(1.2rem, 3.6vw, 1.75rem);
+            }
+
+            .footer {
+                padding-bottom: max(72px, calc(env(safe-area-inset-bottom) + 48px));
+            }
+        }
+
+        @media (max-width: 820px) {
+            .desktop-nav {
+                display: none;
+            }
+
+            .mobile-nav,
+            .mobile-menu {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .mobile-nav {
+                padding-inline: 16px;
+            }
+
+            .mobile-wordmark {
+                font-size: 0.58rem;
+                letter-spacing: 0.18em;
+            }
+
+            .page-hero {
+                min-height: 43vh;
+                min-height: 43svh;
+                padding: 108px 20px 42px;
+            }
+
+            .page-kicker {
+                margin-bottom: 13px;
+                font-size: 0.55rem;
+            }
+
+            .page-title {
+                font-size: clamp(2.15rem, 12vw, 3.7rem);
+                line-height: 1;
+            }
+
+            .story-section {
+                padding-top: 56px;
+                padding-bottom: 54px;
+            }
+
+            .story-container {
+                gap: 50px;
+            }
+
+            .story-row,
+            .story-row.reverse {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 26px;
+            }
+
+            .story-row.reverse .story-image,
+            .story-row.reverse .story-copy {
+                order: initial;
+            }
+
+            .story-image {
+                aspect-ratio: 4 / 3;
+            }
+
+            .story-copy {
+                font-size: 0.98rem;
+                line-height: 1.68;
+            }
+
+            .story-note {
+                padding: 30px 22px;
+            }
+
+            .story-note .story-copy {
+                font-size: 0.95rem;
+            }
+
+            .schedule-section {
+                padding-top: 58px;
+                padding-bottom: 66px;
+            }
+
+            .section-header {
+                display: block;
+                margin-bottom: 36px;
+            }
+
+            .section-title {
+                font-size: clamp(1.5rem, 7vw, 2.15rem);
+            }
+
+            .schedule-count {
+                display: block;
+                margin-top: 14px;
+            }
+
+            .destination-cell {
+                grid-template-columns: 102px minmax(0, 1fr);
+                gap: 16px;
+                padding: 14px;
+            }
+
+            .destination-image {
+                width: 102px;
+            }
+
+            .destination-link {
+                font-size: 0.82rem;
+                letter-spacing: 0.06em;
+            }
+
+            .schedule-value {
+                padding: 14px;
+                font-size: 0.68rem;
+            }
+
+            .cta-section {
+                padding: 66px 20px 72px;
+            }
+
+            .cta-text {
+                font-size: 1.18rem;
+                line-height: 1.5;
+            }
+
+            .cta-actions {
+                display: grid;
+                gap: 12px;
+                margin-top: 34px;
+            }
+
+            .cta-actions .eyebrow-button {
+                width: 100%;
+                min-width: 0;
+                min-height: 54px;
+            }
+
+            .side-panel {
+                padding: max(32px, env(safe-area-inset-top)) 22px max(32px, env(safe-area-inset-bottom));
+            }
+
+            .panel-close {
+                margin-bottom: 34px;
+            }
+
+            .footer {
+                padding-top: 66px;
+            }
+
+            .footer-socials {
+                gap: 20px 28px;
+            }
+        }
+
+        @media (hover: none) {
+            .story-image img,
+            .destination-image img {
+                filter: saturate(0.9) brightness(0.86);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
-<body>
 
-    <nav>
+<body>
+    <nav class="desktop-nav" aria-label="Основная навигация">
+        <a class="nav-home" href="index.html">← На главную</a>
         <div class="nav-links">
-            <a href="index.html">главная</a>
-            <a href="surf-trips.html" class="active">направления</a>
+            <a href="surf-trips.html" aria-current="page">серф-трипы</a>
             <a href="surf-coaching-bali.html">обучение</a>
             <a href="surf-journal.html">серф-журнал</a>
             <a href="surf-shop.html">магазин</a>
         </div>
+        <button class="btn-contact eyebrow-button" type="button" data-panel-open>Связаться</button>
     </nav>
 
-    <header class="hero">
-        <h1>Серф-трипы</h1>
-    </header>
+    <div class="mobile-nav">
+        <a class="mobile-wordmark" href="index.html" aria-label="Вернуться на главную">← На главную</a>
+        <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
+            <span class="menu-toggle-lines" aria-hidden="true">
+                <span></span>
+                <span></span>
+            </span>
+        </button>
+    </div>
 
-    <main class="article-container">
-        
-        <div class="journal-block">
-            <img src="images/mainilya1.jpg" class="journal-img img-left" alt="Ilya Surf">
-            <p class="journal-text">
-                Серфинг — это непрерывный поиск: безупречных волн, новых локаций и редких кондиций. <span>Это приключение</span>, частью которого можете стать и вы.
-                <br><br>
-                Когда вы отправляетесь с Ильей, он берет на себя управление стихией. Он заранее анализирует прогнозы и выстраивает календарь так, чтобы вы оказались в нужной точке в момент идеального свелла. Кататься в популярных местах среди сотен людей — понятный опыт. Но когда ваше время ограничено, а желание прогрессировать и брать лучшие волны сета становится приоритетом — вы готовы к настоящему серф-трипу.
-            </p>
-        </div>
-
-        <div class="journal-block">
-            <img src="images/mentawaiilya.jpg" class="journal-img img-right" alt="Legacy">
-            <p class="journal-text">
-                Это этап для ценителей, осознавших ценность каждого проезда. С Ильей вы становитесь исследователем, следующим по тропам первооткрывателей 70-х, прикасаясь к подлинному наследию Океана. 
-                <br><br>
-                Входить в идеальные волны под руководством вотермена, выросшего на острове в <span>Тихом океане</span> — это шанс ощутить первозданную мощь природы без лишнего шума.
-            </p>
-        </div>
-
-        <div class="journal-block">
-            <p class="journal-text">
-                В трипы Илья приглашает только тех, в ком уверен. Большинство участников ездят с ним годами; новички же, проявившие себя на индивидуальных тренировках, получают шанс присоединиться и совершить качественный скачок в уровне. Здесь исключены случайные люди — мы формируем группу по духу и мастерству, создавая ту самую аутентичную атмосферу, где Океан раскрывается по-настоящему.
-                <br><br>
-                Помимо плановых направлений, возможна организация <b>индивидуального серф-трипа</b> в любую точку мира или «страйк-миссия» под экстремально мощный прогноз. Если вы готовы к такому вызову — напишите нам.
-            </p>
-        </div>
-
-        <section class="reviews-box">
-            <div class="review-card">
-                <p class="review-quote">«После поездки с Ильей возвращаешься иным. Ты осознаешь, что всё до этого было лишь прелюдией. Настоящий Океан начинается только здесь».</p>
-                <span class="review-author">G-Land Trip</span>
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert>
+        <div class="mobile-menu-inner">
+            <div class="mobile-menu-links">
+                <a class="mobile-home-link" href="index.html"><span>00</span>на главную</a>
+                <a href="surf-trips.html" aria-current="page"><span>01</span>серф-трипы</a>
+                <a href="surf-coaching-bali.html"><span>02</span>обучение</a>
+                <a href="surf-journal.html"><span>03</span>серф-журнал</a>
+                <a href="surf-shop.html"><span>04</span>магазин</a>
             </div>
-            <div class="review-card">
-                <p class="review-quote">«Здесь нет случайных лиц. Атмосфера абсолютно "своя", а уровень подготовки позволяет просто наслаждаться моментом в другом измерении».</p>
-                <span class="review-author">Mentawai Group</span>
+            <button class="mobile-menu-contact" type="button" data-panel-open>
+                <span>Вопросы и коллаборации</span>
+                <strong>Связаться →</strong>
+            </button>
+        </div>
+    </div>
+
+    <div class="side-overlay" id="sideOverlay" aria-hidden="true"></div>
+    <aside class="side-panel" id="sidePanel" aria-hidden="true" aria-label="Форма обратной связи" inert>
+        <button type="button" class="panel-close" data-panel-close>← Закрыть</button>
+        <h2 class="panel-title">Написать<br>сообщение</h2>
+        <p class="panel-copy">Здесь вы можете задать вопросы по серф-трипам, обучению и коллаборациям</p>
+        <form class="contact-form" action="mailto:chaikailya@gmail.com" method="post" enctype="text/plain">
+            <input type="text" name="name" placeholder="ИМЯ" autocomplete="name" aria-label="Имя" required>
+            <input type="email" name="email" placeholder="EMAIL" autocomplete="email" aria-label="Email" required>
+            <textarea name="message" placeholder="ВАШ ЗАПРОС..." rows="4" aria-label="Ваш запрос" required></textarea>
+            <button type="submit">Отправить запрос</button>
+        </form>
+    </aside>
+
+    <main>
+        <header class="page-hero" id="top">
+            <div class="page-hero-inner">
+                <p class="page-kicker">Ilya Chaika / Surf journeys</p>
+                <h1 class="page-title">Серф-трипы</h1>
             </div>
-        </section>
+        </header>
 
-        <section class="map-section">
-            <h2 class="map-title">Направления</h2>
-            
-            <a href="g-land-surf-trip.html" class="trip-item">
-                <span class="trip-name">G-LAND (Ява)</span>
-                <p class="trip-desc">Жизнь в национальном заповеднике. Первозданные джунгли, павлины на завтрак и бесконечные идеальные волны прямо у порога.</p>
-                <img src="images/mainilya1.jpg" class="trip-hover-img">
-            </a>
+        <section class="story-section" aria-label="О серф-трипах">
+            <div class="story-container">
+                <article class="story-row">
+                    <div class="story-image">
+                        <img src="images/mainilya1.jpg" alt="Илья Чайка во время серф-трипа" decoding="async">
+                    </div>
+                    <div>
+                        <p class="story-copy">Серфинг — это непрерывный поиск: безупречных волн, новых локаций и редких кондиций. <span>Это приключение</span>, частью которого можете стать и вы.</p>
+                        <p class="story-copy">Когда вы отправляетесь с Ильей, он берет на себя управление стихией. Он заранее анализирует прогнозы и выстраивает календарь так, чтобы вы оказались в нужной точке в момент идеального свелла. Кататься в популярных местах среди сотен людей — понятный опыт. Но когда ваше время ограничено, а желание прогрессировать и брать лучшие волны сета становится приоритетом — вы готовы к настоящему серф-трипу.</p>
+                    </div>
+                </article>
 
-            <a href="sumbawa-surf-trip.html" class="trip-item">
-                <span class="trip-name">СУМБАВА</span>
-                <p class="trip-desc">Остров, воскресший из пепла вулкана. Дикая стихия, абсолютная тишина и безупречные закаты вдали от цивилизации.</p>
-                <img src="images/russup.jpg" class="trip-hover-img">
-            </a>
+                <article class="story-row reverse">
+                    <div class="story-image">
+                        <img src="images/mentawaiilya.jpg" alt="Серфинг на островах Ментаваи" loading="lazy" decoding="async">
+                    </div>
+                    <div>
+                        <p class="story-copy">Это этап для ценителей, осознавших ценность каждого проезда. С Ильей вы становитесь исследователем, следующим по тропам первооткрывателей 70-х, прикасаясь к подлинному наследию Океана.</p>
+                        <p class="story-copy">Входить в идеальные волны под руководством вотермена, выросшего на острове в <span>Тихом океане</span> — это шанс ощутить первозданную мощь природы без лишнего шума.</p>
+                    </div>
+                </article>
 
-            <a href="sumba-surf-trip.html" class="trip-item">
-                <span class="trip-name">СУМБА</span>
-                <p class="trip-desc">Место первозданной красоты. Редкий контраст нетронутой дикости и уединенных отелей-оазисов высшего класса.</p>
-                <img src="images/reynekeilya.jpg" class="trip-hover-img">
-            </a>
-
-            <a href="mentawai-surf-trip.html" class="trip-item">
-                <span class="trip-name">МЕНТАВАИ</span>
-                <p class="trip-desc">Вершина серф-эстетики. Исследование спотов на комфортабельной яхте или проживание в премиальном резорте.</p>
-                <img src="images/mentawaiilya.jpg" class="trip-hover-img">
-            </a>
-
-            <a href="vladivostok-surf-trip.html" class="trip-item">
-                <span class="trip-name">ВЛАДИВОСТОК</span>
-                <p class="trip-desc">Родина Ильи. Лазурные бухты, рыбалка на дикую красную рыбу и легендарная атмосфера первых искателей волн в России.</p>
-                <img src="images/vladivostokwave.jpg" class="trip-hover-img">
-            </a>
-
-            <a href="mexico-surf-trip.html" class="trip-item">
-                <span class="trip-name">МЕКСИКА</span>
-                <p class="trip-desc">Деревушка Саюлита — мекка лонгборда. Идеально для тех, кто ценит плавность линий и расслабленный ритм побережья.</p>
-                <img src="images/sup1.jpg" class="trip-hover-img">
-            </a>
-
-            <a href="south-africa-surf-trip.html" class="trip-item">
-                <span class="trip-name">ЮАР</span>
-                <p class="trip-desc">Мощь двух океанов и масштаб, меняющий восприятие. Встречи с китами и серфинг мирового уровня в диких декорациях.</p>
-                <img src="images/ilyagun.jpg" class="trip-hover-img">
-            </a>
-        </section>
-
-        <section class="cta-box">
-            <p>Готовы к новому уровню? Напишите нам</p>
-            <div class="cta-flex">
-                <a href="https://t.me/Chaika_Ilya" class="btn-action">Записаться в трип</a>
-                <a href="https://t.me/Chaika_Ilya" class="btn-action">Индивидуальный формат</a>
+                <article class="story-note">
+                    <p class="story-copy">В трипы Илья приглашает только тех, в ком уверен. Большинство участников ездят с ним годами; новички же, проявившие себя на индивидуальных тренировках, получают шанс присоединиться и совершить качественный скачок в уровне. Здесь исключены случайные люди — мы формируем группу по духу и мастерству, создавая ту самую аутентичную атмосферу, где Океан раскрывается по-настоящему.</p>
+                    <p class="story-copy">Помимо плановых направлений, возможна организация <strong>индивидуального серф-трипа</strong> в любую точку мира или «страйк-миссия» под экстремально мощный прогноз. Если вы готовы к такому вызову — напишите нам.</p>
+                </article>
             </div>
         </section>
 
+        <section class="schedule-section" aria-labelledby="scheduleTitle">
+            <div class="schedule-inner">
+                <div class="section-header">
+                    <div>
+                        <p class="section-kicker">Календарь 2026</p>
+                        <h2 class="section-title" id="scheduleTitle">Расписание серф-трипов</h2>
+                    </div>
+                    <span class="schedule-count">7 направлений</span>
+                </div>
+
+                <div class="schedule-table">
+                    <div class="schedule-head" aria-hidden="true">
+                        <span>Направление</span>
+                        <span>Когда</span>
+                        <span>Стоимость</span>
+                        <span>Волны</span>
+                        <span>Уровень</span>
+                    </div>
+
+                    <article class="schedule-row">
+                        <div class="destination-cell">
+                            <div class="destination-image"><img src="images/mainilya1.jpg" alt="G-Land" loading="lazy" decoding="async"></div>
+                            <h3><a class="destination-link" href="g-land-surf-trip.html">G-Land, Индонезия</a></h3>
+                        </div>
+                        <div class="schedule-value"><span class="mobile-label">Когда</span>Август 2026</div>
+                        <div class="schedule-value schedule-price"><span class="mobile-label">Стоимость</span>от 3 000 $</div>
+                        <div class="schedule-value"><span class="mobile-label">Волны</span>Длинные мощные левые, риф и баррели</div>
+                        <div class="schedule-value schedule-level"><span class="mobile-label">Уровень</span>Advanced</div>
+                    </article>
+
+                    <article class="schedule-row">
+                        <div class="destination-cell">
+                            <div class="destination-image"><img src="images/mentawaiilya.jpg" alt="Ментаваи" loading="lazy" decoding="async"></div>
+                            <h3><a class="destination-link" href="mentawai-surf-trip.html">Ментаваи, Индонезия</a></h3>
+                        </div>
+                        <div class="schedule-value"><span class="mobile-label">Когда</span>Сентябрь 2026</div>
+                        <div class="schedule-value schedule-price"><span class="mobile-label">Стоимость</span>от 3 000 $</div>
+                        <div class="schedule-value"><span class="mobile-label">Волны</span>Левые и правые рифовые волны, быстрые баррели</div>
+                        <div class="schedule-value schedule-level"><span class="mobile-label">Уровень</span>Advanced</div>
+                    </article>
+
+                    <article class="schedule-row">
+                        <div class="destination-cell">
+                            <div class="destination-image"><img src="images/vladivostokwave.jpg" alt="Владивосток" loading="lazy" decoding="async"></div>
+                            <h3><a class="destination-link" href="vladivostok-surf-trip.html">Владивосток, Россия</a></h3>
+                        </div>
+                        <div class="schedule-value"><span class="mobile-label">Когда</span>Сентябрь 2026</div>
+                        <div class="schedule-value schedule-price"><span class="mobile-label">Стоимость</span>от 3 000 $</div>
+                        <div class="schedule-value"><span class="mobile-label">Волны</span>Свеллы открытого моря, рифовые и пляжные споты</div>
+                        <div class="schedule-value schedule-level"><span class="mobile-label">Уровень</span>Все уровни</div>
+                    </article>
+
+                    <article class="schedule-row">
+                        <div class="destination-cell">
+                            <div class="destination-image"><img src="images/russup.jpg" alt="Сумбава" loading="lazy" decoding="async"></div>
+                            <h3><a class="destination-link" href="sumbawa-surf-trip.html">Сумбава, Индонезия</a></h3>
+                        </div>
+                        <div class="schedule-value"><span class="mobile-label">Когда</span>Октябрь 2026</div>
+                        <div class="schedule-value schedule-price"><span class="mobile-label">Стоимость</span>от 3 000 $</div>
+                        <div class="schedule-value"><span class="mobile-label">Волны</span>A-frame, пойнт- и риф-брейки, открытые стены и баррели</div>
+                        <div class="schedule-value schedule-level"><span class="mobile-label">Уровень</span>Intermediate+</div>
+                    </article>
+
+                    <article class="schedule-row">
+                        <div class="destination-cell">
+                            <div class="destination-image"><img src="images/reynekeilya.jpg" alt="Сумба" loading="lazy" decoding="async"></div>
+                            <h3><a class="destination-link" href="sumba-surf-trip.html">Сумба, Индонезия</a></h3>
+                        </div>
+                        <div class="schedule-value"><span class="mobile-label">Когда</span>Октябрь 2026</div>
+                        <div class="schedule-value schedule-price"><span class="mobile-label">Стоимость</span>от 3 000 $</div>
+                        <div class="schedule-value"><span class="mobile-label">Волны</span>Рифовые и пляжные волны: от мягких стен до мощных секций</div>
+                        <div class="schedule-value schedule-level"><span class="mobile-label">Уровень</span>Все уровни</div>
+                    </article>
+
+                    <article class="schedule-row">
+                        <div class="destination-cell">
+                            <div class="destination-image"><img src="images/sup1.jpg" alt="Саюлита" loading="lazy" decoding="async"></div>
+                            <h3><a class="destination-link" href="mexico-surf-trip.html">Саюлита, Мексика</a></h3>
+                        </div>
+                        <div class="schedule-value"><span class="mobile-label">Когда</span>Ноябрь 2026</div>
+                        <div class="schedule-value schedule-price"><span class="mobile-label">Стоимость</span>от 3 000 $</div>
+                        <div class="schedule-value"><span class="mobile-label">Волны</span>Длинные мягкие волны, пойнт-брейки и лонгборд</div>
+                        <div class="schedule-value schedule-level"><span class="mobile-label">Уровень</span>Beginner — Intermediate</div>
+                    </article>
+
+                    <article class="schedule-row">
+                        <div class="destination-cell">
+                            <div class="destination-image"><img src="images/ilyagun.jpg" alt="Южная Африка" loading="lazy" decoding="async"></div>
+                            <h3><a class="destination-link" href="south-africa-surf-trip.html">Южная Африка, ЮАР</a></h3>
+                        </div>
+                        <div class="schedule-value"><span class="mobile-label">Когда</span>Декабрь 2026</div>
+                        <div class="schedule-value schedule-price"><span class="mobile-label">Стоимость</span>от 3 000 $</div>
+                        <div class="schedule-value"><span class="mobile-label">Волны</span>Пойнт-, риф- и beach-breaks, быстрые стены и баррели</div>
+                        <div class="schedule-value schedule-level"><span class="mobile-label">Уровень</span>Advanced</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section" aria-label="Связаться по поводу серф-трипа">
+            <div class="cta-inner">
+                <p class="cta-text">Для каждого трипа возможны групповой и индивидуальный форматы.</p>
+                <p class="cta-text">Хотите отправиться в красивейшие места планеты на поиски лучших волн? Напишите нам.</p>
+                <div class="cta-actions">
+                    <a href="https://t.me/Chaika_Ilya" target="_blank" rel="noopener noreferrer" class="eyebrow-button">Написать в Telegram</a>
+                    <a href="mailto:chaikailya@gmail.com" class="eyebrow-button email-button">Написать на email</a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        ILYA CHAIKA // SURF JOURNEYS 2026
+    <footer class="footer">
+        <h2 class="footer-title">Илья Чайка</h2>
+        <p class="footer-copy">серфер | серф-коуч | организатор серф-трипов</p>
+        <div class="footer-socials">
+            <a href="https://t.me/Chaika_Ilya" target="_blank" rel="noopener noreferrer">TELEGRAM</a>
+            <a href="https://instagram.com/chaika_ilya" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+            <a href="https://youtube.com/@chaika_ilya" target="_blank" rel="noopener noreferrer">YOUTUBE</a>
+        </div>
+        <p class="footer-note">* Instagram принадлежит компании Meta, запрещенной в РФ.</p>
     </footer>
 
+    <script>
+        const body = document.body;
+        const menu = document.getElementById('mobileMenu');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const panel = document.getElementById('sidePanel');
+        const overlay = document.getElementById('sideOverlay');
+        const panelOpenButtons = document.querySelectorAll('[data-panel-open]');
+        const panelCloseButton = document.querySelector('[data-panel-close]');
+
+        function setMenu(open) {
+            menu.classList.toggle('active', open);
+            menu.setAttribute('aria-hidden', String(!open));
+            menu.inert = !open;
+            menuToggle.setAttribute('aria-expanded', String(open));
+            menuToggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+            body.classList.toggle('menu-open', open);
+        }
+
+        function setPanel(open) {
+            panel.classList.toggle('active', open);
+            overlay.classList.toggle('active', open);
+            panel.setAttribute('aria-hidden', String(!open));
+            panel.inert = !open;
+            overlay.setAttribute('aria-hidden', String(!open));
+            body.classList.toggle('panel-open', open);
+
+            if (open) {
+                setMenu(false);
+                window.setTimeout(() => panelCloseButton.focus(), 320);
+            }
+        }
+
+        menuToggle.addEventListener('click', () => {
+            setMenu(!menu.classList.contains('active'));
+        });
+
+        menu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => setMenu(false));
+        });
+
+        panelOpenButtons.forEach((button) => {
+            button.addEventListener('click', () => setPanel(true));
+        });
+
+        panelCloseButton.addEventListener('click', () => setPanel(false));
+        overlay.addEventListener('click', () => setPanel(false));
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key !== 'Escape') return;
+            if (panel.classList.contains('active')) setPanel(false);
+            if (menu.classList.contains('active')) setMenu(false);
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 820) setMenu(false);
+        });
+    </script>
 </body>
 </html>
