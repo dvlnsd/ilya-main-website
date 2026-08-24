@@ -1055,6 +1055,443 @@
                 animation-iteration-count: 1 !important;
             }
         }
+
+        /* FINAL PAGE OVERRIDES: KEEP HEADER IDENTICAL TO INDEX.HTML */
+        :root {
+            --bg: #080808;
+            --surface: #0d0d0d;
+            --page-padding: clamp(24px, 7vw, 112px);
+            --nav-height: 92px;
+            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .site-header {
+            display: contents;
+        }
+
+        .desktop-nav {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 1000;
+            display: grid;
+            min-height: var(--nav-height);
+            grid-template-columns: minmax(150px, 1fr) auto minmax(150px, 1fr);
+            align-items: center;
+            padding: 14px var(--page-padding);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(8, 8, 8, 0.72);
+            -webkit-backdrop-filter: blur(20px) saturate(130%);
+            backdrop-filter: blur(20px) saturate(130%);
+        }
+
+        .home-link {
+            justify-self: start;
+            padding-block: 12px;
+            color: rgba(255, 255, 255, 0.38);
+            font-size: 0.67rem;
+            font-weight: 500;
+            letter-spacing: 0.24em;
+            white-space: nowrap;
+            text-transform: uppercase;
+            transition: color 220ms ease, text-shadow 220ms ease;
+        }
+
+        .home-link:hover,
+        .home-link:focus-visible {
+            color: var(--white);
+            text-shadow: 0 0 18px rgba(255, 255, 255, 0.45);
+        }
+
+        .nav-links {
+            gap: clamp(28px, 4vw, 64px);
+        }
+
+        .nav-links a {
+            padding-block: 12px;
+            color: rgba(255, 255, 255, 0.54);
+            font-size: 0.67rem;
+            font-weight: 500;
+            letter-spacing: 0.28em;
+            white-space: nowrap;
+        }
+
+        .nav-links a::after {
+            bottom: 5px;
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+
+        .nav-links a.active {
+            color: rgba(255, 255, 255, 0.54);
+        }
+
+        .nav-links a.active::after {
+            opacity: 1;
+            transform: scaleX(0);
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible,
+        .nav-links a.active:hover,
+        .nav-links a.active:focus-visible {
+            color: var(--white);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a:focus-visible::after,
+        .nav-links a.active:hover::after,
+        .nav-links a.active:focus-visible::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .contact-button,
+        .button {
+            min-height: 48px;
+            border: 1px solid rgba(160, 233, 255, 0.72);
+            padding: 0 24px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            line-height: 1;
+        }
+
+        .contact-button {
+            min-width: 174px;
+        }
+
+        .mobile-nav-bar {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 1010;
+            display: none;
+            min-height: 72px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(8, 8, 8, 0.68);
+            -webkit-backdrop-filter: blur(18px) saturate(125%);
+            backdrop-filter: blur(18px) saturate(125%);
+        }
+
+        .mobile-wordmark {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        .mobile-menu-links a {
+            display: grid;
+            grid-template-columns: 44px 1fr;
+            align-items: baseline;
+        }
+
+        .mobile-menu-links a:first-child {
+            color: rgba(255, 255, 255, 0.68);
+        }
+
+        .mobile-menu-links a span {
+            color: rgba(160, 233, 255, 0.58);
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+        }
+
+        .mobile-menu-contact {
+            align-items: center;
+            justify-content: space-between;
+            color: var(--muted);
+            font-size: 0.62rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .mobile-menu-contact button {
+            width: auto;
+            min-height: 0;
+            border: 0;
+            background: transparent;
+            color: var(--accent);
+            padding: 0;
+            font-size: inherit;
+            font-weight: 600;
+            letter-spacing: inherit;
+        }
+
+        .hero {
+            min-height: min(66vh, 700px);
+            margin-top: var(--nav-height);
+        }
+
+        .hero-content {
+            padding-top: 80px;
+            padding-bottom: clamp(48px, 6vw, 76px);
+        }
+
+        .hero h1 {
+            margin-top: 0;
+            font-size: clamp(3rem, 6.4vw, 6.2rem);
+        }
+
+        .intro-section {
+            padding-block: clamp(62px, 8vw, 104px);
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: minmax(300px, 0.92fr) minmax(430px, 1.08fr);
+            gap: clamp(48px, 7vw, 112px);
+        }
+
+        .intro-copy {
+            max-width: 650px;
+            padding-top: 0;
+        }
+
+        .intro-copy p,
+        .intro-copy p:first-child {
+            font-size: clamp(1rem, 1.22vw, 1.12rem);
+            line-height: 1.72;
+        }
+
+        .intro-copy p:first-child {
+            color: var(--white);
+            font-size: clamp(1.12rem, 1.45vw, 1.32rem);
+            line-height: 1.62;
+        }
+
+        .intro-copy p + p {
+            margin-top: 20px;
+        }
+
+        .gallery {
+            position: sticky;
+            top: calc(var(--nav-height) + 28px);
+            min-width: 0;
+        }
+
+        .gallery-track {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            touch-action: pan-x pan-y;
+        }
+
+        .gallery-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-slide {
+            flex: 0 0 calc(100% - 48px);
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            scroll-snap-align: start;
+            background: var(--surface);
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.82) contrast(1.03);
+        }
+
+        .gallery-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .gallery-counter {
+            color: rgba(255, 255, 255, 0.46);
+            font-size: 0.64rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            white-space: nowrap;
+        }
+
+        .gallery-dots,
+        .gallery-arrows {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .gallery-dot {
+            width: 22px;
+            height: 1px;
+            border: 0;
+            background: rgba(255, 255, 255, 0.22);
+            cursor: pointer;
+            transition: width 220ms ease, background 220ms ease;
+        }
+
+        .gallery-dot.active {
+            width: 38px;
+            background: var(--accent);
+        }
+
+        .gallery-arrow {
+            display: inline-flex;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            background: transparent;
+            color: var(--white);
+            cursor: pointer;
+            font-size: 1.08rem;
+        }
+
+        .gallery-arrow:hover,
+        .gallery-arrow:focus-visible {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .cta-content {
+            max-width: 980px;
+        }
+
+        .cta-content h2 {
+            margin: 0 auto;
+            font-size: clamp(2rem, 4.2vw, 4.1rem);
+            line-height: 1.08;
+        }
+
+        .cta-actions {
+            margin-top: 34px;
+        }
+
+        @media (max-width: 1080px) {
+            .desktop-nav {
+                grid-template-columns: 40px 1fr auto;
+            }
+
+            .home-link {
+                width: 40px;
+                overflow: hidden;
+                color: transparent;
+            }
+
+            .home-link::before {
+                color: rgba(255, 255, 255, 0.54);
+                content: "←";
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 24px;
+            }
+
+            .nav-links a {
+                letter-spacing: 0.18em;
+            }
+
+            .contact-button {
+                min-width: 152px;
+            }
+
+            .intro-grid {
+                grid-template-columns: minmax(280px, 0.9fr) minmax(380px, 1.1fr);
+                gap: 46px;
+            }
+        }
+
+        @media (max-width: 820px) {
+            :root {
+                --nav-height: 72px;
+            }
+
+            .desktop-nav {
+                display: none;
+            }
+
+            .mobile-nav-bar,
+            .mobile-menu {
+                display: flex;
+            }
+
+            .mobile-menu {
+                flex-direction: column;
+            }
+
+            .hero {
+                min-height: min(60vh, 600px);
+            }
+
+            .intro-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .intro-copy {
+                order: 1;
+                max-width: 680px;
+            }
+
+            .gallery {
+                position: static;
+                order: 2;
+                width: 100%;
+            }
+
+            .gallery-slide {
+                flex-basis: 86%;
+                aspect-ratio: 4 / 3;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.8rem, 15vw, 4.15rem);
+            }
+
+            .intro-copy p,
+            .intro-copy p:first-child {
+                font-size: 0.98rem;
+                line-height: 1.67;
+            }
+
+            .intro-copy p:first-child {
+                font-size: 1.08rem;
+                line-height: 1.58;
+            }
+
+            .gallery-controls {
+                gap: 10px;
+            }
+
+            .gallery-dot {
+                width: 14px;
+            }
+
+            .gallery-dot.active {
+                width: 28px;
+            }
+
+            .cta-content h2 {
+                font-size: clamp(2rem, 9vw, 3rem);
+            }
+        }
     </style>
 
     <script type="application/ld+json">
@@ -1096,7 +1533,7 @@
         </nav>
 
         <div class="mobile-nav-bar">
-            <a class="mobile-home" href="index.html">На главную</a>
+            <a class="mobile-wordmark" href="index.html">Ilya Chaika</a>
             <button class="menu-toggle" type="button" aria-controls="mobileMenu" aria-expanded="false" data-menu-toggle>
                 <span>Меню</span>
                 <span class="menu-icon" aria-hidden="true"><span></span><span></span></span>
@@ -1107,14 +1544,14 @@
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
         <button class="mobile-menu-close" type="button" data-menu-toggle>Закрыть</button>
         <nav class="mobile-menu-links" aria-label="Мобильная навигация">
-            <a href="index.html">На главную</a>
-            <a class="active" href="surf-trips.html" aria-current="page">Серф-трипы</a>
-            <a href="surf-coaching-bali.html">Обучение</a>
-            <a href="surf-journal.html">Серф-журнал</a>
-            <a href="surf-shop.html">Магазин</a>
+            <a href="surf-trips.html" aria-current="page"><span>01</span>Серф-трипы</a>
+            <a href="surf-coaching-bali.html"><span>02</span>Обучение</a>
+            <a href="surf-journal.html"><span>03</span>Серф-журнал</a>
+            <a href="surf-shop.html"><span>04</span>Магазин</a>
         </nav>
         <div class="mobile-menu-contact">
-            <button class="button" type="button" data-open-contact>Связаться</button>
+            <span>Вопросы и коллаборации</span>
+            <button type="button" data-open-contact>Связаться →</button>
         </div>
     </div>
 
@@ -1137,24 +1574,12 @@
             <img class="hero-media" src="images/mentawaiilya.jpg" alt="" fetchpriority="high">
             <div class="hero-overlay"></div>
             <div class="hero-content container">
-                <p class="eyebrow">Индонезия · Мексика · ЮАР</p>
                 <h1 id="pageTitle">Серф-трипы</h1>
-                <p class="hero-intro">Групповые и индивидуальные поездки для тех, кто хочет больше времени проводить в воде и кататься на хороших волнах.</p>
             </div>
         </section>
 
         <section class="intro-section" aria-label="О серф-трипах">
             <div class="container intro-grid">
-                <figure class="intro-visual">
-                    <div class="intro-image-wrap">
-                        <img src="images/mainilya1.jpg" alt="Серф-трип с Ильей Чайкой" loading="lazy" decoding="async">
-                    </div>
-                    <figcaption class="image-caption">
-                        <span>Surf journeys</span>
-                        <span>Ilya Chaika</span>
-                    </figcaption>
-                </figure>
-
                 <div class="intro-copy">
                     <p>Серфинг — это непрерывный поиск хороших волн и разведка новых локаций. Иногда бывает достаточно переехать на другое побережье, а иногда — отправиться на соседний остров или в другую страну.</p>
 
@@ -1166,6 +1591,29 @@
 
                     <p>Много серфинга без отвлекающих факторов, новые волны, красивые места, возможность как следует укататься и отдохнуть ментально — в этом и есть смысл серф-трипа.</p>
                 </div>
+
+                <div class="gallery" aria-label="Фотографии из серф-трипов">
+                    <div class="gallery-track" id="galleryTrack" tabindex="0">
+                        <figure class="gallery-slide"><img src="images/mainilya1.jpg" alt="Серф-трип с Ильей Чайкой" loading="lazy" decoding="async"></figure>
+                        <figure class="gallery-slide"><img src="images/ilyastungun.jpg" alt="Серфинг на рифовых волнах Индонезии" loading="lazy" decoding="async"></figure>
+                        <figure class="gallery-slide"><img src="images/mentawaiilya.jpg" alt="Серф-трип на Ментаваи" loading="lazy" decoding="async"></figure>
+                        <figure class="gallery-slide"><img src="images/reynekeilya.jpg" alt="Илья Чайка во время серф-путешествия" loading="lazy" decoding="async"></figure>
+                    </div>
+
+                    <div class="gallery-controls">
+                        <span class="gallery-counter" aria-live="polite"><span id="currentSlide">01</span> / 04</span>
+                        <div class="gallery-dots" aria-label="Выбор фотографии">
+                            <button class="gallery-dot active" type="button" aria-label="Фотография 1" data-slide="0"></button>
+                            <button class="gallery-dot" type="button" aria-label="Фотография 2" data-slide="1"></button>
+                            <button class="gallery-dot" type="button" aria-label="Фотография 3" data-slide="2"></button>
+                            <button class="gallery-dot" type="button" aria-label="Фотография 4" data-slide="3"></button>
+                        </div>
+                        <div class="gallery-arrows">
+                            <button class="gallery-arrow" type="button" aria-label="Предыдущая фотография" data-gallery-prev>←</button>
+                            <button class="gallery-arrow" type="button" aria-label="Следующая фотография" data-gallery-next>→</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1176,7 +1624,7 @@
                         <p class="eyebrow">Расписание 2026</p>
                         <h2 class="section-title" id="scheduleTitle">Ближайшие серф-трипы</h2>
                     </div>
-                    <p class="schedule-note">Сроки поездок могут корректироваться с учетом условий и состава группы.</p>
+                    <p class="schedule-note">Даты поездок могут корректироваться с учетом условий и состава группы.</p>
                 </div>
 
                 <div class="schedule-table">
@@ -1256,9 +1704,7 @@
         <section class="cta-section" aria-labelledby="ctaTitle">
             <div class="container">
                 <div class="cta-content">
-                    <p class="eyebrow">Групповой или индивидуальный формат</p>
                     <h2 id="ctaTitle">Хотите отправиться в красивейшие места планеты на поиски лучших волн?</h2>
-                    <p>Для каждого трипа возможны групповой и индивидуальный форматы. Напишите нам, чтобы обсудить направление, даты и ваш уровень катания.</p>
                     <div class="cta-actions">
                         <a class="button" href="https://t.me/Chaika_Ilya" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
                         <a class="button secondary" href="mailto:chaikailya@gmail.com?subject=%D0%A1%D0%B5%D1%80%D1%84-%D1%82%D1%80%D0%B8%D0%BF">Написать на email</a>
@@ -1268,18 +1714,7 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <p class="footer-name">Илья Чайка</p>
-        <p class="footer-role">Серфер · серф-коуч · организатор серф-трипов</p>
-        <div class="footer-links">
-            <a href="https://t.me/Chaika_Ilya" target="_blank" rel="noopener noreferrer">Telegram</a>
-            <a href="https://instagram.com/chaika_ilya" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://youtube.com/@chaika_ilya" target="_blank" rel="noopener noreferrer">YouTube</a>
-        </div>
-        <p class="meta-note">* Instagram принадлежит компании Meta, признанной экстремистской организацией и запрещенной на территории РФ.</p>
-    </footer>
-
-    <a class="mobile-booking" href="https://t.me/Chaika_Ilya" target="_blank" rel="noopener noreferrer">Обсудить серф-трип</a>
+    <a class="mobile-booking" href="https://t.me/Chaika_Ilya" target="_blank" rel="noopener noreferrer">Забронировать серф-трип</a>
 
     <script>
         const body = document.body;
@@ -1336,6 +1771,69 @@
                 toggleContactPanel(false);
             }
         });
+
+        const galleryTrack = document.getElementById('galleryTrack');
+        const gallerySlides = Array.from(galleryTrack.querySelectorAll('.gallery-slide'));
+        const galleryDots = Array.from(document.querySelectorAll('.gallery-dot'));
+        const currentSlide = document.getElementById('currentSlide');
+        const previousSlideButton = document.querySelector('[data-gallery-prev]');
+        const nextSlideButton = document.querySelector('[data-gallery-next]');
+        let activeSlide = 0;
+        let galleryFrame;
+
+        function updateGallery() {
+            currentSlide.textContent = String(activeSlide + 1).padStart(2, '0');
+            galleryDots.forEach((dot, index) => {
+                const isActive = index === activeSlide;
+                dot.classList.toggle('active', isActive);
+                dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+            });
+        }
+
+        function goToSlide(index) {
+            activeSlide = (index + gallerySlides.length) % gallerySlides.length;
+            galleryTrack.scrollTo({
+                left: gallerySlides[activeSlide].offsetLeft,
+                behavior: 'smooth'
+            });
+            updateGallery();
+        }
+
+        function detectVisibleSlide() {
+            const currentPosition = galleryTrack.scrollLeft;
+            let closestIndex = 0;
+            let closestDistance = Infinity;
+
+            gallerySlides.forEach((slide, index) => {
+                const distance = Math.abs(slide.offsetLeft - currentPosition);
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestIndex = index;
+                }
+            });
+
+            activeSlide = closestIndex;
+            updateGallery();
+        }
+
+        galleryTrack.addEventListener('scroll', () => {
+            cancelAnimationFrame(galleryFrame);
+            galleryFrame = requestAnimationFrame(detectVisibleSlide);
+        }, { passive: true });
+
+        galleryDots.forEach((dot) => {
+            dot.addEventListener('click', () => goToSlide(Number(dot.dataset.slide)));
+        });
+
+        previousSlideButton.addEventListener('click', () => goToSlide(activeSlide - 1));
+        nextSlideButton.addEventListener('click', () => goToSlide(activeSlide + 1));
+
+        galleryTrack.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') goToSlide(activeSlide - 1);
+            if (event.key === 'ArrowRight') goToSlide(activeSlide + 1);
+        });
+
+        updateGallery();
     </script>
 </body>
 </html>
