@@ -108,8 +108,8 @@ figure{margin:0}
 
 .overlay{position:fixed;inset:0;z-index:1100;background:rgba(0,0,0,.74);opacity:0;pointer-events:none;transition:.25s}
 .overlay.active{opacity:1;pointer-events:auto}
-.contact-panel{position:fixed;z-index:1200;inset:0 0 0 auto;width:min(520px,100%);padding:46px;background:#0d0d0d;transform:translateX(100%);transition:.3s;border-left:1px solid var(--line)}
-.contact-panel.active{transform:none}
+.contact-panel{position:fixed;z-index:1200;inset:0 0 0 auto;width:min(520px,100%);padding:46px;background:#0d0d0d;transform:translateX(100%);visibility:hidden;pointer-events:none;transition:transform .3s;border-left:1px solid var(--line)}
+.contact-panel.active{transform:none;visibility:visible;pointer-events:auto}
 .panel-close{border:0;background:none;color:var(--muted);padding:0;cursor:pointer}
 .contact-panel h2{margin:64px 0 18px;font-size:38px;font-weight:400}
 .contact-panel p{color:var(--muted)}
