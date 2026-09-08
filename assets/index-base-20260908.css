@@ -222,3 +222,95 @@ html,body{background:var(--bg)!important;color:var(--text)!important}
 @media(hover:none){.journal-card.is-color-visible .journal-card-media img{filter:grayscale(0) contrast(1.02) saturate(1.04)!important;transform:none!important}}
 @media(width<=920px){.journal-card-hero .journal-card-link{grid-template-columns:1fr}.journal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.journal-card-hero .journal-card-media img{aspect-ratio:16/10}}
 @media(width<=640px){.journal-heading{min-height:28svh;padding:calc(var(--header-h) + 48px) 20px 36px}.journal-heading h1{font-size:42px}.journal-tools{padding:24px 20px 18px;gap:18px}.journal-search{width:100%}.journal-filters{justify-content:flex-start;gap:8px 18px;overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}.journal-filters button{white-space:nowrap}.journal-feed{padding:12px 20px 66px}.journal-card-hero{padding-bottom:28px;margin-bottom:30px}.journal-card-hero h2{font-size:32px}.journal-card h2,.journal-grid .journal-card h2{font-size:27px}.journal-card p{font-size:13px}.journal-grid{grid-template-columns:1fr;gap:34px}.journal-card-meta{font-size:8.5px}.journal-card-meta span+span:before{margin-right:9px}.journal-card-meta{gap:5px 9px}}
+
+/* 2026-09-08 final polish: organic CTA halos + universal hand-drawn closes */
+:root{--bg:#090b0f!important;--surface:#0d1117!important;--surface-sea:#071522!important;--surface-soft:#101722!important;--text:#f4f4f1!important;--muted:#f4f4f19c!important;--accent:#5d9faa!important;--accent-rgb:93,159,170!important}
+html,body{background:var(--bg)!important;color:var(--text)!important}
+
+/* Never draw hard rectangular CTA backgrounds */
+.contact-trigger,.outline-button,.sticky-booking{
+  position:relative!important;isolation:isolate!important;overflow:visible!important;
+  background:transparent!important;background-image:none!important;
+  border:0!important;box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  filter:none!important;translate:none!important;
+}
+.contact-trigger:before,.outline-button:before,.sticky-booking:before{
+  content:"";position:absolute;z-index:-2;pointer-events:none;
+  left:-48px;right:-48px;top:-34px;bottom:-34px;
+  border-radius:50%!important;
+  background:radial-gradient(ellipse at center,
+    rgba(11,18,30,.82) 0%,
+    rgba(9,16,28,.56) 34%,
+    rgba(8,15,26,.30) 52%,
+    rgba(8,15,26,.12) 66%,
+    rgba(8,15,26,.035) 78%,
+    rgba(8,15,26,0) 94%)!important;
+  filter:blur(21px)!important;
+  opacity:.96;
+  transform:scale(1)!important;
+  transition:opacity .35s ease,filter .35s ease,transform .35s ease;
+}
+.contact-trigger:after,.outline-button:after,.sticky-booking:after{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  left:-30px;right:-30px;top:-24px;bottom:-24px;border-radius:50%!important;
+  background:radial-gradient(ellipse at center,
+    rgba(232,246,255,.13) 0%,
+    rgba(177,218,240,.08) 34%,
+    rgba(119,181,216,.035) 56%,
+    rgba(119,181,216,0) 84%)!important;
+  filter:blur(19px)!important;opacity:.34;
+  transition:opacity .35s ease,filter .35s ease;
+}
+.contact-trigger:hover,.contact-trigger:focus-visible,.outline-button:hover,.outline-button:focus-visible,.sticky-booking:hover,.sticky-booking:focus-visible{
+  background:transparent!important;background-image:none!important;
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  filter:none!important;translate:none!important;
+  color:#fff!important;
+  text-shadow:0 0 4px rgba(255,255,255,.92),0 0 13px rgba(232,247,255,.32),0 0 30px rgba(153,206,235,.18)!important;
+}
+.contact-trigger:hover:before,.contact-trigger:focus-visible:before,.outline-button:hover:before,.outline-button:focus-visible:before,.sticky-booking:hover:before,.sticky-booking:focus-visible:before{
+  opacity:1;filter:blur(25px)!important;transform:scale(1.06)!important
+}
+.contact-trigger:hover:after,.contact-trigger:focus-visible:after,.outline-button:hover:after,.outline-button:focus-visible:after,.sticky-booking:hover:after,.sticky-booking:focus-visible:after{
+  opacity:.92;filter:blur(24px)!important
+}
+
+/* Stable bottom CTA: never jumps sideways */
+.sticky-booking{display:inline-flex!important;opacity:1!important;pointer-events:auto!important;visibility:visible!important;left:50%!important;right:auto!important;bottom:24px!important;transform:translateX(-50%)!important;white-space:nowrap!important;z-index:60!important}
+.sticky-booking:hover,.sticky-booking:focus-visible{transform:translateX(-50%)!important}
+
+/* Same hamburger in the upper-left corner on every page */
+.site-header .menu-trigger{display:inline-flex!important;align-items:center!important;justify-content:center!important;background:transparent!important;border:0!important;box-shadow:none!important;width:52px!important;min-width:52px!important;height:44px!important;min-height:44px!important;padding:8px!important}
+.site-header .menu-trigger svg{width:27px!important;height:27px!important}
+
+/* Close controls: no boxes, thin irregular hand-drawn white cross */
+.simple-nav-close,.sheet-close,[data-slot="sheet-close"]{
+  position:relative!important;width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;
+  padding:0!important;background:transparent!important;background-image:none!important;border:0!important;box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;color:transparent!important;font-size:0!important;overflow:visible!important;
+}
+.simple-nav-close:before,.simple-nav-close:after,.sheet-close:before,.sheet-close:after,[data-slot="sheet-close"]:before,[data-slot="sheet-close"]:after{
+  content:""!important;position:absolute!important;left:9px!important;top:20px!important;width:25px!important;height:1.2px!important;
+  background:rgba(255,255,255,.94)!important;border-radius:999px!important;transform-origin:center!important;box-shadow:none!important;
+}
+.simple-nav-close:before,.sheet-close:before,[data-slot="sheet-close"]:before{transform:rotate(43deg) translateY(.4px)!important}
+.simple-nav-close:after,.sheet-close:after,[data-slot="sheet-close"]:after{transform:rotate(-47deg) translateX(.5px)!important}
+.simple-nav-close:hover:before,.simple-nav-close:hover:after,.sheet-close:hover:before,.sheet-close:hover:after,[data-slot="sheet-close"]:hover:before,[data-slot="sheet-close"]:hover:after{
+  background:#fff!important;box-shadow:0 0 7px rgba(255,255,255,.3)!important
+}
+.sheet-close svg,.sheet-close span,[data-slot="sheet-close"] svg,[data-slot="sheet-close"] span{display:none!important}
+
+/* Side menu remains a narrow panel */
+.simple-nav{position:fixed!important;inset:0!important;z-index:220!important;display:none;pointer-events:none;background:transparent!important}
+.simple-nav.is-open{display:block!important}
+.simple-nav-panel{height:100%;width:min(430px,88vw);padding:84px 34px 42px;background:rgba(7,10,14,.86)!important;-webkit-backdrop-filter:blur(22px) saturate(115%);backdrop-filter:blur(22px) saturate(115%);border:0!important;box-shadow:24px 0 70px rgba(0,0,0,.25);pointer-events:auto}
+.simple-nav-list{display:grid;gap:3px;margin-top:44px}
+.simple-nav a{display:flex;align-items:center;gap:14px;color:#f4f4f1;text-decoration:none;font-family:var(--serif);font-size:clamp(26px,2.5vw,36px);font-weight:400;line-height:1.12;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.simple-nav-close{position:absolute!important;top:22px!important;left:24px!important}
+@media(max-width:640px){
+  .site-header .menu-trigger{width:46px!important;min-width:46px!important;height:40px!important;min-height:40px!important;padding:6px!important}
+  .simple-nav-panel{width:min(360px,88vw);padding:78px 26px 34px}
+  .simple-nav a{font-size:28px}
+  .sticky-booking{bottom:14px!important;max-width:calc(100vw - 32px)!important}
+}
