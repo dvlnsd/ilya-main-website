@@ -157,3 +157,68 @@ body,html{background:var(--bg)}
   .testimonial-controls{gap:22px!important;margin-top:12px!important}
   .simple-nav a:before{width:18px!important;height:18px!important;flex-basis:18px!important}
 }
+
+/* 2026-09-08 GLOBAL cold graphite/ocean + borderless interface */
+:root{--bg:#090b0f!important;--surface:#0d1117!important;--surface-sea:#071522!important;--surface-soft:#101722!important;--text:#f4f4f1!important;--muted:#f4f4f19c!important;--line:#dfe8f02a!important;--line-soft:#dfe8f014!important;--accent:#5d9faa!important;--accent-rgb:93,159,170!important}
+html,body{background:var(--bg)!important;color:var(--text)!important}
+.about-block,.testimonials-section,.quote-block,.intro-block,.trip-intro-copy,.simple-heading,.article-heading,.destination-intro{background:var(--surface-sea)!important}
+.press-strip,.footer,.facts-strip,.destination-facts{background:var(--surface)!important}
+.trips-schedule,.journal-list,.destination-list,.training-gallery,.formats-section{background:var(--bg)!important}
+.training-home{background:var(--surface-sea)!important}
+.training-offer:nth-child(2n) .training-gallery{background:var(--surface)!important}
+
+/* No hard rectangular UI frames anywhere */
+.menu-trigger,.contact-trigger,.outline-button,.sticky-booking,.simple-nav-close,.testimonial-prev,.testimonial-next{border:0!important;box-shadow:none!important;background:transparent!important;position:relative!important;overflow:visible!important}
+.contact-trigger,.outline-button,.sticky-booking{isolation:isolate!important;transform:none!important;translate:none!important}
+.contact-trigger:before,.outline-button:before,.sticky-booking:before{content:"";position:absolute;z-index:-1;inset:-15px -23px;background:radial-gradient(ellipse at center,rgba(10,16,25,.78) 0%,rgba(8,15,25,.46) 47%,rgba(8,15,25,.16) 68%,rgba(8,15,25,0) 88%);filter:blur(10px);opacity:.94;pointer-events:none;transition:opacity .3s ease,filter .3s ease,background .3s ease}
+.contact-trigger:after,.outline-button:after,.sticky-booking:after{content:"";position:absolute;z-index:-1;inset:-10px -15px;background:radial-gradient(ellipse at center,rgba(137,190,219,.12) 0%,rgba(104,163,194,.05) 48%,rgba(104,163,194,0) 80%);filter:blur(13px);opacity:.35;pointer-events:none;transition:opacity .35s ease,filter .35s ease}
+.contact-trigger:hover,.contact-trigger:focus-visible,.outline-button:hover,.outline-button:focus-visible,.sticky-booking:hover,.sticky-booking:focus-visible{transform:none!important;translate:none!important;color:#fff!important;text-shadow:0 0 5px rgba(255,255,255,.8),0 0 18px rgba(177,218,239,.28)!important;filter:none!important;background:transparent!important}
+.contact-trigger:hover:before,.contact-trigger:focus-visible:before,.outline-button:hover:before,.outline-button:focus-visible:before,.sticky-booking:hover:before,.sticky-booking:focus-visible:before{filter:blur(14px);opacity:1}
+.contact-trigger:hover:after,.contact-trigger:focus-visible:after,.outline-button:hover:after,.outline-button:focus-visible:after,.sticky-booking:hover:after,.sticky-booking:focus-visible:after{opacity:.9;filter:blur(17px)}
+.menu-sheet,.contact-sheet{border:0!important}
+.simple-nav-close{background:transparent!important}
+
+/* Surf Journal newsroom */
+.journal-page{background:var(--bg)!important}
+.journal-page .site-header{background:linear-gradient(180deg,rgba(4,8,13,.62),rgba(4,8,13,0))!important}
+.journal-heading{min-height:34svh;padding:calc(var(--header-h) + 60px) var(--page) 46px;background:var(--surface-sea);display:grid;place-items:end center}
+.journal-heading h1{font-family:var(--serif);font-size:clamp(42px,5vw,64px);font-weight:400;line-height:1;margin:0;text-align:center}
+.journal-tools{padding:30px var(--page) 24px;background:var(--bg);display:grid;gap:22px;width:min(1320px,100%);margin:0 auto}
+.journal-search{width:min(520px,100%);margin:0 auto;display:grid;grid-template-columns:24px 1fr;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding:8px 0 11px;color:var(--muted)}
+.journal-search:focus-within{border-color:rgba(var(--accent-rgb),.72);color:var(--text)}
+.journal-search svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.25}
+.journal-search input{border:0!important;outline:0!important;background:transparent!important;color:var(--text)!important;font-size:15px;width:100%;padding:0}
+.journal-search input::placeholder{color:var(--muted)}
+.journal-filters{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px}
+.journal-filters button{border:0;background:transparent;color:var(--muted);padding:5px 0;font-size:10px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;position:relative}
+.journal-filters button:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--accent);transform:scaleX(0);transition:transform .25s ease}
+.journal-filters button:hover,.journal-filters button.is-active{color:var(--text)}
+.journal-filters button.is-active:after{transform:scaleX(1)}
+.journal-feed{padding:18px var(--page) clamp(72px,8vw,112px);background:var(--bg)}
+.journal-lead-story,.journal-grid{width:min(1320px,100%);margin-inline:auto}
+.journal-card{background:transparent}
+.journal-card-link{display:block;color:inherit;text-decoration:none}
+.journal-card-media{overflow:hidden;background:var(--surface)}
+.journal-card-media img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;filter:grayscale(1) contrast(1.03);transition:filter .18s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
+.journal-card:hover .journal-card-media img,.journal-card:focus-within .journal-card-media img{filter:grayscale(0) contrast(1.02) saturate(1.04);transform:scale(1.015)}
+.journal-card-body{padding-top:15px}
+.journal-card-meta{display:flex;flex-wrap:wrap;gap:7px 13px;color:var(--muted);font-size:9px;letter-spacing:.12em;text-transform:uppercase;line-height:1.5}
+.journal-card-meta span+span:before{content:"·";margin-right:13px;color:rgba(var(--accent-rgb),.7)}
+.journal-card h2{font-family:var(--serif);font-size:clamp(25px,2.2vw,35px);font-weight:400;line-height:1.12;margin:10px 0 0}
+.journal-card p{color:var(--muted);font-size:13px;line-height:1.58;margin:10px 0 0;max-width:720px}
+.journal-card-hero{padding-bottom:34px;margin-bottom:38px;border-bottom:1px solid var(--line)}
+.journal-card-hero .journal-card-link{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(310px,.85fr);gap:clamp(30px,5vw,70px);align-items:center}
+.journal-card-hero .journal-card-media img{aspect-ratio:16/9}
+.journal-card-hero h2{font-size:clamp(34px,4vw,52px);line-height:1.04}
+.journal-card-hero p{font-size:15px}
+.journal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px 25px}
+.journal-grid .journal-card{position:relative;padding-bottom:18px}
+.journal-grid .journal-card:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line-soft)}
+.journal-grid .journal-card:before{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.journal-grid .journal-card:hover:before,.journal-grid .journal-card:focus-within:before{transform:scaleX(1)}
+.journal-grid .journal-card h2{font-size:clamp(23px,2vw,31px)}
+.journal-empty{text-align:center;color:var(--muted);margin:70px 0 0;font-size:14px}
+.journal-card[hidden]{display:none!important}
+@media(hover:none){.journal-card.is-color-visible .journal-card-media img{filter:grayscale(0) contrast(1.02) saturate(1.04)!important;transform:none!important}}
+@media(width<=920px){.journal-card-hero .journal-card-link{grid-template-columns:1fr}.journal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.journal-card-hero .journal-card-media img{aspect-ratio:16/10}}
+@media(width<=640px){.journal-heading{min-height:28svh;padding:calc(var(--header-h) + 48px) 20px 36px}.journal-heading h1{font-size:42px}.journal-tools{padding:24px 20px 18px;gap:18px}.journal-search{width:100%}.journal-filters{justify-content:flex-start;gap:8px 18px;overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}.journal-filters button{white-space:nowrap}.journal-feed{padding:12px 20px 66px}.journal-card-hero{padding-bottom:28px;margin-bottom:30px}.journal-card-hero h2{font-size:32px}.journal-card h2,.journal-grid .journal-card h2{font-size:27px}.journal-card p{font-size:13px}.journal-grid{grid-template-columns:1fr;gap:34px}.journal-card-meta{font-size:8.5px}.journal-card-meta span+span:before{margin-right:9px}.journal-card-meta{gap:5px 9px}}

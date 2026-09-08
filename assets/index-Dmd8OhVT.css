@@ -25,3 +25,7 @@
  .training-offer-copy .contact-trigger.compact,.contact-cta .contact-trigger.compact{width:fit-content!important;min-width:0!important;max-width:calc(100vw - 48px)!important;padding:13px 22px!important}
  .sticky-booking{max-width:calc(100vw - 40px)!important;padding:11px 16px!important}
 }
+
+/* 2026-09-08 global CTA no-shift correction */
+.contact-trigger,.outline-button,.sticky-booking,.simple-nav-close{background:transparent!important;transform:none!important;translate:none!important;filter:none!important}
+.contact-trigger:hover,.contact-trigger:focus-visible,.outline-button:hover,.outline-button:focus-visible,.sticky-booking:hover,.sticky-booking:focus-visible,.simple-nav-close:hover,.simple-nav-close:focus-visible{background:transparent!important;transform:none!important;translate:none!important;filter:none!important}
