@@ -66,3 +66,14 @@ body,html{background:var(--bg)}
  .journal-card-copy h3{font-size:20px;line-height:1.25}
  .journal-more{margin-top:26px}
 }
+
+/* 2026-09-08 journal card consistency */
+.journal-home-heading{width:min(1280px,100%);margin:0 auto 34px!important;text-align:center!important;justify-content:center!important}
+.journal-home-heading h2{margin:0!important}
+.journal-home-grid{align-items:start}
+.journal-home-card{min-width:0}
+.journal-home-card img{width:100%!important;aspect-ratio:4/3!important;height:auto!important;object-fit:cover!important;display:block!important}
+@media(width<=720px){
+ .journal-home-heading{margin-bottom:26px!important}
+ .journal-home-card img{aspect-ratio:16/10!important}
+}
