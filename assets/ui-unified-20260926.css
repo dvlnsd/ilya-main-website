@@ -95,3 +95,20 @@
  .footer-socials a,.footer-socials a[href*="t.me/"]{font-size:8px!important;letter-spacing:.15em!important}
  .sticky-booking:after,.sticky-booking:hover:after,.sticky-booking:focus-visible:after{width:26px!important;height:20px!important;flex-basis:26px!important}
 }
+
+
+/* Precision polish — 2026-09-26 */
+.unified-menu-backdrop{background:rgba(0,0,0,.36)!important;backdrop-filter:blur(8px)!important;-webkit-backdrop-filter:blur(8px)!important}
+.unified-menu-panel{width:min(390px,90vw)!important;background:rgba(7,13,14,.84)!important;backdrop-filter:blur(24px) saturate(118%)!important;-webkit-backdrop-filter:blur(24px) saturate(118%)!important;border-right-color:rgba(255,255,255,.10)!important}
+.unified-menu-nav a{font-size:clamp(21px,1.9vw,27px)!important;font-weight:300!important;line-height:1.2!important;letter-spacing:.005em!important}
+.unified-menu-nav a:before{width:20px!important;height:20px!important;flex:0 0 20px!important;background-color:transparent!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Cpath d='M14.2 14.1c0-3.8 2.6-6.8 6.1-6.8 3 0 5.3 2.1 5.3 5 0 4.6-4.3 8.4-9.8 8.4-6.4 0-11.3-4.5-11.3-10.2C4.5 4.6 9.4 1 15.1 1c6.7 0 12.1 5.2 12.1 11.8 0 7.6-6.3 13.2-13.8 13.2' fill='none' stroke='%23f4f4f1' stroke-width='1.15' stroke-linecap='round'/%3E%3C/svg%3E")!important;filter:none!important;box-shadow:none!important;border:0!important;border-radius:0!important}
+.footer .footer-socials,.footer-socials{position:static!important;grid-column:1/-1!important;width:100%!important;display:flex!important;align-items:center!important;justify-content:center!important;flex-wrap:wrap!important;gap:14px 28px!important;margin:22px 0 0!important;padding:20px 0 0!important}
+.footer .footer-socials a,.footer .footer-socials a[href*="t.me/"],.footer-socials a[href*="t.me/"]{position:relative!important;inset:auto!important;top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;float:none!important;transform:none!important;order:initial!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;margin:0!important;padding:4px 0!important}
+.sticky-booking:after,.sticky-booking:hover:after,.sticky-booking:focus:after,.sticky-booking:focus-visible:after,.sticky-booking:active:after{width:27px!important;height:21px!important;flex:0 0 27px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 28'%3E%3Cg fill='none' stroke='%23fff' stroke-width='1.15' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 26V2'/%3E%3Cpath d='M5 3c8-3 16 3 27 0l-3 8 3 8c-11 3-19-3-27 0z'/%3E%3Cpath d='m13.2 14.8 9-6.1m-9.1.2 9.2 6'/%3E%3Cpath d='M15.2 9.4c.2-2.2 1.7-3.6 3.7-3.6s3.5 1.4 3.7 3.6c.1 1.4-.5 2.4-1.7 3v1.7h-4v-1.7c-1.2-.6-1.8-1.6-1.7-3z' fill='%23070d0e'/%3E%3C/g%3E%3Ccircle cx='17.7' cy='9.2' r='.75' fill='%23fff'/%3E%3Ccircle cx='20.3' cy='9.2' r='.75' fill='%23fff'/%3E%3Cpath d='m18.4 11.2.6-.8.6.8' fill='none' stroke='%23fff' stroke-width='.8'/%3E%3C/svg%3E")!important;opacity:1!important;visibility:visible!important;filter:none!important;transform:none!important}
+.journal-card-media{display:block!important;background:#111a1c!important;overflow:hidden!important}
+.journal-card-media img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important}
+@media(max-width:720px){
+ .unified-menu-panel{width:min(370px,92vw)!important;max-width:92vw!important;background:rgba(7,13,14,.86)!important;padding:24px 24px 32px!important}
+ .unified-menu-nav a{font-size:21px!important;font-weight:300!important;padding:13px 0!important}
+ .footer .footer-socials,.footer-socials{justify-content:center!important;gap:13px 20px!important}
+}
