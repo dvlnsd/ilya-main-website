@@ -35,7 +35,13 @@ const cleanSearch=()=>{
  [...label.childNodes].forEach(n=>{if(n!==q&&n.nodeType===Node.TEXT_NODE)n.remove()});
  if(!q.dataset.searchReady){q.value="";q.placeholder="Поиск по материалам";q.dataset.searchReady="true"}
 };
-const init=()=>{ensureMenu();waveButton();ensureSocials();cleanSearch()};
+const initSumbaGallery=()=>{
+ const track=document.querySelector("[data-sumba-gallery]");if(!track||track.dataset.ready)return;track.dataset.ready="true";
+ const shell=track.closest(".sumba-gallery-shell"),step=()=>Math.min(track.clientWidth*.86,540);
+ shell?.querySelector("[data-sumba-prev]")?.addEventListener("click",()=>track.scrollBy({left:-step(),behavior:"smooth"}));
+ shell?.querySelector("[data-sumba-next]")?.addEventListener("click",()=>track.scrollBy({left:step(),behavior:"smooth"}));
+};
+const init=()=>{ensureMenu();waveButton();ensureSocials();cleanSearch();initSumbaGallery()};
 const openMenu=()=>{ensureMenu();const m=document.getElementById("unifiedMenu");m.classList.add("is-open");document.body.style.overflow="hidden";document.querySelector(".site-header .menu-trigger")?.setAttribute("aria-expanded","true");m.querySelector(".unified-menu-close")?.focus()};
 const closeMenu=()=>{const m=document.getElementById("unifiedMenu");if(!m)return;m.classList.remove("is-open");document.body.style.overflow="";document.querySelector(".site-header .menu-trigger")?.setAttribute("aria-expanded","false")};
 document.addEventListener("click",e=>{const trigger=e.target.closest?.(".site-header .menu-trigger");if(trigger){e.preventDefault();e.stopImmediatePropagation();openMenu();return}if(e.target.closest?.("[data-menu-close]")){e.preventDefault();closeMenu()}},true);
