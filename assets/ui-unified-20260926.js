@@ -44,23 +44,7 @@ const initSumbaGallery=()=>{
 const initSumbaVideo=()=>{
  const video=document.querySelector(".sumba-content-video");if(!video||video.dataset.ready)return;video.dataset.ready="true";
  video.muted=true;video.defaultMuted=true;video.playsInline=true;
- let last=-1,stalled=0;
  const play=()=>video.play().catch(()=>{});
- const timer=setInterval(()=>{
-  if(!document.contains(video)){clearInterval(timer);return}
-  const rect=video.getBoundingClientRect(),visible=rect.bottom>0&&rect.top<innerHeight;
-  if(!visible||video.paused||video.seeking){last=video.currentTime;stalled=0;return}
-  const now=video.currentTime;
-  if(last>=0&&Math.abs(now-last)<.025)stalled++;else stalled=0;
-  if(stalled>=2&&Number.isFinite(video.duration)){
-   const resumeAt=Math.min(now+.08,video.duration-.1);stalled=0;
-   video.pause();
-   video.addEventListener("loadedmetadata",()=>{
-    const restart=()=>play();video.addEventListener("seeked",restart,{once:true});video.currentTime=resumeAt;setTimeout(restart,120)
-   },{once:true});video.load()
-  }
-  last=video.currentTime;
- },650);
  video.addEventListener("canplay",play,{once:true});
  new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)play();else video.pause()}),{threshold:.12}).observe(video);
  play();
