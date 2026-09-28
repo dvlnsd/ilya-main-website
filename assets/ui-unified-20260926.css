@@ -224,3 +224,33 @@
   .sumba-wave-spread figure{height:min(56vw,620px)}
   .sumba-wave-spread p{font-size:clamp(22px,2vw,30px)}
 }
+
+
+/* Restore unified dark theme and restrained type — 2026-09-28 */
+.sumba-trip-page,.sumba-trip-page main{background:#07090a!important;color:#f4f4f1!important}
+.sumba-story{background:#07090a!important}
+.sumba-story-lead p{font-family:inherit!important;font-size:clamp(18px,1.65vw,24px)!important;font-weight:400!important;line-height:1.68!important;letter-spacing:0!important;color:rgba(244,244,241,.82)!important}
+.sumba-story-copy p{font-family:inherit!important;font-size:clamp(16px,1.3vw,19px)!important;line-height:1.7!important;color:rgba(244,244,241,.64)!important}
+.sumba-wave-spread{grid-template-columns:minmax(0,1.2fr) minmax(380px,.8fr)!important;background:#0b1112!important;color:#f4f4f1!important}
+.sumba-wave-spread figure{height:min(54vw,600px)!important}
+.sumba-wave-spread>div{padding:clamp(38px,5vw,70px)!important}
+.sumba-wave-spread p{font-size:clamp(22px,2vw,29px)!important;line-height:1.32!important}
+.sumba-wave-spread p+p{font-size:clamp(15px,1.25vw,18px)!important;line-height:1.7!important;color:rgba(244,244,241,.62)!important}
+.sumba-practical{background:#07090a!important}
+.sumba-practical-card,.sumba-level-card{border-color:rgba(255,255,255,.15)!important}
+.sumba-practical span{color:#9ec6cb!important}
+.sumba-practical p{font-size:clamp(22px,2.4vw,32px)!important;line-height:1.28!important;color:#f4f4f1!important}
+.sumba-booking{background:#0b1112!important;color:#f4f4f1!important;border:1px solid rgba(255,255,255,.12)!important}
+.sumba-booking h2{font-size:clamp(34px,4.5vw,56px)!important}
+.sumba-date-grid,.sumba-price-grid,.sumba-date-grid article,.sumba-price-grid article,.sumba-date-grid article+article,.sumba-price-grid article+article{border-color:rgba(255,255,255,.14)!important}
+.sumba-date-grid small,.sumba-price-grid small{color:#9ec6cb!important}
+.sumba-date-grid span{color:rgba(255,255,255,.55)!important}
+.sumba-booking-button{border-color:rgba(255,255,255,.65)!important;color:#f4f4f1!important}
+.sumba-mosaic{background:#07090a!important}
+@media(max-width:760px){
+ .sumba-story-lead p{font-size:17px!important;line-height:1.7!important}
+ .sumba-story-copy p{font-size:16px!important}
+ .sumba-wave-spread{grid-template-columns:1fr!important}.sumba-wave-spread figure{height:56svh!important}.sumba-wave-spread>div{padding:42px 22px 54px!important}.sumba-wave-spread p{font-size:24px!important}.sumba-wave-spread p+p{font-size:16px!important}
+ .sumba-practical p{font-size:24px!important}
+ .sumba-booking h2{font-size:38px!important}
+}
