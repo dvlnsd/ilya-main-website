@@ -41,7 +41,19 @@ const initSumbaGallery=()=>{
  shell?.querySelector("[data-sumba-prev]")?.addEventListener("click",()=>track.scrollBy({left:-step(),behavior:"smooth"}));
  shell?.querySelector("[data-sumba-next]")?.addEventListener("click",()=>track.scrollBy({left:step(),behavior:"smooth"}));
 };
-const init=()=>{ensureMenu();waveButton();ensureSocials();cleanSearch();initSumbaGallery()};
+const initSumbaVideo=()=>{
+ const video=document.querySelector(".sumba-content-video");if(!video||video.dataset.ready)return;video.dataset.ready="true";
+ const button=video.parentElement?.querySelector(".sumba-video-play");
+ video.muted=true;video.defaultMuted=true;video.playsInline=true;video.setAttribute("muted","");video.setAttribute("playsinline","");video.setAttribute("webkit-playsinline","");
+ const update=()=>button?.classList.toggle("is-visible",video.paused);
+ const play=()=>{if(document.hidden)return;const result=video.play();if(result?.catch)result.catch(update);setTimeout(update,900)};
+ video.addEventListener("playing",update);video.addEventListener("pause",update);video.addEventListener("canplay",play,{once:true});video.addEventListener("error",update);
+ button?.addEventListener("click",play);
+ new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)play();else video.pause()}),{threshold:.15}).observe(video);
+ document.addEventListener("visibilitychange",()=>{if(!document.hidden&&video.getBoundingClientRect().top<innerHeight&&video.getBoundingClientRect().bottom>0)play()});
+ play();
+};
+const init=()=>{ensureMenu();waveButton();ensureSocials();cleanSearch();initSumbaGallery();initSumbaVideo()};
 const openMenu=()=>{ensureMenu();const m=document.getElementById("unifiedMenu");m.classList.add("is-open");document.body.style.overflow="hidden";document.querySelector(".site-header .menu-trigger")?.setAttribute("aria-expanded","true");m.querySelector(".unified-menu-close")?.focus()};
 const closeMenu=()=>{const m=document.getElementById("unifiedMenu");if(!m)return;m.classList.remove("is-open");document.body.style.overflow="";document.querySelector(".site-header .menu-trigger")?.setAttribute("aria-expanded","false")};
 document.addEventListener("click",e=>{const trigger=e.target.closest?.(".site-header .menu-trigger");if(trigger){e.preventDefault();e.stopImmediatePropagation();openMenu();return}if(e.target.closest?.("[data-menu-close]")){e.preventDefault();closeMenu()}},true);
