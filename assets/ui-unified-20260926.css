@@ -203,3 +203,17 @@
   .sumba-final{min-height:58svh}.sumba-final p{max-width:270px;line-height:1.6}
 }
 @media(prefers-reduced-motion:reduce){.sumba-hero video{display:none}.sumba-hero{background:url('/images/sumba/sumba-01-coast.jpg') center/cover no-repeat}.sumba-mosaic-item img{transition:none}}
+
+
+/* Sumba editorial QA refinements */
+.sumba-trip-page main{background:#f2eee8;color:#111}
+.sumba-wave-spread{grid-template-columns:minmax(0,1.55fr) minmax(340px,.45fr)}
+.sumba-wave-spread figure{height:min(62vw,700px)}
+.sumba-wave-spread>div{padding:clamp(42px,5vw,76px)}
+.sumba-wave-spread p{font-size:clamp(23px,2.15vw,33px);line-height:1.25}
+@media(max-width:760px){
+  .sumba-wave-spread{grid-template-columns:1fr}.sumba-wave-spread figure{height:58svh}.sumba-wave-spread p{font-size:27px}
+  .sumba-practical{grid-template-columns:1fr;padding:74px 18px;gap:30px}
+  .sumba-practical-card{grid-column:1;grid-row:1}.sumba-practical figure{grid-column:1;grid-row:2}.sumba-level-card{grid-column:1;grid-row:3}
+  .sumba-practical img{aspect-ratio:4/5;max-height:68svh}
+}
