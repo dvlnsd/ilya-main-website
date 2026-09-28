@@ -54,8 +54,8 @@ const initSumbaVideo=()=>{
   if(last>=0&&Math.abs(now-last)<.025)stalled++;else stalled=0;
   if(stalled>=2&&Number.isFinite(video.duration)){
    const resumeAt=Math.min(now+.08,video.duration-.1);stalled=0;
-   video.pause();video.load();
-   video.addEventListener("loadedmetadata",()=>{video.currentTime=resumeAt;play()},{once:true})
+   video.pause();
+   video.addEventListener("loadedmetadata",()=>{video.currentTime=resumeAt;play()},{once:true});video.load()
   }
   last=video.currentTime;
  },650);
