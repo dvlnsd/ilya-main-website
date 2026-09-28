@@ -41,7 +41,25 @@ const initSumbaGallery=()=>{
  shell?.querySelector("[data-sumba-prev]")?.addEventListener("click",()=>track.scrollBy({left:-step(),behavior:"smooth"}));
  shell?.querySelector("[data-sumba-next]")?.addEventListener("click",()=>track.scrollBy({left:step(),behavior:"smooth"}));
 };
-const init=()=>{ensureMenu();waveButton();ensureSocials();cleanSearch();initSumbaGallery()};
+const initSumbaVideo=()=>{
+ const video=document.querySelector(".sumba-content-video");if(!video||video.dataset.ready)return;video.dataset.ready="true";
+ video.muted=true;video.defaultMuted=true;video.playsInline=true;
+ let last=-1,stalled=0;
+ const play=()=>video.play().catch(()=>{});
+ const timer=setInterval(()=>{
+  if(!document.contains(video)){clearInterval(timer);return}
+  const rect=video.getBoundingClientRect(),visible=rect.bottom>0&&rect.top<innerHeight;
+  if(!visible||video.paused||video.seeking){last=video.currentTime;stalled=0;return}
+  const now=video.currentTime;
+  if(last>=0&&Math.abs(now-last)<.025)stalled++;else stalled=0;
+  if(stalled>=2&&Number.isFinite(video.duration)){video.currentTime=Math.min(now+.75,video.duration-.1);stalled=0;play()}
+  last=video.currentTime;
+ },650);
+ video.addEventListener("canplay",play,{once:true});
+ new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)play();else video.pause()}),{threshold:.12}).observe(video);
+ play();
+};
+const init=()=>{ensureMenu();waveButton();ensureSocials();cleanSearch();initSumbaGallery();initSumbaVideo()};
 const openMenu=()=>{ensureMenu();const m=document.getElementById("unifiedMenu");m.classList.add("is-open");document.body.style.overflow="hidden";document.querySelector(".site-header .menu-trigger")?.setAttribute("aria-expanded","true");m.querySelector(".unified-menu-close")?.focus()};
 const closeMenu=()=>{const m=document.getElementById("unifiedMenu");if(!m)return;m.classList.remove("is-open");document.body.style.overflow="";document.querySelector(".site-header .menu-trigger")?.setAttribute("aria-expanded","false")};
 document.addEventListener("click",e=>{const trigger=e.target.closest?.(".site-header .menu-trigger");if(trigger){e.preventDefault();e.stopImmediatePropagation();openMenu();return}if(e.target.closest?.("[data-menu-close]")){e.preventDefault();closeMenu()}},true);
