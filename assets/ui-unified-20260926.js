@@ -52,7 +52,11 @@ const initSumbaVideo=()=>{
   if(!visible||video.paused||video.seeking){last=video.currentTime;stalled=0;return}
   const now=video.currentTime;
   if(last>=0&&Math.abs(now-last)<.025)stalled++;else stalled=0;
-  if(stalled>=2&&Number.isFinite(video.duration)){video.currentTime=Math.min(now+.75,video.duration-.1);stalled=0;play()}
+  if(stalled>=2&&Number.isFinite(video.duration)){
+   const resumeAt=Math.min(now+.08,video.duration-.1);stalled=0;
+   video.pause();video.load();
+   video.addEventListener("loadedmetadata",()=>{video.currentTime=resumeAt;play()},{once:true})
+  }
   last=video.currentTime;
  },650);
  video.addEventListener("canplay",play,{once:true});
