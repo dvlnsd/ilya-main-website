@@ -141,3 +141,65 @@
 .sumba-home-schedule .sumba-trip-row img{object-position:center 43%!important}
 .sumba-upcoming{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(36px,6vw,90px);align-items:center;margin:0 clamp(24px,5vw,76px) clamp(70px,8vw,120px);padding:clamp(34px,5vw,70px);background:#0b1112}.sumba-upcoming h2{font-size:clamp(48px,6vw,88px);margin:10px 0 5px}.sumba-upcoming p{color:rgba(255,255,255,.65);max-width:560px}.sumba-upcoming .outline-button{display:inline-block;margin-top:22px}.sumba-upcoming img{width:100%;height:min(55vw,650px);object-fit:cover;object-position:center 43%}
 @media(max-width:760px){.sumba-hero{min-height:78svh}.sumba-hero-image{object-position:center}.sumba-intro,.sumba-stay{grid-template-columns:1fr}.sumba-feature{grid-template-columns:1fr}.sumba-feature figure{height:72svh}.sumba-feature>div{padding:50px 24px 70px}.sumba-stay figure{height:72svh}.sumba-booking-heading,.sumba-gallery-heading{display:block}.sumba-date-grid,.sumba-price-grid{grid-template-columns:1fr}.sumba-date-grid article+article,.sumba-price-grid article+article{padding-left:0;border-left:0}.sumba-gallery-tools{margin-top:25px;justify-content:flex-end}.sumba-gallery-slide{flex-basis:88vw}.sumba-gallery-slide img{height:62svh}.sumba-upcoming{grid-template-columns:1fr;margin-inline:20px;padding:30px 22px}.sumba-upcoming img{height:65svh;grid-row:1}}
+
+
+/* Sumba editorial layout — 2026-09-28 */
+.all-destinations-button{display:table!important;margin:42px auto 0!important}
+.sumba-trip-page{background:#f2eee8;color:#111}
+.sumba-trip-page .site-header{color:#f4f4f1}
+.sumba-trip-page .footer{background:#07090a;color:#f4f4f1}
+.sumba-trip-page .sticky-booking{background:#0d3439;color:#fff}
+.sumba-hero{min-height:92svh;background:#071418}
+.sumba-hero-image{object-position:center center}
+.sumba-hero-shade{background:linear-gradient(90deg,rgba(3,7,8,.64) 0%,rgba(3,7,8,.18) 65%,rgba(3,7,8,.25) 100%)}
+.sumba-story{width:min(1240px,100%);margin:auto;padding:clamp(70px,10vw,150px) clamp(22px,6vw,84px);display:grid;grid-template-columns:.75fr .95fr 1.15fr;grid-template-rows:auto auto;gap:clamp(18px,3vw,48px);align-items:start}
+.sumba-story-lead{grid-column:1/3;max-width:790px;padding:clamp(0px,3vw,44px) 0}
+.sumba-story-lead p{font-family:var(--serif,Georgia,serif);font-size:clamp(27px,3.1vw,47px);font-weight:300;line-height:1.18;letter-spacing:-.025em}
+.sumba-story-coast{grid-column:3;grid-row:1/3;margin-top:clamp(36px,8vw,130px)}
+.sumba-story-road{grid-column:1/2;grid-row:2}
+.sumba-story-copy{grid-column:2/3;grid-row:2;align-self:end;padding:20px 0}
+.sumba-story-copy p{font-size:clamp(16px,1.45vw,20px);line-height:1.7;color:#3f4545}
+.sumba-story figure{overflow:hidden}.sumba-story img{width:100%;height:100%;object-fit:cover}
+.sumba-story-coast img{aspect-ratio:3/4}.sumba-story-road img{aspect-ratio:4/5}
+.sumba-wave-spread{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(320px,.6fr);align-items:center;background:#082d32;color:#f4f4f1}
+.sumba-wave-spread figure{height:min(76vw,840px);overflow:hidden}.sumba-wave-spread img{width:100%;height:100%;object-fit:cover}
+.sumba-wave-spread>div{padding:clamp(48px,7vw,105px)}
+.sumba-wave-spread p{font-family:var(--serif,Georgia,serif);font-size:clamp(25px,2.8vw,42px);font-weight:300;line-height:1.2}
+.sumba-wave-spread p+p{margin-top:34px;font-family:inherit;font-size:clamp(16px,1.3vw,19px);line-height:1.65;color:rgba(255,255,255,.68)}
+.sumba-practical{width:min(1180px,100%);margin:auto;padding:clamp(78px,10vw,150px) clamp(22px,6vw,84px);display:grid;grid-template-columns:.78fr 1.22fr;gap:clamp(28px,5vw,78px);align-items:center}
+.sumba-practical figure{grid-column:2;grid-row:1/3;overflow:hidden}.sumba-practical img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.sumba-practical-card,.sumba-level-card{padding:0 0 clamp(34px,5vw,64px);border-bottom:1px solid rgba(0,0,0,.2)}
+.sumba-practical span{font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:#436f74}
+.sumba-practical p{margin:14px 0 0;font-family:var(--serif,Georgia,serif);font-size:clamp(27px,3vw,43px);line-height:1.18;font-weight:300}
+.sumba-level-card{align-self:end}
+.sumba-booking{width:min(1120px,calc(100% - 44px));background:#e5ddd3;color:#111;padding:clamp(48px,7vw,92px);border:0;margin:0 auto clamp(80px,10vw,150px)}
+.sumba-booking h2{font-size:clamp(44px,6vw,78px);margin:0}
+.sumba-date-grid,.sumba-price-grid{border-color:rgba(0,0,0,.17)}
+.sumba-date-grid article,.sumba-price-grid article{border-color:rgba(0,0,0,.17)}
+.sumba-date-grid article+article,.sumba-price-grid article+article{border-color:rgba(0,0,0,.17)}
+.sumba-date-grid small,.sumba-price-grid small{color:#436f74}
+.sumba-date-grid span{color:rgba(0,0,0,.55)}
+.sumba-booking-button{border-color:#123a3f!important;color:#123a3f!important}
+.sumba-mosaic{width:min(1320px,100%);margin:auto;padding:0 clamp(12px,3vw,42px) clamp(80px,10vw,150px);display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:52px;gap:clamp(8px,1.2vw,16px)}
+.sumba-mosaic-item{overflow:hidden}
+.sumba-mosaic-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.sumba-mosaic-item:hover img{transform:scale(1.025)}
+.sumba-mosaic-item-1{grid-column:1/8;grid-row:1/10}.sumba-mosaic-item-2{grid-column:8/13;grid-row:2/8}.sumba-mosaic-item-3{grid-column:8/11;grid-row:8/14}.sumba-mosaic-item-4{grid-column:11/13;grid-row:8/13}.sumba-mosaic-item-5{grid-column:1/5;grid-row:10/17}.sumba-mosaic-item-6{grid-column:5/8;grid-row:10/15}.sumba-mosaic-item-7{grid-column:5/8;grid-row:15/19}.sumba-mosaic-item-8{grid-column:8/13;grid-row:14/22}.sumba-mosaic-item-9{grid-column:1/4;grid-row:17/23}.sumba-mosaic-item-10{grid-column:4/8;grid-row:19/25}.sumba-mosaic-item-11{grid-column:1/4;grid-row:23/29}.sumba-mosaic-item-12{grid-column:8/11;grid-row:22/29}.sumba-mosaic-item-13{grid-column:11/13;grid-row:22/27}.sumba-mosaic-item-14{grid-column:4/8;grid-row:25/32}.sumba-mosaic-item-15{grid-column:1/4;grid-row:29/35}.sumba-mosaic-item-16{grid-column:8/13;grid-row:29/37}.sumba-mosaic-item-17{grid-column:4/8;grid-row:32/38}.sumba-mosaic-item-18{grid-column:1/4;grid-row:35/41}.sumba-mosaic-item-19{grid-column:8/11;grid-row:37/43}.sumba-mosaic-item-20{grid-column:4/8;grid-row:38/45}
+.sumba-final{min-height:65svh}.sumba-final>div{display:flex;flex-direction:column;align-items:center;gap:22px}.sumba-final p{font-size:12px;letter-spacing:.15em;text-transform:uppercase}.sumba-final a{margin:0}
+@media(max-width:760px){
+  .all-destinations-button{margin-top:30px!important;text-align:center}
+  .sumba-hero{min-height:82svh}.sumba-hero-copy{padding:120px 22px 50px}.sumba-hero h1{font-size:clamp(70px,24vw,105px)}
+  .sumba-hero-shade{background:linear-gradient(180deg,rgba(3,7,8,.08),rgba(3,7,8,.75))}
+  .sumba-story{grid-template-columns:42% 1fr;padding:72px 18px;gap:12px}
+  .sumba-story-lead{grid-column:1/3;padding:0 4px 36px}.sumba-story-lead p{font-size:29px;line-height:1.17}
+  .sumba-story-coast{grid-column:2;grid-row:2;margin:0}.sumba-story-road{grid-column:1;grid-row:2;margin-top:56px}
+  .sumba-story-copy{grid-column:1/3;grid-row:3;padding:34px 4px 0}.sumba-story-copy p{font-size:17px}
+  .sumba-wave-spread{grid-template-columns:1fr}.sumba-wave-spread figure{height:64svh}.sumba-wave-spread>div{padding:48px 22px 64px}.sumba-wave-spread p{font-size:30px}
+  .sumba-practical{grid-template-columns:1fr 38%;padding:74px 18px;gap:14px}.sumba-practical figure{grid-column:2;grid-row:1/3}.sumba-practical-card,.sumba-level-card{grid-column:1;padding-bottom:28px}.sumba-practical p{font-size:24px}.sumba-practical img{aspect-ratio:3/5}
+  .sumba-booking{width:calc(100% - 28px);padding:42px 22px;margin-bottom:74px}.sumba-booking h2{font-size:48px}
+  .sumba-date-grid,.sumba-price-grid{grid-template-columns:1fr}.sumba-date-grid article+article,.sumba-price-grid article+article{padding-left:0;border-left:0}.sumba-booking-button{width:100%;justify-content:center;text-align:center}
+  .sumba-mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:94px;padding:0 9px 80px;gap:8px}
+  .sumba-mosaic-item{grid-column:auto!important;grid-row:auto!important;height:188px}.sumba-mosaic-item:nth-child(3n+1){grid-column:1/3!important;height:280px}.sumba-mosaic-item:nth-child(4n+2){height:238px}
+  .sumba-final{min-height:58svh}.sumba-final p{max-width:270px;line-height:1.6}
+}
+@media(prefers-reduced-motion:reduce){.sumba-hero video{display:none}.sumba-hero{background:url('/images/sumba/sumba-01-coast.jpg') center/cover no-repeat}.sumba-mosaic-item img{transition:none}}
