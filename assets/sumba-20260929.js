@@ -79,5 +79,9 @@
     else playActive();
   });
 
+  setInterval(()=>{
+    if(visible&&!switching&&layers[active].paused&&!layers[active].ended)playActive();
+  },600);
+
   playActive();
 })();
