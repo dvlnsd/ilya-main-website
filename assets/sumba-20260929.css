@@ -1,0 +1,114 @@
+:root{--s29-bg:#061015;--s29-deep:#020b10;--s29-ink:#f5f2eb;--s29-muted:rgba(245,242,235,.7);--s29-accent:#55d2dc;--s29-line:rgba(142,210,216,.24)}
+html{scroll-behavior:smooth}
+body.sumba-page{margin:0;background:var(--s29-bg);color:var(--s29-ink)}
+.sumba-page main{overflow:hidden;background:var(--s29-bg)}
+.sumba-page .site-header{color:#fff;background:linear-gradient(180deg,rgba(1,9,14,.72),transparent)}
+.sumba-page .header-mark{color:#64d5dc}
+.sumba-page .footer{background:#02080c;color:var(--s29-ink)}
+.sumba-page .sticky-booking{background:#0b3940;color:#fff}
+
+.s29-hero{position:relative;min-height:96svh;display:flex;align-items:center;isolation:isolate;background:#04131a}
+.s29-hero-image,.s29-hero-shade{position:absolute;inset:0;width:100%;height:100%}
+.s29-hero-image{z-index:-3;object-fit:cover;object-position:center 50%}
+.s29-hero-shade{z-index:-2;background:linear-gradient(90deg,rgba(1,9,14,.78) 0%,rgba(1,9,14,.42) 36%,rgba(1,9,14,.08) 70%),linear-gradient(180deg,rgba(1,9,14,.08),rgba(1,9,14,.42))}
+.s29-hero:after{content:"";position:absolute;z-index:-1;left:-6%;right:-6%;bottom:-8vw;height:16vw;min-height:120px;background:var(--s29-bg);border-radius:50% 50% 0 0/100% 100% 0 0}
+.s29-hero-copy{width:min(1320px,100%);margin:auto;padding:150px clamp(28px,6vw,92px) 160px}
+.s29-hero h1{margin:0;font-family:var(--serif,"Iowan Old Style",Georgia,serif);font-size:clamp(88px,10vw,168px);font-weight:400;line-height:.82;letter-spacing:-.045em}
+.s29-subtitle{margin:22px 0 0;font-family:var(--serif,"Iowan Old Style",Georgia,serif);font-size:clamp(25px,2.3vw,38px);line-height:1.2}
+.s29-dates{display:flex;gap:42px;margin:27px 0 0;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.s29-price{margin:18px 0 24px;font-size:22px}
+.s29-button{display:inline-flex;align-items:center;justify-content:center;gap:16px;min-width:245px;padding:15px 28px;border:0;border-radius:999px;background:var(--s29-accent);color:#041116!important;font-family:var(--sans,Arial,sans-serif);font-size:12px;font-weight:600;letter-spacing:.035em;text-decoration:none!important;transition:transform .2s ease,background .2s ease}
+.s29-button:hover,.s29-button:focus-visible{transform:translateY(-2px);background:#75e0e7}
+
+.s29-story{position:relative;padding:clamp(90px,11vw,170px) clamp(24px,6vw,92px) clamp(78px,9vw,135px);background:radial-gradient(circle at 87% 22%,rgba(21,80,83,.18),transparent 32%),var(--s29-bg)}
+.s29-story:after{content:"";position:absolute;right:-2%;top:15%;width:min(38vw,560px);height:min(60vw,820px);z-index:0;opacity:.1;background:url("/images/sumba/sumba-17-palms-over-wave.jpg") center/cover no-repeat;mask-image:linear-gradient(to left,#000,transparent);-webkit-mask-image:linear-gradient(to left,#000,transparent)}
+.s29-story-inner{position:relative;z-index:1;width:min(1240px,100%);margin:auto;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.65fr);gap:clamp(50px,9vw,140px);align-items:center}
+.s29-copy{max-width:700px}
+.s29-copy p{margin:0;color:var(--s29-muted);font-size:clamp(15px,1.25vw,18px);line-height:1.66}
+.s29-copy p+p{margin-top:24px}
+.s29-copy .s29-about{color:var(--s29-ink);font-family:var(--serif,"Iowan Old Style",Georgia,serif);font-size:clamp(23px,2.15vw,34px);line-height:1.3}
+.s29-divider{width:78%;height:1px;margin:32px 0;background:linear-gradient(90deg,var(--s29-line),transparent)}
+.s29-video{position:relative;aspect-ratio:9/16;margin:0;overflow:hidden;border-radius:18px;background:#071419;box-shadow:0 34px 90px rgba(0,0,0,.42)}
+.s29-video-layer,.s29-video noscript img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .12s linear}
+.s29-video-layer.is-active{opacity:1;z-index:2}
+.s29-video noscript img{opacity:1}
+.s29-film{position:relative;z-index:1;width:min(1380px,calc(100% + 70px));margin:clamp(80px,9vw,130px) auto 0;display:grid;grid-template-columns:1.25fr .85fr 1.15fr .82fr 1.2fr;gap:10px;transform:rotate(-1.2deg)}
+.s29-film figure{height:clamp(150px,18vw,270px);margin:0;overflow:hidden;border-radius:5px;background:#0a171c}
+.s29-film figure:nth-child(even){transform:translateY(22px)}
+.s29-film img{width:100%;height:100%;object-fit:cover;transition:transform .65s ease}
+.s29-film figure:hover img{transform:scale(1.035)}
+
+.s29-details{position:relative;padding:clamp(75px,9vw,140px) clamp(24px,6vw,92px);background:#071419}
+.s29-details:before,.s29-details:after{content:"";position:absolute;left:-5%;right:-5%;height:9vw;min-height:70px;background:var(--s29-bg);border-radius:0 0 50% 50%/0 0 100% 100%}
+.s29-details:before{top:-1px}.s29-details:after{bottom:-1px;transform:rotate(180deg)}
+.s29-detail-grid{position:relative;z-index:1;width:min(1180px,100%);margin:auto;padding:clamp(80px,8vw,120px) 0;display:grid;grid-template-columns:1fr .8fr;gap:clamp(50px,9vw,140px);align-items:start}
+.s29-detail-grid>div>p:first-child{margin:0;color:var(--s29-ink);font-family:var(--serif,"Iowan Old Style",Georgia,serif);font-size:clamp(25px,2.6vw,40px);line-height:1.25}
+.s29-detail-grid>div>p+p{margin:30px 0 0;color:var(--s29-muted);font-size:17px;line-height:1.65}
+.s29-detail-grid dl{margin:0}
+.s29-detail-grid dl>div{padding:0 0 30px;border-bottom:1px solid var(--s29-line)}
+.s29-detail-grid dl>div+div{padding-top:30px}
+.s29-detail-grid dt{color:#8adbe0;font-size:10px;letter-spacing:.19em;text-transform:uppercase}
+.s29-detail-grid dd{margin:13px 0 0;font-family:var(--serif,"Iowan Old Style",Georgia,serif);font-size:clamp(21px,2vw,29px);line-height:1.3}
+
+.s29-booking{position:relative;min-height:580px;display:flex;align-items:flex-end;isolation:isolate;background:#071419}
+.s29-booking>img,.s29-booking-shade{position:absolute;inset:0;width:100%;height:100%}
+.s29-booking>img{z-index:-2;object-fit:cover;object-position:center}
+.s29-booking-shade{z-index:-1;background:linear-gradient(180deg,rgba(2,10,14,.08),rgba(2,10,14,.88) 76%,#020a0e)}
+.s29-booking-row{width:min(1320px,calc(100% - 48px));margin:0 auto;padding:42px 0 56px;display:grid;grid-template-columns:.75fr 1.2fr auto;gap:0;align-items:center}
+.s29-booking-dates,.s29-booking-prices{display:grid;gap:12px;padding-right:42px;font-size:12px;letter-spacing:.08em}
+.s29-booking-prices{padding-left:42px;border-left:1px solid rgba(255,255,255,.25)}
+.s29-booking-row .s29-button{margin-left:42px}
+
+@media(max-width:800px){
+  .s29-hero{min-height:76svh;align-items:flex-end}
+  .s29-hero-image{object-position:center 48%}
+  .s29-hero-shade{background:linear-gradient(180deg,rgba(1,9,14,.08) 20%,rgba(1,9,14,.82) 90%)}
+  .s29-hero:after{bottom:-11vw;height:24vw;min-height:92px}
+  .s29-hero-copy{padding:130px 22px 92px}
+  .s29-hero h1{font-size:clamp(72px,23vw,106px)}
+  .s29-subtitle{margin-top:14px;font-size:24px}
+  .s29-dates{gap:24px;margin-top:22px;font-size:10px}
+  .s29-price{font-size:20px;margin:14px 0 20px}
+  .s29-button{width:100%;min-width:0;padding:15px 20px}
+
+  .s29-story{padding:96px 18px 80px}
+  .s29-story:after{display:none}
+  .s29-story-inner{grid-template-columns:1fr;gap:42px}
+  .s29-copy .s29-about{font-size:23px;line-height:1.35}
+  .s29-copy p{font-size:15px}
+  .s29-divider{width:100%;margin:26px 0}
+  .s29-video{width:100%;max-width:430px;aspect-ratio:4/5;justify-self:center;border-radius:12px}
+  .s29-video-layer{object-position:center 38%}
+  .s29-film{width:calc(100% + 52px);margin-left:-26px;grid-template-columns:repeat(5,68vw);overflow-x:auto;scroll-snap-type:x mandatory;transform:none;padding:0 26px 28px;scrollbar-width:none}
+  .s29-film::-webkit-scrollbar{display:none}
+  .s29-film figure,.s29-film figure:nth-child(even){height:230px;transform:none;scroll-snap-align:center}
+
+  .s29-details{padding:64px 20px}
+  .s29-details:before,.s29-details:after{height:16vw}
+  .s29-detail-grid{grid-template-columns:1fr;gap:48px;padding:72px 0}
+  .s29-detail-grid>div>p:first-child{font-size:27px}
+  .s29-detail-grid>div>p+p{font-size:16px}
+  .s29-detail-grid dd{font-size:23px}
+
+  .s29-booking{min-height:650px}
+  .s29-booking-row{width:calc(100% - 40px);grid-template-columns:1fr;padding:34px 0 42px}
+  .s29-booking-dates,.s29-booking-prices{padding:0 0 22px;gap:10px}
+  .s29-booking-prices{padding-top:22px;border-left:0;border-top:1px solid rgba(255,255,255,.25)}
+  .s29-booking-row .s29-button{margin:24px 0 0}
+}
+
+@media(max-width:420px){
+  .s29-hero{min-height:72svh}
+  .s29-hero-copy{padding-bottom:80px}
+  .s29-subtitle{font-size:21px}
+  .s29-dates{justify-content:space-between;gap:14px}
+  .s29-video{aspect-ratio:9/13}
+  .s29-film{grid-template-columns:repeat(5,78vw)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .s29-video-layer{display:none}
+  .s29-video{background:url("/images/sumba/sumba-05-green-coast.jpg") center/cover no-repeat}
+  .s29-film img,.s29-button{transition:none}
+}
