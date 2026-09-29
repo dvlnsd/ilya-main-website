@@ -58,12 +58,6 @@
     video.muted=true;
     video.defaultMuted=true;
     video.playsInline=true;
-    video.addEventListener("ended",()=>{
-      if(video===layers[active])advance();
-    });
-    video.addEventListener("timeupdate",()=>{
-      if(video===layers[active]&&video.duration&&video.currentTime>=video.duration-.06)advance();
-    });
   });
 
   prepare(layers[0],0);
