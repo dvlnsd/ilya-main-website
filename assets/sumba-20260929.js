@@ -1,5 +1,30 @@
 (()=>{
   "use strict";
+  const gallery=document.querySelector("[data-s29-gallery]");
+  if(gallery){
+    const slides=[...gallery.children];
+    const dotsWrap=document.querySelector("[data-s29-dots]");
+    const setActive=index=>{
+      [...(dotsWrap?.children||[])].forEach((dot,i)=>dot.classList.toggle("is-active",i===index));
+    };
+    slides.forEach((_,i)=>{
+      const dot=document.createElement("button");
+      dot.type="button";
+      dot.setAttribute("aria-label",`Показать фотографию ${i+1}`);
+      dot.addEventListener("click",()=>gallery.scrollTo({left:gallery.clientWidth*i,behavior:"smooth"}));
+      dotsWrap?.appendChild(dot);
+    });
+    setActive(0);
+    const move=direction=>gallery.scrollBy({left:gallery.clientWidth*direction,behavior:"smooth"});
+    document.querySelector("[data-s29-prev]")?.addEventListener("click",()=>move(-1));
+    document.querySelector("[data-s29-next]")?.addEventListener("click",()=>move(1));
+    let frame=0;
+    gallery.addEventListener("scroll",()=>{
+      cancelAnimationFrame(frame);
+      frame=requestAnimationFrame(()=>setActive(Math.round(gallery.scrollLeft/gallery.clientWidth)));
+    },{passive:true});
+  }
+
   const root=document.querySelector("[data-sumba-sequence]");
   if(!root||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
 
