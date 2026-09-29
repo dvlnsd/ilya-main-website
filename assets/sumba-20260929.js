@@ -11,6 +11,7 @@
   let index=0;
   let switching=false;
   let visible=true;
+  let startedAt=0;
 
   const prepare=(video,clipIndex)=>{
     video.src=clips[clipIndex];
@@ -19,6 +20,7 @@
 
   const playActive=()=>{
     if(!visible)return;
+    if(!startedAt)startedAt=performance.now()-layers[active].currentTime*1000;
     layers[active].play().catch(()=>{});
   };
 
@@ -38,6 +40,7 @@
       oldLayer.pause();
       active=1-active;
       index=nextIndex;
+      startedAt=performance.now();
       root.dataset.segment=String(index);
       if(index===0)root.dataset.loop=String(Number(root.dataset.loop||0)+1);
       const following=(index+1)%clips.length;
@@ -70,18 +73,26 @@
   const observer=new IntersectionObserver(entries=>{
     visible=entries[0]?.isIntersecting!==false;
     if(visible)playActive();
-    else layers[active].pause();
+    else{layers[active].pause();startedAt=0}
   },{threshold:.08});
   observer.observe(root);
 
   document.addEventListener("visibilitychange",()=>{
-    if(document.hidden)layers[active].pause();
+    if(document.hidden){layers[active].pause();startedAt=0}
     else playActive();
   });
 
   setInterval(()=>{
-    if(visible&&!switching&&layers[active].paused&&!layers[active].ended)playActive();
-  },600);
+    if(!visible||switching)return;
+    const video=layers[active];
+    if(!startedAt)startedAt=performance.now()-video.currentTime*1000;
+    const expected=(performance.now()-startedAt)/1000;
+    if(video.duration&&expected>=video.duration-.04){advance();return}
+    if(video.paused&&!video.ended)video.play().catch(()=>{});
+    if(video.duration&&video.currentTime+.28<expected){
+      try{video.currentTime=Math.min(expected,video.duration-.08)}catch(_){}
+    }
+  },140);
 
   playActive();
 })();
