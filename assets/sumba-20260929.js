@@ -20,7 +20,7 @@
 
   const playActive=()=>{
     if(!visible)return;
-    if(!startedAt)startedAt=performance.now()-layers[active].currentTime*1000;
+    if(!startedAt)startedAt=Date.now()-layers[active].currentTime*1000;
     layers[active].play().catch(()=>{});
   };
 
@@ -40,7 +40,7 @@
       oldLayer.pause();
       active=1-active;
       index=nextIndex;
-      startedAt=performance.now();
+      startedAt=Date.now();
       root.dataset.segment=String(index);
       if(index===0)root.dataset.loop=String(Number(root.dataset.loop||0)+1);
       const following=(index+1)%clips.length;
@@ -79,8 +79,8 @@
   setInterval(()=>{
     if(!visible||switching)return;
     const video=layers[active];
-    if(!startedAt)startedAt=performance.now()-video.currentTime*1000;
-    const expected=(performance.now()-startedAt)/1000;
+    if(!startedAt)startedAt=Date.now()-video.currentTime*1000;
+    const expected=(Date.now()-startedAt)/1000;
     if(video.duration&&expected>=video.duration-.04){advance();return}
     if(video.paused&&!video.ended)video.play().catch(()=>{});
     if(video.duration&&video.currentTime+.28<expected){
