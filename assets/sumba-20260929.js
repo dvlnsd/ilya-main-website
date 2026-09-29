@@ -11,7 +11,8 @@
   let index=0;
   let switching=false;
   let visible=true;
-  let startedAt=0;
+  let lastSeen=0;
+  let lastMovedAt=Date.now();
 
   const prepare=(video,clipIndex)=>{
     video.src=clips[clipIndex];
@@ -20,7 +21,6 @@
 
   const playActive=()=>{
     if(!visible)return;
-    if(!startedAt)startedAt=Date.now()-layers[active].currentTime*1000;
     layers[active].play().catch(()=>{});
   };
 
@@ -40,7 +40,8 @@
       oldLayer.pause();
       active=1-active;
       index=nextIndex;
-      startedAt=Date.now();
+      lastSeen=0;
+      lastMovedAt=Date.now();
       root.dataset.segment=String(index);
       if(index===0)root.dataset.loop=String(Number(root.dataset.loop||0)+1);
       const following=(index+1)%clips.length;
@@ -58,6 +59,7 @@
     video.muted=true;
     video.defaultMuted=true;
     video.playsInline=true;
+    video.addEventListener("ended",()=>{if(video===layers[active])advance()});
   });
 
   prepare(layers[0],0);
@@ -67,26 +69,28 @@
   const observer=new IntersectionObserver(entries=>{
     visible=entries[0]?.isIntersecting!==false;
     if(visible)playActive();
-    else{layers[active].pause();startedAt=0}
+    else layers[active].pause();
   },{threshold:.08});
   observer.observe(root);
 
   document.addEventListener("visibilitychange",()=>{
-    if(document.hidden){layers[active].pause();startedAt=0}
+    if(document.hidden)layers[active].pause();
     else playActive();
   });
 
   setInterval(()=>{
     if(!visible||switching)return;
     const video=layers[active];
-    if(!startedAt)startedAt=Date.now()-video.currentTime*1000;
-    const expected=(Date.now()-startedAt)/1000;
-    if(video.duration&&expected>=video.duration-.04){advance();return}
     if(video.paused&&!video.ended)video.play().catch(()=>{});
-    if(video.duration&&video.currentTime+.28<expected){
-      try{video.currentTime=Math.min(expected,video.duration-.08)}catch(_){}
+    if(video.currentTime>lastSeen+.035){
+      lastSeen=video.currentTime;
+      lastMovedAt=Date.now();
+    }else if(video.duration&&Date.now()-lastMovedAt>1000){
+      try{video.currentTime=Math.min(video.currentTime+.5,video.duration-.04)}catch(_){}
+      lastMovedAt=Date.now();
     }
-  },140);
+    if(video.duration&&video.currentTime>=video.duration-.06)advance();
+  },500);
 
   playActive();
 })();
