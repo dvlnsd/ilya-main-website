@@ -1,4 +1,4 @@
-.sumba-trip-page{background:#061116;color:#f4f4f1}
+.sumba-trip-page{background:#061116;color:#f4f4f1;overflow-x:clip}
 .sumba30-story,.sumba30-waves,.sumba30-level,.sumba30-booking{position:relative}
 .sumba30-story:before,.sumba30-waves:before,.sumba30-level:before,.sumba30-booking:before{content:"";position:absolute;z-index:2;top:-46px;left:-3%;width:106%;height:78px;border-top:1px solid rgba(78,220,234,.54);border-radius:50% 50% 0 0/100% 100% 0 0;pointer-events:none}
 .sumba30-story{width:min(1240px,100%);margin:auto;padding:clamp(88px,10vw,148px) clamp(22px,5vw,72px) clamp(76px,8vw,118px);display:grid;grid-template-columns:minmax(0,.9fr) minmax(320px,.72fr);gap:clamp(34px,6vw,88px);align-items:center}
