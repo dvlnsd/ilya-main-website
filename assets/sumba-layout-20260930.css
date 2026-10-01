@@ -6,7 +6,7 @@
 .sumba30-story-copy p{margin:0;color:rgba(244,244,241,.82);font-size:clamp(17px,1.45vw,21px);line-height:1.68}
 .sumba30-story-copy p+p{margin-top:24px}
 .sumba30-motion{width:min(100%,410px);margin:0;justify-self:end;aspect-ratio:9/16;overflow:hidden;background:#0b171b}
-.sumba30-motion img{display:block;width:100%;height:100%;object-fit:contain}
+.sumba30-motion img,.sumba30-motion video{display:block;width:100%;height:100%;object-fit:cover}
 .sumba30-miniatures{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:clamp(0px,1vw,16px)}
 .sumba30-miniatures figure{margin:0;height:clamp(150px,18vw,230px);overflow:hidden}
 .sumba30-miniatures img{width:100%;height:100%;object-fit:cover}
